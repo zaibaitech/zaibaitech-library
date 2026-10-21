@@ -1,0 +1,607 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --paper: 243 238 228;
+  --paper-2: 251 247 240;
+  --ink: 24 34 30;
+  --muted: 90 99 92;
+  --line: 224 214 196;
+  --emerald: 14 92 68;
+  --gold: 122 92 36;
+  --gold-soft: 234 218 184;
+  --clay: 140 74 58;
+  --water: 31 111 138;
+  --skin: 214 176 142;
+  color-scheme: light;
+}
+
+html.dark {
+  --paper: 12 18 16;
+  --paper-2: 20 28 25;
+  --ink: 244 239 230;
+  --muted: 176 168 154;
+  --line: 46 62 55;
+  --emerald: 132 214 176;
+  --gold: 228 199 138;
+  --gold-soft: 58 48 30;
+  --clay: 226 164 148;
+  --water: 148 214 232;
+  --skin: 196 156 124;
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not(.light) {
+    --paper: 12 18 16;
+    --paper-2: 20 28 25;
+    --ink: 244 239 230;
+    --muted: 176 168 154;
+    --line: 46 62 55;
+    --emerald: 132 214 176;
+    --gold: 228 199 138;
+    --gold-soft: 58 48 30;
+    --clay: 226 164 148;
+    --water: 148 214 232;
+    --skin: 196 156 124;
+    color-scheme: dark;
+  }
+}
+
+html.light {
+  --paper: 243 238 228;
+  --paper-2: 251 247 240;
+  --ink: 24 34 30;
+  --muted: 90 99 92;
+  --line: 224 214 196;
+  --emerald: 14 92 68;
+  --gold: 122 92 36;
+  --gold-soft: 234 218 184;
+  --clay: 140 74 58;
+  --water: 31 111 138;
+  --skin: 214 176 142;
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: clip;
+  background:
+    radial-gradient(1200px 500px at 10% -10%, rgb(var(--gold) / 0.08), transparent 50%),
+    radial-gradient(900px 400px at 110% 0%, rgb(var(--emerald) / 0.07), transparent 46%),
+    rgb(var(--paper));
+  color: rgb(var(--ink));
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+::selection {
+  background: rgb(var(--gold-soft));
+  color: rgb(var(--ink));
+}
+
+.arabic-text {
+  font-family: var(--font-arabic), "Scheherazade New", serif;
+  font-weight: 400;
+  line-height: 2.15;
+  overflow-wrap: anywhere;
+}
+
+.term {
+  border-bottom: 1px dotted rgb(var(--gold));
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  padding: 0 0.04em;
+  font: inherit;
+  line-height: inherit;
+}
+
+.term:hover,
+.term:focus-visible {
+  background: rgb(var(--gold) / 0.14);
+  border-radius: 0.2rem;
+}
+
+.unit-anchor,
+.chapter-anchor {
+  scroll-margin-top: 7.25rem;
+}
+
+.ebook-anchor {
+  scroll-margin-top: 4.25rem;
+}
+
+.guide-fit {
+  display: grid;
+  grid-template-rows: minmax(132px, 24dvh) minmax(0, 1fr);
+  gap: 0.5rem;
+  max-height: calc(100dvh - 15.5rem);
+}
+
+.guide-figure,
+.guide-note {
+  min-height: 0;
+  border: 1px solid rgb(var(--line));
+  border-radius: 1.25rem;
+  background: rgb(var(--paper-2));
+}
+
+.guide-figure {
+  display: flex;
+  flex-direction: column;
+  padding: 0.25rem 0.5rem 0.35rem;
+}
+
+.guide-note {
+  overflow: auto;
+  padding: 0.85rem 0.9rem 1rem;
+}
+
+.sequence {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sequence button {
+  height: 8px;
+  width: 14px;
+  border: 0;
+  border-radius: 999px;
+  background: rgb(var(--line));
+}
+
+.sequence .is-current {
+  background: rgb(var(--gold));
+}
+
+.sequence .is-done {
+  background: rgb(var(--emerald));
+}
+
+.sequence-caption {
+  margin: 2px 0 0;
+  text-align: center;
+  font-size: 11px;
+  line-height: 1.3;
+  color: rgb(var(--muted));
+}
+
+.figure-svg .robe,
+.figure-svg [data-part="body"],
+.figure-svg [data-part="upper"],
+.figure-svg [data-part="right-side"] {
+  fill: rgb(var(--emerald) / 0.88);
+  stroke: rgb(var(--ink));
+  stroke-width: 1.3;
+}
+
+.figure-svg .robe-fold,
+.figure-svg .hem {
+  fill: none;
+  stroke: rgb(var(--gold));
+  stroke-width: 1.3;
+}
+
+.figure-svg .skin,
+.figure-svg [data-part="face"],
+.figure-svg [data-part="hand"],
+.figure-svg [data-part="foot"],
+.figure-svg [data-part="ear"] {
+  fill: rgb(var(--skin));
+  stroke: rgb(var(--ink));
+  stroke-width: 1.4;
+}
+
+.figure-svg .sleeve,
+.figure-svg [data-part="arm-left"],
+.figure-svg [data-part="arm-right"] {
+  fill: none;
+  stroke: rgb(var(--emerald));
+  stroke-width: 10;
+  stroke-linecap: round;
+}
+
+.figure-svg .hair,
+.figure-svg [data-part="head"] {
+  fill: rgb(var(--ink) / 0.88);
+  stroke: none;
+}
+
+.figure-svg .eye {
+  fill: rgb(var(--ink));
+  stroke: none;
+}
+
+.figure-svg .brow,
+.figure-svg [data-part="nose"],
+.figure-svg [data-part="mouth"] {
+  fill: none;
+  stroke: rgb(var(--ink));
+  stroke-width: 1.7;
+  stroke-linecap: round;
+}
+
+.figure-svg .mat {
+  fill: rgb(var(--gold) / 0.16);
+}
+
+.figure-svg .basin {
+  fill: rgb(var(--water) / 0.22);
+  stroke: rgb(var(--water));
+}
+
+.figure-svg .staff {
+  fill: none;
+  stroke: rgb(var(--gold));
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+
+.figure-svg .stream {
+  fill: none;
+  stroke: rgb(var(--water));
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 7 10;
+  opacity: 0;
+}
+
+.figure-svg[data-water="on"] .stream {
+  opacity: 1;
+  animation: pour 1.15s linear infinite;
+}
+
+.figure-svg[data-water="on"] .basin {
+  animation: ripple 2.4s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.figure-svg [data-pose] {
+  display: none;
+}
+
+.figure-svg[data-pose="stand"] [data-pose="stand"],
+.figure-svg[data-pose="takbir"] [data-pose="takbir"],
+.figure-svg[data-pose="ruku"] [data-pose="ruku"],
+.figure-svg[data-pose="rise"] [data-pose="rise"],
+.figure-svg[data-pose="sujud"] [data-pose="sujud"],
+.figure-svg[data-pose="sit"] [data-pose="sit"],
+.figure-svg[data-pose="sit-lean"] [data-pose="sit-lean"],
+.figure-svg[data-pose="lean"] [data-pose="lean"],
+.figure-svg[data-pose="lie-right"] [data-pose="lie-right"],
+.figure-svg[data-pose="lie-left"] [data-pose="lie-left"],
+.figure-svg[data-pose="lie-back"] [data-pose="lie-back"] {
+  display: inline;
+}
+
+.figure-svg [data-part="heart"],
+.figure-svg [data-part="siwak"],
+.figure-svg [data-part="tasmiya"],
+.figure-svg [data-part="wipe"] {
+  opacity: 0;
+}
+
+.figure-svg [data-part="tasmiya"] {
+  fill: rgb(var(--gold));
+  font-size: 16px;
+  font-family: var(--font-arabic), serif;
+}
+
+.figure-svg [data-part="siwak"],
+.figure-svg [data-part="wipe"] {
+  fill: none;
+  stroke: rgb(var(--gold));
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.figure-svg [data-part="heart"] {
+  fill: rgb(var(--gold) / 0.45);
+  stroke: rgb(var(--gold));
+}
+
+.figure-svg[data-highlight="tasmiya"] [data-part="tasmiya"],
+.figure-svg[data-highlight="siwak"] [data-part="siwak"],
+.figure-svg[data-highlight="niyyah"] [data-part="heart"],
+.figure-svg[data-highlight="head"] [data-part="wipe"] {
+  opacity: 1;
+}
+
+.figure-svg[data-highlight="face"] [data-part="face"],
+.figure-svg[data-highlight="wipe-face"] [data-part="face"],
+.figure-svg[data-highlight="mouth"] [data-part="mouth"],
+.figure-svg[data-highlight="nose"] [data-part="nose"],
+.figure-svg[data-highlight="hands"] [data-part="hand"],
+.figure-svg[data-highlight="wipe-hands"] [data-part="hand"],
+.figure-svg[data-highlight="feet"] [data-part="foot"],
+.figure-svg[data-highlight="ears"] [data-part="ear"],
+.figure-svg[data-highlight="head"] [data-part="head"],
+.figure-svg[data-highlight="upper"] [data-part="upper"],
+.figure-svg[data-highlight="right-side"] [data-part="right-side"],
+.figure-svg[data-highlight="cover"] [data-part="body"],
+.figure-svg[data-highlight="najasa"] [data-part="upper"] {
+  fill: rgb(var(--water) / 0.55);
+  stroke: rgb(var(--gold));
+}
+
+.figure-svg[data-dust="on"][data-highlight="face"] [data-part="face"],
+.figure-svg[data-dust="on"][data-highlight="wipe-face"] [data-part="face"],
+.figure-svg[data-dust="on"][data-highlight="wipe-hands"] [data-part="hand"],
+.figure-svg[data-dust="on"][data-highlight="hands"] [data-part="hand"],
+.figure-svg[data-dust="on"][data-highlight="elbows"] [data-part="arm-right"],
+.figure-svg[data-dust="on"][data-highlight="earth"] [data-part="hand"] {
+  fill: rgb(var(--gold) / 0.45);
+}
+
+.figure-svg[data-highlight="arms"] [data-part="arm-right"],
+.figure-svg[data-highlight="elbows"] [data-part="arm-right"],
+.figure-svg[data-highlight="arms"] [data-part="arm-left"],
+.figure-svg[data-highlight="elbows"] [data-part="arm-left"] {
+  stroke: rgb(var(--water));
+}
+
+.figure-svg .rub-hand {
+  fill: rgb(var(--skin));
+  stroke: rgb(var(--ink));
+  stroke-width: 1;
+}
+
+.figure-svg .rub-anchor {
+  opacity: 0;
+}
+
+.figure-svg[data-rub="on"] .rub-anchor {
+  opacity: 1;
+}
+
+.figure-svg[data-rub="on"] .rub-hand {
+  animation: rub 1.25s ease-in-out infinite;
+}
+
+.figure-svg[data-highlight="face"] .rub-anchor,
+.figure-svg[data-highlight="wipe-face"] .rub-anchor,
+.figure-svg[data-highlight="mouth"] .rub-anchor,
+.figure-svg[data-highlight="nose"] .rub-anchor {
+  transform: translate(145px, 62px);
+}
+
+.figure-svg[data-highlight="arms"] .rub-anchor,
+.figure-svg[data-highlight="elbows"] .rub-anchor,
+.figure-svg[data-highlight="hands"] .rub-anchor,
+.figure-svg[data-highlight="wipe-hands"] .rub-anchor {
+  transform: translate(214px, 230px);
+}
+
+.figure-svg[data-highlight="feet"] .rub-anchor {
+  transform: translate(150px, 330px);
+}
+
+.figure-svg[data-highlight="head"] .rub-anchor,
+.figure-svg[data-highlight="dalk"] .rub-anchor,
+.figure-svg[data-highlight="upper"] .rub-anchor,
+.figure-svg[data-highlight="cover"] .rub-anchor,
+.figure-svg[data-highlight="body"] .rub-anchor,
+.figure-svg[data-highlight="right-side"] .rub-anchor {
+  transform: translate(150px, 180px);
+}
+
+.figure-svg .dust {
+  fill: rgb(var(--gold));
+  opacity: 0.8;
+}
+
+.figure-svg .modest-note {
+  fill: rgb(var(--muted));
+  font-size: 11px;
+}
+
+@keyframes rub {
+  50% {
+    transform: translate(18px, 10px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .guide-fit {
+    grid-template-columns: minmax(240px, 340px) minmax(0, 1fr);
+    grid-template-rows: auto;
+    max-height: none;
+  }
+}
+
+.step-enter {
+  animation: step-enter 0.45s ease;
+}
+
+@keyframes step-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes pour {
+  to {
+    stroke-dashoffset: -64;
+  }
+}
+
+@keyframes ripple {
+  50% {
+    opacity: 0.35;
+    transform: scaleX(1.06);
+  }
+}
+
+@keyframes limb {
+  0%,
+  100% {
+    fill: transparent;
+  }
+  35%,
+  65% {
+    fill: rgb(var(--water) / 0.45);
+  }
+}
+
+@keyframes glow {
+  50% {
+    opacity: 1;
+  }
+}
+
+.wudu-svg .ink {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.wudu-svg .gold-line {
+  fill: none;
+  stroke: rgb(var(--gold));
+  stroke-width: 1.4;
+}
+
+.wudu-svg .stream {
+  fill: none;
+  stroke: rgb(var(--water));
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 7 11;
+  opacity: 0;
+}
+
+.wudu-svg[data-water="on"] .stream {
+  opacity: 1;
+  animation: pour 1.15s linear infinite;
+}
+
+.wudu-svg .basin {
+  fill: rgb(var(--water) / 0.18);
+  stroke: rgb(var(--water));
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.wudu-svg[data-water="on"] .basin {
+  animation: ripple 2.4s ease-in-out infinite;
+}
+
+.wudu-svg [data-part] {
+  transition: fill 0.4s ease, stroke 0.4s ease, opacity 0.4s ease;
+}
+
+.wudu-svg[data-highlight="face"] [data-part="face"],
+.wudu-svg[data-highlight="mouth"] [data-part="mouth"],
+.wudu-svg[data-highlight="nose"] [data-part="nose"],
+.wudu-svg[data-highlight="hands"] [data-part="hand"],
+.wudu-svg[data-highlight="feet"] [data-part="foot"],
+.wudu-svg[data-highlight="ears"] [data-part="ear"],
+.wudu-svg[data-highlight="head"] [data-part="head"] {
+  fill: rgb(var(--water) / 0.42);
+  stroke: rgb(var(--gold));
+}
+
+.wudu-svg[data-highlight="arms"] [data-part="arm-right"] {
+  animation: limb 2.2s ease-in-out infinite;
+  stroke: rgb(var(--gold));
+}
+
+.wudu-svg[data-highlight="arms"] [data-part="arm-left"] {
+  animation: limb 2.2s ease-in-out infinite 1.1s;
+  stroke: rgb(var(--gold));
+}
+
+.wudu-svg[data-highlight="niyyah"] [data-part="heart"],
+.wudu-svg[data-highlight="fawr"] [data-part="ring"] {
+  opacity: 1;
+  animation: glow 1.8s ease-in-out infinite;
+}
+
+.wudu-svg [data-part="heart"],
+.wudu-svg [data-part="ring"],
+.wudu-svg [data-part="siwak"],
+.wudu-svg [data-part="tasmiya"],
+.wudu-svg [data-part="wipe"] {
+  opacity: 0;
+}
+
+.wudu-svg[data-highlight="tasmiya"] [data-part="tasmiya"],
+.wudu-svg[data-highlight="siwak"] [data-part="siwak"],
+.wudu-svg[data-highlight="head"] [data-part="wipe"] {
+  opacity: 1;
+}
+
+.wudu-svg[data-highlight="head"] [data-part="wipe"] {
+  stroke-dasharray: 8 6;
+  animation: pour 1.4s linear infinite;
+}
+
+.shake {
+  animation: shake 0.4s ease;
+}
+
+@keyframes shake {
+  20% {
+    transform: translateX(-3px);
+  }
+  40% {
+    transform: translateX(3px);
+  }
+  60% {
+    transform: translateX(-2px);
+  }
+  80% {
+    transform: translateX(2px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .step-enter,
+  .wudu-svg .stream,
+  .wudu-svg .basin,
+  .wudu-svg [data-part],
+  .figure-svg .stream,
+  .figure-svg .basin,
+  .figure-svg .rub-hand,
+  .shake {
+    animation: none !important;
+  }
+}
+
+@media print {
+  header,
+  footer,
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: white;
+    color: black;
+  }
+}
