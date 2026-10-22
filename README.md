@@ -19,7 +19,7 @@ The sources used to build the reader live in `content/sources/`:
 
 - `akhdari.segments.json` — where each of the 156 passages begins (see [CORRECTIONS.md](CORRECTIONS.md))
 
-An English translation from the library's bilingual edition (original translation, language-reviewed, CC BY-NC-SA 4.0) is included, with the translator's notes and chapter headings. It is not shown to readers until its review is recorded; see below.
+An English translation from the library's bilingual edition (original translation, CC BY-NC-SA 4.0) is published in the reader, with the translator's notes and chapter headings. It was approved by the library's reviewer on 22 October 2026.
 
 ## Run locally
 
@@ -59,7 +59,7 @@ Reading modes are built from the book's available translations: Arabic only, Ara
 
 ## Translations
 
-Metadata on the book (`Book.translations`), text in separate files (`src/content/translations/`), keyed by stable passage id and attached at load time, so `npm run content` can never erase a translation. A translation is shown only when `isPublishable` passes: verified, with a dated review record, translator, source, licence and licence evidence. One translation is registered: `en-zaibaitech-2026`, the English of the library's bilingual edition, with notes and headings. It is marked `in-review`: the edition was language-reviewed and itself advises a check by a qualified teacher. To publish, add the reviewer and date in `review` and set `verified`.
+Metadata on the book (`Book.translations`), text in separate files (`src/content/translations/`), keyed by stable passage id and attached at load time, so `npm run content` can never erase a translation. A translation is shown only when `isPublishable` passes: verified, with a dated review record, translator, source, licence and licence evidence. One translation is registered: `en-zaibaitech-2026`, the English of the library's bilingual edition, with notes and headings. It is published (`verified`, reviewed 2026-10-22 by the library's language reviewer). Setting it back to `in-review` hides it everywhere, including from the page source.
 
 Full workflow, tooling (`translations:worksheet`, `scripts/translation-import.mjs`, `translations:check`) and review rules: [docs/TRANSLATIONS.md](docs/TRANSLATIONS.md).
 

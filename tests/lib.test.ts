@@ -53,24 +53,21 @@ function withSample(reviewStatus: TranslationInfo["reviewStatus"], fill = true) 
   return { book, copy };
 }
 
-test("the reviewed English translation is attached, with notes and headings, but not shown until verified", () => {
+test("the reviewed English translation is published with its notes and headings", () => {
   const id = "en-zaibaitech-2026";
   const info = akhdari.translations.find((t) => t.translationId === id);
   assert.ok(info, "declared");
-  assert.notEqual(info!.reviewStatus, "verified");
-  assert.ok(shipped.chapters[0].units[0].translations?.some((t) => t.translationId === id));
-  assert.ok(shipped.chapters[0].headingTranslations?.some((t) => t.translationId === id));
-  const withNotes = shipped.chapters.flatMap((c) => c.units).filter((u) => u.translations?.some((t) => t.notes?.length));
-  assert.equal(withNotes.length, 6);
-  assert.deepEqual(availableTranslations(akhdari, shipped), []);
-  assert.deepEqual(readableLanguages(akhdari, shipped), ["Arabic"]);
-  const payload = JSON.stringify(publicContent(akhdari, shipped));
-  assert.equal(payload.includes(id), false, "no text, notes or headings in the page payload");
-  // once verified with a review record, all three reach the reader
-  const verified: Book = { ...akhdari, translations: [{ ...info!, reviewStatus: "verified", review: { reviewer: "Test", reviewedOn: "2026-01-01", scope: "full" } }] };
-  const shown = publicContent(verified, shipped);
-  assert.ok(shown.chapters[0].headingTranslations?.length);
-  assert.ok(shown.chapters.flatMap((c) => c.units).some((u) => u.translations?.some((t) => t.notes?.length)));
+  assert.equal(isPublishable(info!), true, publishBlockers(info!).join("; "));
+  assert.deepEqual(availableTranslations(akhdari, shipped).map((t) => t.translationId), [id]);
+  assert.deepEqual(readableLanguages(akhdari, shipped), ["Arabic", "English"]);
+  const shown = publicContent(akhdari, shipped);
+  const units = shown.chapters.flatMap((c) => c.units);
+  assert.ok(units.every((u) => u.translations?.some((t) => t.translationId === id)), "every passage has its English");
+  assert.equal(units.filter((u) => u.translations?.some((t) => t.notes?.length)).length, 6);
+  assert.equal(shown.chapters.filter((c) => c.headingTranslations?.length).length, shown.chapters.length);
+  // withdrawing the review hides all three again
+  const withdrawn: Book = { ...akhdari, translations: [{ ...info!, reviewStatus: "in-review" }] };
+  assert.equal(JSON.stringify(publicContent(withdrawn, shipped)).includes(id), false);
 });
 
 test("only verified translations with text are available", () => {

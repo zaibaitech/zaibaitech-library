@@ -100,7 +100,7 @@ test("earlier passage ids still lead somewhere", () => {
   }
 });
 
-test("the reviewed English translation covers every passage and is held back", () => {
+test("the published English translation covers every passage and has a dated review", () => {
   const file = translationFiles.find((f) => f.translationId === "en-zaibaitech-2026")!;
   const content = getBookContent("akhdari")!;
   const ids = content.chapters.flatMap((c) => c.units.map((u) => u.id));
@@ -108,5 +108,8 @@ test("the reviewed English translation covers every passage and is held back", (
   assert.equal(Object.keys(file.headings ?? {}).length, content.chapters.length);
   for (const id of Object.keys(file.notes ?? {})) assert.ok(ids.includes(id));
   const info = books.find((b) => b.id === "akhdari")!.translations.find((t) => t.translationId === file.translationId)!;
-  assert.notEqual(info.reviewStatus, "verified", "not published until a reviewer and date are recorded");
+  assert.equal(info.reviewStatus, "verified");
+  assert.ok(info.review?.reviewer.trim(), "reviewer recorded");
+  assert.match(info.review?.reviewedOn ?? "", /^\d{4}-\d{2}-\d{2}$/);
+  assert.equal(info.review?.scope, "full");
 });

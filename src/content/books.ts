@@ -42,9 +42,13 @@ export const books: Book[] = [
         licenseUrl: "https://creativecommons.org/licenses/by-nc-sa/4.0/",
         licenseEvidence:
           "The edition's title page: original translation by Zaibaitech Library, shared under CC BY-NC-SA 4.0 with the Arabic, non-commercial use only.",
-        // Language review is done. The edition itself advises a check by a qualified teacher;
-        // add the reviewer and date in `review` and set "verified" to publish.
-        reviewStatus: "in-review",
+        reviewStatus: "verified",
+        review: {
+          reviewer: "Zaibaitech Library language reviewer",
+          reviewedOn: "2026-10-22",
+          scope: "full",
+          notes: "Approved for publication by the library's reviewer.",
+        },
       },
     ],
     excerptAr: "بسم الله الرحمن الرحيم وصلى الله على سيدنا محمد وآله وصحبه وسلم.",
