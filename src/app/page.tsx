@@ -15,38 +15,33 @@ export default function HomePage() {
   const shelf = [...entries.filter((e) => e.readable), ...entries.filter((e) => !e.readable)];
 
   return (
-    <div className="mx-auto max-w-page px-4 pb-8 pt-6 sm:px-8 sm:pt-10">
+    <div className="mx-auto max-w-page px-4 pb-8 pt-4 sm:px-8 sm:pt-8">
+      {/* Kept compact on phones so "The books" and the first card show without scrolling. */}
       <section
         aria-labelledby="hero-heading"
-        className="relative overflow-hidden rounded-3xl border border-line-strong bg-paper-2 px-6 py-8 sm:px-12 sm:py-14"
+        className="relative overflow-hidden rounded-3xl border border-line-strong bg-paper-2 px-5 py-5 sm:px-10 sm:py-9 lg:px-12 lg:py-10"
       >
-        <GeometricBackdrop className="absolute inset-0 h-full w-full text-gold opacity-[0.09]" />
-        <Rosette className="pointer-events-none absolute -right-10 -top-10 h-44 w-44 text-gold opacity-[0.16] sm:h-64 sm:w-64" />
+        <GeometricBackdrop className="absolute inset-0 h-full w-full text-gold opacity-[0.06]" />
+        <Rosette className="pointer-events-none absolute -right-8 -top-8 h-28 w-28 text-gold opacity-[0.12] sm:h-44 sm:w-44" />
         <div className="relative">
-          <p className="eyebrow leading-relaxed">
-            Classical texts · {hasTranslation ? "Arabic & English" : "Fully vowelled Arabic"} · Careful reading
-          </p>
+          <p className="eyebrow">{hasTranslation ? "Arabic & English" : "Fully vowelled Arabic"}</p>
           <h1
             id="hero-heading"
-            className="mt-4 max-w-2xl font-display text-[2.1rem] leading-[1.1] tracking-tight text-ink [font-variant-caps:small-caps] sm:text-6xl"
+            className="mt-1.5 font-display text-[1.75rem] leading-tight tracking-tight text-ink [font-variant-caps:small-caps] sm:mt-2 sm:text-5xl"
           >
-            Read the text.
-            <br />
-            Understand the meaning.
+            Read. Study. Reflect.
           </h1>
-          <p className="mt-4 max-w-xl text-base leading-relaxed text-ink-2 sm:text-lg">
-            Foundational manuals of Islamic law in fully vowelled Arabic
-            {hasTranslation ? ", with a reviewed English translation where one has been published" : ""}. Your place is kept
-            on this device.
+          <p className="mt-2 max-w-md text-[0.95rem] leading-relaxed text-ink-2 sm:mt-3 sm:text-lg">
+            Classical Islamic texts in fully vowelled Arabic{hasTranslation ? ", with English translations where available" : ""}.
           </p>
           {featured ? (
             <Link
               href={`/books/${featured.id}/read`}
-              className="btn btn-primary mt-7 h-14 rounded-full px-7 text-base shadow-lift"
+              className="btn btn-primary mt-4 h-11 rounded-full px-5 sm:mt-6 sm:h-12 sm:px-6 sm:text-base"
               aria-label={`Start reading ${featured.title}`}
             >
               Start reading
-              <ArrowRight className="h-5 w-5" aria-hidden />
+              <ArrowRight className="h-4 w-4" aria-hidden />
             </Link>
           ) : null}
         </div>
@@ -54,7 +49,7 @@ export default function HomePage() {
 
       <ContinueCard entries={entries} index={resumeIndex()} />
 
-      <section aria-labelledby="books-heading" className="mt-12">
+      <section aria-labelledby="books-heading" className="mt-7 sm:mt-12">
         <div className="flex items-baseline justify-between gap-4">
           <h2 id="books-heading" className="font-display text-2xl text-ink [font-variant-caps:small-caps] sm:text-3xl">
             The books
@@ -64,10 +59,10 @@ export default function HomePage() {
             <ArrowRight className="h-4 w-4" aria-hidden />
           </Link>
         </div>
-        <p className="mt-2 max-w-xl text-base leading-relaxed text-muted">
+        <p className="mt-1 max-w-xl text-sm leading-relaxed text-muted sm:mt-2 sm:text-base">
           The manuals in the library. Open one to read it, or see what is planned next.
         </p>
-        <ul className="mt-6 grid gap-4 lg:grid-cols-2">
+        <ul className="mt-4 grid gap-4 sm:mt-6 lg:grid-cols-2">
           {shelf.map((entry) => (
             <li key={entry.id}>
               <BookRow entry={entry} />

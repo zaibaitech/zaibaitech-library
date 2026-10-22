@@ -23,7 +23,7 @@ export function SiteHeader() {
               Zaibaitech Library
             </span>
             <span className="block truncate text-[0.68rem] font-medium uppercase tracking-[0.24em] text-gold">
-              Read · Study · Reflect
+              Classical texts
             </span>
           </span>
         </Link>

@@ -33,7 +33,7 @@ export function ContinueCard({ entries, index }: { entries: CatalogueEntry[]; in
   const { entry } = resume;
 
   return (
-    <section aria-labelledby="continue-heading" className="mt-10">
+    <section aria-labelledby="continue-heading" className="mt-7 sm:mt-10">
       <h2 id="continue-heading" className="font-display text-2xl text-ink [font-variant-caps:small-caps] sm:text-3xl">
         Continue reading
       </h2>
