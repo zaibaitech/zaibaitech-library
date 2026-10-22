@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Bookmark, ChevronLeft, ChevronRight, List, Minus, Moon, Plus, Search, Sun } from "lucide-react";
 import type { Book, BookContent, TranslationInfo } from "@/content/types";
 import { glossary } from "@/content/glossary";
-import { segmentTerms } from "@/lib/arabic";
+import { segmentTerms, toArabicDigits } from "@/lib/arabic";
 import { cn } from "@/lib/cn";
 import { glossaryEnabled } from "@/lib/flags";
 import { flattenUnits, positionFraction, resolveTarget } from "@/lib/reading";
@@ -20,6 +20,7 @@ import {
 import { modeKey, modeOptions, parseModeKey, resolveMode, translationText } from "@/lib/translations";
 import { GlossarySheet } from "../glossary-sheet";
 import { useSettings } from "../settings-provider";
+import { ChapterBanner } from "./chapter-banner";
 import { ReaderSheet, type SheetTab } from "./reader-sheet";
 
 type Props = {
@@ -402,36 +403,33 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
           const next = content.chapters[ci + 1];
           const showPart = !previous || previous.partEn !== chapter.partEn;
           return (
-            <section key={chapter.id} id={chapter.id} aria-labelledby={`${chapter.id}-h`} className="ebook-anchor mb-16">
-              {showPart && chapter.partAr !== chapter.headingAr ? (
-                <p className="mb-3 text-center font-amiri text-xl text-gold" dir="rtl" lang="ar">
-                  {chapter.partAr}
-                </p>
-              ) : null}
-              <h2 id={`${chapter.id}-h`} className="mb-1 text-center font-amiri text-3xl leading-snug text-ink" dir="rtl" lang="ar">
-                {chapter.headingAr}
-              </h2>
-              <p className="mb-8 text-center text-sm text-muted">
-                {ci + 1}. {chapter.headingEn}
-              </p>
+            <section key={chapter.id} id={chapter.id} aria-labelledby={`${chapter.id}-h`} className="ebook-anchor mb-14">
+              <ChapterBanner
+                id={`${chapter.id}-h`}
+                index={ci + 1}
+                headingAr={chapter.headingAr}
+                headingEn={chapter.headingEn}
+                partAr={showPart && chapter.partAr !== chapter.headingAr ? chapter.partAr : undefined}
+              />
 
               {chapter.units.map((unit) => {
                 const arabic = settings.vowelled && unit.arabicVowelled ? unit.arabicVowelled : unit.arabic;
                 const text = info ? translationText(unit, info.translationId) : null;
                 const marked = bookmarks.includes(unit.id);
                 return (
-                  <div key={unit.id} id={unit.id} data-unit={unit.id} className="ebook-anchor mb-8">
-                    <div className="mb-1 flex items-center justify-between">
+                  <div key={unit.id} id={unit.id} data-unit={unit.id} className="ebook-anchor card mb-4 overflow-hidden">
+                    <div className="flex items-center justify-between gap-2 px-3 pt-2 sm:px-4">
                       <a
                         href={`#${unit.id}`}
-                        className="rounded-full border border-line px-2.5 py-0.5 text-xs text-muted hover:text-ink"
+                        className="inline-flex min-h-8 items-center gap-1.5 rounded-full border border-gold/40 bg-gold-soft/40 px-2.5 text-xs text-ink hover:border-gold"
                         aria-label={`Link to ${chapter.headingEn}, passage ${unit.number}`}
                       >
-                        {unit.number}
+                        <span lang="ar" className="font-amiri text-sm leading-none">{toArabicDigits(unit.number)}</span>
+                        <span className="text-muted">{unit.number}</span>
                       </a>
                       <button
                         type="button"
-                        className="tool-btn !h-11 !w-11 !px-0"
+                        className={cn("tool-btn !h-11 !w-11 !px-0", !marked && "!border-transparent !bg-transparent")}
                         aria-pressed={marked}
                         aria-label={`Bookmark ${chapter.headingEn}, passage ${unit.number}`}
                         onClick={() => toggleBookmark(unit.id)}
@@ -439,10 +437,10 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
                         <Bookmark className={cn("h-4 w-4", marked && "fill-current")} aria-hidden />
                       </button>
                     </div>
-                    <div className={cn(wide && "lg:flex lg:flex-row-reverse lg:items-start lg:gap-10")}>
+                    <div className={cn(wide && "lg:flex lg:flex-row-reverse lg:items-stretch")}>
                       {showArabic || !text ? (
                         <p
-                          className={cn("arabic-text text-ink", wide && "lg:w-1/2")}
+                          className={cn("arabic-text px-4 pb-3 text-ink sm:px-5", wide && "lg:w-1/2")}
                           dir="rtl"
                           lang="ar"
                           style={{ fontSize }}
@@ -451,19 +449,24 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
                         </p>
                       ) : null}
                       {showTranslation ? (
-                        <div className={cn(wide && "lg:w-1/2", showArabic && "mt-2")}>
-                          {text ? (
-                            <p className="translation-text text-ink" lang={info?.language} style={{ fontSize: translationFontSize }}>
-                              {text}
-                            </p>
-                          ) : (
-                            <p className="text-sm italic text-muted">
-                              {showArabic
-                                ? "No translation available for this passage."
-                                : "Not yet translated. The Arabic is shown above."}
-                            </p>
-                          )}
-                        </div>
+                        <>
+                          {showArabic ? (
+                            <div aria-hidden className={cn("passage-rule mx-4", wide && "lg:mx-0 lg:my-4 lg:h-auto lg:w-0.5 lg:bg-gold/40 lg:bg-none")} />
+                          ) : null}
+                          <div className={cn("px-4 py-3 sm:px-5", wide && "lg:w-1/2")}>
+                            {text ? (
+                              <p className="translation-text text-ink" lang={info?.language} style={{ fontSize: translationFontSize }}>
+                                {text}
+                              </p>
+                            ) : (
+                              <p className="text-sm italic text-muted">
+                                {showArabic
+                                  ? "No translation available for this passage."
+                                  : "Not yet translated. The Arabic is shown above."}
+                              </p>
+                            )}
+                          </div>
+                        </>
                       ) : null}
                     </div>
                   </div>

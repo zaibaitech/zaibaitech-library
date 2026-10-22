@@ -14,6 +14,9 @@
   --clay: 140 74 58;
   --water: 31 111 138;
   --skin: 214 176 142;
+  --banner: 12 74 55;
+  --banner-ink: 250 245 232;
+  --banner-sub: 233 211 160;
   color-scheme: light;
 }
 
@@ -29,6 +32,9 @@ html.dark {
   --clay: 226 164 148;
   --water: 148 214 232;
   --skin: 196 156 124;
+  --banner: 18 56 44;
+  --banner-ink: 246 239 226;
+  --banner-sub: 228 199 138;
   color-scheme: dark;
 }
 
@@ -45,11 +51,17 @@ html.dark {
     --clay: 226 164 148;
     --water: 148 214 232;
     --skin: 196 156 124;
+    --banner: 18 56 44;
+    --banner-ink: 246 239 226;
+    --banner-sub: 228 199 138;
     color-scheme: dark;
   }
 }
 
 html.light {
+  --banner: 12 74 55;
+  --banner-ink: 250 245 232;
+  --banner-sub: 233 211 160;
   --paper: 243 238 228;
   --paper-2: 251 247 240;
   --ink: 24 34 30;
@@ -129,6 +141,24 @@ body {
   overflow-wrap: break-word;
   word-break: normal;
   padding-block: 0.15em;
+}
+
+.chapter-banner {
+  background:
+    radial-gradient(120% 140% at 50% 0%, rgb(255 255 255 / 0.08), transparent 60%),
+    rgb(var(--banner));
+  color: rgb(var(--banner-ink));
+  box-shadow: inset 0 0 0 1px rgb(var(--banner-sub) / 0.45), inset 0 0 0 5px rgb(var(--banner)), inset 0 0 0 6px rgb(var(--banner-sub) / 0.3);
+}
+
+.chapter-banner-sub,
+.chapter-banner-ornament {
+  color: rgb(var(--banner-sub));
+}
+
+.passage-rule {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgb(var(--gold) / 0.55) 15%, rgb(var(--gold) / 0.55) 85%, transparent);
 }
 
 .translation-text {

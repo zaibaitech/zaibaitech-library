@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BookPlate } from "@/components/book-plate";
+import { Rosette } from "@/components/geometric";
 import { BookLocalActions } from "@/components/book-local";
 import { ReadActions } from "@/components/ebook/read-actions";
 import { books, getBook } from "@/content/books";
@@ -118,23 +119,24 @@ export default function BookDetailPage({ params }: { params: Params }) {
             <h2 id="contents-heading" className="font-display text-2xl text-ink">
               Contents
             </h2>
-            <ol className="card mt-3 divide-y divide-line overflow-hidden">
+            <ol className="mt-4 grid gap-3 sm:grid-cols-2">
               {content.chapters.map((chapter, index) => (
                 <li key={chapter.id}>
                   <Link
                     href={`/books/${book.id}/read#${chapter.id}`}
-                    className="flex gap-3 px-4 py-3 hover:bg-gold-soft/50"
+                    className="chapter-card group relative flex h-full flex-col items-center overflow-hidden rounded-2xl border border-gold/35 bg-paper-2 px-12 py-4 text-center hover:border-gold"
                   >
-                    <span className="w-6 shrink-0 pt-0.5 text-sm text-muted">{index + 1}</span>
-                    <span className="min-w-0 flex-1">
-                      <span className="flex items-baseline justify-between gap-3">
-                        <span className="font-medium text-ink">{chapter.headingEn}</span>
-                        <span className="font-amiri text-lg leading-snug text-ink" dir="rtl" lang="ar">
-                          {chapter.headingAr}
-                        </span>
-                      </span>
-                      <span className="mt-0.5 block text-sm leading-snug text-muted">{chapter.summaryEn}</span>
+                    <Rosette className="absolute left-2 top-1/2 h-9 w-9 -translate-y-1/2 text-gold/70" />
+                    <Rosette className="absolute right-2 top-1/2 h-9 w-9 -translate-y-1/2 text-gold/70" />
+                    <span className="text-[0.65rem] uppercase tracking-[0.2em] text-muted">
+                      Chapter {index + 1}
+                      {chapter.units.length > 0 ? ` · ${chapter.units.length} passages` : " · heading"}
                     </span>
+                    <span className="mt-1 font-amiri text-2xl leading-snug text-emerald" dir="rtl" lang="ar">
+                      {chapter.headingAr}
+                    </span>
+                    <span className="mt-0.5 text-sm font-medium text-ink group-hover:text-emerald">{chapter.headingEn}</span>
+                    <span className="mt-1 text-xs leading-snug text-muted">{chapter.summaryEn}</span>
                   </Link>
                 </li>
               ))}
