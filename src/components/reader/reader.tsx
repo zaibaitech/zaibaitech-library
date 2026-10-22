@@ -378,13 +378,13 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
         ) : null}
       </header>
 
-      <article className={cn("mx-auto px-5 pb-24 pt-12 sm:px-8", wide ? "max-w-2xl lg:max-w-5xl" : "max-w-2xl")}>
-        <header className="mb-16 text-center">
-          <p className="font-amiri text-[2.4rem] leading-snug text-ink" lang="ar" dir="rtl">
+      <article className={cn("mx-auto px-4 pb-24 pt-6 sm:px-8 sm:pt-10", wide ? "max-w-2xl lg:max-w-5xl" : "max-w-2xl")}>
+        <header className="mb-8 text-center sm:mb-10">
+          <p className="font-amiri text-[2rem] leading-snug text-ink sm:text-[2.4rem]" lang="ar" dir="rtl">
             {book.titleAr}
           </p>
-          <h1 className="mt-1 font-display text-lg text-ink-2">{book.title}</h1>
-          <div className="mx-auto mt-6 max-w-md space-y-1 text-xs leading-relaxed text-muted">
+          <h1 className="font-display text-lg text-ink-2">{book.title}</h1>
+          <div className="mx-auto mt-3 max-w-md space-y-0.5 text-xs leading-relaxed text-muted">
             <p>
               Arabic text: OpenITI, {content.source.license}.{" "}
               <Link href="/about#corrections" className="underline decoration-line-strong underline-offset-4 hover:text-ink">
@@ -408,7 +408,7 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
           const showPart = !previous || previous.partEn !== chapter.partEn;
           const newPart = showPart && chapter.partAr !== chapter.headingAr;
           return (
-            <section key={chapter.id} id={chapter.id} aria-labelledby={`${chapter.id}-h`} className="ebook-anchor pb-16">
+            <section key={chapter.id} id={chapter.id} aria-labelledby={`${chapter.id}-h`} className="ebook-anchor pb-8 sm:pb-10">
               <ChapterHeading
                 id={`${chapter.id}-h`}
                 index={ci + 1}
@@ -425,17 +425,33 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
                 const notes = info && text ? translationNotes(unit, info.translationId) : [];
                 const marked = bookmarks.includes(unit.id);
                 const arabicShown = showArabic || !text;
+                // Sits after the passage number at the end of the last line on phones, so it takes no row of its own; in the left margin from md.
+                const bookmarkButton = (floatClass: string) => (
+                  <button
+                    type="button"
+                    className={cn(
+                      "tool-btn !px-0 md:absolute md:-left-16 md:top-1 md:m-0",
+                      floatClass,
+                      marked ? "!text-gold" : "!text-faint hover:!text-ink",
+                    )}
+                    aria-pressed={marked}
+                    aria-label={`Bookmark ${chapter.headingEn}, passage ${unit.number}`}
+                    onClick={() => toggleBookmark(unit.id)}
+                  >
+                    <Bookmark className={cn("h-4 w-4", marked && "fill-current")} aria-hidden />
+                  </button>
+                );
                 return (
                   <div
                     key={unit.id}
                     id={unit.id}
                     data-unit={unit.id}
-                    className={cn("ebook-anchor relative pb-14", wide && "lg:grid lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-x-14")}
+                    className={cn("ebook-anchor relative pb-7 sm:pb-9", wide && "lg:grid lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-x-14")}
                   >
                     <span className="sr-only">Passage {unit.number}</span>
                     {arabicShown ? (
                       <p
-                        className={cn("arabic-text text-ink", wide && "lg:col-start-2 lg:row-start-1")}
+                        className={cn("arabic-text arabic-justify text-ink", wide && "lg:col-start-2 lg:row-start-1")}
                         dir="rtl"
                         lang="ar"
                         style={{ fontSize }}
@@ -444,26 +460,28 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
                         <span className="passage-mark" aria-hidden>
                           {toArabicDigits(unit.number)}
                         </span>
+                        {bookmarkButton("-my-2 ms-0.5 align-middle")}
                       </p>
                     ) : null}
                     {showTranslation ? (
                       <div
                         className={cn(
-                          arabicShown && "mt-5",
+                          arabicShown && "mt-2",
                           wide && "lg:col-start-1 lg:row-start-1 lg:mt-0 lg:border-r lg:border-line lg:pr-14 lg:pt-2",
                         )}
                       >
-                        {arabicShown ? <span aria-hidden className={cn("mb-4 block h-px w-8 bg-gold/60", wide && "lg:hidden")} /> : null}
+                        {arabicShown ? <span aria-hidden className={cn("mb-2.5 block h-px w-8 bg-gold/60", wide && "lg:hidden")} /> : null}
                         {text ? (
                           <>
                             <p className="translation-text max-w-reading text-ink-2" lang={info?.language} style={{ fontSize: translationFontSize }}>
                               {!arabicShown ? <span className="me-2 align-[0.1em] text-xs tabular-nums text-faint">{unit.number}</span> : null}
                               {text}
+                              {!arabicShown ? bookmarkButton("-my-3 ms-0.5 align-middle") : null}
                             </p>
                             {notes.length > 0 ? (
                               <aside
                                 aria-label={`Translator's notes on passage ${unit.number}`}
-                                className="mt-5 max-w-reading border-l-2 border-gold/40 pl-4"
+                                className="mt-3 max-w-reading border-l-2 border-gold/40 pl-4"
                                 lang={info?.language}
                               >
                                 <p className="text-[0.68rem] font-medium uppercase tracking-[0.16em] text-gold">
@@ -484,23 +502,11 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
                         )}
                       </div>
                     ) : null}
-                    <button
-                      type="button"
-                      className={cn(
-                        "tool-btn absolute bottom-1 left-0 !px-0 md:-left-16 md:bottom-auto md:top-1",
-                        marked ? "!text-gold" : "!text-faint hover:!text-ink",
-                      )}
-                      aria-pressed={marked}
-                      aria-label={`Bookmark ${chapter.headingEn}, passage ${unit.number}`}
-                      onClick={() => toggleBookmark(unit.id)}
-                    >
-                      <Bookmark className={cn("h-4 w-4", marked && "fill-current")} aria-hidden />
-                    </button>
                   </div>
                 );
               })}
 
-              <nav aria-label={`After ${chapter.headingEn}`} className="mt-2 flex items-start justify-between gap-6 border-t border-line pt-5 text-sm">
+              <nav aria-label={`After ${chapter.headingEn}`} className="flex items-start justify-between gap-6 border-t border-line pt-2 text-sm">
                 {previous ? (
                   <a href={`#${previous.id}`} className="group flex min-h-11 max-w-[45%] items-start gap-1.5 text-muted hover:text-ink">
                     <ChevronLeft className="mt-0.5 h-4 w-4 shrink-0" aria-hidden />

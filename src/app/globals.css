@@ -169,11 +169,12 @@ body {
 .arabic-text {
   font-family: var(--font-arabic), "Scheherazade New", "Noto Naskh Arabic", "Amiri", serif;
   font-weight: 400;
-  /* Tall enough that stacked tashkīl on adjacent lines never touches. */
-  line-height: 2.3;
+  /* The tightest value at which no mark touches the line below: measured over every
+     word of al-Akhdari at all six text sizes (2.15 lets a kasra meet a hamza with sukun). */
+  line-height: 2.2;
   overflow-wrap: break-word;
   word-break: normal;
-  padding-block: 0.15em;
+  padding-block: 0.1em;
   font-feature-settings: "kern", "liga", "calt";
 }
 
@@ -196,12 +197,20 @@ body {
 }
 
 /* English reading text: a serif with an optical size for text, set apart from the interface sans. */
+/* Arabic passages fill the measure; the last line keeps its natural length. Chrome and Safari widen word spaces only, never letters. */
+.arabic-justify {
+  text-align: justify;
+  text-align-last: start;
+  text-justify: inter-word;
+}
+
 .translation-text {
   font-family: var(--font-display), Georgia, serif;
   font-variation-settings: "opsz" 14;
-  line-height: 1.7;
+  line-height: 1.65;
   overflow-wrap: break-word;
-  hyphens: auto;
+  /* No automatic hyphenation: it split names and terms mid-word on narrow screens. */
+  hyphens: manual;
 }
 
 .term {

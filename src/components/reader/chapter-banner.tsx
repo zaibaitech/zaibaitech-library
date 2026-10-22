@@ -1,6 +1,6 @@
 import { Rosette } from "../geometric";
 
-/** An understated chapter opening: a small ornament, the number, the Arabic heading, then its English. */
+/** A compact chapter opening: ornament and number on one line, the Arabic heading, then its English. */
 export function ChapterHeading({
   id,
   index,
@@ -21,9 +21,9 @@ export function ChapterHeading({
   translatedHeading?: string | null;
 }) {
   return (
-    <header className="mb-10 text-center">
+    <header className="mb-6 text-center">
       {partAr ? (
-        <p className="mb-8 flex items-center justify-center gap-3 text-gold">
+        <p className="mb-5 flex items-center justify-center gap-3 text-gold">
           <span aria-hidden className="h-px w-8 bg-gold/40" />
           <span className="eyebrow">{partEn}</span>
           <span className="font-amiri text-lg" dir="rtl" lang="ar">
@@ -32,12 +32,14 @@ export function ChapterHeading({
           <span aria-hidden className="h-px w-8 bg-gold/40" />
         </p>
       ) : null}
-      <Rosette className="mx-auto h-5 w-5 text-gold/80" />
-      <p className="mt-3 text-[0.68rem] uppercase tracking-[0.2em] text-muted">Chapter {index}</p>
-      <h2 id={id} className="mt-2 font-amiri text-[1.9rem] leading-snug text-ink sm:text-[2.2rem]" dir="rtl" lang="ar">
+      <p className="flex items-center justify-center gap-2 text-[0.68rem] uppercase tracking-[0.2em] text-muted">
+        <Rosette className="h-4 w-4 text-gold/80" />
+        Chapter {index}
+      </p>
+      <h2 id={id} className="mt-1 font-amiri text-[1.75rem] leading-snug text-ink sm:text-[2.1rem]" dir="rtl" lang="ar">
         {headingAr}
       </h2>
-      <p className="mx-auto mt-1 max-w-md font-display text-base italic leading-snug text-muted">{translatedHeading ?? headingEn}</p>
+      <p className="mx-auto max-w-md font-display text-base italic leading-snug text-muted">{translatedHeading ?? headingEn}</p>
     </header>
   );
 }
