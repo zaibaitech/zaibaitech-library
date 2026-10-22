@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { glossary, glossaryGroups } from "@/content/glossary";
+import { glossaryEnabled } from "@/lib/flags";
 
 export const metadata: Metadata = {
   title: "Glossary",
@@ -8,13 +10,18 @@ export const metadata: Metadata = {
 };
 
 export default function GlossaryPage() {
+  if (!glossaryEnabled) notFound();
   return (
     <div className="mx-auto max-w-3xl px-4 py-10">
       <p className="text-xs uppercase tracking-[0.2em] text-gold">Tap-to-define</p>
       <h1 className="mt-2 font-display text-4xl text-ink sm:text-5xl">Glossary</h1>
       <p className="mt-4 text-base leading-relaxed text-muted">
         These notes say how Mukhtasar al-Akhdari uses a word. They are not a translation of the sentences the word sits in.
-        In the reader, the first time a word appears in a line it can be tapped.
+        In the reader, the first time a word appears in a passage it can be tapped.
+      </p>
+      <p className="mt-3 rounded-2xl border border-line bg-paper-2 px-4 py-3 text-sm leading-relaxed text-muted">
+        These are editorial notes for learners, written from the text of the book. They have not yet been reviewed by a
+        qualified teacher. Where they matter for your own worship, ask one.
       </p>
       {glossaryGroups.map((group) => (
         <section key={group} className="mt-10">
@@ -23,7 +30,7 @@ export default function GlossaryPage() {
             {glossary
               .filter((term) => term.group === group)
               .map((term) => (
-                <li key={term.id} id={term.id} className="rounded-3xl border border-line bg-paper-2 p-5">
+                <li key={term.id} id={term.id} className="card p-5">
                   <div className="flex items-start justify-between gap-4">
                     <div>
                       <h3 className="font-display text-2xl text-ink">{term.transliteration}</h3>

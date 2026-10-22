@@ -78,7 +78,10 @@ function buildAlignIndex(original) {
 
 function sliceOriginal(original, origins, normStart, normEnd) {
   if (normStart < 0 || normEnd <= normStart || normStart >= origins.length) return "";
-  const from = origins[normStart];
+  let from = origins[normStart];
+  // A unit that opens with a "(" marker keeps it: the marker sits just before the first letter.
+  const opener = original.slice(0, from).match(/\(\s*$/);
+  if (opener) from -= opener[0].length;
   const last = origins[Math.min(normEnd, origins.length) - 1];
   // extend through any trailing diacritics that belong to the last letter
   let to = last + 1;

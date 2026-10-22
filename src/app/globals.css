@@ -68,20 +68,52 @@ html.light {
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 body {
   margin: 0;
   min-height: 100vh;
   overflow-x: clip;
-  background:
-    radial-gradient(1200px 500px at 10% -10%, rgb(var(--gold) / 0.08), transparent 50%),
-    radial-gradient(900px 400px at 110% 0%, rgb(var(--emerald) / 0.07), transparent 46%),
-    rgb(var(--paper));
+  background: rgb(var(--paper));
   color: rgb(var(--ink));
   font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+:focus-visible {
+  outline: 2px solid rgb(var(--emerald));
+  outline-offset: 2px;
+  border-radius: 0.25rem;
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-colors;
+  }
+  .btn-primary {
+    @apply bg-emerald text-paper hover:bg-emerald/90;
+  }
+  .btn-quiet {
+    @apply border border-line bg-paper-2 text-ink hover:bg-gold-soft/60;
+  }
+  .chip {
+    @apply inline-flex items-center rounded-full border border-line bg-paper-2 px-2.5 py-0.5 text-xs text-muted;
+  }
+  .card {
+    @apply rounded-2xl border border-line bg-paper-2;
+  }
+  .eyebrow {
+    @apply text-xs font-medium uppercase tracking-[0.2em] text-gold;
+  }
+  .tool-btn {
+    @apply inline-flex h-11 min-w-11 items-center justify-center gap-1.5 rounded-full border border-line bg-paper-2 px-3 text-sm text-ink hover:bg-gold-soft/60 disabled:opacity-40;
+  }
+  .tool-btn[aria-pressed="true"] {
+    @apply border-emerald bg-emerald text-paper hover:bg-emerald;
+  }
 }
 
 ::selection {
@@ -92,8 +124,16 @@ body {
 .arabic-text {
   font-family: var(--font-arabic), "Scheherazade New", serif;
   font-weight: 400;
-  line-height: 2.15;
-  overflow-wrap: anywhere;
+  /* Tall enough that stacked tashkīl on adjacent lines never touches. */
+  line-height: 2.4;
+  overflow-wrap: break-word;
+  word-break: normal;
+  padding-block: 0.15em;
+}
+
+.translation-text {
+  line-height: 1.7;
+  overflow-wrap: break-word;
 }
 
 .term {
@@ -118,7 +158,7 @@ body {
 }
 
 .ebook-anchor {
-  scroll-margin-top: 4.25rem;
+  scroll-margin-top: 7.5rem;
 }
 
 .guide-fit {

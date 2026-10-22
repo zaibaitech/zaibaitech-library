@@ -4,28 +4,40 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { loadProgress } from "@/lib/storage";
 
-export function ReadActions({ bookId }: { bookId: string }) {
+export function ReadActions({
+  bookId,
+  firstUnitId,
+  unitIds,
+}: {
+  bookId: string;
+  firstUnitId: string;
+  /** Every passage id in the book, used to ignore saved positions that no longer exist. */
+  unitIds: string[];
+}) {
   const [lastUnitId, setLastUnitId] = useState<string | null>(null);
-  const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    setLastUnitId(loadProgress(bookId).lastUnitId);
-    setReady(true);
-  }, [bookId]);
+    const saved = loadProgress(bookId).lastUnitId;
+    setLastUnitId(saved && unitIds.includes(saved) ? saved : null);
+  }, [bookId, unitIds]);
 
-  const start = `/books/${bookId}/read`;
-  const resume = lastUnitId ? `${start}#${lastUnitId}` : start;
-
+  const base = `/books/${bookId}/read`;
   return (
-    <div className="mt-5 flex flex-wrap items-center gap-3">
-      <Link href={resume} className="rounded-full bg-emerald px-5 py-3 text-sm font-medium text-paper">
-        {ready && lastUnitId ? "Continue" : "Start reading"}
-      </Link>
-      {ready && lastUnitId ? (
-        <Link href={start} className="text-sm font-medium text-emerald underline decoration-gold underline-offset-4">
-          Start from the beginning
+    <div className="flex flex-wrap items-center gap-3">
+      {lastUnitId ? (
+        <>
+          <Link href={`${base}#${lastUnitId}`} className="btn btn-primary">
+            Continue reading
+          </Link>
+          <Link href={`${base}#${firstUnitId}`} className="btn btn-quiet">
+            Start from the beginning
+          </Link>
+        </>
+      ) : (
+        <Link href={base} className="btn btn-primary">
+          Start reading
         </Link>
-      ) : null}
+      )}
     </div>
   );
 }

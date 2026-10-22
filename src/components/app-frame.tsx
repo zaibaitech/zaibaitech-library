@@ -1,13 +1,12 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { studyToolsEnabled } from "@/lib/flags";
 import { SiteFooter } from "./site-footer";
 import { SiteHeader } from "./site-header";
 
 export function AppFrame({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const fullScreenReader = !studyToolsEnabled && /^\/books\/[^/]+\/read$/.test(pathname);
+  const fullScreenReader = /^\/books\/[^/]+\/read$/.test(pathname);
 
   if (fullScreenReader) {
     return <div className="min-h-dvh bg-paper">{children}</div>;

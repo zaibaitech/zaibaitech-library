@@ -7,20 +7,71 @@
 
 export type BookStatus = "readable" | "coming-soon";
 
+export type SubjectId = "foundations" | "purification" | "prayer" | "creed" | "manners" | "fiqh";
+
+export type Subject = {
+  id: SubjectId;
+  label: string;
+  labelAr: string;
+  blurb: string;
+};
+
+/** Who wrote a work. Biographical notes are added only when a source can be cited. */
+export type Author = {
+  id: string;
+  name: string;
+  nameAr: string;
+  /** Death year, as the source record gives it (AH). */
+  diedAH?: number;
+  /** Where `diedAH` comes from. */
+  datingSource?: string;
+  bio?: string;
+};
+
+/**
+ * Review state of a translation. Only `verified` translations are ever shown
+ * to readers; anything else is treated as unavailable.
+ */
+export type ReviewStatus = "unreviewed" | "in-review" | "verified";
+
+/**
+ * Metadata about one translation of a book. The words live on the text units
+ * (`TextUnit.translations`), keyed by `translationId`, so metadata and text
+ * stay separate.
+ */
+export type TranslationInfo = {
+  translationId: string;
+  /** BCP 47 language tag, e.g. "en", "fr". */
+  language: string;
+  /** Reader-facing language name, e.g. "English". */
+  languageLabel: string;
+  translator: string;
+  /** Where the translation comes from (edition, publisher, URL). */
+  source: string;
+  /** The licence that actually covers the translation. */
+  license: string;
+  reviewStatus: ReviewStatus;
+};
+
 export type Book = {
   id: string;
   title: string;
   titleAr: string;
   subtitle: string;
-  author: string;
-  authorAr: string;
+  authorId: string;
+  /** One or two sentences for cards and the shelf. */
+  summary: string;
+  /** Full description for the book page. */
   description: string;
   status: BookStatus;
   coverGradient: string;
-  chapterCount: number;
   madhhab: string;
-  languages: string[];
+  /** Language of the original text. */
+  originalLanguage: string;
   level: string;
+  subjects: SubjectId[];
+  /** Translation metadata. Empty until a licensed translation is added. */
+  translations: TranslationInfo[];
   /** A short Arabic line for the shelf. Not a translation. */
   excerptAr?: string;
 };

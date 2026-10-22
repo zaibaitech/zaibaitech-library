@@ -26,70 +26,52 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000). Production:
+Open [http://localhost:3000](http://localhost:3000). Checks:
 
 ```bash
 npm run typecheck
 npm run lint
+npm test          # content integrity, translation rules, catalogue filter, local storage
 npm run build
 npm start
 ```
 
-The app is a Next.js 14 App Router project (TypeScript, Tailwind, lucide-react). All book routes are statically generated. The last line read, vowel preference, font size, and theme stay in `localStorage` on the device. There is no account and no payment. Practice and the older reader tools (bookmarks, in-reader search, the progress meter) remain in the code and stay off until `studyToolsEnabled` in `src/lib/flags.ts` is set to true.
+Next.js 14 App Router, TypeScript, Tailwind, lucide-react. All book routes are statically generated. Reading position, bookmarks, text size, tashkīl, reading mode and theme live in `localStorage` on the device. No account, no payment, no database.
 
-## What is on the shelf
+## What is in the library
 
 | Route | What it is |
 | --- | --- |
-| `/` | Shelf |
-| `/books/akhdari` | Book page: cover, author, contents, OpenITI credit, Continue |
-| `/books/akhdari/read` | Continuous Arabic reader. Text size and vowels sit behind one button. The last line is remembered on this device. |
-| `/books/akhdari/practice` | Practice, guides, drills, and quizzes. Hidden while `studyToolsEnabled` is false in `src/lib/flags.ts`. |
-| `/glossary` | Tap-to-define notes. The shelf does not link here while study tools are off. |
+| `/` | Library: continue reading, featured book, subject filters, search, available vs forthcoming titles |
+| `/books/[id]` | Book page: cover, author, level, subjects, languages, contents, source and licence, study aids |
+| `/books/[id]/read` | Reader (readable books only; forthcoming titles return 404) |
+| `/glossary` | Editorial glossary notes, flagged as awaiting teacher review |
+| `/about` | Sources, licensing, translation policy, and the corrections table (read from `CORRECTIONS.md`) |
+| `/books/[id]/practice` | Off. Returns 404 while `studyToolsEnabled` is false in `src/lib/flags.ts` |
 
-Coming-soon cards (al-Risala, Mukhtasar Khalil) are catalogue entries only. They have no text.
+### The reader
 
-In the reader, the first time a glossary word appears in a line it is tappable. Vowels can be turned off; search ignores them.
+Toolbar always visible (it hides while scrolling down and returns on any scroll up): Arabic size, tashkīl on/off, reading mode, theme, contents, search, bookmarks. Passages have stable ids (`chapter.n`) used for bookmarks, saved position, and URL hashes. A hash in the URL always wins over the saved position; the hash is updated as you read (replace, not push) so Back and Forward keep your place.
 
-## How a translation would be added later
+Reading modes are built from the book's available translations: Arabic only, Arabic + translation (stacked on phones, side by side on large screens), translation only. With no translation, only Arabic is offered and the reader says why.
 
-Each line is a `TextUnit` (`src/content/types.ts`):
+## Translations
 
-```ts
-{
-  id: "wudu_faraid_sunan.1",
-  number: 1,
-  arabic: "...",
-  arabicVowelled: "...",
-  translations: [
-    {
-      translationId: "en-example",
-      language: "en",
-      translator: "Name",
-      license: "The license that actually covers it",
-      text: "..."
-    }
-  ]
-}
-```
-
-Look a translation up with `translationFor(unit, translationId)`. Do not fill `translations` until a license allows that wording. The reader does not render translations today.
+Translation **metadata** lives on the book (`Book.translations: TranslationInfo[]`: language, translator, source, licence, `reviewStatus`). Translation **text** lives on text units (`TextUnit.translations`, keyed by `translationId`). A translation is shown only if `reviewStatus` is `"verified"` and at least one unit has text for it (`availableTranslations` in `src/lib/translations.ts`). Nothing else is rendered. No translation ships today. Do not add one without a licence that covers it.
 
 ## How to add a new book
 
-1. Add a `Book` to `src/content/books.ts` (`id`, `title`, `subtitle`, `author`, `description`, `status`, `coverGradient`, `chapterCount`, `madhhab`, `languages`, `level`). Use `status: "coming-soon"` until the text exists. `titleAr` and `authorAr` are extra fields the shelf uses.
-2. For a readable book, add `src/content/books/<id>.json` matching `BookContent`: `source` plus `chapters[]`, each chapter with `units[]` of `TextUnit`. Register it in `src/content/library.ts`.
-3. Rebuild Akhdari from the OpenITI files, if you change those sources:
+1. Add an author to `src/content/authors.ts` if needed (add `bio` only with a citable source).
+2. Add a `Book` to `src/content/books.ts` (`authorId`, `subjects`, `summary`, `description`, `level`, `translations: []`). Use `status: "coming-soon"` until the text exists.
+3. For a readable book, add `src/content/books/<id>.json` (`BookContent`: `source` with licence, then `chapters[].units[]`) and register it in `src/content/library.ts`. Ids must be `<chapterId>.<n>`; `npm test` enforces this.
+4. Rebuild Akhdari from the OpenITI files if you change those sources: `npm run content`.
+5. Optional: glossary entries (`src/content/glossary.ts`), practice (`src/content/practice/`).
+6. Run `npm test`. It checks id integrity, that forthcoming books have no content, that vowelled and unvowelled text agree, and that glossary and practice point at real passages.
 
-   ```bash
-   npm run content
-   ```
+## Not built, on purpose
 
-   `scripts/build-akhdari.mjs` splits the unvowelled sections into lines and aligns the vowelled file. It does not translate anything.
-4. Optional: add glossary entries in `src/content/glossary.ts` (aliases are matched with vowels stripped, plus a leading و / ف / ال).
-5. Optional: add practice in `src/content/practice/<id>.ts` and register it in `src/content/practice/index.ts`. Cite `sourceUnitId` values that exist in the book. Keep English general, and do not add a ruling the Arabic line does not state.
-6. Routes are generated from the catalogue and the content map: `/books/[id]`, `/books/[id]/read`, `/books/[id]/practice`.
+Accounts, payments, author publishing and a database. The model (authors, books, editions' sources, licences, translation review status) is shaped so they can be added later without reworking the reader.
 
 ## Stack
 
-Next.js 14, React 18, TypeScript, Tailwind CSS, lucide-react. Deploy on Vercel with the default Next.js build (`npm run build`). No database.
+Next.js 14, React 18, TypeScript, Tailwind CSS, lucide-react; `tsx` for tests. Deploy on Vercel with the default build. Nothing here deploys itself.

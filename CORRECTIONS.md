@@ -38,3 +38,7 @@ The corrected token is stored without new vowel marks. A reviewer who wants the 
 | 28 | وكل آله | وآله | Inside the prayer, the prayer on the Prophet | An extra ك in وعلى آله. |
 | 29 | سواه كان | سواء كان | Forgetfulness, twice (the prayer on the Prophet; the missed silent or aloud) | ه for ء. The phrase is “whether… or…”. |
 | 30 | تنهد في صلاته في شيء عليه | تنهد في صلاته فلا شيء عليه | Forgetfulness, sighing | لا was lost, so the sentence said the opposite of the exception that follows (unless a letter is pronounced). |
+
+## Pipeline fix (not a textual correction)
+
+The vowelled witness writes opening markers as `( وَيَجِبُ )`. The build script sliced each vowelled line from its first letter and so dropped the opening `(` on 15 lines (the unvowelled text kept it). `scripts/build-akhdari.mjs` now keeps a `(` that directly precedes a unit's first letter. No wording changed; only the bracket was restored on those 15 lines (obligations_of_the_mukallaf 2, 3, 5, 6, 7; wudu_faraid_sunan 2; ghusl_faraid_sunan 2, 3; tayammum 2, 5, 6, 7; salah_faraid_sunan 2, 3, 5). `npm test` now checks the bracket counts match.
