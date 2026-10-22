@@ -30,7 +30,22 @@ export const books: Book[] = [
     originalLanguage: "Arabic",
     level: "First text",
     subjects: ["foundations", "purification", "prayer"],
-    translations: [],
+    translations: [
+      {
+        translationId: "en-zaibaitech-draft",
+        language: "en",
+        languageLabel: "English",
+        translator: "Zaibaitech Library (AI-assisted draft)",
+        source:
+          "Translated directly from the OpenITI Arabic in this library (JK009285-ara1). Not based on any published English translation. Reviewer notes: docs/translation-notes/akhdari-en.md",
+        license: "CC BY-NC-SA 4.0",
+        licenseUrl: "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+        licenseEvidence:
+          "An adaptation of the CC BY-NC-SA 4.0 OpenITI Arabic, so ShareAlike applies; written for this library, so no third-party translation rights are involved.",
+        // Not shown to readers until a qualified Maliki teacher has checked it against the Arabic.
+        reviewStatus: "unreviewed",
+      },
+    ],
     excerptAr: "بسم الله الرحمن الرحيم وصلى الله على سيدنا محمد وآله وصحبه وسلم.",
   },
   {

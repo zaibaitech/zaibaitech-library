@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import { books } from "../src/content/books";
 import { authors } from "../src/content/authors";
 import { getBookContent } from "../src/content/library";
+import raw from "../src/content/books/akhdari.json";
 import { bookMatches, readableLanguages } from "../src/lib/catalogue";
 import {
   ARABIC_ONLY,
@@ -20,7 +21,10 @@ import { attachTranslations, isPublishable, publicContent, publishBlockers } fro
 import { validateTranslation } from "../src/lib/translation-validation";
 
 const akhdari = books.find((b) => b.id === "akhdari")!;
-const content = getBookContent("akhdari")!;
+// The generated Arabic alone: fixtures attach their own translations to it.
+const content = raw as BookContent;
+// What the app actually loads, with registered translation files attached.
+const shipped = getBookContent("akhdari")!;
 
 // Synthetic fixture. Not real translation content and never shipped.
 const sampleInfo = (reviewStatus: TranslationInfo["reviewStatus"]): TranslationInfo => ({
@@ -49,9 +53,14 @@ function withSample(reviewStatus: TranslationInfo["reviewStatus"], fill = true) 
   return { book, copy };
 }
 
-test("shipped Akhdari has no translation to show", () => {
-  assert.deepEqual(availableTranslations(akhdari, content), []);
-  assert.deepEqual(readableLanguages(akhdari, content), ["Arabic"]);
+test("the shipped English draft is attached but not shown until reviewed", () => {
+  const draft = akhdari.translations.find((t) => t.translationId === "en-zaibaitech-draft");
+  assert.ok(draft, "draft is declared");
+  assert.notEqual(draft!.reviewStatus, "verified");
+  assert.ok(shipped.chapters[0].units[0].translations?.some((t) => t.translationId === "en-zaibaitech-draft"));
+  assert.deepEqual(availableTranslations(akhdari, shipped), []);
+  assert.deepEqual(readableLanguages(akhdari, shipped), ["Arabic"]);
+  assert.equal(JSON.stringify(publicContent(akhdari, shipped)).includes("en-zaibaitech-draft"), false);
 });
 
 test("only verified translations with text are available", () => {

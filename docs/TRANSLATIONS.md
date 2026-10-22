@@ -1,6 +1,6 @@
 # Adding a licensed translation
 
-This is the workflow for adding a translation to a book, such as an English translation of Mukhtasar al-Akhdari. No translation is in the library today, and none may be added without a licence that covers the wording.
+This is the workflow for adding a translation to a book, such as an English translation of Mukhtasar al-Akhdari. None may be added without a licence that covers the wording. The library's own English draft of al-Akhdari is registered but unpublished; see [its reviewer notes](translation-notes/akhdari-en.md).
 
 The Arabic text's licence (OpenITI, CC BY-NC-SA 4.0) covers the Arabic only. It says nothing about a translation's rights. Every translation needs its own licence, and that licence must be compatible with how the site uses it, including non-commercial and share-alike terms if it is displayed alongside the CC BY-NC-SA Arabic.
 

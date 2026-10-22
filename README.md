@@ -17,7 +17,7 @@ The sources used to build the reader live in `content/sources/`:
 - `akhdari.structured.json` — 21 sections, unvowelled
 - `akhdari.diacritized.txt` — the same text with vowels
 
-No English translation of the book text is included. None is licensed for this app yet.
+An English draft of the book text, translated by this library directly from the Arabic (CC BY-NC-SA 4.0), is included but not shown to readers until a qualified teacher has reviewed it. No published third-party translation is used.
 
 ## Run locally
 
@@ -57,7 +57,7 @@ Reading modes are built from the book's available translations: Arabic only, Ara
 
 ## Translations
 
-Metadata on the book (`Book.translations`), text in separate files (`src/content/translations/`), keyed by stable passage id and attached at load time, so `npm run content` can never erase a translation. A translation is shown only when `isPublishable` passes: verified, with a dated review record, translator, source, licence and licence evidence. None ships today.
+Metadata on the book (`Book.translations`), text in separate files (`src/content/translations/`), keyed by stable passage id and attached at load time, so `npm run content` can never erase a translation. A translation is shown only when `isPublishable` passes: verified, with a dated review record, translator, source, licence and licence evidence. One translation is registered: an AI-assisted English draft of al-Akhdari, translated from the Arabic and hidden until a qualified teacher reviews it ([reviewer notes](docs/translation-notes/akhdari-en.md)).
 
 Full workflow, tooling (`translations:worksheet`, `scripts/translation-import.mjs`, `translations:check`) and review rules: [docs/TRANSLATIONS.md](docs/TRANSLATIONS.md).
 
