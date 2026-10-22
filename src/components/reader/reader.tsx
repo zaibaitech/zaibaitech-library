@@ -8,7 +8,7 @@ import { glossary } from "@/content/glossary";
 import { segmentTerms, toArabicDigits } from "@/lib/arabic";
 import { cn } from "@/lib/cn";
 import { glossaryEnabled } from "@/lib/flags";
-import { flattenUnits, positionFraction, resolveTarget } from "@/lib/reading";
+import { currentPassageId, flattenUnits, positionFraction, resolveTarget } from "@/lib/reading";
 import {
   FONT_SCALES,
   TRANSLATION_SCALES,
@@ -17,7 +17,15 @@ import {
   saveBookmarks,
   saveProgress,
 } from "@/lib/storage";
-import { modeKey, modeOptions, parseModeKey, resolveMode, translationText } from "@/lib/translations";
+import {
+  headingTranslation,
+  modeKey,
+  modeOptions,
+  parseModeKey,
+  resolveMode,
+  translationNotes,
+  translationText,
+} from "@/lib/translations";
 import { GlossarySheet } from "../glossary-sheet";
 import { useSettings } from "../settings-provider";
 import { ChapterBanner } from "./chapter-banner";
@@ -79,8 +87,12 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
   /* Bookmarks live on this device. */
   useEffect(() => {
     const known = new Set(flat.map((item) => item.unit.id));
-    setBookmarks(loadBookmarks(book.id).filter((id) => known.has(id)));
-  }, [book.id, flat]);
+    const stored = loadBookmarks(book.id);
+    // Earlier passage ids are mapped onto the passages that now hold them, then saved back once.
+    const mapped = Array.from(new Set(stored.map((id) => currentPassageId(content, id)))).filter((id) => known.has(id));
+    if (mapped.length !== stored.length || mapped.some((id, i) => id !== stored[i])) saveBookmarks(book.id, mapped);
+    setBookmarks(mapped);
+  }, [book.id, content, flat]);
 
   const toggleBookmark = useCallback(
     (unitId: string) => {
@@ -117,10 +129,20 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
     if (!ready || restored.current) return;
     restored.current = true;
     const hash = currentHash();
-    const saved = loadProgress(book.id).lastUnitId;
-    const hashValid = resolveTarget(content, hash) !== null || content.chapters.some((c) => c.id === hash);
+    const progress = loadProgress(book.id);
+    const saved = progress.lastUnitId ? (resolveTarget(content, progress.lastUnitId)?.unit.id ?? null) : null;
+    if (saved && saved !== progress.lastUnitId) {
+      // Saved under an earlier passage id: store the current id from now on.
+      const seen = Array.from(new Set(progress.seen.map((id) => currentPassageId(content, id))));
+      saveProgress(book.id, { seen, lastUnitId: saved, updatedAt: progress.updatedAt });
+    }
+    const isChapter = content.chapters.some((c) => c.id === hash);
+    const hashTarget = isChapter ? hash : (resolveTarget(content, hash)?.unit.id ?? null);
     // An unknown or stale hash must not cost the reader their saved place.
-    const targetId = hashValid ? hash : (resolveTarget(content, saved)?.unit.id ?? null);
+    const targetId = hashTarget ?? saved;
+    if (hashTarget && hashTarget !== hash) {
+      window.history.replaceState(window.history.state, "", `#${hashTarget}`);
+    }
     lastSaved.current = saved;
 
     let userMoved = false;
@@ -199,13 +221,14 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
    */
   useEffect(() => {
     const onPop = () => {
-      const id = currentHash();
-      if (!id) return;
+      const hash = currentHash();
+      if (!hash) return;
+      const id = content.chapters.some((c) => c.id === hash) ? hash : (resolveTarget(content, hash)?.unit.id ?? hash);
       window.requestAnimationFrame(() => scrollToId(id));
     };
     window.addEventListener("popstate", onPop);
     return () => window.removeEventListener("popstate", onPop);
-  }, [scrollToId]);
+  }, [content, scrollToId]);
 
   /* Hide the toolbar while reading down; show it on any upward scroll. */
   useEffect(() => {
@@ -410,11 +433,13 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
                 headingAr={chapter.headingAr}
                 headingEn={chapter.headingEn}
                 partAr={showPart && chapter.partAr !== chapter.headingAr ? chapter.partAr : undefined}
+                translatedHeading={info ? headingTranslation(chapter, info.translationId) : null}
               />
 
               {chapter.units.map((unit) => {
                 const arabic = settings.vowelled && unit.arabicVowelled ? unit.arabicVowelled : unit.arabic;
                 const text = info ? translationText(unit, info.translationId) : null;
+                const notes = info && text ? translationNotes(unit, info.translationId) : [];
                 const marked = bookmarks.includes(unit.id);
                 return (
                   <div key={unit.id} id={unit.id} data-unit={unit.id} className="ebook-anchor card mb-4 overflow-hidden">
@@ -455,9 +480,27 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
                           ) : null}
                           <div className={cn("px-4 py-3 sm:px-5", wide && "lg:w-1/2")}>
                             {text ? (
-                              <p className="translation-text text-ink" lang={info?.language} style={{ fontSize: translationFontSize }}>
-                                {text}
-                              </p>
+                              <>
+                                <p className="translation-text text-ink" lang={info?.language} style={{ fontSize: translationFontSize }}>
+                                  {text}
+                                </p>
+                                {notes.length > 0 ? (
+                                  <aside
+                                    aria-label={`Translator's notes on passage ${unit.number}`}
+                                    className="mt-3 rounded-xl bg-gold-soft/30 px-3 py-2"
+                                    lang={info?.language}
+                                  >
+                                    <p className="text-[0.68rem] font-medium uppercase tracking-[0.16em] text-gold">
+                                      Translator&apos;s {notes.length === 1 ? "note" : "notes"}
+                                    </p>
+                                    <ol className="mt-1 list-decimal space-y-1.5 pl-5 text-sm leading-relaxed text-muted">
+                                      {notes.map((note, n) => (
+                                        <li key={n}>{note}</li>
+                                      ))}
+                                    </ol>
+                                  </aside>
+                                ) : null}
+                              </>
                             ) : (
                               <p className="text-sm italic text-muted">
                                 {showArabic

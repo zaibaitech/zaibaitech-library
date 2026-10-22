@@ -17,7 +17,9 @@ The sources used to build the reader live in `content/sources/`:
 - `akhdari.structured.json` — 21 sections, unvowelled
 - `akhdari.diacritized.txt` — the same text with vowels
 
-An English draft of the book text, translated by this library directly from the Arabic (CC BY-NC-SA 4.0), is included but not shown to readers until a qualified teacher has reviewed it. No published third-party translation is used.
+- `akhdari.segments.json` — where each of the 156 passages begins (see [CORRECTIONS.md](CORRECTIONS.md))
+
+An English translation from the library's bilingual edition (original translation, language-reviewed, CC BY-NC-SA 4.0) is included, with the translator's notes and chapter headings. It is not shown to readers until its review is recorded; see below.
 
 ## Run locally
 
@@ -57,7 +59,7 @@ Reading modes are built from the book's available translations: Arabic only, Ara
 
 ## Translations
 
-Metadata on the book (`Book.translations`), text in separate files (`src/content/translations/`), keyed by stable passage id and attached at load time, so `npm run content` can never erase a translation. A translation is shown only when `isPublishable` passes: verified, with a dated review record, translator, source, licence and licence evidence. One translation is registered: an AI-assisted English draft of al-Akhdari, translated from the Arabic and hidden until a qualified teacher reviews it ([reviewer notes](docs/translation-notes/akhdari-en.md)).
+Metadata on the book (`Book.translations`), text in separate files (`src/content/translations/`), keyed by stable passage id and attached at load time, so `npm run content` can never erase a translation. A translation is shown only when `isPublishable` passes: verified, with a dated review record, translator, source, licence and licence evidence. One translation is registered: `en-zaibaitech-2026`, the English of the library's bilingual edition, with notes and headings. It is marked `in-review`: the edition was language-reviewed and itself advises a check by a qualified teacher. To publish, add the reviewer and date in `review` and set `verified`.
 
 Full workflow, tooling (`translations:worksheet`, `scripts/translation-import.mjs`, `translations:check`) and review rules: [docs/TRANSLATIONS.md](docs/TRANSLATIONS.md).
 
@@ -65,7 +67,7 @@ Full workflow, tooling (`translations:worksheet`, `scripts/translation-import.mj
 
 1. Add an author to `src/content/authors.ts` if needed (add `bio` only with a citable source).
 2. Add a `Book` to `src/content/books.ts` (`authorId`, `subjects`, `summary`, `description`, `level`, `translations: []`). Use `status: "coming-soon"` until the text exists.
-3. For a readable book, add `src/content/books/<id>.json` (`BookContent`: `source` with licence, then `chapters[].units[]`) and register it in `src/content/library.ts`. Ids must be `<chapterId>.<n>`; `npm test` enforces this.
+3. For a readable book, add `src/content/books/<id>.json` (`BookContent`: `source` with licence, then `chapters[].units[]`) and register it in `src/content/library.ts`. Ids must be `<chapterId>.pNN` (two digits, from 01); `npm test` enforces this.
 4. Rebuild Akhdari from the OpenITI files if you change those sources: `npm run content`.
 5. Optional: glossary entries (`src/content/glossary.ts`), practice (`src/content/practice/`).
 6. Run `npm test`. It checks id integrity, that forthcoming books have no content, that vowelled and unvowelled text agree, and that glossary and practice point at real passages.

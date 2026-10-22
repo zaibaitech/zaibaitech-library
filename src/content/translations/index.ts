@@ -1,5 +1,5 @@
 import type { TranslationFile } from "../types";
-import akhdariEnDraft from "./akhdari/en-zaibaitech-draft.json";
+import akhdariEn from "./akhdari/en-zaibaitech-2026.json";
 
 /**
  * Registered translation files. See docs/TRANSLATIONS.md before adding one.
@@ -7,4 +7,4 @@ import akhdariEnDraft from "./akhdari/en-zaibaitech-draft.json";
  * Registering a file does not publish it. A translation is shown only when its
  * TranslationInfo in books.ts passes `isPublishable`.
  */
-export const translationFiles: TranslationFile[] = [akhdariEnDraft as TranslationFile];
+export const translationFiles: TranslationFile[] = [akhdariEn as TranslationFile];

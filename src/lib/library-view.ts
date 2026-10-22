@@ -58,7 +58,8 @@ export type ResumeIndex = Record<
   {
     title: string;
     total: number;
-    units: Record<string, { index: number; chapterEn: string; chapterAr: string }>;
+    /** Keyed by current and earlier passage ids; `id` is always the current one. */
+    units: Record<string, { id: string; index: number; chapterEn: string; chapterAr: string }>;
   }
 >;
 
@@ -68,16 +69,16 @@ export function resumeIndex(): ResumeIndex {
     const content = book.status === "readable" ? getBookContent(book.id) : null;
     if (!content) continue;
     const flat = flattenUnits(content);
-    result[book.id] = {
-      title: book.title,
-      total: flat.length,
-      units: Object.fromEntries(
-        flat.map((item) => [
-          item.unit.id,
-          { index: item.index, chapterEn: item.chapter.headingEn, chapterAr: item.chapter.headingAr },
-        ]),
-      ),
-    };
+    const units: ResumeIndex[string]["units"] = Object.fromEntries(
+      flat.map((item) => [
+        item.unit.id,
+        { id: item.unit.id, index: item.index, chapterEn: item.chapter.headingEn, chapterAr: item.chapter.headingAr },
+      ]),
+    );
+    for (const [legacy, current] of Object.entries(content.legacyIds ?? {})) {
+      if (units[current]) units[legacy] = units[current];
+    }
+    result[book.id] = { title: book.title, total: flat.length, units };
   }
   return result;
 }

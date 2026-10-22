@@ -98,6 +98,7 @@ export default function BookDetailPage({ params }: { params: Params }) {
                 bookId={book.id}
                 firstUnitId={flat[0].unit.id}
                 unitIds={flat.map((item) => item.unit.id)}
+                legacyIds={content.legacyIds}
               />
             ) : (
               <p className="card border-dashed px-4 py-4 text-sm text-muted">

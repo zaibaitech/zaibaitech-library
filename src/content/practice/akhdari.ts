@@ -26,7 +26,7 @@ export const akhdariPractice: BookPractice = {
           titleAr: "التسمية",
           classification: "fadila",
           highlight: "tasmiya",
-          sourceUnitId: "wudu_faraid_sunan.4",
+          sourceUnitId: "wudu_faraid_sunan.p05",
           note: "The virtues list opens with the tasmiya. It is not one of the seven obligations.",
         },
         {
@@ -35,7 +35,7 @@ export const akhdariPractice: BookPractice = {
           titleAr: "السواك",
           classification: "fadila",
           highlight: "siwak",
-          sourceUnitId: "wudu_faraid_sunan.4",
+          sourceUnitId: "wudu_faraid_sunan.p05",
           note: "Listed with the tasmiya among the virtues, before the extra wash and starting at the front of the head.",
         },
         {
@@ -44,7 +44,7 @@ export const akhdariPractice: BookPractice = {
           titleAr: "النية",
           classification: "fard",
           highlight: "niyyah",
-          sourceUnitId: "wudu_faraid_sunan.1",
+          sourceUnitId: "wudu_faraid_sunan.p01",
           note: "Named first of the seven obligations.",
         },
         {
@@ -53,7 +53,7 @@ export const akhdariPractice: BookPractice = {
           titleAr: "غسل اليدين إلى الكوعين",
           classification: "sunnah",
           highlight: "hands",
-          sourceUnitId: "wudu_faraid_sunan.2",
+          sourceUnitId: "wudu_faraid_sunan.p02",
           note: "A sunnah, and the text places it at the start. Washing on to the elbows comes later and is an obligation.",
         },
         {
@@ -62,7 +62,7 @@ export const akhdariPractice: BookPractice = {
           titleAr: "المضمضة",
           classification: "sunnah",
           highlight: "mouth",
-          sourceUnitId: "wudu_faraid_sunan.2",
+          sourceUnitId: "wudu_faraid_sunan.p02",
           note: "A sunnah. If you remember it only after starting the face, the next lines say not to go back until wudu is finished.",
         },
         {
@@ -71,7 +71,7 @@ export const akhdariPractice: BookPractice = {
           titleAr: "الاستنشاق",
           classification: "sunnah",
           highlight: "nose",
-          sourceUnitId: "wudu_faraid_sunan.2",
+          sourceUnitId: "wudu_faraid_sunan.p02",
           note: "Listed with the rinse and with expelling the water, among the sunan.",
         },
         {
@@ -80,7 +80,7 @@ export const akhdariPractice: BookPractice = {
           titleAr: "الاستنثار",
           classification: "sunnah",
           highlight: "nose",
-          sourceUnitId: "wudu_faraid_sunan.2",
+          sourceUnitId: "wudu_faraid_sunan.p02",
           note: "The third of that sunnah group. The chapter keeps all three ahead of the face.",
         },
         {
@@ -89,7 +89,7 @@ export const akhdariPractice: BookPractice = {
           titleAr: "غسل الوجه",
           classification: "fard",
           highlight: "face",
-          sourceUnitId: "wudu_faraid_sunan.1",
+          sourceUnitId: "wudu_faraid_sunan.p01",
           note: "Washing the face is an obligation, and rubbing is named as its own obligation. A wash beyond the first, on the face and the arms, is a virtue.",
         },
         {
@@ -98,7 +98,7 @@ export const akhdariPractice: BookPractice = {
           titleAr: "غسل اليدين إلى المرفقين",
           classification: "fard",
           highlight: "arms",
-          sourceUnitId: "wudu_faraid_sunan.1",
+          sourceUnitId: "wudu_faraid_sunan.p01",
           note: "An obligation. Doing the right before the left is listed among the virtues, not among the seven.",
         },
         {
@@ -107,7 +107,7 @@ export const akhdariPractice: BookPractice = {
           titleAr: "مسح الرأس",
           classification: "fard",
           highlight: "head",
-          sourceUnitId: "wudu_faraid_sunan.1",
+          sourceUnitId: "wudu_faraid_sunan.p01",
           note: "Wiping the head is an obligation. Beginning at the front is a virtue. Wiping back again is a sunnah.",
         },
         {
@@ -116,7 +116,7 @@ export const akhdariPractice: BookPractice = {
           titleAr: "مسح الأذنين",
           classification: "sunnah",
           highlight: "ears",
-          sourceUnitId: "wudu_faraid_sunan.2",
+          sourceUnitId: "wudu_faraid_sunan.p02",
           note: "The sunan list pairs wiping the ears with taking fresh water for them, after the return wipe of the head.",
         },
         {
@@ -125,7 +125,7 @@ export const akhdariPractice: BookPractice = {
           titleAr: "غسل الرجلين إلى الكعبين",
           classification: "fard",
           highlight: "feet",
-          sourceUnitId: "wudu_faraid_sunan.1",
+          sourceUnitId: "wudu_faraid_sunan.p01",
           note: "An obligation. The virtues unit of the same chapter says the toes must be passed through, and it uses يجب for that — it is not one of the seven in the opening list.",
         },
         {
@@ -134,7 +134,7 @@ export const akhdariPractice: BookPractice = {
           titleAr: "الدلك",
           classification: "fard",
           highlight: "dalk",
-          sourceUnitId: "wudu_faraid_sunan.1",
+          sourceUnitId: "wudu_faraid_sunan.p01",
           note: "One of the seven obligations. It runs through the wash rather than naming a new limb. The hand on the figure is that rub.",
         },
         {
@@ -143,7 +143,7 @@ export const akhdariPractice: BookPractice = {
           titleAr: "الفور",
           classification: "fard",
           highlight: "fawr",
-          sourceUnitId: "wudu_faraid_sunan.1",
+          sourceUnitId: "wudu_faraid_sunan.p01",
           note: "The last of the seven: the acts stay in sequence. Order among the obligations is listed separately, as a sunnah.",
         },
       ],
@@ -165,56 +165,56 @@ export const akhdariPractice: BookPractice = {
           title: "Intention",
           titleAr: "النية",
           classification: "fard",
-          sourceUnitId: "wudu_faraid_sunan.1",
+          sourceUnitId: "wudu_faraid_sunan.p01",
         },
         {
           id: "w-hands",
           title: "Hands to the wrists, at the start",
           titleAr: "غسل اليدين إلى الكوعين عند الشروع",
           classification: "sunnah",
-          sourceUnitId: "wudu_faraid_sunan.2",
+          sourceUnitId: "wudu_faraid_sunan.p02",
         },
         {
           id: "w-mouth",
           title: "Mouth, then the nose in and out",
           titleAr: "المضمضة والاستنشاق والاستنثار",
           classification: "sunnah",
-          sourceUnitId: "wudu_faraid_sunan.2",
+          sourceUnitId: "wudu_faraid_sunan.p02",
         },
         {
           id: "w-face",
           title: "Wash the face",
           titleAr: "غسل الوجه",
           classification: "fard",
-          sourceUnitId: "wudu_faraid_sunan.1",
+          sourceUnitId: "wudu_faraid_sunan.p01",
         },
         {
           id: "w-arms",
           title: "Arms to the elbows",
           titleAr: "غسل اليدين إلى المرفقين",
           classification: "fard",
-          sourceUnitId: "wudu_faraid_sunan.1",
+          sourceUnitId: "wudu_faraid_sunan.p01",
         },
         {
           id: "w-head",
           title: "Wipe the head",
           titleAr: "مسح الرأس",
           classification: "fard",
-          sourceUnitId: "wudu_faraid_sunan.1",
+          sourceUnitId: "wudu_faraid_sunan.p01",
         },
         {
           id: "w-ears",
           title: "Return wipe, then the ears with new water",
           titleAr: "رد المسح ومسح الأذنين",
           classification: "sunnah",
-          sourceUnitId: "wudu_faraid_sunan.2",
+          sourceUnitId: "wudu_faraid_sunan.p02",
         },
         {
           id: "w-feet",
           title: "Feet to the ankles",
           titleAr: "غسل الرجلين إلى الكعبين",
           classification: "fard",
-          sourceUnitId: "wudu_faraid_sunan.1",
+          sourceUnitId: "wudu_faraid_sunan.p01",
         },
       ],
     },
@@ -229,42 +229,42 @@ export const akhdariPractice: BookPractice = {
           title: "Wash impurity first",
           titleAr: "البداية بغسل النجاسة",
           classification: "fadila",
-          sourceUnitId: "ghusl_faraid_sunan.3",
+          sourceUnitId: "ghusl_faraid_sunan.p03",
         },
         {
           id: "g-niyyah",
           title: "The private part, forming the intention there",
           titleAr: "ثم الذكر فينوي عنده",
           classification: "fadila",
-          sourceUnitId: "ghusl_faraid_sunan.3",
+          sourceUnitId: "ghusl_faraid_sunan.p03",
         },
         {
           id: "g-wudu",
           title: "The wudu limbs, once each",
           titleAr: "أعضاء الوضوء مرة مرة",
           classification: "fadila",
-          sourceUnitId: "ghusl_faraid_sunan.3",
+          sourceUnitId: "ghusl_faraid_sunan.p03",
         },
         {
           id: "g-upper",
           title: "The upper body",
           titleAr: "أعلى جسده",
           classification: "fadila",
-          sourceUnitId: "ghusl_faraid_sunan.3",
+          sourceUnitId: "ghusl_faraid_sunan.p03",
         },
         {
           id: "g-head",
           title: "Wash the head three times",
           titleAr: "تثليث غسل الرأس",
           classification: "fadila",
-          sourceUnitId: "ghusl_faraid_sunan.3",
+          sourceUnitId: "ghusl_faraid_sunan.p03",
         },
         {
           id: "g-right",
           title: "The right side of the body first",
           titleAr: "تقديم شق جسده الأيمن",
           classification: "fadila",
-          sourceUnitId: "ghusl_faraid_sunan.3",
+          sourceUnitId: "ghusl_faraid_sunan.p03",
         },
       ],
     },
@@ -279,56 +279,56 @@ export const akhdariPractice: BookPractice = {
           title: "The time has entered",
           titleAr: "دخول الوقت",
           classification: "fard",
-          sourceUnitId: "tayammum.2",
+          sourceUnitId: "tayammum.p03",
         },
         {
           id: "t-niyyah",
           title: "Intention",
           titleAr: "النية",
           classification: "fard",
-          sourceUnitId: "tayammum.2",
+          sourceUnitId: "tayammum.p03",
         },
         {
           id: "t-name",
           title: "The tasmiya",
           titleAr: "التسمية",
           classification: "fadila",
-          sourceUnitId: "tayammum.6",
+          sourceUnitId: "tayammum.p07",
         },
         {
           id: "t-strike",
           title: "The first strike, on pure earth",
           titleAr: "ضربة الأرض الأولى على صعيد طاهر",
           classification: "fard",
-          sourceUnitId: "tayammum.2",
+          sourceUnitId: "tayammum.p03",
         },
         {
           id: "t-face",
           title: "Wipe the face",
           titleAr: "مسح الوجه",
           classification: "fard",
-          sourceUnitId: "tayammum.2",
+          sourceUnitId: "tayammum.p03",
         },
         {
           id: "t-renew",
           title: "Fresh earth for the hands",
           titleAr: "تجديد الصعيد لليدين",
           classification: "sunnah",
-          sourceUnitId: "tayammum.5",
+          sourceUnitId: "tayammum.p06",
         },
         {
           id: "t-hands",
           title: "Wipe the hands to the wrists",
           titleAr: "مسح اليدين إلى الكوعين",
           classification: "fard",
-          sourceUnitId: "tayammum.2",
+          sourceUnitId: "tayammum.p03",
         },
         {
           id: "t-join",
           title: "Join it to the prayer",
           titleAr: "اتصاله بالصلاة",
           classification: "fard",
-          sourceUnitId: "tayammum.2",
+          sourceUnitId: "tayammum.p03",
         },
       ],
     },
@@ -352,7 +352,7 @@ export const akhdariPractice: BookPractice = {
           answer: 0,
           explanation:
             "The first unit pairs correcting faith with knowing what one’s personal obligation requires, and it gives prayer, purification, and fasting as the examples.",
-          sourceUnitId: "obligations_of_the_mukallaf.1",
+          sourceUnitId: "obligations_of_the_mukallaf.p01",
         },
         {
           id: "m2",
@@ -366,7 +366,7 @@ export const akhdariPractice: BookPractice = {
           answer: 1,
           explanation:
             "The conditions unit names regret, a resolve not to return for the rest of one’s life, and leaving the sin at once if one is still in it. It also says not to delay tawba, and not to say “until Allah guides me.”",
-          sourceUnitId: "obligations_of_the_mukallaf.3",
+          sourceUnitId: "obligations_of_the_mukallaf.p03",
         },
         {
           id: "m3",
@@ -380,7 +380,7 @@ export const akhdariPractice: BookPractice = {
           answer: 2,
           explanation:
             "That sentence sits with the verse and the report the unit quotes. The English here only points at what the line requires; the Arabic is the wording.",
-          sourceUnitId: "obligations_of_the_mukallaf.8",
+          sourceUnitId: "obligations_of_the_mukallaf.p09",
         },
       ],
     },
@@ -396,7 +396,7 @@ export const akhdariPractice: BookPractice = {
           answer: 1,
           explanation:
             "The chapter’s first sentence is the division. Both kinds, it says, need pure water.",
-          sourceUnitId: "tahara_purification.1",
+          sourceUnitId: "tahara_purification.p01",
         },
         {
           id: "t2",
@@ -410,7 +410,7 @@ export const akhdariPractice: BookPractice = {
           answer: 0,
           explanation:
             "The same sentence lists oil, ghee, grease, dung, soap, and dirt. Earth, mud, a salt flat, and baked brick are in the following “no harm” clause.",
-          sourceUnitId: "tahara_purification.1",
+          sourceUnitId: "tahara_purification.p01",
         },
         {
           id: "t3",
@@ -424,7 +424,7 @@ export const akhdariPractice: BookPractice = {
           answer: 1,
           explanation:
             "Sprinkling is the other doubt: you are unsure the impurity landed. When something has landed and you only doubt that it is impure, the text says there is no sprinkle. A known spot is washed; an unclear spot means the whole garment.",
-          sourceUnitId: "najasa_impurity.1",
+          sourceUnitId: "najasa_impurity.p02",
         },
       ],
     },
@@ -440,7 +440,7 @@ export const akhdariPractice: BookPractice = {
           answer: 2,
           explanation:
             "The heading says seven, and the first unit lists them: intention, face, arms to the elbows, wiping the head, feet to the ankles, rubbing, and continuity.",
-          sourceUnitId: "wudu_faraid_sunan.1",
+          sourceUnitId: "wudu_faraid_sunan.p01",
         },
         {
           id: "w2",
@@ -449,7 +449,7 @@ export const akhdariPractice: BookPractice = {
           answer: 1,
           explanation:
             "The sunan unit places that wash at the start, with the mouth rinse, the nose, the return wipe, the ears with new water, and order among the obligations.",
-          sourceUnitId: "wudu_faraid_sunan.2",
+          sourceUnitId: "wudu_faraid_sunan.p02",
         },
         {
           id: "w3",
@@ -463,7 +463,7 @@ export const akhdariPractice: BookPractice = {
           answer: 0,
           explanation:
             "The same unit treats a missed obligation differently: done soon, it and what follows are done; after a long gap, it is done alone and the prayers prayed before it are repeated.",
-          sourceUnitId: "wudu_faraid_sunan.3",
+          sourceUnitId: "wudu_faraid_sunan.p03",
         },
         {
           id: "w4",
@@ -477,7 +477,7 @@ export const akhdariPractice: BookPractice = {
           answer: 1,
           explanation:
             "The virtues unit says a light beard must be passed through in wudu, not a thick one, and that in ghusl the beard is passed through even if thick. Passing water between the toes is stated as obligatory in that same unit, and it is not one of the seven.",
-          sourceUnitId: "wudu_faraid_sunan.4",
+          sourceUnitId: "wudu_faraid_sunan.p06",
         },
       ],
     },
@@ -498,7 +498,7 @@ export const akhdariPractice: BookPractice = {
           answer: 1,
           explanation:
             "The causes are a second list: deep sleep, fainting, intoxication, insanity, a kiss, touching a woman if pleasure was intended or found, and touching the penis with the palm or the inner fingers.",
-          sourceUnitId: "wudu_nullifiers.1",
+          sourceUnitId: "wudu_nullifiers.p01",
         },
         {
           id: "n2",
@@ -512,7 +512,7 @@ export const akhdariPractice: BookPractice = {
           answer: 0,
           explanation:
             "The same unit says that someone who is not in that state, and who doubts an event, must do wudu. It also defines madhi and says the whole penis is washed from it, not the testicles.",
-          sourceUnitId: "wudu_nullifiers.3",
+          sourceUnitId: "wudu_nullifiers.p03",
         },
         {
           id: "n3",
@@ -526,7 +526,7 @@ export const akhdariPractice: BookPractice = {
           answer: 0,
           explanation:
             "The exceptions in that unit are a portion a student is learning, and a board for a learner or a teacher who is correcting it. A child is like an adult in touching the Quran; the blame, the text says, is on the one who handed it over.",
-          sourceUnitId: "acts_requiring_wudu.1",
+          sourceUnitId: "acts_requiring_wudu.p01",
         },
       ],
     },
@@ -547,7 +547,7 @@ export const akhdariPractice: BookPractice = {
           answer: 1,
           explanation:
             "Janaba itself has two forms in the next sentences: maniy leaving with the usual pleasure, and the glans disappearing in the vagina.",
-          sourceUnitId: "ghusl_causes.1",
+          sourceUnitId: "ghusl_causes.p01",
         },
         {
           id: "g2",
@@ -561,7 +561,7 @@ export const akhdariPractice: BookPractice = {
           answer: 0,
           explanation:
             "The obligations unit names four: intention at the start, continuity, rubbing, and covering. Tripling the head, the right side, and using little water are in the virtues sentence.",
-          sourceUnitId: "ghusl_faraid_sunan.1",
+          sourceUnitId: "ghusl_faraid_sunan.p01",
         },
         {
           id: "g3",
@@ -575,7 +575,7 @@ export const akhdariPractice: BookPractice = {
           answer: 2,
           explanation:
             "The virtues unit says to wash a missed spot or limb when it is remembered, even after a month, and to repeat the prayers. The next unit says that delaying after you remember invalidates the ghusl.",
-          sourceUnitId: "ghusl_faraid_sunan.3",
+          sourceUnitId: "ghusl_faraid_sunan.p04",
         },
       ],
     },
@@ -596,7 +596,7 @@ export const akhdariPractice: BookPractice = {
           answer: 1,
           explanation:
             "The same unit says he does not use tayammum for a voluntary prayer, for Jumuʿah, or for a funeral unless that funeral is his particular duty. A traveler who is not in disobedience, and a sick person, may use it for an obligatory or a voluntary prayer.",
-          sourceUnitId: "tayammum.1",
+          sourceUnitId: "tayammum.p02",
         },
         {
           id: "y2",
@@ -605,7 +605,7 @@ export const akhdariPractice: BookPractice = {
           answer: 3,
           explanation:
             "The definition unit includes dust, brick, stone, snow, and thin mud. The next unit excludes cooked gypsum, a mat, wood, and grass.",
-          sourceUnitId: "tayammum.3",
+          sourceUnitId: "tayammum.p04",
         },
         {
           id: "y3",
@@ -619,7 +619,7 @@ export const akhdariPractice: BookPractice = {
           answer: 0,
           explanation:
             "Someone who made tayammum for an obligatory prayer may, the text says, then pray voluntary prayers, touch a mushaf, do tawaf, and recite, if he intended that, it connects to the prayer, and the time has not left. Tayammum made for a voluntary prayer does not cover an obligatory one.",
-          sourceUnitId: "tayammum.7",
+          sourceUnitId: "tayammum.p08",
         },
       ],
     },
@@ -635,7 +635,7 @@ export const akhdariPractice: BookPractice = {
           answer: 2,
           explanation:
             "A woman with a habit follows her habit. If the blood continues she adds three days, so long as she does not pass fifteen. Sixty days is the maximum the nifas chapter names, not this one.",
-          sourceUnitId: "hayd_menstruation.1",
+          sourceUnitId: "hayd_menstruation.p02",
         },
         {
           id: "h2",
@@ -649,7 +649,7 @@ export const akhdariPractice: BookPractice = {
           answer: 0,
           explanation:
             "The same unit suspends prayer, fasting, tawaf, touching a mushaf, and entering the mosque. The ruling is in the Arabic line.",
-          sourceUnitId: "hayd_menstruation.2",
+          sourceUnitId: "hayd_menstruation.p05",
         },
         {
           id: "h3",
@@ -658,7 +658,7 @@ export const akhdariPractice: BookPractice = {
           answer: 3,
           explanation:
             "If the blood stops sooner, even on the day of birth, she performs ghusl and prays. If blood returns after fifteen days or more, the second stretch is menstruation; otherwise it joins the first as part of nifas.",
-          sourceUnitId: "nifas_postnatal.1",
+          sourceUnitId: "nifas_postnatal.p01",
         },
       ],
     },
@@ -679,7 +679,7 @@ export const akhdariPractice: BookPractice = {
           answer: 0,
           explanation:
             "The qama is the chapter’s measure. Asr’s chosen time runs from that qama until the yellowing, and the necessary time of both reaches sunset. This app does not convert the qama into a clock hour.",
-          sourceUnitId: "salah_times.1",
+          sourceUnitId: "salah_times.p01",
         },
         {
           id: "s2",
@@ -693,7 +693,7 @@ export const akhdariPractice: BookPractice = {
           answer: 1,
           explanation:
             "The same sentence sets a woman’s covering as her whole body except the face and the hands. Facing the qibla, leaving speech, and leaving a great deal of extra movement are in that list of conditions too.",
-          sourceUnitId: "salah_conditions.1",
+          sourceUnitId: "salah_conditions.p02",
         },
         {
           id: "s3",
@@ -707,7 +707,7 @@ export const akhdariPractice: BookPractice = {
           answer: 2,
           explanation:
             "Then standing with a support, sitting without one, and sitting with one. The chapter says the order among these four is obligatory. The three it calls recommended are the right side, then the left, then the back.",
-          sourceUnitId: "salah_seven_states.1",
+          sourceUnitId: "salah_seven_states.p01",
         },
         {
           id: "s4",
@@ -721,7 +721,7 @@ export const akhdariPractice: BookPractice = {
           answer: 0,
           explanation:
             "The obligations list names the intention of the particular prayer, the opening takbir and standing for it, the Fatiha and standing for it, bowing, rising, prostration on the forehead, rising, stillness, calm, order among the obligations, the salam, and the sitting that goes with it.",
-          sourceUnitId: "salah_faraid_sunan.2",
+          sourceUnitId: "salah_faraid_sunan.p02",
         },
       ],
     },
@@ -742,7 +742,7 @@ export const akhdariPractice: BookPractice = {
           answer: 1,
           explanation:
             "The chapter’s opening calls it a sunnah, then splits the case of a missing act from the case of an extra act.",
-          sourceUnitId: "sahw_forgetfulness.1",
+          sourceUnitId: "sahw_forgetfulness.p01",
         },
         {
           id: "f2",
@@ -756,7 +756,7 @@ export const akhdariPractice: BookPractice = {
           answer: 0,
           explanation:
             "For an addition, the two prostrations are after the salam. For both a deficiency and an addition, the text says to prostrate before the salam. A missed obligation is not covered by the prostration. A missed virtue does not call for one.",
-          sourceUnitId: "sahw_forgetfulness.1",
+          sourceUnitId: "sahw_forgetfulness.p01",
         },
         {
           id: "f3",
@@ -770,7 +770,7 @@ export const akhdariPractice: BookPractice = {
           answer: 0,
           explanation:
             "Laughing, forgetful or deliberate, invalidates the prayer. A smile is a later line in this chapter, and that line says nothing is due.",
-          sourceUnitId: "sahw_forgetfulness.11",
+          sourceUnitId: "sahw_forgetfulness.p15",
         },
       ],
     },

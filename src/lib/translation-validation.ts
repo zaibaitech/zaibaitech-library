@@ -56,6 +56,18 @@ export function validateTranslation(book: Book, content: BookContent, file: Tran
       errors.push(`passage "${id}" is mostly Arabic script; the source may have been pasted instead of a translation`);
     }
   }
+  for (const [id, notes] of Object.entries(file.notes ?? {})) {
+    if (!order.has(id)) errors.push(`notes for "${id}": no such passage`);
+    else if (!file.passages[id]?.trim()) errors.push(`notes for "${id}": the passage has no translation`);
+    if (!Array.isArray(notes) || notes.some((note) => typeof note !== "string" || !note.trim())) {
+      errors.push(`notes for "${id}": every note must be non-empty text`);
+    }
+  }
+  const chapterIds = new Set(content.chapters.map((chapter) => chapter.id));
+  for (const [id, heading] of Object.entries(file.headings ?? {})) {
+    if (!chapterIds.has(id)) errors.push(`heading for "${id}": no such chapter`);
+    if (typeof heading !== "string" || !heading.trim()) errors.push(`heading for "${id}" is empty`);
+  }
   if (outOfOrder > 0) {
     warnings.push(`${outOfOrder} passage(s) appear out of book order in the file; check alignment`);
   }

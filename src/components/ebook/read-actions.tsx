@@ -8,18 +8,22 @@ export function ReadActions({
   bookId,
   firstUnitId,
   unitIds,
+  legacyIds = {},
 }: {
   bookId: string;
   firstUnitId: string;
   /** Every passage id in the book, used to ignore saved positions that no longer exist. */
   unitIds: string[];
+  /** Earlier passage ids mapped to the passages that now hold them. */
+  legacyIds?: Record<string, string>;
 }) {
   const [lastUnitId, setLastUnitId] = useState<string | null>(null);
 
   useEffect(() => {
-    const saved = loadProgress(bookId).lastUnitId;
+    const stored = loadProgress(bookId).lastUnitId;
+    const saved = stored ? (legacyIds[stored] ?? stored) : null;
     setLastUnitId(saved && unitIds.includes(saved) ? saved : null);
-  }, [bookId, unitIds]);
+  }, [bookId, unitIds, legacyIds]);
 
   const base = `/books/${bookId}/read`;
   return (

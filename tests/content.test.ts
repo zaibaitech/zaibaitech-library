@@ -32,7 +32,7 @@ test("text units have stable, well-formed ids", () => {
   for (const chapter of content.chapters) {
     // salah_title is a heading-only chapter: a part title with no passages of its own.
     chapter.units.forEach((unit, i) => {
-      assert.equal(unit.id, `${chapter.id}.${i + 1}`);
+      assert.equal(unit.id, `${chapter.id}.p${String(i + 1).padStart(2, "0")}`);
       assert.equal(unit.number, i + 1);
       assert.ok(!seen.has(unit.id));
       seen.add(unit.id);
@@ -86,4 +86,27 @@ test("every registered translation file validates", () => {
     const report = validateTranslation(book!, getBookContent(book!.id)!, file);
     assert.deepEqual(report.errors, [], `${file.translationId} errors`);
   }
+});
+
+test("earlier passage ids still lead somewhere", () => {
+  const content = getBookContent("akhdari")!;
+  const ids = new Set(content.chapters.flatMap((c) => c.units.map((u) => u.id)));
+  const legacy = Object.entries(content.legacyIds ?? {});
+  assert.equal(legacy.length, 110, "every passage id from the earlier split is mapped");
+  for (const [old, current] of legacy) {
+    assert.match(old, /^[a-z_]+\.\d+$/);
+    assert.ok(ids.has(current), `${old} -> ${current}`);
+    assert.equal(old.split(".")[0], current.split(".")[0], "stays in its chapter");
+  }
+});
+
+test("the reviewed English translation covers every passage and is held back", () => {
+  const file = translationFiles.find((f) => f.translationId === "en-zaibaitech-2026")!;
+  const content = getBookContent("akhdari")!;
+  const ids = content.chapters.flatMap((c) => c.units.map((u) => u.id));
+  assert.deepEqual(Object.keys(file.passages), ids, "one translation per passage, in book order");
+  assert.equal(Object.keys(file.headings ?? {}).length, content.chapters.length);
+  for (const id of Object.keys(file.notes ?? {})) assert.ok(ids.includes(id));
+  const info = books.find((b) => b.id === "akhdari")!.translations.find((t) => t.translationId === file.translationId)!;
+  assert.notEqual(info.reviewStatus, "verified", "not published until a reviewer and date are recorded");
 });

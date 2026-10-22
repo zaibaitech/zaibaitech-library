@@ -1,4 +1,4 @@
-import type { Book, BookContent, TextUnit, TranslationFile, TranslationInfo } from "../content/types";
+import type { Book, BookContent, Chapter, TextUnit, TranslationFile, TranslationInfo } from "../content/types";
 
 /**
  * Translation rules, kept free of UI so they can be tested.
@@ -50,20 +50,44 @@ export function attachTranslations(content: BookContent, files: TranslationFile[
   if (files.length === 0) return content;
   return {
     ...content,
-    chapters: content.chapters.map((chapter) => ({
-      ...chapter,
-      units: chapter.units.map((unit) => {
-        const translations = files
-          .filter((file) => filled(file.passages[unit.id]))
-          .map((file) => ({
-            translationId: file.translationId,
-            language: file.language,
-            text: file.passages[unit.id].trim(),
-          }));
-        return translations.length > 0 ? { ...unit, translations } : unit;
-      }),
-    })),
+    chapters: content.chapters.map((chapter) => {
+      const headingTranslations = files
+        .filter((file) => filled(file.headings?.[chapter.id]))
+        .map((file) => ({
+          translationId: file.translationId,
+          language: file.language,
+          text: file.headings![chapter.id].trim(),
+        }));
+      return {
+        ...chapter,
+        ...(headingTranslations.length > 0 ? { headingTranslations } : {}),
+        units: chapter.units.map((unit) => {
+          const translations = files
+            .filter((file) => filled(file.passages[unit.id]))
+            .map((file) => {
+              const notes = (file.notes?.[unit.id] ?? []).map((note) => note.trim()).filter(Boolean);
+              return {
+                translationId: file.translationId,
+                language: file.language,
+                text: file.passages[unit.id].trim(),
+                ...(notes.length > 0 ? { notes } : {}),
+              };
+            });
+          return translations.length > 0 ? { ...unit, translations } : unit;
+        }),
+      };
+    }),
   };
+}
+
+/** The translation's rendering of a chapter heading, if it has one. */
+export function headingTranslation(chapter: Chapter, translationId: string) {
+  return chapter.headingTranslations?.find((item) => item.translationId === translationId)?.text ?? null;
+}
+
+/** Translator's notes on a passage. */
+export function translationNotes(unit: TextUnit, translationId: string) {
+  return unit.translations?.find((item) => item.translationId === translationId)?.notes ?? [];
 }
 
 export function availableTranslations(book: Book, content: BookContent): TranslationInfo[] {
@@ -85,16 +109,22 @@ export function publicContent(book: Book, content: BookContent): BookContent {
   const allowed = new Set(availableTranslations(book, content).map((info) => info.translationId));
   return {
     ...content,
-    chapters: content.chapters.map((chapter) => ({
-      ...chapter,
-      units: chapter.units.map((unit) => {
-        if (!unit.translations) return unit;
-        const kept = unit.translations.filter((t) => allowed.has(t.translationId));
-        const rest = { ...unit };
-        delete rest.translations;
-        return kept.length > 0 ? { ...rest, translations: kept } : rest;
-      }),
-    })),
+    chapters: content.chapters.map((chapter) => {
+      const headings = (chapter.headingTranslations ?? []).filter((t) => allowed.has(t.translationId));
+      const base = { ...chapter };
+      delete base.headingTranslations;
+      return {
+        ...base,
+        ...(headings.length > 0 ? { headingTranslations: headings } : {}),
+        units: chapter.units.map((unit) => {
+          if (!unit.translations) return unit;
+          const kept = unit.translations.filter((t) => allowed.has(t.translationId));
+          const rest = { ...unit };
+          delete rest.translations;
+          return kept.length > 0 ? { ...rest, translations: kept } : rest;
+        }),
+      };
+    }),
   };
 }
 

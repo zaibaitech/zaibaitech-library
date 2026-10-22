@@ -17,6 +17,10 @@ const diacritizedRaw = fs.readFileSync(
   path.join(root, "content/sources/akhdari.diacritized.txt"),
   "utf8",
 );
+// Passage boundaries (reviewed edition). Chapters not listed fall back to splitUnits.
+const segments = JSON.parse(
+  fs.readFileSync(path.join(root, "content/sources/akhdari.segments.json"), "utf8"),
+).chapters;
 
 const DIACRITICS =
   /[\u0610-\u061A\u064B-\u065F\u0670\u06D6-\u06DC\u06DF-\u06E4\u06E7\u06E8\u06EA-\u06ED]/g;
@@ -239,6 +243,24 @@ const chapterMeta = {
   },
 };
 
+/** Cut a chapter at the listed passage openings. Throws if an opening is not found in order. */
+function splitBySegments(raw, items, sectionId) {
+  const text = cleanDisplay(raw);
+  const starts = [];
+  let pos = 0;
+  for (const item of items) {
+    const at = text.indexOf(item.start, pos);
+    if (at < 0) throw new Error(`${sectionId}: opening of ${item.id} not found: ${item.start}`);
+    starts.push(at);
+    pos = at + 1;
+  }
+  if (starts[0] !== 0) throw new Error(`${sectionId}: first passage must start the chapter`);
+  return items.map((item, index) => ({
+    id: item.id,
+    arabic: text.slice(starts[index], starts[index + 1] ?? text.length).trim(),
+  }));
+}
+
 function splitUnits(raw) {
   const text = cleanDisplay(raw);
   if (!text) return [];
@@ -281,6 +303,36 @@ function splitUnits(raw) {
   return merged;
 }
 
+/**
+ * Ids from the earlier sentence-based split (`<chapter>.<n>`) mapped to the passage
+ * that now contains their first words, so saved positions, bookmarks and links keep working.
+ */
+function legacyIdsFor(section, built) {
+  // The earlier split ran on the text before any [restored] words were added, and its
+  // length thresholds depend on that, so reproduce it on the text without them.
+  const unrestored = (value) => value.replace(/\s*\[[^\]]*\]/g, "");
+  const text = cleanDisplay(unrestored(section.text_ar));
+  const starts = [];
+  let pos = 0;
+  for (const unit of built) {
+    starts.push(text.indexOf(unrestored(unit.arabic), pos));
+    pos = starts[starts.length - 1] + 1;
+  }
+  if (starts.some((at) => at < 0)) throw new Error(`${section.id}: cannot place passages for legacy ids`);
+  const map = {};
+  let from = 0;
+  splitUnits(unrestored(section.text_ar)).forEach((old, index) => {
+    const at = text.indexOf(old, from);
+    from = at + 1;
+    let k = 0;
+    while (k + 1 < starts.length && starts[k + 1] <= at) k += 1;
+    const legacy = `${section.id}.${index + 1}`;
+    if (built[k] && built[k].id !== legacy) map[legacy] = built[k].id;
+  });
+  return map;
+}
+
+const legacyIds = {};
 const aligned = buildAlignIndex(diacritizedRaw);
 let cursor = 0;
 let matchedUnits = 0;
@@ -290,8 +342,11 @@ const misses = [];
 const chapters = structured.sections.map((section) => {
   const meta = chapterMeta[section.id];
   if (!meta) throw new Error(`Missing English chapter label for ${section.id}`);
-  const units = splitUnits(section.text_ar);
-  const built = units.map((arabic, index) => {
+  const listed = segments[section.id];
+  const units = listed?.length
+    ? splitBySegments(section.text_ar, listed, section.id)
+    : splitUnits(section.text_ar).map((arabic, index) => ({ id: `${section.id}.${index + 1}`, arabic }));
+  const built = units.map(({ id, arabic }, index) => {
     totalUnits += 1;
     const needle = normalize(arabic);
     const found = needle ? aligned.norm.indexOf(needle, cursor) : -1;
@@ -299,23 +354,24 @@ const chapters = structured.sections.map((section) => {
     if (found >= 0) {
       const slice = sliceOriginal(diacritizedRaw, aligned.origins, found, found + needle.length);
       arabicVowelled = cleanDisplay(slice);
-      const endPunct = arabic.match(/[.؛،:]+$/)?.[0];
+      const endPunct = arabic.match(/[.؛،:)]+$/)?.[0];
       if (endPunct && arabicVowelled && !arabicVowelled.endsWith(endPunct)) {
         arabicVowelled += endPunct;
       }
       cursor = found + needle.length;
       if (normalize(arabicVowelled) === needle) matchedUnits += 1;
-      else misses.push(`${section.id}.${index + 1} normalized mismatch`);
+      else misses.push(`${id} normalized mismatch`);
     } else {
-      misses.push(`${section.id}.${index + 1} not found (${needle.slice(0, 24)}…)`);
+      misses.push(`${id} not found (${needle.slice(0, 24)}…)`);
     }
     return {
-      id: `${section.id}.${index + 1}`,
+      id,
       number: index + 1,
       arabic,
       ...(arabicVowelled ? { arabicVowelled } : {}),
     };
   });
+  if (listed?.length) Object.assign(legacyIds, legacyIdsFor(section, built));
   return {
     id: section.id,
     order: section.order,
@@ -339,6 +395,7 @@ const book = {
     note: "Arabic text from OpenITI. No English translation of the book text is included.",
   },
   chapters,
+  legacyIds,
 };
 
 const out = path.join(root, "src/content/books/akhdari.json");

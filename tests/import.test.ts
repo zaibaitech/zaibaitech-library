@@ -4,6 +4,8 @@ import { execFileSync, spawnSync } from "node:child_process";
 import { mkdtempSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
+import raw from "../src/content/books/akhdari.json";
+import type { BookContent } from "../src/content/types";
 
 // Worksheets are written to a temp directory at test time. The text is a labelled
 // fixture, not a translation, and nothing here touches src/content.
@@ -22,7 +24,8 @@ function runImport(file: string) {
 }
 
 test("worksheet has one row per passage with an empty translation column", () => {
-  assert.equal(rows.length, 111);
+  const passages = (raw as BookContent).chapters.reduce((n, c) => n + c.units.length, 0);
+  assert.equal(rows.length, passages + 1, "header plus one row per passage");
   assert.deepEqual(rows[0].split("\t").slice(0, 5), ["passage_id", "chapter", "number", "arabic_vowelled", "translation"]);
   assert.ok(rows.slice(1).every((row) => row.split("\t")[4] === ""));
 });

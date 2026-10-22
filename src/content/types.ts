@@ -75,6 +75,10 @@ export type TranslationFile = {
   language: string;
   /** Passage id (`TextUnit.id`) to translated text. Missing ids are untranslated passages. */
   passages: Record<string, string>;
+  /** Translator's notes, by passage id. Shown beneath the passage's translation. */
+  notes?: Record<string, string[]>;
+  /** The translator's rendering of each chapter heading, by chapter id. */
+  headings?: Record<string, string>;
 };
 
 export type Book = {
@@ -105,6 +109,14 @@ export type Translation = {
   translationId: string;
   language: string;
   text: string;
+  notes?: string[];
+};
+
+/** A chapter heading as rendered by one translation. */
+export type HeadingTranslation = {
+  translationId: string;
+  language: string;
+  text: string;
 };
 
 export type TextUnit = {
@@ -124,6 +136,7 @@ export type Chapter = {
   partEn: string;
   partAr: string;
   units: TextUnit[];
+  headingTranslations?: HeadingTranslation[];
 };
 
 export type BookSource = {
@@ -139,6 +152,8 @@ export type BookContent = {
   id: string;
   source: BookSource;
   chapters: Chapter[];
+  /** Earlier passage ids mapped to the passage that now holds their words. */
+  legacyIds?: Record<string, string>;
 };
 
 export function translationFor(unit: TextUnit, translationId: string) {

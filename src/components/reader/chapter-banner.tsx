@@ -8,6 +8,7 @@ export function ChapterBanner({
   headingAr,
   headingEn,
   partAr,
+  translatedHeading,
 }: {
   id: string;
   index: number;
@@ -15,6 +16,8 @@ export function ChapterBanner({
   headingEn: string;
   /** Shown above the banner when a new part of the book begins. */
   partAr?: string;
+  /** The translation's rendering of the heading, shown instead of the short English label. */
+  translatedHeading?: string | null;
 }) {
   return (
     <div className="mb-6">
@@ -34,7 +37,7 @@ export function ChapterBanner({
         <h2 id={id} className="mt-1 font-amiri text-3xl leading-snug sm:text-4xl" dir="rtl" lang="ar">
           {headingAr}
         </h2>
-        <p className="chapter-banner-sub mt-1 text-sm font-medium">{headingEn}</p>
+        <p className="chapter-banner-sub mt-1 text-sm font-medium">{translatedHeading ?? headingEn}</p>
       </header>
     </div>
   );

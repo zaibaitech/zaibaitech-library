@@ -11,9 +11,18 @@ export function flattenUnits(content: BookContent): FlatUnit[] {
   );
 }
 
-/** Resolve a URL hash or saved id to a passage, accepting a chapter id as its first passage. */
-export function resolveTarget(content: BookContent, id: string | null | undefined): FlatUnit | null {
-  if (!id) return null;
+/** Map an id from an earlier passage split to the passage that now holds its words. */
+export function currentPassageId(content: BookContent, id: string) {
+  return content.legacyIds?.[id] ?? id;
+}
+
+/**
+ * Resolve a URL hash or saved id to a passage, accepting a chapter id as its first
+ * passage and an earlier passage id as the passage that now contains it.
+ */
+export function resolveTarget(content: BookContent, rawId: string | null | undefined): FlatUnit | null {
+  if (!rawId) return null;
+  const id = currentPassageId(content, rawId);
   const units = flattenUnits(content);
   const direct = units.find((item) => item.unit.id === id);
   if (direct) return direct;

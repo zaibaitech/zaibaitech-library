@@ -29,7 +29,7 @@ export function ContinueReading({ index }: { index: ResumeIndex }) {
         chapterEn: at.chapterEn,
         chapterAr: at.chapterAr,
         percent: Math.round(((at.index + 1) / entry.total) * 100),
-        lastUnitId: progress.lastUnitId!,
+        lastUnitId: at.id,
       });
     }
     setItems(found);

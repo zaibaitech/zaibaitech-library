@@ -48,19 +48,29 @@ function withSample(reviewStatus: TranslationInfo["reviewStatus"], fill = true) 
   const book: Book = { ...akhdari, translations: [sampleInfo(reviewStatus)] };
   const copy: BookContent = attachTranslations(
     content,
-    fill ? [sampleFile({ "basmala_hamdala.1": "Sample line one." })] : [],
+    fill ? [sampleFile({ "basmala_hamdala.p01": "Sample line one." })] : [],
   );
   return { book, copy };
 }
 
-test("the shipped English draft is attached but not shown until reviewed", () => {
-  const draft = akhdari.translations.find((t) => t.translationId === "en-zaibaitech-draft");
-  assert.ok(draft, "draft is declared");
-  assert.notEqual(draft!.reviewStatus, "verified");
-  assert.ok(shipped.chapters[0].units[0].translations?.some((t) => t.translationId === "en-zaibaitech-draft"));
+test("the reviewed English translation is attached, with notes and headings, but not shown until verified", () => {
+  const id = "en-zaibaitech-2026";
+  const info = akhdari.translations.find((t) => t.translationId === id);
+  assert.ok(info, "declared");
+  assert.notEqual(info!.reviewStatus, "verified");
+  assert.ok(shipped.chapters[0].units[0].translations?.some((t) => t.translationId === id));
+  assert.ok(shipped.chapters[0].headingTranslations?.some((t) => t.translationId === id));
+  const withNotes = shipped.chapters.flatMap((c) => c.units).filter((u) => u.translations?.some((t) => t.notes?.length));
+  assert.equal(withNotes.length, 6);
   assert.deepEqual(availableTranslations(akhdari, shipped), []);
   assert.deepEqual(readableLanguages(akhdari, shipped), ["Arabic"]);
-  assert.equal(JSON.stringify(publicContent(akhdari, shipped)).includes("en-zaibaitech-draft"), false);
+  const payload = JSON.stringify(publicContent(akhdari, shipped));
+  assert.equal(payload.includes(id), false, "no text, notes or headings in the page payload");
+  // once verified with a review record, all three reach the reader
+  const verified: Book = { ...akhdari, translations: [{ ...info!, reviewStatus: "verified", review: { reviewer: "Test", reviewedOn: "2026-01-01", scope: "full" } }] };
+  const shown = publicContent(verified, shipped);
+  assert.ok(shown.chapters[0].headingTranslations?.length);
+  assert.ok(shown.chapters.flatMap((c) => c.units).some((u) => u.translations?.some((t) => t.notes?.length)));
 });
 
 test("only verified translations with text are available", () => {
@@ -124,8 +134,11 @@ test("search ignores vowels and finds known text", () => {
 
 test("targets and progress", () => {
   assert.equal(resolveTarget(content, "nope"), null);
-  assert.equal(resolveTarget(content, "tayammum")?.unit.id, "tayammum.1");
-  assert.equal(resolveTarget(content, "tayammum.3")?.unit.id, "tayammum.3");
+  assert.equal(resolveTarget(content, "tayammum")?.unit.id, "tayammum.p01");
+  assert.equal(resolveTarget(content, "tayammum.p03")?.unit.id, "tayammum.p03");
+  // an id from the earlier split resolves to the passage that now holds its words
+  assert.equal(resolveTarget(content, "tayammum.3")?.unit.id, "tayammum.p04");
+  assert.equal(resolveTarget(content, "sahw_forgetfulness.7")?.unit.id, "sahw_forgetfulness.p11");
   assert.equal(positionFraction(content, null), 0);
   const last = content.chapters.at(-1)!.units.at(-1)!;
   assert.equal(positionFraction(content, last.id), 1);
@@ -140,15 +153,15 @@ test("verified status alone is not enough to publish", () => {
   assert.equal(isPublishable({ ...base, review: { ...base.review!, reviewedOn: "soon" } }), false);
   assert.match(publishBlockers(sampleInfo("in-review")).join(), /in-review/);
   const book: Book = { ...akhdari, translations: [{ ...base, review: undefined }] };
-  const copy = attachTranslations(content, [sampleFile({ "basmala_hamdala.1": "Sample." })]);
+  const copy = attachTranslations(content, [sampleFile({ "basmala_hamdala.p01": "Sample." })]);
   assert.deepEqual(availableTranslations(book, copy), []);
 });
 
 test("attachTranslations ignores unknown ids and blank text, and leaves the Arabic alone", () => {
-  const copy = attachTranslations(content, [sampleFile({ "nope.1": "x", "basmala_hamdala.2": "  " })]);
+  const copy = attachTranslations(content, [sampleFile({ "nope.1": "x", "basmala_hamdala.p02": "  " })]);
   assert.equal(copy.chapters[0].units[1].translations, undefined);
   assert.equal(JSON.stringify(copy).includes('"nope.1"'), false);
-  const filled = attachTranslations(content, [sampleFile({ "basmala_hamdala.2": "Two." })]);
+  const filled = attachTranslations(content, [sampleFile({ "basmala_hamdala.p02": "Two." })]);
   assert.equal(filled.chapters[0].units[1].arabic, content.chapters[0].units[1].arabic);
   assert.equal(content.chapters[0].units[1].translations, undefined, "input not mutated");
 });
@@ -156,18 +169,18 @@ test("attachTranslations ignores unknown ids and blank text, and leaves the Arab
 test("validator catches misalignment and bad text", () => {
   const book: Book = { ...akhdari, translations: [sampleInfo("in-review")] };
   const report = validateTranslation(book, content, sampleFile({
-    "basmala_hamdala.2": "Second.",
-    "basmala_hamdala.1": "First.",
+    "basmala_hamdala.p02": "Second.",
+    "basmala_hamdala.p01": "First.",
     "ghost.9": "Nowhere.",
-    "tayammum.1": "",
-    "tayammum.2": "TODO translate",
-    "tayammum.3": content.chapters.find((c) => c.id === "tayammum")!.units[2].arabic,
+    "tayammum.p01": "",
+    "tayammum.p02": "TODO translate",
+    "tayammum.p03": content.chapters.find((c) => c.id === "tayammum")!.units[2].arabic,
   }));
   const all = report.errors.join("\n");
   assert.match(all, /ghost\.9" does not exist/);
-  assert.match(all, /tayammum\.1" is empty/);
-  assert.match(all, /tayammum\.2" contains placeholder/);
-  assert.match(all, /tayammum\.3" is mostly Arabic/);
+  assert.match(all, /tayammum\.p01" is empty/);
+  assert.match(all, /tayammum\.p02" contains placeholder/);
+  assert.match(all, /tayammum\.p03" is mostly Arabic/);
   assert.match(report.warnings.join(), /out of book order/);
   assert.match(report.warnings.join(), /untranslated/);
   assert.match(report.publishBlockers.join(), /in-review/);
@@ -181,7 +194,7 @@ test("validator catches misalignment and bad text", () => {
     ...akhdari,
     translations: [{ ...sampleInfo("verified"), review: { reviewer: "R", reviewedOn: "2026-01-01", scope: "full" } }],
   };
-  assert.match(validateTranslation(fullClaim, content, sampleFile({ "basmala_hamdala.1": "One." })).errors.join(), /scope is "full"/);
+  assert.match(validateTranslation(fullClaim, content, sampleFile({ "basmala_hamdala.p01": "One." })).errors.join(), /scope is "full"/);
 });
 
 test("validator flags a passage whose length does not fit its Arabic", () => {
@@ -196,7 +209,7 @@ test("validator flags a passage whose length does not fit its Arabic", () => {
 });
 
 test("unpublishable translation text never reaches the reader payload", () => {
-  const file = sampleFile({ "basmala_hamdala.1": "Unreviewed words." });
+  const file = sampleFile({ "basmala_hamdala.p01": "Unreviewed words." });
   const copy = attachTranslations(content, [file]);
   for (const info of [sampleInfo("in-review"), sampleInfo("unreviewed"), { ...sampleInfo("verified"), review: undefined }]) {
     const book: Book = { ...akhdari, translations: [info] };
@@ -207,4 +220,20 @@ test("unpublishable translation text never reaches the reader payload", () => {
   // undeclared translation ids are dropped too
   const stray = attachTranslations(content, [{ ...file, translationId: "en-stray" }]);
   assert.equal(JSON.stringify(publicContent(ok, stray)).includes("Unreviewed words."), false);
+});
+
+test("validator checks notes and headings", () => {
+  const book: Book = { ...akhdari, translations: [sampleInfo("in-review")] };
+  const report = validateTranslation(book, content, {
+    ...sampleFile({ "basmala_hamdala.p01": "One." }),
+    notes: { "basmala_hamdala.p01": ["A note."], "basmala_hamdala.p02": ["Orphan note."], "ghost.p01": [" "] },
+    headings: { basmala_hamdala: "Opening", nowhere: "X", tayammum: " " },
+  });
+  const all = report.errors.join("\n");
+  assert.match(all, /notes for "basmala_hamdala\.p02": the passage has no translation/);
+  assert.match(all, /notes for "ghost\.p01": no such passage/);
+  assert.match(all, /every note must be non-empty/);
+  assert.match(all, /heading for "nowhere": no such chapter/);
+  assert.match(all, /heading for "tayammum" is empty/);
+  assert.doesNotMatch(all, /basmala_hamdala\.p01/);
 });
