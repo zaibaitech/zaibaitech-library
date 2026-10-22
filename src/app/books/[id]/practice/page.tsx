@@ -6,6 +6,7 @@ import { getBook } from "@/content/books";
 import { getBookContent } from "@/content/library";
 import { getPractice, practiceBookIds } from "@/content/practice";
 import { studyToolsEnabled } from "@/lib/flags";
+import { publicContent } from "@/lib/translations";
 
 type Params = { id: string };
 
@@ -26,7 +27,7 @@ export default function PracticePage({ params }: { params: Params }) {
 
   return (
     <Suspense fallback={<div className="mx-auto max-w-6xl px-4 py-16 text-muted">Opening practice…</div>}>
-      <PracticeApp book={book} content={content} practice={practice} />
+      <PracticeApp book={book} content={publicContent(book, content)} practice={practice} />
     </Suspense>
   );
 }

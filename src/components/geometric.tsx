@@ -30,3 +30,25 @@ export function GeometricBackdrop({ className }: { className?: string }) {
     </svg>
   );
 }
+
+/**
+ * An eight-point rosette: two interlaced squares, an inner star and a ring.
+ * Drawn for this library; used as the chapter ornament.
+ */
+export function Rosette({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 64 64" className={className} aria-hidden="true" fill="none" stroke="currentColor">
+      <rect x="14" y="14" width="36" height="36" strokeWidth="1.6" />
+      <rect x="14" y="14" width="36" height="36" strokeWidth="1.6" transform="rotate(45 32 32)" />
+      <circle cx="32" cy="32" r="11" strokeWidth="1.2" />
+      <path
+        d="M32 21.5 34.6 29.4 42.5 32 34.6 34.6 32 42.5 29.4 34.6 21.5 32 29.4 29.4Z"
+        fill="currentColor"
+        fillOpacity="0.35"
+        strokeWidth="1"
+      />
+      <circle cx="32" cy="32" r="2.4" fill="currentColor" stroke="none" />
+      <circle cx="32" cy="32" r="29" strokeWidth="0.8" strokeDasharray="2 3" />
+    </svg>
+  );
+}

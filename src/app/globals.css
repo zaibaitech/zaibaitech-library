@@ -14,6 +14,9 @@
   --clay: 140 74 58;
   --water: 31 111 138;
   --skin: 214 176 142;
+  --banner: 12 74 55;
+  --banner-ink: 250 245 232;
+  --banner-sub: 233 211 160;
   color-scheme: light;
 }
 
@@ -29,6 +32,9 @@ html.dark {
   --clay: 226 164 148;
   --water: 148 214 232;
   --skin: 196 156 124;
+  --banner: 18 56 44;
+  --banner-ink: 246 239 226;
+  --banner-sub: 228 199 138;
   color-scheme: dark;
 }
 
@@ -45,11 +51,17 @@ html.dark {
     --clay: 226 164 148;
     --water: 148 214 232;
     --skin: 196 156 124;
+    --banner: 18 56 44;
+    --banner-ink: 246 239 226;
+    --banner-sub: 228 199 138;
     color-scheme: dark;
   }
 }
 
 html.light {
+  --banner: 12 74 55;
+  --banner-ink: 250 245 232;
+  --banner-sub: 233 211 160;
   --paper: 243 238 228;
   --paper-2: 251 247 240;
   --ink: 24 34 30;
@@ -68,20 +80,52 @@ html.light {
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 body {
   margin: 0;
   min-height: 100vh;
   overflow-x: clip;
-  background:
-    radial-gradient(1200px 500px at 10% -10%, rgb(var(--gold) / 0.08), transparent 50%),
-    radial-gradient(900px 400px at 110% 0%, rgb(var(--emerald) / 0.07), transparent 46%),
-    rgb(var(--paper));
+  background: rgb(var(--paper));
   color: rgb(var(--ink));
   font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+:focus-visible {
+  outline: 2px solid rgb(var(--emerald));
+  outline-offset: 2px;
+  border-radius: 0.25rem;
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-colors;
+  }
+  .btn-primary {
+    @apply bg-emerald text-paper hover:bg-emerald/90;
+  }
+  .btn-quiet {
+    @apply border border-line bg-paper-2 text-ink hover:bg-gold-soft/60;
+  }
+  .chip {
+    @apply inline-flex items-center rounded-full border border-line bg-paper-2 px-2.5 py-0.5 text-xs text-muted;
+  }
+  .card {
+    @apply rounded-2xl border border-line bg-paper-2;
+  }
+  .eyebrow {
+    @apply text-xs font-medium uppercase tracking-[0.2em] text-gold;
+  }
+  .tool-btn {
+    @apply inline-flex h-11 min-w-11 items-center justify-center gap-1.5 rounded-full border border-line bg-paper-2 px-3 text-sm text-ink hover:bg-gold-soft/60 disabled:opacity-40;
+  }
+  .tool-btn[aria-pressed="true"] {
+    @apply border-emerald bg-emerald text-paper hover:bg-emerald;
+  }
 }
 
 ::selection {
@@ -92,8 +136,34 @@ body {
 .arabic-text {
   font-family: var(--font-arabic), "Scheherazade New", serif;
   font-weight: 400;
-  line-height: 2.15;
-  overflow-wrap: anywhere;
+  /* Tall enough that stacked tashkīl on adjacent lines never touches. */
+  line-height: 2.4;
+  overflow-wrap: break-word;
+  word-break: normal;
+  padding-block: 0.15em;
+}
+
+.chapter-banner {
+  background:
+    radial-gradient(120% 140% at 50% 0%, rgb(255 255 255 / 0.08), transparent 60%),
+    rgb(var(--banner));
+  color: rgb(var(--banner-ink));
+  box-shadow: inset 0 0 0 1px rgb(var(--banner-sub) / 0.45), inset 0 0 0 5px rgb(var(--banner)), inset 0 0 0 6px rgb(var(--banner-sub) / 0.3);
+}
+
+.chapter-banner-sub,
+.chapter-banner-ornament {
+  color: rgb(var(--banner-sub));
+}
+
+.passage-rule {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgb(var(--gold) / 0.55) 15%, rgb(var(--gold) / 0.55) 85%, transparent);
+}
+
+.translation-text {
+  line-height: 1.7;
+  overflow-wrap: break-word;
 }
 
 .term {
@@ -118,7 +188,7 @@ body {
 }
 
 .ebook-anchor {
-  scroll-margin-top: 4.25rem;
+  scroll-margin-top: 7.5rem;
 }
 
 .guide-fit {

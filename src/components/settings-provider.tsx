@@ -11,6 +11,7 @@ import {
 import {
   FONT_SCALES,
   SETTINGS_KEY,
+  TRANSLATION_SCALES,
   defaultSettings,
   loadSettings,
   saveSettings,
@@ -26,8 +27,11 @@ type SettingsContextValue = {
   setTheme: (theme: ReaderSettings["theme"]) => void;
   cycleTheme: () => void;
   setFontScale: (fontScale: number) => void;
+  setTranslationScale: (translationScale: number) => void;
   setVowelled: (vowelled: boolean) => void;
+  setMode: (mode: string) => void;
   fontSize: string;
+  translationFontSize: string;
 };
 
 const SettingsContext = createContext<SettingsContextValue | null>(null);
@@ -91,6 +95,7 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
       resolved,
       ready,
       fontSize: `${FONT_SCALES[settings.fontScale]}rem`,
+      translationFontSize: `${TRANSLATION_SCALES[settings.translationScale]}rem`,
       setTheme: (theme) => update({ ...settings, theme }),
       cycleTheme: () => {
         const order: ReaderSettings["theme"][] = ["system", "light", "dark"];
@@ -102,7 +107,13 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
           ...settings,
           fontScale: Math.min(FONT_SCALES.length - 1, Math.max(0, fontScale)),
         }),
+      setTranslationScale: (translationScale) =>
+        update({
+          ...settings,
+          translationScale: Math.min(TRANSLATION_SCALES.length - 1, Math.max(0, translationScale)),
+        }),
       setVowelled: (vowelled) => update({ ...settings, vowelled }),
+      setMode: (mode) => update({ ...settings, mode }),
     };
   }, [ready, resolved, settings]);
 

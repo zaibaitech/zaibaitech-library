@@ -1,8 +1,12 @@
 export type ReaderSettings = {
   theme: "light" | "dark" | "system";
-  /** Index into the reader font scale. */
+  /** Index into ARABIC_SCALES. */
   fontScale: number;
+  /** Index into TRANSLATION_SCALES. */
+  translationScale: number;
   vowelled: boolean;
+  /** Reading mode key, see `modeKey` in translations.ts. */
+  mode: string;
 };
 
 export type ReadingProgress = {
@@ -29,10 +33,20 @@ const emptyPractice = (): PracticeRecord => ({ drills: {}, quizzes: {} });
 export const defaultSettings: ReaderSettings = {
   theme: "system",
   fontScale: 2,
+  translationScale: 1,
   vowelled: true,
+  mode: "arabic",
 };
 
-export const FONT_SCALES = [1.05, 1.22, 1.4, 1.62, 1.88];
+/** rem sizes for Arabic text. The default (index 2) is deliberately large. */
+export const FONT_SCALES = [1.4, 1.65, 1.9, 2.2, 2.55, 2.95];
+/** rem sizes for translation text. */
+export const TRANSLATION_SCALES = [0.95, 1.05, 1.2, 1.35, 1.55];
+
+function clampIndex(value: unknown, length: number, fallback: number) {
+  const n = typeof value === "number" && Number.isFinite(value) ? Math.round(value) : fallback;
+  return Math.min(length - 1, Math.max(0, n));
+}
 
 function readJson<T>(key: string, fallback: T): T {
   if (typeof window === "undefined") return fallback;
@@ -56,9 +70,15 @@ function writeJson(key: string, value: unknown) {
 export function loadSettings(): ReaderSettings {
   const stored = readJson(SETTINGS_KEY, defaultSettings);
   return {
-    theme: stored.theme ?? "system",
-    fontScale: Math.min(FONT_SCALES.length - 1, Math.max(0, stored.fontScale ?? 2)),
+    theme: stored.theme === "light" || stored.theme === "dark" ? stored.theme : "system",
+    fontScale: clampIndex(stored.fontScale, FONT_SCALES.length, defaultSettings.fontScale),
+    translationScale: clampIndex(
+      stored.translationScale,
+      TRANSLATION_SCALES.length,
+      defaultSettings.translationScale,
+    ),
     vowelled: stored.vowelled ?? true,
+    mode: typeof stored.mode === "string" ? stored.mode : "arabic",
   };
 }
 
@@ -116,6 +136,14 @@ export function loadPractice(bookId: string): PracticeRecord {
 
 export function savePractice(bookId: string, record: PracticeRecord) {
   writeJson(practiceKey(bookId), record);
+}
+
+/** Books with saved progress, most recently read first. */
+export function loadRecentBooks(bookIds: string[]) {
+  return bookIds
+    .map((bookId) => ({ bookId, progress: loadProgress(bookId) }))
+    .filter((item) => item.progress.lastUnitId && item.progress.updatedAt > 0)
+    .sort((a, b) => b.progress.updatedAt - a.progress.updatedAt);
 }
 
 export function clearBookLocalData(bookId: string) {

@@ -8,7 +8,10 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "content": "node scripts/build-akhdari.mjs"
+    "content": "node scripts/build-akhdari.mjs",
+    "test": "tsx --test tests/*.test.ts",
+    "translations:check": "tsx scripts/validate-translations.ts",
+    "translations:worksheet": "node scripts/translation-worksheet.mjs"
   },
   "dependencies": {
     "lucide-react": "^1.57.0",
@@ -24,6 +27,7 @@
     "eslint-config-next": "^14.2.35",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
+    "tsx": "^4.23.15",
     "typescript": "^5"
   }
 }

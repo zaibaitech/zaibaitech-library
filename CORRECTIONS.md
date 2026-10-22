@@ -38,3 +38,24 @@ The corrected token is stored without new vowel marks. A reviewer who wants the 
 | 28 | وكل آله | وآله | Inside the prayer, the prayer on the Prophet | An extra ك in وعلى آله. |
 | 29 | سواه كان | سواء كان | Forgetfulness, twice (the prayer on the Prophet; the missed silent or aloud) | ه for ء. The phrase is “whether… or…”. |
 | 30 | تنهد في صلاته في شيء عليه | تنهد في صلاته فلا شيء عليه | Forgetfulness, sighing | لا was lost, so the sentence said the opposite of the exception that follows (unless a letter is pronounced). |
+
+## Pipeline fix (not a textual correction)
+
+The vowelled witness writes opening markers as `( وَيَجِبُ )`. The build script sliced each vowelled line from its first letter and so dropped the opening `(` on 15 lines (the unvowelled text kept it). `scripts/build-akhdari.mjs` now keeps a `(` that directly precedes a unit's first letter. No wording changed; only the bracket was restored on those 15 lines (in the earlier numbering: obligations_of_the_mukallaf 2, 3, 5, 6, 7; wudu_faraid_sunan 2; ghusl_faraid_sunan 2, 3; tayammum 2, 5, 6, 7; salah_faraid_sunan 2, 3, 5). `npm test` now checks the bracket counts match. The same applies to a closing `)` at the end of a passage, which the build now keeps as well.
+
+## Words restored from the Cairo (Subayh) edition
+
+These words are missing from the OpenITI witness and were restored by the library's reviewed bilingual edition (2026) from the Cairo (Subayh) printing. They are shown in square brackets in both the unvowelled and vowelled text, without vowel marks, so a reader can always see what was added. A reviewer who wants them vowelled should mark them here first.
+
+| # | Restored | Passage | Note |
+| --- | --- | --- | --- |
+| 31 | [ورؤية الفضل على الغير، والهمز واللمز والعبث] | `obligations_of_the_mukallaf.p07`, after والبغض | Missing items in the list of what is forbidden: seeing oneself as better than others, disparaging by word or gesture, idle frivolity. |
+| 32 | [محمد] | `obligations_of_the_mukallaf.p09`, after لسنة | The name before the blessing ﷺ was missing. |
+| 33 | [وخاف] | `salah_conditions.p04`, before خروج الوقت | "and fears [the time will run out]"; without it the clause has no verb. |
+| 34 | [بعد] | `salah_faraid_sunan.p07`, ويجوز [بعد] الركوع | The qunut may also be said after bowing. |
+
+## Passage boundaries (October 2026)
+
+The book is now divided into 156 passages that follow the paragraphing of the library's reviewed bilingual edition, instead of the earlier automatic split into 110 lines (which often broke mid-sentence). The boundaries are listed in `content/sources/akhdari.segments.json`: each passage begins at the Arabic words given there. Passage ids are `<chapter>.pNN`, matching that edition.
+
+No word of the Arabic changed in this step: for every chapter, the joined text before and after is identical apart from the four restorations above. Each earlier id (`<chapter>.<n>`) is kept in `legacyIds` in `src/content/books/akhdari.json`, pointing at the passage that now holds its first words, so saved positions, bookmarks and links continue to work.

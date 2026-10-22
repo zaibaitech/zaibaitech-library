@@ -1,0 +1,242 @@
+"use client";
+
+import { useEffect, useMemo, useRef, useState } from "react";
+import { Bookmark, Search, X } from "lucide-react";
+import type { BookContent } from "@/content/types";
+import { flattenUnits, searchContent } from "@/lib/reading";
+import { cn } from "@/lib/cn";
+
+export type SheetTab = "contents" | "search" | "bookmarks";
+
+type Props = {
+  tab: SheetTab;
+  onTab: (tab: SheetTab) => void;
+  onClose: () => void;
+  content: BookContent;
+  activeChapterId: string | undefined;
+  bookmarks: string[];
+  onToggleBookmark: (unitId: string) => void;
+  /** Jump to a chapter or passage id and close the sheet. */
+  onJump: (id: string) => void;
+  translationId?: string;
+  practiceHref?: string | null;
+};
+
+const TABS: { id: SheetTab; label: string }[] = [
+  { id: "contents", label: "Contents" },
+  { id: "search", label: "Search" },
+  { id: "bookmarks", label: "Bookmarks" },
+];
+
+function snippet(text: string, max = 90) {
+  return text.length > max ? `${text.slice(0, max).trimEnd()}…` : text;
+}
+
+export function ReaderSheet(props: Props) {
+  const { tab, onTab, onClose, content, activeChapterId, bookmarks, onToggleBookmark, onJump, translationId } = props;
+  const panelRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [query, setQuery] = useState("");
+
+  // Focus management: move focus in on open, trap Tab, restore focus on close.
+  useEffect(() => {
+    const opener = document.activeElement as HTMLElement | null;
+    panelRef.current?.focus();
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        onClose();
+        return;
+      }
+      if (event.key !== "Tab" || !panelRef.current) return;
+      const focusable = panelRef.current.querySelectorAll<HTMLElement>(
+        'button:not([disabled]), a[href], input, [tabindex]:not([tabindex="-1"])',
+      );
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && (document.activeElement === first || document.activeElement === panelRef.current)) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+      opener?.focus?.();
+    };
+  }, [onClose]);
+
+  useEffect(() => {
+    if (tab === "search") inputRef.current?.focus();
+  }, [tab]);
+
+  const flat = useMemo(() => flattenUnits(content), [content]);
+  const hits = useMemo(() => searchContent(content, query, translationId), [content, query, translationId]);
+  const marked = useMemo(
+    () => flat.filter((item) => bookmarks.includes(item.unit.id)),
+    [flat, bookmarks],
+  );
+
+  return (
+    <div className="no-print fixed inset-0 z-50 flex items-end justify-center sm:items-stretch sm:justify-end">
+      <button type="button" aria-label="Close panel" className="absolute inset-0 bg-ink/40" onClick={onClose} tabIndex={-1} />
+      <div
+        ref={panelRef}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Book navigation"
+        tabIndex={-1}
+        className="relative flex max-h-[88dvh] w-full flex-col rounded-t-3xl border border-line bg-paper-2 outline-none sm:max-h-none sm:max-w-md sm:rounded-none sm:rounded-l-3xl"
+      >
+        <div className="flex items-center gap-2 border-b border-line px-3 py-2">
+          <div role="tablist" aria-label="Book navigation" className="flex flex-1 gap-1">
+            {TABS.map((item) => (
+              <button
+                key={item.id}
+                type="button"
+                role="tab"
+                id={`sheet-tab-${item.id}`}
+                aria-selected={tab === item.id}
+                aria-controls="sheet-panel"
+                onClick={() => onTab(item.id)}
+                className={cn(
+                  "min-h-11 rounded-full px-3 text-sm",
+                  tab === item.id ? "bg-emerald font-medium text-paper" : "text-ink hover:bg-gold-soft/60",
+                )}
+              >
+                {item.label}
+                {item.id === "bookmarks" && bookmarks.length > 0 ? ` (${bookmarks.length})` : ""}
+              </button>
+            ))}
+          </div>
+          <button type="button" onClick={onClose} aria-label="Close" className="tool-btn">
+            <X className="h-4 w-4" aria-hidden />
+          </button>
+        </div>
+
+        <div id="sheet-panel" role="tabpanel" aria-labelledby={`sheet-tab-${tab}`} className="min-h-0 flex-1 overflow-y-auto p-3">
+          {tab === "contents" ? (
+            <>
+              <ol>
+                {content.chapters.map((chapter, index) => (
+                  <li key={chapter.id}>
+                    <button
+                      type="button"
+                      onClick={() => onJump(chapter.id)}
+                      aria-current={chapter.id === activeChapterId ? "location" : undefined}
+                      className={cn(
+                        "flex min-h-12 w-full items-baseline gap-3 rounded-xl px-3 py-2 text-left hover:bg-gold-soft/50",
+                        chapter.id === activeChapterId && "bg-gold-soft/60",
+                      )}
+                    >
+                      <span className="w-6 shrink-0 text-sm text-muted">{index + 1}</span>
+                      <span className="min-w-0 flex-1 text-ink">{chapter.headingEn}</span>
+                      <span className="font-amiri text-lg leading-snug text-ink" dir="rtl" lang="ar">
+                        {chapter.headingAr}
+                      </span>
+                    </button>
+                  </li>
+                ))}
+              </ol>
+              {props.practiceHref ? (
+                <a href={props.practiceHref} className="btn btn-quiet mt-3 w-full">
+                  Guided practice
+                </a>
+              ) : null}
+            </>
+          ) : null}
+
+          {tab === "search" ? (
+            <div>
+              <label htmlFor="reader-search" className="sr-only">
+                Search this book
+              </label>
+              <div className="relative">
+                <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted" aria-hidden />
+                <input
+                  ref={inputRef}
+                  id="reader-search"
+                  type="search"
+                  dir="auto"
+                  value={query}
+                  onChange={(event) => setQuery(event.target.value)}
+                  placeholder="Search the text"
+                  className="min-h-12 w-full rounded-full border border-line bg-paper py-2 pl-10 pr-4 text-base text-ink"
+                />
+              </div>
+              <p className="mt-2 text-xs text-muted">Vowel marks and alif forms are ignored. Type at least two letters.</p>
+              <p role="status" aria-live="polite" className="mt-3 text-sm text-muted">
+                {query.trim().length >= 2 ? `${hits.length} ${hits.length === 1 ? "passage" : "passages"} found` : ""}
+              </p>
+              <ul className="mt-2 divide-y divide-line">
+                {hits.slice(0, 50).map((hit) => (
+                  <li key={hit.unit.id}>
+                    <button
+                      type="button"
+                      onClick={() => onJump(hit.unit.id)}
+                      className="block min-h-12 w-full px-2 py-3 text-left hover:bg-gold-soft/50"
+                    >
+                      <span className="block text-xs text-muted">
+                        {hit.chapter.headingEn} · passage {hit.unit.number}
+                      </span>
+                      <span className="mt-1 block font-amiri text-xl leading-loose text-ink" dir="rtl" lang="ar">
+                        {snippet(hit.unit.arabic)}
+                      </span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+              {query.trim().length >= 2 && hits.length === 0 ? (
+                <p className="mt-4 text-sm text-muted">No passage contains that. Try fewer letters or another spelling.</p>
+              ) : null}
+            </div>
+          ) : null}
+
+          {tab === "bookmarks" ? (
+            marked.length === 0 ? (
+              <div className="px-2 py-6 text-center">
+                <Bookmark className="mx-auto h-6 w-6 text-gold" aria-hidden />
+                <p className="mt-3 font-medium text-ink">No bookmarks yet</p>
+                <p className="mt-1 text-sm text-muted">
+                  Use the bookmark button beside any passage to keep your place. Bookmarks stay on this device.
+                </p>
+              </div>
+            ) : (
+              <ul className="divide-y divide-line">
+                {marked.map((item) => (
+                  <li key={item.unit.id} className="flex items-stretch gap-1">
+                    <button
+                      type="button"
+                      onClick={() => onJump(item.unit.id)}
+                      className="min-h-12 min-w-0 flex-1 px-2 py-3 text-left hover:bg-gold-soft/50"
+                    >
+                      <span className="block text-xs text-muted">
+                        {item.chapter.headingEn} · passage {item.unit.number}
+                      </span>
+                      <span className="mt-1 block truncate font-amiri text-xl leading-loose text-ink" dir="rtl" lang="ar">
+                        {snippet(item.unit.arabic, 60)}
+                      </span>
+                    </button>
+                    <button
+                      type="button"
+                      className="tool-btn my-auto shrink-0"
+                      aria-label={`Remove bookmark: ${item.chapter.headingEn}, passage ${item.unit.number}`}
+                      onClick={() => onToggleBookmark(item.unit.id)}
+                    >
+                      <X className="h-4 w-4" aria-hidden />
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )
+          ) : null}
+        </div>
+      </div>
+    </div>
+  );
+}

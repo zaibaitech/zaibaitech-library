@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { EbookReader } from "@/components/ebook/ebook-reader";
-import { ReaderApp } from "@/components/reader/reader-app";
+import { Reader } from "@/components/reader/reader";
 import { getBook } from "@/content/books";
 import { getBookContent, readableContentIds } from "@/content/library";
+import { getPractice } from "@/content/practice";
 import { studyToolsEnabled } from "@/lib/flags";
+import { availableTranslations, publicContent } from "@/lib/translations";
 
 type Params = { id: string };
 
@@ -21,6 +22,13 @@ export default function ReadPage({ params }: { params: Params }) {
   const book = getBook(params.id);
   const content = getBookContent(params.id);
   if (!book || !content || book.status !== "readable") notFound();
-  if (studyToolsEnabled) return <ReaderApp book={book} content={content} />;
-  return <EbookReader book={book} content={content} />;
+  const practiceHref = studyToolsEnabled && getPractice(book.id) ? `/books/${book.id}/practice` : null;
+  return (
+    <Reader
+      book={book}
+      content={publicContent(book, content)}
+      translations={availableTranslations(book, content)}
+      practiceHref={practiceHref}
+    />
+  );
 }

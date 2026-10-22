@@ -1,0 +1,670 @@
+{
+ "_about": "Passage boundaries for Mukhtasar al-Akhdari. Each passage starts at the first occurrence of `start` after the previous passage's start, within its chapter's unvowelled OpenITI text. Ids and boundaries follow the reviewed bilingual edition (Zaibaitech Library, 2026). Chapters not listed keep their text as a single heading-only chapter.",
+ "chapters": {
+  "basmala_hamdala": [
+   {
+    "id": "basmala_hamdala.p01",
+    "start": "بسم الله الرحمن الرحيم وصلى"
+   },
+   {
+    "id": "basmala_hamdala.p02",
+    "start": "الحمد لله رب العالمين والصلاة"
+   }
+  ],
+  "obligations_of_the_mukallaf": [
+   {
+    "id": "obligations_of_the_mukallaf.p01",
+    "start": "تصحيح إيمانه ثم معرفة ما"
+   },
+   {
+    "id": "obligations_of_the_mukallaf.p02",
+    "start": "(ويجب) عليه أن يحافظ على"
+   },
+   {
+    "id": "obligations_of_the_mukallaf.p03",
+    "start": "(وشروط التوبة) الندم على ما"
+   },
+   {
+    "id": "obligations_of_the_mukallaf.p04",
+    "start": "(ويجب) عليه حفظ لسانه من"
+   },
+   {
+    "id": "obligations_of_the_mukallaf.p05",
+    "start": "(ويجب) عليه حفظ بصره عن"
+   },
+   {
+    "id": "obligations_of_the_mukallaf.p06",
+    "start": "(ويجب) عليه حفظ جميع جوارحه"
+   },
+   {
+    "id": "obligations_of_the_mukallaf.p07",
+    "start": "ويحرم عليه الكذب والغيبة والنميمة"
+   },
+   {
+    "id": "obligations_of_the_mukallaf.p08",
+    "start": "ولا يحل له صحبة فاسق"
+   },
+   {
+    "id": "obligations_of_the_mukallaf.p09",
+    "start": "ولا يحل له أن يفعل"
+   },
+   {
+    "id": "obligations_of_the_mukallaf.p10",
+    "start": "ولا يرضى لنفسه ما رضيه"
+   }
+  ],
+  "tahara_purification": [
+   {
+    "id": "tahara_purification.p01",
+    "start": "الطهارة قسمان: طهارة حدث وطهارة"
+   },
+   {
+    "id": "tahara_purification.p02",
+    "start": "ولا بأس التراب والحماة والسبخة"
+   }
+  ],
+  "najasa_impurity": [
+   {
+    "id": "najasa_impurity.p01",
+    "start": "إذا تعينت النجاسة غسل محلها"
+   },
+   {
+    "id": "najasa_impurity.p02",
+    "start": "ومن شك في إصابة النجاسة"
+   },
+   {
+    "id": "najasa_impurity.p03",
+    "start": "ومن تذكر النجاسة وهو في"
+   }
+  ],
+  "wudu_faraid_sunan": [
+   {
+    "id": "wudu_faraid_sunan.p01",
+    "start": "النية، وغسل الوجه، وغسل اليدين"
+   },
+   {
+    "id": "wudu_faraid_sunan.p02",
+    "start": "(وسننه) غسل اليدين إلى الكوعين"
+   },
+   {
+    "id": "wudu_faraid_sunan.p03",
+    "start": "ومن نسى فرضا من أعضائه،"
+   },
+   {
+    "id": "wudu_faraid_sunan.p04",
+    "start": "ومن نسى لمعة غسلها وحدها"
+   },
+   {
+    "id": "wudu_faraid_sunan.p05",
+    "start": "وفضائله التسمية والسواك والزائد على"
+   },
+   {
+    "id": "wudu_faraid_sunan.p06",
+    "start": "ويجب تخليل أصابع الرجلين، ويجب"
+   }
+  ],
+  "wudu_nullifiers": [
+   {
+    "id": "wudu_nullifiers.p01",
+    "start": "فالأحداث: البول والغائط والريح والمذى"
+   },
+   {
+    "id": "wudu_nullifiers.p02",
+    "start": "والأسباب: النوم الثقيل والإغماء والسكر"
+   },
+   {
+    "id": "wudu_nullifiers.p03",
+    "start": "ومن شك في حدث وجب"
+   },
+   {
+    "id": "wudu_nullifiers.p04",
+    "start": "ويجب عليه غسل الذكر كله"
+   }
+  ],
+  "acts_requiring_wudu": [
+   {
+    "id": "acts_requiring_wudu.p01",
+    "start": "لا يحل لغير المتوضي صلاة"
+   },
+   {
+    "id": "acts_requiring_wudu.p02",
+    "start": "ولا مس لوح القرآن العظيم"
+   },
+   {
+    "id": "acts_requiring_wudu.p03",
+    "start": "والصبى في مس القرآن كالكبير"
+   },
+   {
+    "id": "acts_requiring_wudu.p04",
+    "start": "ومن صلى بغير وضوء عامدا"
+   }
+  ],
+  "ghusl_causes": [
+   {
+    "id": "ghusl_causes.p01",
+    "start": "الجنابة والحيض والنفاس،"
+   },
+   {
+    "id": "ghusl_causes.p02",
+    "start": "فالجنابة قسمان: أحدهما خروج المني"
+   },
+   {
+    "id": "ghusl_causes.p03",
+    "start": "ومن رأى في منامه كأنه"
+   },
+   {
+    "id": "ghusl_causes.p04",
+    "start": "ومن وجد في ثوبه منيا"
+   }
+  ],
+  "ghusl_faraid_sunan": [
+   {
+    "id": "ghusl_faraid_sunan.p01",
+    "start": "النية عند الشروع والفور والدلك"
+   },
+   {
+    "id": "ghusl_faraid_sunan.p02",
+    "start": "(وسننه): غسل اليدين إلى الكوعين"
+   },
+   {
+    "id": "ghusl_faraid_sunan.p03",
+    "start": "(وفضائله): البداية بغسل النجاسة ثم"
+   },
+   {
+    "id": "ghusl_faraid_sunan.p04",
+    "start": "ومن نسى لمعة أو عضوا"
+   }
+  ],
+  "junub_prohibitions": [
+   {
+    "id": "junub_prohibitions.p01",
+    "start": "لا يحل للجنب دخول المسجد"
+   },
+   {
+    "id": "junub_prohibitions.p02",
+    "start": "ولا يجوز لمن لا يقدر"
+   }
+  ],
+  "tayammum": [
+   {
+    "id": "tayammum.p01",
+    "start": "ويتيمم المسافر في غير معصية،"
+   },
+   {
+    "id": "tayammum.p02",
+    "start": "ويتيمم الحاضر الصحيح للفرائض إذا"
+   },
+   {
+    "id": "tayammum.p03",
+    "start": "(وفرائض التيمم): النية والصعيد الطاهر،"
+   },
+   {
+    "id": "tayammum.p04",
+    "start": "والصعيد: هو التراب والطوب والحجر،"
+   },
+   {
+    "id": "tayammum.p05",
+    "start": "ولا يجوز بالجص المطبوخ والحصير"
+   },
+   {
+    "id": "tayammum.p06",
+    "start": "(وسننه): تجديد الصعيد ليديه ومسح"
+   },
+   {
+    "id": "tayammum.p07",
+    "start": "(وفضائله) التسمية وتقديم اليمنى على"
+   },
+   {
+    "id": "tayammum.p08",
+    "start": "(ونواقضه): كالوضوء ولا تصلى فريضتان"
+   },
+   {
+    "id": "tayammum.p09",
+    "start": "ومن تيمم لفرضة جاز له"
+   },
+   {
+    "id": "tayammum.p10",
+    "start": "ومن صلى العشاء بتيمم قام"
+   }
+  ],
+  "hayd_menstruation": [
+   {
+    "id": "hayd_menstruation.p01",
+    "start": "والنساء مبتدأة ومعتادة وحامل،"
+   },
+   {
+    "id": "hayd_menstruation.p02",
+    "start": "وأكثر الحيض للمبتدأة خمسة عشر"
+   },
+   {
+    "id": "hayd_menstruation.p03",
+    "start": "وللحامل بعد ثلاثة أشهر خمسة"
+   },
+   {
+    "id": "hayd_menstruation.p04",
+    "start": "فإن تقطع الدم لفقت أيامه"
+   },
+   {
+    "id": "hayd_menstruation.p05",
+    "start": "ولا يحل للحائض صلاة ولا"
+   },
+   {
+    "id": "hayd_menstruation.p06",
+    "start": "ولا يحل لزوجها فرجها ولا"
+   }
+  ],
+  "nifas_postnatal": [
+   {
+    "id": "nifas_postnatal.p01",
+    "start": "والنفاس كالحيض في منعه، وأكثره"
+   },
+   {
+    "id": "nifas_postnatal.p02",
+    "start": "فإذا عاودها الدم فإن كان"
+   }
+  ],
+  "salah_title": [],
+  "salah_times": [
+   {
+    "id": "salah_times.p01",
+    "start": "الوقت المختار للظهر من زوال"
+   },
+   {
+    "id": "salah_times.p02",
+    "start": "والمختار لمغرب قدر ما تصلى"
+   },
+   {
+    "id": "salah_times.p03",
+    "start": "والمختار للصبح من الفجر إلى"
+   },
+   {
+    "id": "salah_times.p04",
+    "start": "والقضاء في الجميع ما وراء"
+   },
+   {
+    "id": "salah_times.p05",
+    "start": "ومن آخر الصلاة حتى خرج"
+   },
+   {
+    "id": "salah_times.p06",
+    "start": "ولا تصلى نافلة بعد صلاة"
+   }
+  ],
+  "salah_conditions": [
+   {
+    "id": "salah_conditions.p01",
+    "start": "وشروط الصلاة طهارة الحدث وطهارة"
+   },
+   {
+    "id": "salah_conditions.p02",
+    "start": "وعورة الرجل ما بين السرة"
+   },
+   {
+    "id": "salah_conditions.p03",
+    "start": "وتكره الصلاة في السراويل لا"
+   },
+   {
+    "id": "salah_conditions.p04",
+    "start": "ومن تنجس ثوبه ولم يجد"
+   },
+   {
+    "id": "salah_conditions.p05",
+    "start": "ولا يحل تأخير الصلاة لعدم"
+   },
+   {
+    "id": "salah_conditions.p06",
+    "start": "ومن لم يجد ما يستر"
+   },
+   {
+    "id": "salah_conditions.p07",
+    "start": "ومن أخطأ القبلة أعاد في"
+   }
+  ],
+  "salah_faraid_sunan": [
+   {
+    "id": "salah_faraid_sunan.p01",
+    "start": "نية الصلاة المعينة، وتكبيرة الإحرام"
+   },
+   {
+    "id": "salah_faraid_sunan.p02",
+    "start": "(وشروط النية): مقارنتها لتكبيرة الإحرام."
+   },
+   {
+    "id": "salah_faraid_sunan.p03",
+    "start": "(وسننها) الإقامة، والسورة التي بعد"
+   },
+   {
+    "id": "salah_faraid_sunan.p04",
+    "start": "والسجود على الأنف والكفين والركبتين"
+   },
+   {
+    "id": "salah_faraid_sunan.p05",
+    "start": "(وفضائلها) رفع اليدين عند الإحرام"
+   },
+   {
+    "id": "salah_faraid_sunan.p06",
+    "start": "وتطويل القراءة في الصبح والظهر"
+   },
+   {
+    "id": "salah_faraid_sunan.p07",
+    "start": "والهيئة المعلومة في الركوع والسجود"
+   },
+   {
+    "id": "salah_faraid_sunan.p08",
+    "start": "ويكره الالتفات في الصلاة، وتغميض"
+   },
+   {
+    "id": "salah_faraid_sunan.p09",
+    "start": "والوقوف على رجل واحدة إلا"
+   }
+  ],
+  "salah_khushu": [
+   {
+    "id": "salah_khushu.p01",
+    "start": "للصلاة نور عظيم تشرق به"
+   },
+   {
+    "id": "salah_khushu.p02",
+    "start": "فحافظ على صلاتك فإنها أعظم"
+   },
+   {
+    "id": "salah_khushu.p03",
+    "start": "فعليك بدوام الخشوع فيها فإنها"
+   }
+  ],
+  "salah_seven_states": [
+   {
+    "id": "salah_seven_states.p01",
+    "start": "للصلاة المفروضة سبعة أحوال مرتبة"
+   },
+   {
+    "id": "salah_seven_states.p02",
+    "start": "فالترتيب بين هذه الأربعة على"
+   },
+   {
+    "id": "salah_seven_states.p03",
+    "start": "والثلاثة التي على الاستحباب هي:"
+   },
+   {
+    "id": "salah_seven_states.p04",
+    "start": "والاستناد الذي تبطل به صلاة"
+   },
+   {
+    "id": "salah_seven_states.p05",
+    "start": "وأما النافلة فيجوز للقادر على"
+   }
+  ],
+  "qada_missed_prayers": [
+   {
+    "id": "qada_missed_prayers.p01",
+    "start": "يجب قضاء ما في الذمة"
+   },
+   {
+    "id": "qada_missed_prayers.p02",
+    "start": "ويقضيها على نحو ما فاتته"
+   },
+   {
+    "id": "qada_missed_prayers.p03",
+    "start": "والترتيب بين الحاضرتين وبين يسير"
+   },
+   {
+    "id": "qada_missed_prayers.p04",
+    "start": "ومن كانت عليه أربع صلوات"
+   },
+   {
+    "id": "qada_missed_prayers.p05",
+    "start": "ولا يتنقل من عليه القضاء"
+   },
+   {
+    "id": "qada_missed_prayers.p06",
+    "start": "ويجوز لمن عليهم القضاء أن"
+   },
+   {
+    "id": "qada_missed_prayers.p07",
+    "start": "ومن نسى عدد ما عليه"
+   }
+  ],
+  "sahw_forgetfulness": [
+   {
+    "id": "sahw_forgetfulness.p01",
+    "start": "وسجود السهو في الصلاة سنة"
+   },
+   {
+    "id": "sahw_forgetfulness.p02",
+    "start": "ومن نقص وزاد سجد قبل"
+   },
+   {
+    "id": "sahw_forgetfulness.p03",
+    "start": "ومن نسى السجود القبلي حتى"
+   },
+   {
+    "id": "sahw_forgetfulness.p04",
+    "start": "ومن نسى السجود البعدي سجده"
+   },
+   {
+    "id": "sahw_forgetfulness.p05",
+    "start": "ومن نقص فريضة فلا يجزيه"
+   },
+   {
+    "id": "sahw_forgetfulness.p06",
+    "start": "ولا يكون السجود القبلي إلا"
+   },
+   {
+    "id": "sahw_forgetfulness.p07",
+    "start": "ومن تكلم ساهيا سجد بعد"
+   },
+   {
+    "id": "sahw_forgetfulness.p08",
+    "start": "ومن شك في كمال صلاته"
+   },
+   {
+    "id": "sahw_forgetfulness.p09",
+    "start": "والموسوس يترك الوسوسة من قلبه،"
+   },
+   {
+    "id": "sahw_forgetfulness.p10",
+    "start": "ومن جهر في القنوت فلا"
+   },
+   {
+    "id": "sahw_forgetfulness.p11",
+    "start": "ومن سمع ذكر محمد صلى"
+   },
+   {
+    "id": "sahw_forgetfulness.p12",
+    "start": "ومن قرأ سورتين فأكثر في"
+   },
+   {
+    "id": "sahw_forgetfulness.p13",
+    "start": "ومن كرر الفاتحة ساهيا سجد"
+   },
+   {
+    "id": "sahw_forgetfulness.p14",
+    "start": "ومن تذكر السورة بعد انحنائه"
+   },
+   {
+    "id": "sahw_forgetfulness.p15",
+    "start": "ومن ضحك في الصلاة بطلت"
+   },
+   {
+    "id": "sahw_forgetfulness.p16",
+    "start": "والمؤمن إذا قام للصلاة أعرض"
+   },
+   {
+    "id": "sahw_forgetfulness.p17",
+    "start": "ولا شيء عليه في التبسم،"
+   },
+   {
+    "id": "sahw_forgetfulness.p18",
+    "start": "ومن قام من ركعتين قبل"
+   },
+   {
+    "id": "sahw_forgetfulness.p19",
+    "start": "ومن نفخ في صلاته ساهيا"
+   },
+   {
+    "id": "sahw_forgetfulness.p20",
+    "start": "ومن عطس في صلاته فلا"
+   },
+   {
+    "id": "sahw_forgetfulness.p21",
+    "start": "ومن تثاءب في الصلاة سد"
+   },
+   {
+    "id": "sahw_forgetfulness.p22",
+    "start": "ومن شك في حدث أو"
+   },
+   {
+    "id": "sahw_forgetfulness.p23",
+    "start": "ومن التفت في الصلاة ساهيا"
+   },
+   {
+    "id": "sahw_forgetfulness.p24",
+    "start": "ومن صلى بحرير أو ذهب"
+   },
+   {
+    "id": "sahw_forgetfulness.p25",
+    "start": "ومن غلط في القراءة بكلمة"
+   },
+   {
+    "id": "sahw_forgetfulness.p26",
+    "start": "ومن نعس في الصلاة فلا"
+   },
+   {
+    "id": "sahw_forgetfulness.p27",
+    "start": "وأنين المريض مغتفر والتنحنح للضرورة"
+   },
+   {
+    "id": "sahw_forgetfulness.p28",
+    "start": "ومن ناداه أحد فقال له:"
+   },
+   {
+    "id": "sahw_forgetfulness.p29",
+    "start": "ومن وقف في القراءة ولم"
+   },
+   {
+    "id": "sahw_forgetfulness.p30",
+    "start": "ومن فتح على غير إمامه"
+   },
+   {
+    "id": "sahw_forgetfulness.p31",
+    "start": "ومن جال فكره قليلا في"
+   },
+   {
+    "id": "sahw_forgetfulness.p32",
+    "start": "ومن دفع الماشي بين يديه"
+   },
+   {
+    "id": "sahw_forgetfulness.p33",
+    "start": "وسهو المأموم يحمله الإمام إلا"
+   },
+   {
+    "id": "sahw_forgetfulness.p34",
+    "start": "وإذا سها المأموم أو نعس"
+   },
+   {
+    "id": "sahw_forgetfulness.p35",
+    "start": "وإن سها عن السجود أو"
+   },
+   {
+    "id": "sahw_forgetfulness.p36",
+    "start": "ومن جاءته عقرب أو حية"
+   },
+   {
+    "id": "sahw_forgetfulness.p37",
+    "start": "ومن شك هل هو في"
+   },
+   {
+    "id": "sahw_forgetfulness.p38",
+    "start": "ومن تكلم بين الشفع والوتر"
+   },
+   {
+    "id": "sahw_forgetfulness.p39",
+    "start": "والمسبوق إن أدرك مع الإمام"
+   },
+   {
+    "id": "sahw_forgetfulness.p40",
+    "start": "وإن سها المسبوق بعد سلام"
+   },
+   {
+    "id": "sahw_forgetfulness.p41",
+    "start": "ومن نسى الركوع وتذكره في"
+   },
+   {
+    "id": "sahw_forgetfulness.p42",
+    "start": "ومن نسى سجدة واحدة وتذكرها"
+   },
+   {
+    "id": "sahw_forgetfulness.p43",
+    "start": "ومن نسى سجدتين خر ساجدا"
+   },
+   {
+    "id": "sahw_forgetfulness.p44",
+    "start": "وإن تذكر السجود بعد رفع"
+   },
+   {
+    "id": "sahw_forgetfulness.p45",
+    "start": "ومن سلم شاكا في كمال"
+   },
+   {
+    "id": "sahw_forgetfulness.p46",
+    "start": "والسهو في صلاة القضاء كالسهو"
+   },
+   {
+    "id": "sahw_forgetfulness.p47",
+    "start": "والسهو في النافلة كالسهو في"
+   },
+   {
+    "id": "sahw_forgetfulness.p48",
+    "start": "فمن نسى الفاتحة في النافلة"
+   },
+   {
+    "id": "sahw_forgetfulness.p49",
+    "start": "ومن نسى السورة أو الجهر"
+   },
+   {
+    "id": "sahw_forgetfulness.p50",
+    "start": "ومن قام إلى ثالثة في"
+   },
+   {
+    "id": "sahw_forgetfulness.p51",
+    "start": "ومن نسى ركنا من النافلة"
+   },
+   {
+    "id": "sahw_forgetfulness.p52",
+    "start": "ومن قطع النافلة عامدا أو"
+   },
+   {
+    "id": "sahw_forgetfulness.p53",
+    "start": "ومن تنهد في صلاته فلا"
+   },
+   {
+    "id": "sahw_forgetfulness.p54",
+    "start": "وإذا سها الإمام بنقص أو"
+   },
+   {
+    "id": "sahw_forgetfulness.p55",
+    "start": "وإذا قام إمامك من ركعتين"
+   },
+   {
+    "id": "sahw_forgetfulness.p56",
+    "start": "وإن جلس في الأولى أو"
+   },
+   {
+    "id": "sahw_forgetfulness.p57",
+    "start": "وإن سجد واحدة وترك الثانية"
+   },
+   {
+    "id": "sahw_forgetfulness.p58",
+    "start": "وإذا زاد الإمام سجدة ثالثة"
+   },
+   {
+    "id": "sahw_forgetfulness.p59",
+    "start": "وإذا قام الإمام إلى خامسة"
+   },
+   {
+    "id": "sahw_forgetfulness.p60",
+    "start": "وإذا سلم الإمام قبل كمال"
+   }
+  ]
+ }
+}

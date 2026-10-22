@@ -18,7 +18,7 @@ export const ghuslGuide: Guide = {
       titleAr: "النية عند الشروع",
       classification: "fard",
       highlight: "niyyah",
-      sourceUnitId: "ghusl_faraid_sunan.1",
+      sourceUnitId: "ghusl_faraid_sunan.p01",
       note: "The obligations line places the intention at the moment of starting.",
     },
     {
@@ -27,7 +27,7 @@ export const ghuslGuide: Guide = {
       titleAr: "البداية بغسل النجاسة",
       classification: "fadila",
       highlight: "najasa",
-      sourceUnitId: "ghusl_faraid_sunan.3",
+      sourceUnitId: "ghusl_faraid_sunan.p03",
       note: "The virtues line begins the sequence here. It is not one of the four obligations.",
     },
     {
@@ -36,7 +36,7 @@ export const ghuslGuide: Guide = {
       titleAr: "ثم الذكر فينوي عنده",
       classification: "fadila",
       highlight: "private",
-      sourceUnitId: "ghusl_faraid_sunan.3",
+      sourceUnitId: "ghusl_faraid_sunan.p03",
       note: "Next in the virtues sequence. The figure does not draw it. The Arabic line is the description.",
     },
     {
@@ -45,7 +45,7 @@ export const ghuslGuide: Guide = {
       titleAr: "أعضاء الوضوء مرة مرة",
       classification: "fadila",
       highlight: "arms",
-      sourceUnitId: "ghusl_faraid_sunan.3",
+      sourceUnitId: "ghusl_faraid_sunan.p03",
       note: "The virtues line says once each, after the private part.",
     },
     {
@@ -54,7 +54,7 @@ export const ghuslGuide: Guide = {
       titleAr: "أعلى جسده",
       classification: "fadila",
       highlight: "upper",
-      sourceUnitId: "ghusl_faraid_sunan.3",
+      sourceUnitId: "ghusl_faraid_sunan.p03",
       note: "Then the upper body, still in the virtues sequence.",
     },
     {
@@ -63,7 +63,7 @@ export const ghuslGuide: Guide = {
       titleAr: "تثليث غسل الرأس",
       classification: "fadila",
       highlight: "head",
-      sourceUnitId: "ghusl_faraid_sunan.3",
+      sourceUnitId: "ghusl_faraid_sunan.p03",
       note: "Tripling the wash of the head is in the virtues list.",
     },
     {
@@ -72,7 +72,7 @@ export const ghuslGuide: Guide = {
       titleAr: "تقديم شق جسده الأيمن",
       classification: "fadila",
       highlight: "right-side",
-      sourceUnitId: "ghusl_faraid_sunan.3",
+      sourceUnitId: "ghusl_faraid_sunan.p03",
       note: "The virtues line puts the right side of the body first.",
     },
     {
@@ -81,7 +81,7 @@ export const ghuslGuide: Guide = {
       titleAr: "الدلك",
       classification: "fard",
       highlight: "dalk",
-      sourceUnitId: "ghusl_faraid_sunan.1",
+      sourceUnitId: "ghusl_faraid_sunan.p01",
       note: "An obligation of the ghusl, named with intention, continuity, and covering. The hand on the figure is the rub.",
     },
     {
@@ -90,7 +90,7 @@ export const ghuslGuide: Guide = {
       titleAr: "العموم",
       classification: "fard",
       highlight: "cover",
-      sourceUnitId: "ghusl_faraid_sunan.1",
+      sourceUnitId: "ghusl_faraid_sunan.p01",
       note: "An obligation: the wash covers the body. The sunan line adds that the outer ear, both sides, is washed, and it says يجب for that.",
     },
     {
@@ -99,7 +99,7 @@ export const ghuslGuide: Guide = {
       titleAr: "صفحة الأذن",
       classification: "fard",
       highlight: "ears",
-      sourceUnitId: "ghusl_faraid_sunan.2",
+      sourceUnitId: "ghusl_faraid_sunan.p02",
       note: "The sunan paragraph excepts this: the outer ear is washed outside and inside, and the line says يجب.",
     },
     {
@@ -108,7 +108,7 @@ export const ghuslGuide: Guide = {
       titleAr: "صماخ الأذن",
       classification: "sunnah",
       highlight: "ears",
-      sourceUnitId: "ghusl_faraid_sunan.2",
+      sourceUnitId: "ghusl_faraid_sunan.p02",
       note: "Listed under the sunan. The line glosses it as the hole that goes into the head.",
     },
     {
@@ -117,7 +117,7 @@ export const ghuslGuide: Guide = {
       titleAr: "المضمضة والاستنشاق والاستنثار",
       classification: "sunnah",
       highlight: "mouth",
-      sourceUnitId: "ghusl_faraid_sunan.2",
+      sourceUnitId: "ghusl_faraid_sunan.p02",
       note: "Sunan, with the hands to the wrists at the start, as in wudu.",
     },
     {
@@ -126,7 +126,7 @@ export const ghuslGuide: Guide = {
       titleAr: "الفور",
       classification: "fard",
       highlight: "fawr",
-      sourceUnitId: "ghusl_faraid_sunan.1",
+      sourceUnitId: "ghusl_faraid_sunan.p01",
       note: "An obligation of the whole wash, not a limb. The row under the figure is that sequence.",
     },
   ],
@@ -145,7 +145,7 @@ export const tayammumGuide: Guide = {
       titleAr: "دخول الوقت",
       classification: "fard",
       highlight: "qibla",
-      sourceUnitId: "tayammum.2",
+      sourceUnitId: "tayammum.p03",
       note: "Named among the obligations, with joining the tayammum to the prayer.",
     },
     {
@@ -154,7 +154,7 @@ export const tayammumGuide: Guide = {
       titleAr: "النية",
       classification: "fard",
       highlight: "niyyah",
-      sourceUnitId: "tayammum.2",
+      sourceUnitId: "tayammum.p03",
       note: "An obligation. A later line says tayammum from janaba needs its own intention.",
     },
     {
@@ -163,7 +163,7 @@ export const tayammumGuide: Guide = {
       titleAr: "التسمية",
       classification: "fadila",
       highlight: "tasmiya",
-      sourceUnitId: "tayammum.6",
+      sourceUnitId: "tayammum.p07",
       note: "In the virtues list, with putting the right before the left.",
     },
     {
@@ -172,7 +172,7 @@ export const tayammumGuide: Guide = {
       titleAr: "ضربة الأرض الأولى",
       classification: "fard",
       highlight: "earth",
-      sourceUnitId: "tayammum.2",
+      sourceUnitId: "tayammum.p03",
       note: "An obligation, together with pure saʿid. What counts as saʿid is the next lines, not this picture.",
     },
     {
@@ -181,7 +181,7 @@ export const tayammumGuide: Guide = {
       titleAr: "مسح الوجه",
       classification: "fard",
       highlight: "wipe-face",
-      sourceUnitId: "tayammum.2",
+      sourceUnitId: "tayammum.p03",
       note: "An obligation. The hand crosses the face. There is no stream.",
     },
     {
@@ -190,7 +190,7 @@ export const tayammumGuide: Guide = {
       titleAr: "تجديد الصعيد ليديه",
       classification: "sunnah",
       highlight: "earth",
-      sourceUnitId: "tayammum.5",
+      sourceUnitId: "tayammum.p06",
       note: "A sunnah: new saʿid for the hands.",
     },
     {
@@ -199,7 +199,7 @@ export const tayammumGuide: Guide = {
       titleAr: "مسح اليدين إلى الكوعين",
       classification: "fard",
       highlight: "wipe-hands",
-      sourceUnitId: "tayammum.2",
+      sourceUnitId: "tayammum.p03",
       note: "An obligation stops at the wrists. Wiping on to the elbows is in the sunan line.",
     },
     {
@@ -208,7 +208,7 @@ export const tayammumGuide: Guide = {
       titleAr: "مسح ما بين الكوعين والمرفقين",
       classification: "sunnah",
       highlight: "elbows",
-      sourceUnitId: "tayammum.5",
+      sourceUnitId: "tayammum.p06",
       note: "A sunnah, with the fresh earth and with order.",
     },
     {
@@ -217,7 +217,7 @@ export const tayammumGuide: Guide = {
       titleAr: "الفور",
       classification: "fard",
       highlight: "fawr",
-      sourceUnitId: "tayammum.2",
+      sourceUnitId: "tayammum.p03",
       note: "An obligation of the whole tayammum. The row shows the acts in a sequence.",
     },
     {
@@ -226,7 +226,7 @@ export const tayammumGuide: Guide = {
       titleAr: "اتصاله بالصلاة",
       classification: "fard",
       highlight: "takbir",
-      sourceUnitId: "tayammum.2",
+      sourceUnitId: "tayammum.p03",
       note: "An obligation on the same line as entering the time.",
     },
   ],
@@ -245,7 +245,7 @@ export const salahGuide: Guide = {
       titleAr: "طهارة الحدث",
       classification: "condition",
       highlight: "niyyah",
-      sourceUnitId: "salah_conditions.1",
+      sourceUnitId: "salah_conditions.p01",
       note: "The conditions line names purification of hadath and of impurity together.",
     },
     {
@@ -254,7 +254,7 @@ export const salahGuide: Guide = {
       titleAr: "طهارة الخبث",
       classification: "condition",
       highlight: "najasa",
-      sourceUnitId: "salah_conditions.1",
+      sourceUnitId: "salah_conditions.p01",
       note: "The same line: body, garment, and place.",
     },
     {
@@ -263,7 +263,7 @@ export const salahGuide: Guide = {
       titleAr: "ستر العورة",
       classification: "condition",
       highlight: "awra",
-      sourceUnitId: "salah_conditions.1",
+      sourceUnitId: "salah_conditions.p01",
       note: "The line says a man’s awra is what is between the navel and the knee, and a woman’s is all of her except the face and the hands. The figure stays clothed.",
     },
     {
@@ -272,7 +272,7 @@ export const salahGuide: Guide = {
       titleAr: "استقبال القبلة",
       classification: "condition",
       highlight: "qibla",
-      sourceUnitId: "salah_conditions.1",
+      sourceUnitId: "salah_conditions.p01",
       note: "A condition on the same line. A later line says a person who faces the wrong way repeats in the time.",
     },
     {
@@ -281,7 +281,7 @@ export const salahGuide: Guide = {
       titleAr: "ترك الكلام وترك الأفعال الكثيرة",
       classification: "condition",
       highlight: "standing",
-      sourceUnitId: "salah_conditions.1",
+      sourceUnitId: "salah_conditions.p01",
       note: "Both are in the conditions line.",
     },
     {
@@ -290,7 +290,7 @@ export const salahGuide: Guide = {
       titleAr: "نية الصلاة المعينة",
       classification: "fard",
       highlight: "niyyah",
-      sourceUnitId: "salah_faraid_sunan.1",
+      sourceUnitId: "salah_faraid_sunan.p01",
       note: "The first obligation in the list. The next unit says the intention coincides with the opening takbir.",
     },
     {
@@ -299,7 +299,7 @@ export const salahGuide: Guide = {
       titleAr: "تكبيرة الإحرام والقيام لها",
       classification: "fard",
       highlight: "takbir",
-      sourceUnitId: "salah_faraid_sunan.1",
+      sourceUnitId: "salah_faraid_sunan.p01",
       note: "An obligation, and the standing for it. The intention coincides with this takbir.",
     },
     {
@@ -308,7 +308,7 @@ export const salahGuide: Guide = {
       titleAr: "الفاتحة والقيام لها",
       classification: "fard",
       highlight: "standing",
-      sourceUnitId: "salah_faraid_sunan.1",
+      sourceUnitId: "salah_faraid_sunan.p01",
       note: "An obligation, with the standing for it.",
     },
     {
@@ -317,7 +317,7 @@ export const salahGuide: Guide = {
       titleAr: "الركوع",
       classification: "fard",
       highlight: "ruku",
-      sourceUnitId: "salah_faraid_sunan.1",
+      sourceUnitId: "salah_faraid_sunan.p01",
       note: "An obligation.",
     },
     {
@@ -326,7 +326,7 @@ export const salahGuide: Guide = {
       titleAr: "الرفع منه",
       classification: "fard",
       highlight: "rise",
-      sourceUnitId: "salah_faraid_sunan.1",
+      sourceUnitId: "salah_faraid_sunan.p01",
       note: "The rise from ruku is listed on its own, before the prostration.",
     },
     {
@@ -335,7 +335,7 @@ export const salahGuide: Guide = {
       titleAr: "السجود على الجبهة",
       classification: "fard",
       highlight: "sujud",
-      sourceUnitId: "salah_faraid_sunan.1",
+      sourceUnitId: "salah_faraid_sunan.p01",
       note: "The obligation names the forehead. Nose, hands, knees, and the toes are in the sunan line.",
     },
     {
@@ -344,7 +344,7 @@ export const salahGuide: Guide = {
       titleAr: "الرفع منه",
       classification: "fard",
       highlight: "rise",
-      sourceUnitId: "salah_faraid_sunan.1",
+      sourceUnitId: "salah_faraid_sunan.p01",
       note: "Listed again after the prostration.",
     },
     {
@@ -353,7 +353,7 @@ export const salahGuide: Guide = {
       titleAr: "الاعتدال والطمأنينة",
       classification: "fard",
       highlight: "standing",
-      sourceUnitId: "salah_faraid_sunan.1",
+      sourceUnitId: "salah_faraid_sunan.p01",
       note: "Both words are in the obligations list.",
     },
     {
@@ -362,7 +362,7 @@ export const salahGuide: Guide = {
       titleAr: "الترتيب بين فرائضها",
       classification: "fard",
       highlight: "fawr",
-      sourceUnitId: "salah_faraid_sunan.1",
+      sourceUnitId: "salah_faraid_sunan.p01",
       note: "The obligations line names the order among them as itself an obligation.",
     },
     {
@@ -371,7 +371,7 @@ export const salahGuide: Guide = {
       titleAr: "السلام وجلوسه",
       classification: "fard",
       highlight: "sitting",
-      sourceUnitId: "salah_faraid_sunan.1",
+      sourceUnitId: "salah_faraid_sunan.p01",
       note: "The salam and the sitting that accompanies it close the obligations list.",
     },
     {
@@ -380,7 +380,7 @@ export const salahGuide: Guide = {
       titleAr: "سنن الصلاة",
       classification: "sunnah",
       highlight: "standing",
-      sourceUnitId: "salah_faraid_sunan.3",
+      sourceUnitId: "salah_faraid_sunan.p03",
       note: "The sunan unit names the iqama, a surah after the Fatiha and standing for it, silent where it is silent and aloud where it is aloud, “Allah hears whoever praises him,” every takbir except the first, and the two tashahhuds with the sitting for them.",
     },
     {
@@ -389,7 +389,7 @@ export const salahGuide: Guide = {
       titleAr: "ومن السنن",
       classification: "sunnah",
       highlight: "sujud",
-      sourceUnitId: "salah_faraid_sunan.4",
+      sourceUnitId: "salah_faraid_sunan.p03",
       note: "The next unit continues the sunan: the Fatiha before the surah, the second salam and a third for the follower, saying the obligatory salam aloud, the prayer on the Prophet, prostration on the nose, the hands, the knees, and the toes, and a sutra for anyone who is not following.",
     },
     {
@@ -398,7 +398,7 @@ export const salahGuide: Guide = {
       titleAr: "فضائل الصلاة",
       classification: "fadila",
       highlight: "takbir",
-      sourceUnitId: "salah_faraid_sunan.5",
+      sourceUnitId: "salah_faraid_sunan.p05",
       note: "The virtues unit names raising the hands at the opening takbir until they face the ears, “our Lord, to You is praise” for the follower and the person alone, and amin after the Fatiha for those two. The imam says amin only in a silent recitation.",
     },
   ],
@@ -417,7 +417,7 @@ export const postureGuide: Guide = {
       titleAr: "القيام بغير استناد",
       classification: "wajib",
       highlight: "standing",
-      sourceUnitId: "salah_seven_states.1",
+      sourceUnitId: "salah_seven_states.p01",
       note: "First of the four. The line says the order among the four is obligation.",
     },
     {
@@ -426,7 +426,7 @@ export const postureGuide: Guide = {
       titleAr: "القيام باستناد",
       classification: "wajib",
       highlight: "lean-stand",
-      sourceUnitId: "salah_seven_states.1",
+      sourceUnitId: "salah_seven_states.p01",
       note: "Second. A later line says the support that invalidates, for someone able to leave it, is the one that falls if it is taken away. A support that would not fall is disliked.",
     },
     {
@@ -435,7 +435,7 @@ export const postureGuide: Guide = {
       titleAr: "الجلوس بغير استناد",
       classification: "wajib",
       highlight: "sit-free",
-      sourceUnitId: "salah_seven_states.1",
+      sourceUnitId: "salah_seven_states.p01",
       note: "Third of the four.",
     },
     {
@@ -444,7 +444,7 @@ export const postureGuide: Guide = {
       titleAr: "الجلوس باستناد",
       classification: "wajib",
       highlight: "sit-lean",
-      sourceUnitId: "salah_seven_states.1",
+      sourceUnitId: "salah_seven_states.p01",
       note: "Fourth of the four.",
     },
     {
@@ -453,7 +453,7 @@ export const postureGuide: Guide = {
       titleAr: "على جنبه الأيمن",
       classification: "recommended",
       highlight: "lie-right",
-      sourceUnitId: "salah_seven_states.2",
+      sourceUnitId: "salah_seven_states.p03",
       note: "First of the three the line calls recommended, for someone unable to take the four.",
     },
     {
@@ -462,7 +462,7 @@ export const postureGuide: Guide = {
       titleAr: "على الأيسر",
       classification: "recommended",
       highlight: "lie-left",
-      sourceUnitId: "salah_seven_states.2",
+      sourceUnitId: "salah_seven_states.p03",
       note: "Then the left side.",
     },
     {
@@ -471,7 +471,7 @@ export const postureGuide: Guide = {
       titleAr: "على ظهره",
       classification: "recommended",
       highlight: "lie-back",
-      sourceUnitId: "salah_seven_states.2",
+      sourceUnitId: "salah_seven_states.p03",
       note: "Then the back. The next line says differing among these three does not invalidate the prayer.",
     },
   ],

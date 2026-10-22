@@ -1,8 +1,18 @@
 import type { BookContent, Chapter, TextUnit } from "./types";
 import raw from "./books/akhdari.json";
+import { translationFiles } from "./translations";
+import { attachTranslations } from "../lib/translations";
 
+/**
+ * Arabic text is generated (`npm run content`) and never edited by hand.
+ * Translation text is attached here from separate files, so regenerating the
+ * Arabic cannot erase a translation.
+ */
 const contents: Record<string, BookContent> = {
-  akhdari: raw as BookContent,
+  akhdari: attachTranslations(
+    raw as BookContent,
+    translationFiles.filter((file) => file.bookId === "akhdari"),
+  ),
 };
 
 export function getBookContent(bookId: string): BookContent | null {
