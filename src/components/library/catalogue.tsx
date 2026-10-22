@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { Search, X } from "lucide-react";
 import { subjects } from "@/content/subjects";
 import type { SubjectId } from "@/content/types";
@@ -8,14 +8,22 @@ import { bookMatches } from "@/lib/catalogue";
 import type { CatalogueEntry } from "@/lib/library-view";
 import { BookTile } from "./book-tile";
 
-/**
- * The home page below the introduction: one search field, the feature (hidden
- * while searching so results sit directly under the field), and the collection.
- */
-export function HomeLibrary({ entries, feature }: { entries: CatalogueEntry[]; feature: ReactNode }) {
+/** The library page: one search field, subject filters, and the collection on two shelves. */
+export function Catalogue({ entries }: { entries: CatalogueEntry[] }) {
   const [query, setQuery] = useState("");
   const [subject, setSubject] = useState<SubjectId | null>(null);
   const searching = query.trim() !== "";
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  // The header's search button links to /library#search.
+  useEffect(() => {
+    const focusOnHash = () => {
+      if (window.location.hash === "#search") inputRef.current?.focus();
+    };
+    focusOnHash();
+    window.addEventListener("hashchange", focusOnHash);
+    return () => window.removeEventListener("hashchange", focusOnHash);
+  }, []);
 
   const shown = useMemo(
     () => entries.filter((entry) => bookMatches(entry.book, entry.authorName, { query, subject })),
@@ -26,7 +34,7 @@ export function HomeLibrary({ entries, feature }: { entries: CatalogueEntry[]; f
 
   return (
     <>
-      <form role="search" className="mt-8 max-w-xl" onSubmit={(event) => event.preventDefault()}>
+      <form id="search" role="search" className="mt-8 max-w-xl scroll-mt-6" onSubmit={(event) => event.preventDefault()}>
         <label htmlFor="library-search" className="text-sm font-medium text-ink">
           Search the library
         </label>
@@ -34,6 +42,7 @@ export function HomeLibrary({ entries, feature }: { entries: CatalogueEntry[]; f
           <Search className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-faint" aria-hidden />
           <input
             id="library-search"
+            ref={inputRef}
             type="search"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
@@ -54,11 +63,9 @@ export function HomeLibrary({ entries, feature }: { entries: CatalogueEntry[]; f
         </div>
       </form>
 
-      {searching ? null : <div className="mt-14">{feature}</div>}
-
-      <section id="collection" aria-labelledby="collection-heading" className="scroll-mt-20 pt-14">
+      <section id="collection" aria-labelledby="collection-heading" className="pt-12">
         <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-3">
-          <h2 id="collection-heading" className="font-display text-3xl text-ink">
+          <h2 id="collection-heading" className="font-display text-2xl text-ink">
             {searching ? "Search results" : "The collection"}
           </h2>
           <p id="collection-results" role="status" aria-live="polite" className="text-sm text-muted">

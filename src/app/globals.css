@@ -133,6 +133,10 @@ body {
   .tool-btn[aria-expanded="true"] {
     @apply bg-paper-3 text-ink;
   }
+  /* Round icon button in the site header. */
+  .round-btn {
+    @apply inline-flex h-[44px] w-[44px] items-center justify-center rounded-full border border-line-strong text-ink-2 transition-colors hover:border-control hover:bg-paper-3 hover:text-ink motion-reduce:transition-none;
+  }
   .field {
     @apply w-full rounded-md border border-control bg-paper-2 text-base text-ink placeholder:text-faint;
   }

@@ -47,7 +47,7 @@ export default function BookDetailPage({ params }: { params: Params }) {
       <nav aria-label="Breadcrumb" className="text-sm text-muted">
         <ol className="flex items-center gap-1.5">
           <li>
-            <Link href="/" className="hover:text-ink">
+            <Link href="/library" className="hover:text-ink">
               Library
             </Link>
           </li>

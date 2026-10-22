@@ -69,7 +69,9 @@ Tokens live in `src/app/globals.css` (one definition per theme) and are exposed 
 | `emerald` | The one interactive accent: one primary action per view, focus rings, selected states |
 | `gold` | Small ornaments and labels only |
 
-Type: Fraunces for headings and the English reading text (optical size on), Outfit for interface text, Scheherazade New for Arabic reading text and Amiri for Arabic headings. Book covers are generated (`BookCover`) at 2:3 with lettering in container units, so they look the same at any size or text setting. Shared component classes (`.btn`, `.link`, `.field`, `.segment`, `.tool-btn`, `.eyebrow`) are in the same stylesheet.
+Type: Fraunces for headings and the English reading text (optical size on), Outfit for interface text, Scheherazade New for Arabic reading text and Amiri for Arabic headings. Book covers are generated (`BookCover`) at 2:3 with lettering in container units, so they look the same at any size or text setting. Shared component classes (`.btn`, `.link`, `.field`, `.segment`, `.tool-btn`, `.round-btn`, `.eyebrow`) are in the same stylesheet.
+
+Layout: the home page is a dashboard (hero card, "Continue reading" when this device has a saved place, and the books as cards with an "Open book" action). Search and subject filters live on `/library`. On phones the sections (Home, Library, Glossary, Sources) are a tab bar fixed to the bottom of the screen (`TabBar`); from the `md` breakpoint they are links in the header. Both read from `src/components/nav-links.ts`.
 
 
 
