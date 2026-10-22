@@ -30,6 +30,15 @@ type Props = {
   practiceHref: string | null;
 };
 
+/** The passage or chapter id in the URL hash, or "" when absent or malformed. */
+function currentHash() {
+  try {
+    return decodeURIComponent(window.location.hash.replace(/^#/, ""));
+  } catch {
+    return "";
+  }
+}
+
 export function Reader({ book, content, translations, practiceHref }: Props) {
   const {
     settings,
@@ -68,8 +77,9 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
 
   /* Bookmarks live on this device. */
   useEffect(() => {
-    setBookmarks(loadBookmarks(book.id));
-  }, [book.id]);
+    const known = new Set(flat.map((item) => item.unit.id));
+    setBookmarks(loadBookmarks(book.id).filter((id) => known.has(id)));
+  }, [book.id, flat]);
 
   const toggleBookmark = useCallback(
     (unitId: string) => {
@@ -105,11 +115,11 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
   useEffect(() => {
     if (!ready || restored.current) return;
     restored.current = true;
-    const hash = decodeURIComponent(window.location.hash.replace(/^#/, ""));
+    const hash = currentHash();
     const saved = loadProgress(book.id).lastUnitId;
-    const hashTarget = resolveTarget(content, hash) ?? (content.chapters.some((c) => c.id === hash) ? { unit: null } : null);
-    const savedTarget = !hash ? resolveTarget(content, saved) : null;
-    const targetId = hashTarget ? hash : (savedTarget?.unit.id ?? null);
+    const hashValid = resolveTarget(content, hash) !== null || content.chapters.some((c) => c.id === hash);
+    // An unknown or stale hash must not cost the reader their saved place.
+    const targetId = hashValid ? hash : (resolveTarget(content, saved)?.unit.id ?? null);
     lastSaved.current = saved;
 
     let userMoved = false;
@@ -181,6 +191,20 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
       commitRef.current = null;
     };
   }, [book.id, flat, mode.kind]);
+
+  /*
+   * Back and Forward between passages. Next's router owns popstate and the
+   * browser does not scroll to the fragment for these entries, so do it here.
+   */
+  useEffect(() => {
+    const onPop = () => {
+      const id = currentHash();
+      if (!id) return;
+      window.requestAnimationFrame(() => scrollToId(id));
+    };
+    window.addEventListener("popstate", onPop);
+    return () => window.removeEventListener("popstate", onPop);
+  }, [scrollToId]);
 
   /* Hide the toolbar while reading down; show it on any upward scroll. */
   useEffect(() => {
@@ -401,7 +425,7 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
                       <a
                         href={`#${unit.id}`}
                         className="rounded-full border border-line px-2.5 py-0.5 text-xs text-muted hover:text-ink"
-                        aria-label={`Passage ${unit.number}, link to this passage`}
+                        aria-label={`Link to ${chapter.headingEn}, passage ${unit.number}`}
                       >
                         {unit.number}
                       </a>
@@ -409,14 +433,14 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
                         type="button"
                         className="tool-btn !h-11 !w-11 !px-0"
                         aria-pressed={marked}
-                        aria-label={`Bookmark passage ${unit.number}`}
+                        aria-label={`Bookmark ${chapter.headingEn}, passage ${unit.number}`}
                         onClick={() => toggleBookmark(unit.id)}
                       >
                         <Bookmark className={cn("h-4 w-4", marked && "fill-current")} aria-hidden />
                       </button>
                     </div>
                     <div className={cn(wide && "lg:flex lg:flex-row-reverse lg:items-start lg:gap-10")}>
-                      {showArabic ? (
+                      {showArabic || !text ? (
                         <p
                           className={cn("arabic-text text-ink", wide && "lg:w-1/2")}
                           dir="rtl"
@@ -433,7 +457,11 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
                               {text}
                             </p>
                           ) : (
-                            <p className="text-sm italic text-muted">No translation available for this passage.</p>
+                            <p className="text-sm italic text-muted">
+                              {showArabic
+                                ? "No translation available for this passage."
+                                : "Not yet translated. The Arabic is shown above."}
+                            </p>
                           )}
                         </div>
                       ) : null}

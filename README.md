@@ -57,7 +57,9 @@ Reading modes are built from the book's available translations: Arabic only, Ara
 
 ## Translations
 
-Translation **metadata** lives on the book (`Book.translations: TranslationInfo[]`: language, translator, source, licence, `reviewStatus`). Translation **text** lives on text units (`TextUnit.translations`, keyed by `translationId`). A translation is shown only if `reviewStatus` is `"verified"` and at least one unit has text for it (`availableTranslations` in `src/lib/translations.ts`). Nothing else is rendered. No translation ships today. Do not add one without a licence that covers it.
+Metadata on the book (`Book.translations`), text in separate files (`src/content/translations/`), keyed by stable passage id and attached at load time, so `npm run content` can never erase a translation. A translation is shown only when `isPublishable` passes: verified, with a dated review record, translator, source, licence and licence evidence. None ships today.
+
+Full workflow, tooling (`translations:worksheet`, `scripts/translation-import.mjs`, `translations:check`) and review rules: [docs/TRANSLATIONS.md](docs/TRANSLATIONS.md).
 
 ## How to add a new book
 

@@ -5,7 +5,7 @@ import { getBook } from "@/content/books";
 import { getBookContent, readableContentIds } from "@/content/library";
 import { getPractice } from "@/content/practice";
 import { studyToolsEnabled } from "@/lib/flags";
-import { availableTranslations } from "@/lib/translations";
+import { availableTranslations, publicContent } from "@/lib/translations";
 
 type Params = { id: string };
 
@@ -26,7 +26,7 @@ export default function ReadPage({ params }: { params: Params }) {
   return (
     <Reader
       book={book}
-      content={content}
+      content={publicContent(book, content)}
       translations={availableTranslations(book, content)}
       practiceHref={practiceHref}
     />

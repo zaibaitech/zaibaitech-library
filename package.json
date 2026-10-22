@@ -9,7 +9,9 @@
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "content": "node scripts/build-akhdari.mjs",
-    "test": "tsx --test tests/*.test.ts"
+    "test": "tsx --test tests/*.test.ts",
+    "translations:check": "tsx scripts/validate-translations.ts",
+    "translations:worksheet": "node scripts/translation-worksheet.mjs"
   },
   "dependencies": {
     "lucide-react": "^1.57.0",

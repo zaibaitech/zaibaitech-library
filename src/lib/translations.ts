@@ -1,10 +1,11 @@
-import type { Book, BookContent, TextUnit, TranslationInfo } from "../content/types";
+import type { Book, BookContent, TextUnit, TranslationFile, TranslationInfo } from "../content/types";
 
 /**
  * Translation rules, kept free of UI so they can be tested.
  *
- * A translation is shown to readers only when its metadata says `verified`
- * and at least one text unit carries text under its `translationId`.
+ * A translation is shown to readers only when its metadata is publishable
+ * (verified, with licence evidence and a review record) and at least one
+ * text unit carries text under its `translationId`.
  */
 
 export type ReadingMode =
@@ -20,14 +21,81 @@ export function translationText(unit: TextUnit, translationId: string) {
   return text ? text : null;
 }
 
+const filled = (value: string | undefined) => typeof value === "string" && value.trim().length > 0;
+
+/** Every reason this translation may not be shown. Empty means publishable. */
+export function publishBlockers(info: TranslationInfo): string[] {
+  const reasons: string[] = [];
+  if (info.reviewStatus !== "verified") reasons.push(`review status is "${info.reviewStatus}"`);
+  for (const key of ["translator", "source", "license", "licenseEvidence", "language", "languageLabel"] as const) {
+    if (!filled(info[key])) reasons.push(`${key} is missing`);
+  }
+  if (!info.review) reasons.push("no review record");
+  else {
+    if (!filled(info.review.reviewer)) reasons.push("review has no reviewer");
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(info.review.reviewedOn ?? "")) reasons.push("review date is not YYYY-MM-DD");
+  }
+  return reasons;
+}
+
+export function isPublishable(info: TranslationInfo) {
+  return publishBlockers(info).length === 0;
+}
+
+/**
+ * Attach translation files to generated content. Only files whose passage ids
+ * exist are attached; unknown ids are reported by the validator, never shown.
+ */
+export function attachTranslations(content: BookContent, files: TranslationFile[]): BookContent {
+  if (files.length === 0) return content;
+  return {
+    ...content,
+    chapters: content.chapters.map((chapter) => ({
+      ...chapter,
+      units: chapter.units.map((unit) => {
+        const translations = files
+          .filter((file) => filled(file.passages[unit.id]))
+          .map((file) => ({
+            translationId: file.translationId,
+            language: file.language,
+            text: file.passages[unit.id].trim(),
+          }));
+        return translations.length > 0 ? { ...unit, translations } : unit;
+      }),
+    })),
+  };
+}
+
 export function availableTranslations(book: Book, content: BookContent): TranslationInfo[] {
   return book.translations.filter(
     (info) =>
-      info.reviewStatus === "verified" &&
+      isPublishable(info) &&
       content.chapters.some((chapter) =>
         chapter.units.some((unit) => translationText(unit, info.translationId) !== null),
       ),
   );
+}
+
+/**
+ * The content a reader page may send to the browser: Arabic plus only the
+ * publishable translations. Anything passed to a client component ends up in
+ * the page payload, so unreviewed text must be removed here, not just hidden.
+ */
+export function publicContent(book: Book, content: BookContent): BookContent {
+  const allowed = new Set(availableTranslations(book, content).map((info) => info.translationId));
+  return {
+    ...content,
+    chapters: content.chapters.map((chapter) => ({
+      ...chapter,
+      units: chapter.units.map((unit) => {
+        if (!unit.translations) return unit;
+        const kept = unit.translations.filter((t) => allowed.has(t.translationId));
+        const rest = { ...unit };
+        delete rest.translations;
+        return kept.length > 0 ? { ...rest, translations: kept } : rest;
+      }),
+    })),
+  };
 }
 
 /** Translations that are declared but not shown, and why. */

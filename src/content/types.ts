@@ -29,15 +29,25 @@ export type Author = {
 };
 
 /**
- * Review state of a translation. Only `verified` translations are ever shown
- * to readers; anything else is treated as unavailable.
+ * Review state of a translation. Only `verified` translations with complete
+ * licence and review records are ever shown to readers (see `isPublishable`).
  */
 export type ReviewStatus = "unreviewed" | "in-review" | "verified";
 
+/** Who checked a translation against the Arabic, and when. */
+export type TranslationReview = {
+  reviewer: string;
+  /** ISO date, YYYY-MM-DD. */
+  reviewedOn: string;
+  /** "full" only when every passage was checked against its Arabic. */
+  scope: "full" | "partial";
+  notes?: string;
+};
+
 /**
- * Metadata about one translation of a book. The words live on the text units
- * (`TextUnit.translations`), keyed by `translationId`, so metadata and text
- * stay separate.
+ * Metadata about one translation of a book. The words live in a separate
+ * translation file (`src/content/translations/`), keyed by passage id, so
+ * metadata, translation text and the generated Arabic stay apart.
  */
 export type TranslationInfo = {
   translationId: string;
@@ -48,9 +58,23 @@ export type TranslationInfo = {
   translator: string;
   /** Where the translation comes from (edition, publisher, URL). */
   source: string;
-  /** The licence that actually covers the translation. */
+  /** The licence that actually covers the translation, never assumed from the Arabic. */
   license: string;
+  licenseUrl?: string;
+  /** Where permission is documented: a licence notice, contract reference, or written grant. */
+  licenseEvidence: string;
   reviewStatus: ReviewStatus;
+  /** Required before `reviewStatus` may be "verified". */
+  review?: TranslationReview;
+};
+
+/** Translation text for one book, kept apart from the generated Arabic. */
+export type TranslationFile = {
+  bookId: string;
+  translationId: string;
+  language: string;
+  /** Passage id (`TextUnit.id`) to translated text. Missing ids are untranslated passages. */
+  passages: Record<string, string>;
 };
 
 export type Book = {
@@ -76,12 +100,11 @@ export type Book = {
   excerptAr?: string;
 };
 
+/** Translation text attached to a unit at load time from a TranslationFile. */
 export type Translation = {
   translationId: string;
   language: string;
   text: string;
-  translator?: string;
-  license?: string;
 };
 
 export type TextUnit = {

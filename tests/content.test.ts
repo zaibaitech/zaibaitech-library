@@ -7,6 +7,8 @@ import { glossary } from "../src/content/glossary";
 import { getBookContent, readableContentIds } from "../src/content/library";
 import { getPractice, practiceBookIds } from "../src/content/practice/index";
 import { foldArabic } from "../src/lib/arabic";
+import { translationFiles } from "../src/content/translations";
+import { validateTranslation } from "../src/lib/translation-validation";
 
 test("catalogue integrity", () => {
   const ids = books.map((b) => b.id);
@@ -35,7 +37,10 @@ test("text units have stable, well-formed ids", () => {
       assert.ok(!seen.has(unit.id));
       seen.add(unit.id);
       assert.ok(unit.arabic.trim().length > 0);
-      assert.equal(unit.translations, undefined, "no unreviewed translation text may ship");
+      for (const t of unit.translations ?? []) {
+        const info = books.find((b) => b.id === "akhdari")!.translations.find((i) => i.translationId === t.translationId);
+        assert.ok(info, `${unit.id}: translation ${t.translationId} has no metadata`);
+      }
     });
   }
 });
@@ -71,5 +76,14 @@ test("practice and glossary point at real passages and chapters", () => {
     for (const m of Array.from(json.matchAll(/"(?:sourceUnitId|unitId)":"([^"]+)"/g))) {
       assert.ok(unitIds.has(m[1]), `practice cites missing unit ${m[1]}`);
     }
+  }
+});
+
+test("every registered translation file validates", () => {
+  for (const file of translationFiles) {
+    const book = books.find((b) => b.id === file.bookId);
+    assert.ok(book, `${file.translationId}: unknown book ${file.bookId}`);
+    const report = validateTranslation(book!, getBookContent(book!.id)!, file);
+    assert.deepEqual(report.errors, [], `${file.translationId} errors`);
   }
 });
