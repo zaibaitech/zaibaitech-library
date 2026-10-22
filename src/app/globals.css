@@ -2,78 +2,78 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --paper: 243 238 228;
-  --paper-2: 251 247 240;
-  --ink: 24 34 30;
-  --muted: 90 99 92;
-  --line: 224 214 196;
-  --emerald: 14 92 68;
-  --gold: 122 92 36;
-  --gold-soft: 234 218 184;
+/*
+ * Design tokens. Each colour is an RGB triple so Tailwind can apply opacity.
+ * paper/paper-2/paper-3: page, raised surface, sunken surface.
+ * ink/ink-2/muted/faint: primary text, reading text, secondary text, quiet metadata.
+ * control: borders of form fields (3:1 against surfaces).
+ * emerald: the one interactive accent. gold: small ornaments and labels only.
+ * Light and dark are each defined once below and applied by class or system preference.
+ */
+
+:root, html.light {
+  --paper: 248 245 238;
+  --paper-2: 253 251 246;
+  --paper-3: 240 235 225;
+  --ink: 30 33 30;
+  --ink-2: 62 67 62;
+  --muted: 94 98 92;
+  --faint: 104 100 91;
+  --line: 229 222 208;
+  --line-strong: 204 194 174;
+  --control: 138 130 114;
+  --emerald: 22 74 57;
+  --emerald-ink: 250 247 240;
+  --gold: 124 93 38;
+  --gold-soft: 241 232 212;
   --clay: 140 74 58;
   --water: 31 111 138;
   --skin: 214 176 142;
-  --banner: 12 74 55;
-  --banner-ink: 250 245 232;
-  --banner-sub: 233 211 160;
   color-scheme: light;
 }
 
 html.dark {
-  --paper: 12 18 16;
-  --paper-2: 20 28 25;
-  --ink: 244 239 230;
-  --muted: 176 168 154;
-  --line: 46 62 55;
-  --emerald: 132 214 176;
-  --gold: 228 199 138;
-  --gold-soft: 58 48 30;
+  --paper: 17 20 18;
+  --paper-2: 23 27 25;
+  --paper-3: 31 36 33;
+  --ink: 236 231 220;
+  --ink-2: 214 209 198;
+  --muted: 172 167 155;
+  --faint: 146 141 130;
+  --line: 43 50 46;
+  --line-strong: 68 77 72;
+  --control: 104 114 108;
+  --emerald: 138 198 168;
+  --emerald-ink: 16 24 20;
+  --gold: 204 172 112;
+  --gold-soft: 50 43 30;
   --clay: 226 164 148;
   --water: 148 214 232;
   --skin: 196 156 124;
-  --banner: 18 56 44;
-  --banner-ink: 246 239 226;
-  --banner-sub: 228 199 138;
   color-scheme: dark;
 }
 
 @media (prefers-color-scheme: dark) {
   html:not(.light) {
-    --paper: 12 18 16;
-    --paper-2: 20 28 25;
-    --ink: 244 239 230;
-    --muted: 176 168 154;
-    --line: 46 62 55;
-    --emerald: 132 214 176;
-    --gold: 228 199 138;
-    --gold-soft: 58 48 30;
+    --paper: 17 20 18;
+    --paper-2: 23 27 25;
+    --paper-3: 31 36 33;
+    --ink: 236 231 220;
+    --ink-2: 214 209 198;
+    --muted: 172 167 155;
+    --faint: 146 141 130;
+    --line: 43 50 46;
+    --line-strong: 68 77 72;
+    --control: 104 114 108;
+    --emerald: 138 198 168;
+    --emerald-ink: 16 24 20;
+    --gold: 204 172 112;
+    --gold-soft: 50 43 30;
     --clay: 226 164 148;
     --water: 148 214 232;
     --skin: 196 156 124;
-    --banner: 18 56 44;
-    --banner-ink: 246 239 226;
-    --banner-sub: 228 199 138;
     color-scheme: dark;
   }
-}
-
-html.light {
-  --banner: 12 74 55;
-  --banner-ink: 250 245 232;
-  --banner-sub: 233 211 160;
-  --paper: 243 238 228;
-  --paper-2: 251 247 240;
-  --ink: 24 34 30;
-  --muted: 90 99 92;
-  --line: 224 214 196;
-  --emerald: 14 92 68;
-  --gold: 122 92 36;
-  --gold-soft: 234 218 184;
-  --clay: 140 74 58;
-  --water: 31 111 138;
-  --skin: 214 176 142;
-  color-scheme: light;
 }
 
 * {
@@ -93,6 +93,8 @@ body {
   background: rgb(var(--paper));
   color: rgb(var(--ink));
   font-family: var(--font-sans), system-ui, sans-serif;
+  /* A word longer than its column (large text settings, narrow screens) breaks instead of widening the page. */
+  overflow-wrap: break-word;
 }
 
 :focus-visible {
@@ -102,29 +104,56 @@ body {
 }
 
 @layer components {
+  /* One solid accent action per view; everything else is quiet. */
   .btn {
-    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-colors;
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-md px-5 py-2.5 text-sm font-medium transition-colors motion-reduce:transition-none;
   }
   .btn-primary {
-    @apply bg-emerald text-paper hover:bg-emerald/90;
+    @apply bg-emerald text-emerald-ink hover:bg-emerald/90;
   }
   .btn-quiet {
-    @apply border border-line bg-paper-2 text-ink hover:bg-gold-soft/60;
+    @apply border border-line-strong text-ink hover:border-control hover:bg-paper-3;
+  }
+  .link {
+    @apply font-medium text-ink underline decoration-line-strong underline-offset-4 transition-colors hover:decoration-ink motion-reduce:transition-none;
   }
   .chip {
-    @apply inline-flex items-center rounded-full border border-line bg-paper-2 px-2.5 py-0.5 text-xs text-muted;
+    @apply inline-flex items-center rounded-md border border-line px-2 py-0.5 text-xs text-muted;
   }
   .card {
-    @apply rounded-2xl border border-line bg-paper-2;
+    @apply rounded-lg border border-line bg-paper-2;
   }
   .eyebrow {
-    @apply text-xs font-medium uppercase tracking-[0.2em] text-gold;
+    @apply text-[0.7rem] font-medium uppercase tracking-[0.18em] text-gold;
   }
   .tool-btn {
-    @apply inline-flex h-11 min-w-11 items-center justify-center gap-1.5 rounded-full border border-line bg-paper-2 px-3 text-sm text-ink hover:bg-gold-soft/60 disabled:opacity-40;
+    @apply inline-flex h-[44px] min-w-[44px] items-center justify-center gap-1.5 rounded-md px-3 text-sm text-muted transition-colors hover:bg-paper-3 hover:text-ink disabled:pointer-events-none disabled:opacity-35 motion-reduce:transition-none;
   }
-  .tool-btn[aria-pressed="true"] {
-    @apply border-emerald bg-emerald text-paper hover:bg-emerald;
+  .tool-btn[aria-pressed="true"],
+  .tool-btn[aria-expanded="true"] {
+    @apply bg-paper-3 text-ink;
+  }
+  .field {
+    @apply w-full rounded-md border border-control bg-paper-2 text-base text-ink placeholder:text-faint;
+  }
+  /* Segmented choice (radio group) used in the reader's display panel and the catalogue filters. */
+  .segment {
+    @apply inline-flex min-h-11 flex-1 items-center justify-center rounded-md px-3 text-sm text-muted transition-colors hover:text-ink motion-reduce:transition-none;
+  }
+  .segment[aria-checked="true"],
+  .segment[aria-pressed="true"] {
+    @apply bg-paper-2 font-medium text-ink shadow-[0_0_0_1px_rgb(var(--line-strong))];
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
   }
 }
 
@@ -134,40 +163,48 @@ body {
 }
 
 .arabic-text {
-  font-family: var(--font-arabic), "Scheherazade New", serif;
+  font-family: var(--font-arabic), "Scheherazade New", "Noto Naskh Arabic", "Amiri", serif;
   font-weight: 400;
   /* Tall enough that stacked tashkīl on adjacent lines never touches. */
-  line-height: 2.4;
+  line-height: 2.3;
   overflow-wrap: break-word;
   word-break: normal;
   padding-block: 0.15em;
+  font-feature-settings: "kern", "liga", "calt";
 }
 
-.chapter-banner {
-  background:
-    radial-gradient(120% 140% at 50% 0%, rgb(255 255 255 / 0.08), transparent 60%),
-    rgb(var(--banner));
-  color: rgb(var(--banner-ink));
-  box-shadow: inset 0 0 0 1px rgb(var(--banner-sub) / 0.45), inset 0 0 0 5px rgb(var(--banner)), inset 0 0 0 6px rgb(var(--banner-sub) / 0.3);
+/* End-of-passage numeral, after the convention of āyah markers: small, gold, and scaled to the Arabic. */
+.passage-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.55em;
+  height: 1.55em;
+  margin-inline-start: 0.35em;
+  padding-inline: 0.2em;
+  border: 1px solid rgb(var(--gold) / 0.45);
+  border-radius: 999px;
+  color: rgb(var(--gold));
+  font-size: 0.5em;
+  line-height: 1;
+  vertical-align: 0.35em;
+  font-variant-numeric: tabular-nums;
 }
 
-.chapter-banner-sub,
-.chapter-banner-ornament {
-  color: rgb(var(--banner-sub));
-}
-
-.passage-rule {
-  height: 2px;
-  background: linear-gradient(90deg, transparent, rgb(var(--gold) / 0.55) 15%, rgb(var(--gold) / 0.55) 85%, transparent);
-}
-
+/* English reading text: a serif with an optical size for text, set apart from the interface sans. */
 .translation-text {
+  font-family: var(--font-display), Georgia, serif;
+  font-variation-settings: "opsz" 14;
   line-height: 1.7;
   overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 .term {
-  border-bottom: 1px dotted rgb(var(--gold));
+  border: 0;
+  text-decoration: underline dotted rgb(var(--gold));
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.45em;
   background: transparent;
   color: inherit;
   cursor: pointer;
@@ -187,8 +224,9 @@ body {
   scroll-margin-top: 7.25rem;
 }
 
+/* Clears the reader's single-row toolbar. */
 .ebook-anchor {
-  scroll-margin-top: 7.5rem;
+  scroll-margin-top: 4.75rem;
 }
 
 .guide-fit {

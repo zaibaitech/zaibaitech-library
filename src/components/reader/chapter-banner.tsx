@@ -1,44 +1,43 @@
 import { Rosette } from "../geometric";
-import { toArabicDigits } from "@/lib/arabic";
 
-/** The ornamented heading that opens each chapter in the reader. */
-export function ChapterBanner({
+/** An understated chapter opening: a small ornament, the number, the Arabic heading, then its English. */
+export function ChapterHeading({
   id,
   index,
   headingAr,
   headingEn,
   partAr,
+  partEn,
   translatedHeading,
 }: {
   id: string;
   index: number;
   headingAr: string;
   headingEn: string;
-  /** Shown above the banner when a new part of the book begins. */
+  /** Shown when a new part of the book begins. */
   partAr?: string;
+  partEn?: string;
   /** The translation's rendering of the heading, shown instead of the short English label. */
   translatedHeading?: string | null;
 }) {
   return (
-    <div className="mb-6">
+    <header className="mb-10 text-center">
       {partAr ? (
-        <p className="mb-3 flex items-center justify-center gap-3 font-amiri text-xl text-gold" dir="rtl" lang="ar">
-          <span aria-hidden className="h-px w-10 bg-gold/50" />
-          {partAr}
-          <span aria-hidden className="h-px w-10 bg-gold/50" />
+        <p className="mb-8 flex items-center justify-center gap-3 text-gold">
+          <span aria-hidden className="h-px w-8 bg-gold/40" />
+          <span className="eyebrow">{partEn}</span>
+          <span className="font-amiri text-lg" dir="rtl" lang="ar">
+            {partAr}
+          </span>
+          <span aria-hidden className="h-px w-8 bg-gold/40" />
         </p>
       ) : null}
-      <header className="chapter-banner relative overflow-hidden rounded-2xl px-14 py-5 text-center sm:px-20">
-        <Rosette className="chapter-banner-ornament absolute left-2 top-1/2 h-11 w-11 -translate-y-1/2 sm:left-4 sm:h-14 sm:w-14" />
-        <Rosette className="chapter-banner-ornament absolute right-2 top-1/2 h-11 w-11 -translate-y-1/2 sm:right-4 sm:h-14 sm:w-14" />
-        <p className="chapter-banner-sub text-[0.68rem] uppercase tracking-[0.22em]">
-          Chapter {index} · <span lang="ar">{toArabicDigits(index)}</span>
-        </p>
-        <h2 id={id} className="mt-1 font-amiri text-3xl leading-snug sm:text-4xl" dir="rtl" lang="ar">
-          {headingAr}
-        </h2>
-        <p className="chapter-banner-sub mt-1 text-sm font-medium">{translatedHeading ?? headingEn}</p>
-      </header>
-    </div>
+      <Rosette className="mx-auto h-5 w-5 text-gold/80" />
+      <p className="mt-3 text-[0.68rem] uppercase tracking-[0.2em] text-muted">Chapter {index}</p>
+      <h2 id={id} className="mt-2 font-amiri text-[1.9rem] leading-snug text-ink sm:text-[2.2rem]" dir="rtl" lang="ar">
+        {headingAr}
+      </h2>
+      <p className="mx-auto mt-1 max-w-md font-display text-base italic leading-snug text-muted">{translatedHeading ?? headingEn}</p>
+    </header>
   );
 }

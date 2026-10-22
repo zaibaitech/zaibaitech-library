@@ -13,6 +13,8 @@ const outfit = Outfit({
 
 const fraunces = Fraunces({
   subsets: ["latin"],
+  // Optical sizing lets the same face serve headings and the English reading text.
+  axes: ["opsz"],
   variable: "--font-display",
   display: "swap",
 });
@@ -42,8 +44,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f3eee4" },
-    { media: "(prefers-color-scheme: dark)", color: "#0c1210" },
+    { media: "(prefers-color-scheme: light)", color: "#f8f5ee" },
+    { media: "(prefers-color-scheme: dark)", color: "#111412" },
   ],
   width: "device-width",
   initialScale: 1,

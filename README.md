@@ -57,7 +57,21 @@ Toolbar always visible (it hides while scrolling down and returns on any scroll 
 
 Reading modes are built from the book's available translations: Arabic only, Arabic + translation (stacked on phones, side by side on large screens), translation only. With no translation, only Arabic is offered and the reader says why.
 
-## Translations
+## Design system
+
+Tokens live in `src/app/globals.css` (one definition per theme) and are exposed to Tailwind in `tailwind.config.ts`.
+
+| Token | Role |
+| --- | --- |
+| `paper`, `paper-2`, `paper-3` | Page, raised surface, sunken surface (warm ivory; deep green-black in dark) |
+| `ink`, `ink-2`, `muted`, `faint` | Headings, reading text, secondary text, quiet metadata. All meet WCAG AA (4.5:1) on every surface in both themes |
+| `line`, `line-strong`, `control` | Hairlines, stronger dividers, form-field borders (3:1) |
+| `emerald` | The one interactive accent: one primary action per view, focus rings, selected states |
+| `gold` | Small ornaments and labels only |
+
+Type: Fraunces for headings and the English reading text (optical size on), Outfit for interface text, Scheherazade New for Arabic reading text and Amiri for Arabic headings. Book covers are generated (`BookCover`) at 2:3 with lettering in container units, so they look the same at any size or text setting. Shared component classes (`.btn`, `.link`, `.field`, `.segment`, `.tool-btn`, `.eyebrow`) are in the same stylesheet.
+
+
 
 Metadata on the book (`Book.translations`), text in separate files (`src/content/translations/`), keyed by stable passage id and attached at load time, so `npm run content` can never erase a translation. A translation is shown only when `isPublishable` passes: verified, with a dated review record, translator, source, licence and licence evidence. One translation is registered: `en-zaibaitech-2026`, the English of the library's bilingual edition, with notes and headings. It is published (`verified`, reviewed 2026-10-22 by the library's language reviewer). Setting it back to `in-review` hides it everywhere, including from the page source.
 

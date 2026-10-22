@@ -18,14 +18,14 @@ export function BookLocalActions({ bookId, unitTotal }: { bookId: string; unitTo
   if (!ready || (seen === 0 && marks === 0)) return null;
 
   return (
-    <div className="card p-4">
-      <p className="text-sm text-muted">
+    <div className="text-sm text-muted">
+      <p>
         {seen} of {unitTotal} passages opened on this device
         {marks > 0 ? ` · ${marks} bookmark${marks === 1 ? "" : "s"}` : ""}
       </p>
       <button
         type="button"
-        className="mt-3 text-sm font-medium text-emerald underline decoration-gold underline-offset-4"
+        className="mt-1 text-sm text-muted underline decoration-line-strong underline-offset-4 hover:text-ink"
         onClick={() => {
           clearBookLocalData(bookId);
           window.location.reload();

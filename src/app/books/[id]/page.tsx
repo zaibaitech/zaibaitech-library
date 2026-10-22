@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { BookPlate } from "@/components/book-plate";
-import { Rosette } from "@/components/geometric";
+import { ChevronRight, Clock } from "lucide-react";
+import { BookCover } from "@/components/book-plate";
 import { BookLocalActions } from "@/components/book-local";
 import { ReadActions } from "@/components/ebook/read-actions";
 import { books, getBook } from "@/content/books";
@@ -13,6 +13,8 @@ import { authorOf } from "@/lib/library-view";
 import { readableLanguages } from "@/lib/catalogue";
 import { flattenUnits } from "@/lib/reading";
 import { availableTranslations, pendingTranslations } from "@/lib/translations";
+import { toArabicDigits } from "@/lib/arabic";
+import { longDate } from "@/lib/dates";
 import { glossaryEnabled, studyToolsEnabled } from "@/lib/flags";
 
 type Params = { id: string };
@@ -38,106 +40,101 @@ export default function BookDetailPage({ params }: { params: Params }) {
   const shown = content ? availableTranslations(book, content) : [];
   const pending = content ? pendingTranslations(book, content) : book.translations;
   const practice = studyToolsEnabled ? getPractice(book.id) : null;
+  const languages = readableLanguages(book, content);
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-8">
+    <div className="mx-auto max-w-page px-5 pb-8 pt-8 sm:px-8 sm:pt-10">
       <nav aria-label="Breadcrumb" className="text-sm text-muted">
-        <Link href="/" className="hover:text-ink">
-          Library
-        </Link>
-        <span aria-hidden> / </span>
-        <span className="text-ink">{book.title}</span>
+        <ol className="flex items-center gap-1.5">
+          <li>
+            <Link href="/" className="hover:text-ink">
+              Library
+            </Link>
+          </li>
+          <li aria-hidden>
+            <ChevronRight className="h-3.5 w-3.5" />
+          </li>
+          <li aria-current="page" className="text-ink-2">
+            {book.title}
+          </li>
+        </ol>
       </nav>
 
-      <div className="mt-6 grid gap-8 md:grid-cols-[minmax(0,16rem)_1fr]">
-        <div>
-          <BookPlate book={book} authorAr={author.nameAr} className="mx-auto w-full max-w-[16rem]" />
+      <header className="mt-8 grid gap-8 sm:grid-cols-[12rem_1fr] sm:gap-12 lg:grid-cols-[15rem_1fr]">
+        <div className="mx-auto w-40 sm:mx-0 sm:w-full">
+          <BookCover book={book} authorAr={author.nameAr} />
         </div>
-        <div>
-          <p className={content ? "text-xs font-medium text-emerald" : "text-xs font-medium text-gold"}>
-            {content ? "Available to read" : "Forthcoming · text not yet available"}
-          </p>
-          <h1 className="mt-1 font-display text-3xl leading-tight text-ink sm:text-4xl">{book.title}</h1>
-          <p className="mt-1 font-amiri text-3xl text-ink" dir="rtl" lang="ar">
+        <div className="min-w-0">
+          {content ? null : (
+            <p className="mb-5 flex items-start gap-2 rounded-md border border-line-strong bg-paper-3 px-4 py-3 text-sm text-ink-2">
+              <Clock className="mt-0.5 h-4 w-4 shrink-0" aria-hidden />
+              <span>
+                <span className="font-medium text-ink">Forthcoming.</span> This title is planned. Its text is not in the
+                library yet, so there is nothing to read.
+              </span>
+            </p>
+          )}
+          <h1 className="font-display text-4xl leading-[1.08] tracking-tight text-ink sm:text-5xl">{book.title}</h1>
+          <p className="mt-2 w-fit max-w-full font-amiri text-3xl text-ink-2" dir="rtl" lang="ar">
             {book.titleAr}
           </p>
-          <p className="mt-2 text-muted">{book.subtitle}</p>
-
-          <dl className="mt-5 grid max-w-lg grid-cols-[7.5rem_1fr] gap-x-4 gap-y-2 text-sm">
-            <dt className="text-muted">Author</dt>
-            <dd className="text-ink">
-              {author.name}{" "}
-              <span className="font-amiri text-base" dir="rtl" lang="ar">
-                ({author.nameAr})
-              </span>
-              {author.diedAH ? <span className="text-muted"> · d. {author.diedAH} AH</span> : null}
-            </dd>
-            <dt className="text-muted">Level</dt>
-            <dd className="text-ink">{book.level}</dd>
-            <dt className="text-muted">School</dt>
-            <dd className="text-ink">{book.madhhab}</dd>
-            <dt className="text-muted">Subjects</dt>
-            <dd className="text-ink">{book.subjects.map((id) => getSubject(id).label).join(", ")}</dd>
-            <dt className="text-muted">Reading in</dt>
-            <dd className="text-ink">{readableLanguages(book, content).join(", ")}</dd>
-            {content ? (
-              <>
-                <dt className="text-muted">Length</dt>
-                <dd className="text-ink">
-                  {content.chapters.length} chapters · {flat.length} numbered passages
-                </dd>
-              </>
-            ) : null}
-          </dl>
-
-          <p className="mt-5 max-w-prose text-base leading-relaxed text-ink">{book.description}</p>
-
-          <div className="mt-6">
-            {content ? (
+          <p className="mt-3 text-base text-muted">
+            {author.name}
+            {author.diedAH ? <span className="text-faint"> · d. {author.diedAH} AH</span> : null}
+          </p>
+          <p className="mt-6 max-w-reading text-base leading-relaxed text-ink-2">{book.description}</p>
+          {content ? (
+            <div className="mt-8">
               <ReadActions
                 bookId={book.id}
                 firstUnitId={flat[0].unit.id}
                 unitIds={flat.map((item) => item.unit.id)}
                 legacyIds={content.legacyIds}
               />
-            ) : (
-              <p className="card border-dashed px-4 py-4 text-sm text-muted">
-                This title is planned. Its text is not in the library, so there is nothing to read yet.
-              </p>
-            )}
-          </div>
-          {content ? (
-            <div className="mt-4 max-w-lg">
-              <BookLocalActions bookId={book.id} unitTotal={flat.length} />
+              <div className="mt-4 max-w-reading">
+                <BookLocalActions bookId={book.id} unitTotal={flat.length} />
+              </div>
             </div>
           ) : null}
         </div>
-      </div>
+      </header>
 
-      <div className="mt-12 grid gap-8 lg:grid-cols-[1fr_20rem]">
+      <div className="mt-16 grid gap-14 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-16">
         {content ? (
-          <section aria-labelledby="contents-heading">
-            <h2 id="contents-heading" className="font-display text-2xl text-ink">
-              Contents
-            </h2>
-            <ol className="mt-4 grid gap-3 sm:grid-cols-2">
+          <section aria-labelledby="contents-heading" className="min-w-0">
+            <div className="flex items-baseline justify-between gap-4 border-b border-line pb-3">
+              <h2 id="contents-heading" className="font-display text-2xl text-ink">
+                Contents
+              </h2>
+              <p className="text-sm text-muted">
+                {content.chapters.length} chapters · {flat.length} passages
+              </p>
+            </div>
+            <ol>
               {content.chapters.map((chapter, index) => (
-                <li key={chapter.id}>
+                <li key={chapter.id} className="border-b border-line">
                   <Link
                     href={`/books/${book.id}/read#${chapter.id}`}
-                    className="chapter-card group relative flex h-full flex-col items-center overflow-hidden rounded-2xl border border-gold/35 bg-paper-2 px-12 py-4 text-center hover:border-gold"
+                    className="group grid grid-cols-[2rem_1fr] gap-x-3 py-4 sm:grid-cols-[2.5rem_1fr_auto] sm:items-baseline sm:gap-x-4"
                   >
-                    <Rosette className="absolute left-2 top-1/2 h-9 w-9 -translate-y-1/2 text-gold/70" />
-                    <Rosette className="absolute right-2 top-1/2 h-9 w-9 -translate-y-1/2 text-gold/70" />
-                    <span className="text-[0.65rem] uppercase tracking-[0.2em] text-muted">
-                      Chapter {index + 1}
-                      {chapter.units.length > 0 ? ` · ${chapter.units.length} passages` : " · heading"}
+                    <span className="pt-0.5 text-sm tabular-nums text-faint">{index + 1}</span>
+                    <span className="min-w-0">
+                      <span className="block text-base font-medium text-ink group-hover:underline group-hover:decoration-line-strong group-hover:underline-offset-4">
+                        {chapter.headingEn}
+                      </span>
+                      <span className="mt-0.5 block text-sm leading-snug text-muted">{chapter.summaryEn}</span>
                     </span>
-                    <span className="mt-1 font-amiri text-2xl leading-snug text-emerald" dir="rtl" lang="ar">
+                    <span
+                      className="col-start-2 mt-1 font-amiri text-lg leading-snug text-ink-2 sm:col-start-3 sm:mt-0 sm:text-right"
+                      dir="rtl"
+                      lang="ar"
+                    >
                       {chapter.headingAr}
+                      <span className="sr-only">, </span>
+                      <span className="ms-2 text-sm text-faint" aria-hidden>
+                        {toArabicDigits(index + 1)}
+                      </span>
                     </span>
-                    <span className="mt-0.5 text-sm font-medium text-ink group-hover:text-emerald">{chapter.headingEn}</span>
-                    <span className="mt-1 text-xs leading-snug text-muted">{chapter.summaryEn}</span>
                   </Link>
                 </li>
               ))}
@@ -145,99 +142,114 @@ export default function BookDetailPage({ params }: { params: Params }) {
           </section>
         ) : null}
 
-        <aside className="space-y-6">
-          <section aria-labelledby="lang-heading" className="card p-4">
-            <h2 id="lang-heading" className="text-sm font-medium text-ink">
-              Languages and translations
-            </h2>
-            <p className="mt-2 text-sm text-ink">
-              <span className="font-medium">{book.originalLanguage}</span> — original text
-              {content ? "" : " (not yet in the library)"}
-            </p>
+        <aside aria-labelledby="details-heading" className={content ? "" : "lg:col-start-1"}>
+          <h2 id="details-heading" className="border-b border-line pb-3 font-display text-2xl text-ink">
+            About this edition
+          </h2>
+          <dl className="text-sm">
+            <Row label="Author">
+              {author.name}{" "}
+              <span className="font-amiri text-base text-muted" dir="rtl" lang="ar">
+                {author.nameAr}
+              </span>
+              {author.diedAH ? (
+                <span className="block text-faint">
+                  d. {author.diedAH} AH{author.datingSource ? ` — ${author.datingSource}` : ""}
+                </span>
+              ) : null}
+            </Row>
+            <Row label="School">{book.madhhab}</Row>
+            <Row label="Level">{book.level}</Row>
+            <Row label="Subjects">{book.subjects.map((id) => getSubject(id).label).join(", ")}</Row>
+            <Row label="Languages">
+              {languages.join(", ")}
+              {content ? null : <span className="block text-faint">Original language; not yet in the library</span>}
+            </Row>
             {shown.map((info) => (
-              <p key={info.translationId} className="mt-1 text-sm text-ink">
-                <span className="font-medium">{info.languageLabel}</span> — {info.translator}; {info.license}
-              </p>
+              <Row key={info.translationId} label={`${info.languageLabel} translation`}>
+                {info.translator}
+                {info.licenseUrl ? (
+                  <>
+                    {" · "}
+                    <a href={info.licenseUrl} className="link font-normal">
+                      {info.license}
+                    </a>
+                  </>
+                ) : (
+                  ` · ${info.license}`
+                )}
+                {info.review ? (
+                  <span className="block text-faint">Reviewed for publication, {longDate(info.review.reviewedOn)}</span>
+                ) : null}
+              </Row>
             ))}
-            {shown.length === 0 ? (
-              <p className="mt-2 text-sm leading-relaxed text-muted">
-                No licensed translation of this book is available yet, so the library shows none. The reader is built
-                to display reviewed translations beside the Arabic once one is licensed. English on this site names
-                the book and its chapters and is not a translation of the text.
-              </p>
+            {content && shown.length === 0 ? (
+              <Row label="Translation">
+                <span className="text-muted">None published yet. The reader shows the Arabic alone.</span>
+              </Row>
             ) : null}
             {pending.length > 0 ? (
-              <p className="mt-2 text-sm text-muted">
-                In preparation: {pending.map((info) => info.languageLabel).join(", ")} (not yet reviewed).
-              </p>
+              <Row label="In preparation">
+                <span className="text-muted">
+                  {pending.map((info) => info.languageLabel).join(", ")}, not yet reviewed
+                </span>
+              </Row>
             ) : null}
-          </section>
+            {content ? (
+              <>
+                <Row label="Arabic source">
+                  <span className="[overflow-wrap:anywhere]">{content.source.openiti.replace(/^OpenITI /, "OpenITI ")}</span>
+                </Row>
+                <Row label="Licence">
+                  <a href={content.source.licenseUrl} className="link font-normal">
+                    {content.source.license}
+                  </a>
+                  <span className="block text-faint">Attribution, non-commercial, share-alike</span>
+                </Row>
+                <Row label="Corrections">
+                  <Link href="/about#corrections" className="link font-normal">
+                    Listed on Sources
+                  </Link>
+                </Row>
+              </>
+            ) : null}
+          </dl>
 
           {content ? (
-            <section aria-labelledby="source-heading" className="card p-4">
-              <h2 id="source-heading" className="text-sm font-medium text-ink">
-                Source and licence
-              </h2>
-              <p className="mt-2 text-sm leading-relaxed text-muted [overflow-wrap:anywhere]">
-                Arabic text from OpenITI, work {content.source.openiti.replace(/^OpenITI /, "")}, licensed{" "}
-                <a
-                  href={content.source.licenseUrl}
-                  className="font-medium text-ink underline decoration-gold/60 underline-offset-4"
-                >
-                  {content.source.license}
-                </a>{" "}
-                (attribution, non-commercial, share-alike).
-              </p>
-              <p className="mt-2 text-sm leading-relaxed text-muted">
-                Copy errors in that witness are corrected only where evident, and each is listed in{" "}
-                <Link
-                  href="/about#corrections"
-                  className="font-medium text-ink underline decoration-gold/60 underline-offset-4"
-                >
-                  the corrections record
-                </Link>
-                .
-              </p>
-            </section>
-          ) : null}
-
-          {content ? (
-            <section aria-labelledby="aids-heading" className="card p-4">
-              <h2 id="aids-heading" className="text-sm font-medium text-ink">
-                Study aids
-              </h2>
-              <ul className="mt-2 space-y-2 text-sm text-muted">
+            <div className="mt-10">
+              <h2 className="border-b border-line pb-3 font-display text-xl text-ink">Study aids</h2>
+              <ul className="mt-3 space-y-2 text-sm text-muted">
                 {glossaryEnabled ? (
                   <li>
-                    <Link
-                      href="/glossary"
-                      className="font-medium text-ink underline decoration-gold/60 underline-offset-4"
-                    >
+                    <Link href="/glossary" className="link">
                       Glossary
                     </Link>{" "}
-                    — tap an underlined word in the reader for a short note.
+                    — tap an underlined Arabic word in the reader for a short note.
                   </li>
                 ) : null}
-                {practice ? (
-                  <li>
-                    <Link
-                      href={`/books/${book.id}/practice`}
-                      className="font-medium text-ink underline decoration-gold/60 underline-offset-4"
-                    >
+                <li>
+                  {practice ? (
+                    <Link href={`/books/${book.id}/practice`} className="link">
                       Guided practice
                     </Link>
-                  </li>
-                ) : (
-                  <li>
-                    Guided practice and knowledge checks — <span className="text-gold">forthcoming</span>, once they have
-                    been reviewed against the Arabic by a qualified teacher.
-                  </li>
-                )}
+                  ) : (
+                    <>Guided practice and knowledge checks are forthcoming, after review against the Arabic by a qualified teacher.</>
+                  )}
+                </li>
               </ul>
-            </section>
+            </div>
           ) : null}
         </aside>
       </div>
+    </div>
+  );
+}
+
+function Row({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <div className="grid grid-cols-[minmax(0,7.5rem)_minmax(0,1fr)] gap-x-4 border-b border-line py-3">
+      <dt className="text-muted [overflow-wrap:anywhere]">{label}</dt>
+      <dd className="min-w-0 text-ink [overflow-wrap:anywhere]">{children}</dd>
     </div>
   );
 }

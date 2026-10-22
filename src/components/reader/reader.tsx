@@ -2,11 +2,12 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
-import { Bookmark, ChevronLeft, ChevronRight, List, Minus, Moon, Plus, Search, Sun } from "lucide-react";
+import { Bookmark, ChevronLeft, ChevronRight, List, Search } from "lucide-react";
 import type { Book, BookContent, TranslationInfo } from "@/content/types";
 import { glossary } from "@/content/glossary";
 import { segmentTerms, toArabicDigits } from "@/lib/arabic";
 import { cn } from "@/lib/cn";
+import { longDate } from "@/lib/dates";
 import { glossaryEnabled } from "@/lib/flags";
 import { currentPassageId, flattenUnits, positionFraction, resolveTarget } from "@/lib/reading";
 import {
@@ -28,7 +29,9 @@ import {
 } from "@/lib/translations";
 import { GlossarySheet } from "../glossary-sheet";
 import { useSettings } from "../settings-provider";
-import { ChapterBanner } from "./chapter-banner";
+import { Rosette } from "../geometric";
+import { ChapterHeading } from "./chapter-banner";
+import { DisplayPanel, PanelRow, Segmented, Stepper, Switch } from "./display-panel";
 import { ReaderSheet, type SheetTab } from "./reader-sheet";
 
 type Props = {
@@ -51,7 +54,6 @@ function currentHash() {
 export function Reader({ book, content, translations, practiceHref }: Props) {
   const {
     settings,
-    resolved,
     ready,
     fontSize,
     translationFontSize,
@@ -74,6 +76,8 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
   const [sheet, setSheet] = useState<SheetTab | null>(null);
   const [termId, setTermId] = useState<string | null>(null);
   const [headerHidden, setHeaderHidden] = useState(false);
+  const [displayOpen, setDisplayOpen] = useState(false);
+  const displayButtonRef = useRef<HTMLButtonElement>(null);
 
   const tracking = useRef(false);
   const commitRef = useRef<(() => void) | null>(null);
@@ -205,7 +209,9 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
         window.clearTimeout(timer);
         timer = window.setTimeout(commit, 400);
       },
-      { rootMargin: "-130px 0px -60% 0px", threshold: 0 },
+      // The band starts just below where a jumped-to passage lands (scroll-margin 4.75rem = 76px), so the
+      // previous passage's bottom padding never counts as "on screen", and covers the top 40% of the screen.
+      { rootMargin: "-92px 0px -60% 0px", threshold: 0 },
     );
     nodes.forEach((node) => observer.observe(node));
     return () => {
@@ -243,20 +249,25 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const stepArabic = (delta: number) => setFontScale(settings.fontScale + delta);
-  const stepTranslation = (delta: number) => setTranslationScale(settings.translationScale + delta);
   const closeSheet = useCallback(() => setSheet(null), []);
+  const closeDisplay = useCallback(() => setDisplayOpen(false), []);
   const wide = mode.kind === "both";
+  const modeChoices = options.map((option) => ({ key: option.key, label: option.label.replace(/ only$/, "") }));
+  const themeChoices = [
+    { key: "light", label: "Light" },
+    { key: "dark", label: "Dark" },
+    { key: "system", label: "Auto" },
+  ];
 
   return (
     <div>
       <header
         className={cn(
-          "sticky top-0 z-30 border-b border-line bg-paper/95 backdrop-blur-md transition-transform duration-200 motion-reduce:transition-none",
-          headerHidden && "-translate-y-full focus-within:translate-y-0",
+          "sticky top-0 z-30 border-b border-line bg-paper/95 backdrop-blur-md transition-transform duration-200 motion-reduce:transition-none supports-[backdrop-filter]:bg-paper/85",
+          headerHidden && !displayOpen && "-translate-y-full focus-within:translate-y-0",
         )}
       >
-        <div className="mx-auto flex max-w-2xl items-center gap-1.5 px-2 pt-1.5 lg:max-w-6xl">
+        <div className="mx-auto flex h-14 max-w-5xl items-center gap-0.5 px-2 sm:gap-1 sm:px-4">
           <Link href={`/books/${book.id}`} aria-label={`Back to ${book.title}`} className="tool-btn shrink-0 !px-0">
             <ChevronLeft className="h-5 w-5" aria-hidden />
           </Link>
@@ -265,24 +276,18 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
             onClick={() => setSheet("contents")}
             aria-haspopup="dialog"
             aria-label={`Contents. Now reading: ${activeChapter?.headingEn}`}
-            className="flex h-11 min-w-0 flex-1 items-center gap-2 rounded-full px-3 text-left hover:bg-gold-soft/50"
+            className="flex h-11 min-w-0 flex-1 items-center gap-2 rounded-md px-2 text-left transition-colors hover:bg-paper-3 motion-reduce:transition-none"
           >
-            <List className="h-4 w-4 shrink-0 text-gold" aria-hidden />
+            <List className="h-4 w-4 shrink-0 text-muted" aria-hidden />
             <span className="min-w-0 leading-tight">
               <span className="block truncate text-sm font-medium text-ink">{activeChapter?.headingEn}</span>
-              <span className="block truncate text-[0.7rem] text-muted">{current ? `${percent}% through the book` : book.title}</span>
+              <span className="block truncate text-[0.7rem] text-muted">
+                {current ? `${book.title} · ${percent}%` : book.title}
+              </span>
             </span>
           </button>
           <button type="button" className="tool-btn shrink-0 !px-0" aria-label="Search this book" onClick={() => setSheet("search")}>
-            <Search className="h-4 w-4" aria-hidden />
-          </button>
-          <button
-            type="button"
-            className="tool-btn shrink-0 !px-0"
-            aria-label={resolved === "dark" ? "Switch to light reading theme" : "Switch to dark reading theme"}
-            onClick={() => setTheme(resolved === "dark" ? "light" : "dark")}
-          >
-            {resolved === "dark" ? <Sun className="h-4 w-4" aria-hidden /> : <Moon className="h-4 w-4" aria-hidden />}
+            <Search className="h-[18px] w-[18px]" aria-hidden />
           </button>
           <button
             type="button"
@@ -290,102 +295,24 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
             aria-label={`Bookmarks, ${bookmarks.length} saved`}
             onClick={() => setSheet("bookmarks")}
           >
-            <Bookmark className="h-4 w-4" aria-hidden />
+            <Bookmark className="h-[18px] w-[18px]" aria-hidden />
             {bookmarks.length > 0 ? (
-              <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-gold px-1 text-[0.65rem] text-paper">
+              <span className="absolute right-1 top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-ink px-1 text-[0.6rem] font-medium text-paper">
                 {bookmarks.length}
               </span>
             ) : null}
           </button>
-        </div>
-
-        <div
-          role="toolbar"
-          aria-label="Reading display"
-          className="mx-auto flex max-w-2xl flex-wrap items-center gap-1.5 px-2 pb-1.5 pt-1 lg:max-w-6xl"
-        >
-          <div role="group" aria-label="Arabic text size" className="flex items-center gap-1">
-            <button
-              type="button"
-              className="tool-btn !px-0"
-              aria-label="Smaller Arabic text"
-              disabled={settings.fontScale <= 0}
-              onClick={() => stepArabic(-1)}
-            >
-              <Minus className="h-4 w-4" aria-hidden />
-              <span className="sr-only">Smaller</span>
-            </button>
-            <span className="font-amiri text-lg text-ink" aria-hidden title="Arabic text size">
-              ع
-            </span>
-            <button
-              type="button"
-              className="tool-btn !px-0"
-              aria-label="Larger Arabic text"
-              disabled={settings.fontScale >= FONT_SCALES.length - 1}
-              onClick={() => stepArabic(1)}
-            >
-              <Plus className="h-4 w-4" aria-hidden />
-            </button>
-          </div>
-
-          {translations.length > 0 && showTranslation ? (
-            <div role="group" aria-label={`${info?.languageLabel ?? "Translation"} text size`} className="flex items-center gap-1">
-              <button
-                type="button"
-                className="tool-btn !px-0"
-                aria-label="Smaller translation text"
-                disabled={settings.translationScale <= 0}
-                onClick={() => stepTranslation(-1)}
-              >
-                <Minus className="h-4 w-4" aria-hidden />
-              </button>
-              <span className="text-sm font-medium text-ink" aria-hidden title="Translation text size">
-                Aa
-              </span>
-              <button
-                type="button"
-                className="tool-btn !px-0"
-                aria-label="Larger translation text"
-                disabled={settings.translationScale >= TRANSLATION_SCALES.length - 1}
-                onClick={() => stepTranslation(1)}
-              >
-                <Plus className="h-4 w-4" aria-hidden />
-              </button>
-            </div>
-          ) : null}
-
           <button
+            ref={displayButtonRef}
             type="button"
-            className="tool-btn"
-            aria-pressed={settings.vowelled}
-            title="Show or hide vowel marks (tashkīl)"
-            onClick={() => setVowelled(!settings.vowelled)}
+            className="tool-btn shrink-0 !px-0 font-display text-[1.05rem]"
+            aria-label="Display settings: text size, tashkīl, language and theme"
+            aria-expanded={displayOpen}
+            aria-controls="display-panel"
+            onClick={() => setDisplayOpen((open) => !open)}
           >
-            Tashkīl
+            <span aria-hidden>Aa</span>
           </button>
-
-          <label className="sr-only" htmlFor="reading-mode">
-            Reading mode
-          </label>
-          <select
-            id="reading-mode"
-            value={modeKey(mode)}
-            onChange={(event) => setMode(event.target.value)}
-            className="h-11 min-w-0 max-w-[9.5rem] flex-1 rounded-full border border-line bg-paper-2 px-3 text-sm text-ink"
-          >
-            {options.map((option) => (
-              <option key={option.key} value={option.key}>
-                {option.label}
-              </option>
-            ))}
-            {translations.length === 0 ? (
-              <option value="none" disabled>
-                Translation: none yet
-              </option>
-            ) : null}
-          </select>
-
         </div>
         <div
           role="progressbar"
@@ -393,46 +320,102 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
           aria-valuemin={0}
           aria-valuemax={100}
           aria-valuenow={percent}
-          className="h-0.5 bg-line"
+          className="h-px bg-line"
         >
-          <div className="h-full bg-emerald" style={{ width: `${percent}%` }} />
+          <div className="h-full bg-gold" style={{ width: `${percent}%` }} />
         </div>
+
+        {displayOpen ? (
+          <DisplayPanel id="display-panel" onClose={closeDisplay} anchorRef={displayButtonRef}>
+            {translations.length > 0 ? (
+              <PanelRow label="Show">
+                <Segmented label="Show" value={modeKey(mode)} choices={modeChoices} onChange={setMode} />
+              </PanelRow>
+            ) : (
+              <PanelRow label="Show" note="No translation of this book has been published yet.">
+                <p className="text-sm text-ink">Arabic</p>
+              </PanelRow>
+            )}
+            {showArabic ? (
+              <PanelRow label="Arabic size">
+                <Stepper
+                  label="Arabic"
+                  sample="ع"
+                  sampleClass="font-amiri text-2xl leading-none"
+                  level={settings.fontScale}
+                  levels={FONT_SCALES.length}
+                  onStep={(delta) => setFontScale(settings.fontScale + delta)}
+                />
+              </PanelRow>
+            ) : null}
+            {showTranslation && info ? (
+              <PanelRow label={`${info.languageLabel} size`}>
+                <Stepper
+                  label="translation"
+                  sample="Aa"
+                  sampleClass="font-display text-lg leading-none"
+                  level={settings.translationScale}
+                  levels={TRANSLATION_SCALES.length}
+                  onStep={(delta) => setTranslationScale(settings.translationScale + delta)}
+                />
+              </PanelRow>
+            ) : null}
+            <Switch
+              label="Tashkīl (vowel marks)"
+              hint="Show the Arabic fully vowelled"
+              checked={settings.vowelled}
+              onChange={setVowelled}
+            />
+            <PanelRow label="Theme">
+              <Segmented
+                label="Theme"
+                value={settings.theme}
+                choices={themeChoices}
+                onChange={(key) => setTheme(key as "light" | "dark" | "system")}
+              />
+            </PanelRow>
+          </DisplayPanel>
+        ) : null}
       </header>
 
-      <article className={cn("mx-auto px-5 pb-24 pt-8", wide ? "max-w-2xl lg:max-w-6xl" : "max-w-2xl")}>
-        <div className="mb-10 text-center">
-          <h1 className="font-amiri text-3xl leading-snug text-ink" lang="ar" dir="rtl">
+      <article className={cn("mx-auto px-5 pb-24 pt-12 sm:px-8", wide ? "max-w-2xl lg:max-w-5xl" : "max-w-2xl")}>
+        <header className="mb-16 text-center">
+          <p className="font-amiri text-[2.4rem] leading-snug text-ink" lang="ar" dir="rtl">
             {book.titleAr}
-          </h1>
-          <p className="mt-1 text-sm text-muted">{book.title}</p>
-        </div>
-
-        {translations.length === 0 ? (
-          <p className="card mb-10 px-4 py-3 text-sm leading-relaxed text-muted">
-            <span className="font-medium text-ink">Arabic only.</span> No licensed translation of this book is
-            available yet, so none is shown. English in the headings names chapters; it is not a translation.{" "}
-            <Link href={`/books/${book.id}`} className="font-medium text-ink underline decoration-gold/60 underline-offset-4">
-              Languages and sources
-            </Link>
           </p>
-        ) : info ? (
-          <p className="card mb-10 px-4 py-3 text-sm leading-relaxed text-muted">
-            {info.languageLabel} translation by {info.translator}. Source: {info.source}. Licence: {info.license}.
-          </p>
-        ) : null}
+          <h1 className="mt-1 font-display text-lg text-ink-2">{book.title}</h1>
+          <div className="mx-auto mt-6 max-w-md space-y-1 text-xs leading-relaxed text-muted">
+            <p>
+              Arabic text: OpenITI, {content.source.license}.{" "}
+              <Link href="/about#corrections" className="underline decoration-line-strong underline-offset-4 hover:text-ink">
+                Corrections
+              </Link>
+            </p>
+            {info ? (
+              <p>
+                {info.languageLabel} translation: {info.translator}, {info.license}
+                {info.review ? `. Reviewed for publication ${longDate(info.review.reviewedOn)}` : ""}.
+              </p>
+            ) : translations.length === 0 ? (
+              <p>No translation of this book has been published yet.</p>
+            ) : null}
+          </div>
+        </header>
 
         {content.chapters.map((chapter, ci) => {
           const previous = content.chapters[ci - 1];
           const next = content.chapters[ci + 1];
           const showPart = !previous || previous.partEn !== chapter.partEn;
+          const newPart = showPart && chapter.partAr !== chapter.headingAr;
           return (
-            <section key={chapter.id} id={chapter.id} aria-labelledby={`${chapter.id}-h`} className="ebook-anchor mb-14">
-              <ChapterBanner
+            <section key={chapter.id} id={chapter.id} aria-labelledby={`${chapter.id}-h`} className="ebook-anchor pb-16">
+              <ChapterHeading
                 id={`${chapter.id}-h`}
                 index={ci + 1}
                 headingAr={chapter.headingAr}
                 headingEn={chapter.headingEn}
-                partAr={showPart && chapter.partAr !== chapter.headingAr ? chapter.partAr : undefined}
+                partAr={newPart ? chapter.partAr : undefined}
+                partEn={newPart ? chapter.partEn : undefined}
                 translatedHeading={info ? headingTranslation(chapter, info.translationId) : null}
               />
 
@@ -441,92 +424,101 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
                 const text = info ? translationText(unit, info.translationId) : null;
                 const notes = info && text ? translationNotes(unit, info.translationId) : [];
                 const marked = bookmarks.includes(unit.id);
+                const arabicShown = showArabic || !text;
                 return (
-                  <div key={unit.id} id={unit.id} data-unit={unit.id} className="ebook-anchor card mb-4 overflow-hidden">
-                    <div className="flex items-center justify-between gap-2 px-3 pt-2 sm:px-4">
-                      <a
-                        href={`#${unit.id}`}
-                        className="inline-flex min-h-8 items-center gap-1.5 rounded-full border border-gold/40 bg-gold-soft/40 px-2.5 text-xs text-ink hover:border-gold"
-                        aria-label={`Link to ${chapter.headingEn}, passage ${unit.number}`}
+                  <div
+                    key={unit.id}
+                    id={unit.id}
+                    data-unit={unit.id}
+                    className={cn("ebook-anchor relative pb-14", wide && "lg:grid lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-x-14")}
+                  >
+                    <span className="sr-only">Passage {unit.number}</span>
+                    {arabicShown ? (
+                      <p
+                        className={cn("arabic-text text-ink", wide && "lg:col-start-2 lg:row-start-1")}
+                        dir="rtl"
+                        lang="ar"
+                        style={{ fontSize }}
                       >
-                        <span lang="ar" className="font-amiri text-sm leading-none">{toArabicDigits(unit.number)}</span>
-                        <span className="text-muted">{unit.number}</span>
-                      </a>
-                      <button
-                        type="button"
-                        className={cn("tool-btn !h-11 !w-11 !px-0", !marked && "!border-transparent !bg-transparent")}
-                        aria-pressed={marked}
-                        aria-label={`Bookmark ${chapter.headingEn}, passage ${unit.number}`}
-                        onClick={() => toggleBookmark(unit.id)}
+                        <ArabicLine text={arabic} onTerm={setTermId} />
+                        <span className="passage-mark" aria-hidden>
+                          {toArabicDigits(unit.number)}
+                        </span>
+                      </p>
+                    ) : null}
+                    {showTranslation ? (
+                      <div
+                        className={cn(
+                          arabicShown && "mt-5",
+                          wide && "lg:col-start-1 lg:row-start-1 lg:mt-0 lg:border-r lg:border-line lg:pr-14 lg:pt-2",
+                        )}
                       >
-                        <Bookmark className={cn("h-4 w-4", marked && "fill-current")} aria-hidden />
-                      </button>
-                    </div>
-                    <div className={cn(wide && "lg:flex lg:flex-row-reverse lg:items-stretch")}>
-                      {showArabic || !text ? (
-                        <p
-                          className={cn("arabic-text px-4 pb-3 text-ink sm:px-5", wide && "lg:w-1/2")}
-                          dir="rtl"
-                          lang="ar"
-                          style={{ fontSize }}
-                        >
-                          <ArabicLine text={arabic} onTerm={setTermId} />
-                        </p>
-                      ) : null}
-                      {showTranslation ? (
-                        <>
-                          {showArabic ? (
-                            <div aria-hidden className={cn("passage-rule mx-4", wide && "lg:mx-0 lg:my-4 lg:h-auto lg:w-0.5 lg:bg-gold/40 lg:bg-none")} />
-                          ) : null}
-                          <div className={cn("px-4 py-3 sm:px-5", wide && "lg:w-1/2")}>
-                            {text ? (
-                              <>
-                                <p className="translation-text text-ink" lang={info?.language} style={{ fontSize: translationFontSize }}>
-                                  {text}
+                        {arabicShown ? <span aria-hidden className={cn("mb-4 block h-px w-8 bg-gold/60", wide && "lg:hidden")} /> : null}
+                        {text ? (
+                          <>
+                            <p className="translation-text max-w-reading text-ink-2" lang={info?.language} style={{ fontSize: translationFontSize }}>
+                              {!arabicShown ? <span className="me-2 align-[0.1em] text-xs tabular-nums text-faint">{unit.number}</span> : null}
+                              {text}
+                            </p>
+                            {notes.length > 0 ? (
+                              <aside
+                                aria-label={`Translator's notes on passage ${unit.number}`}
+                                className="mt-5 max-w-reading border-l-2 border-gold/40 pl-4"
+                                lang={info?.language}
+                              >
+                                <p className="text-[0.68rem] font-medium uppercase tracking-[0.16em] text-gold">
+                                  Translator&apos;s {notes.length === 1 ? "note" : "notes"}
                                 </p>
-                                {notes.length > 0 ? (
-                                  <aside
-                                    aria-label={`Translator's notes on passage ${unit.number}`}
-                                    className="mt-3 rounded-xl bg-gold-soft/30 px-3 py-2"
-                                    lang={info?.language}
-                                  >
-                                    <p className="text-[0.68rem] font-medium uppercase tracking-[0.16em] text-gold">
-                                      Translator&apos;s {notes.length === 1 ? "note" : "notes"}
-                                    </p>
-                                    <ol className="mt-1 list-decimal space-y-1.5 pl-5 text-sm leading-relaxed text-muted">
-                                      {notes.map((note, n) => (
-                                        <li key={n}>{note}</li>
-                                      ))}
-                                    </ol>
-                                  </aside>
-                                ) : null}
-                              </>
-                            ) : (
-                              <p className="text-sm italic text-muted">
-                                {showArabic
-                                  ? "No translation available for this passage."
-                                  : "Not yet translated. The Arabic is shown above."}
-                              </p>
-                            )}
-                          </div>
-                        </>
-                      ) : null}
-                    </div>
+                                <ol className={cn("mt-1.5 space-y-2 text-sm leading-relaxed text-muted", notes.length > 1 && "list-decimal pl-4")}>
+                                  {notes.map((note, n) => (
+                                    <li key={n}>{note}</li>
+                                  ))}
+                                </ol>
+                              </aside>
+                            ) : null}
+                          </>
+                        ) : (
+                          <p className="text-sm italic text-muted">
+                            {showArabic ? "No translation available for this passage." : "Not yet translated. The Arabic is shown above."}
+                          </p>
+                        )}
+                      </div>
+                    ) : null}
+                    <button
+                      type="button"
+                      className={cn(
+                        "tool-btn absolute bottom-1 left-0 !px-0 md:-left-16 md:bottom-auto md:top-1",
+                        marked ? "!text-gold" : "!text-faint hover:!text-ink",
+                      )}
+                      aria-pressed={marked}
+                      aria-label={`Bookmark ${chapter.headingEn}, passage ${unit.number}`}
+                      onClick={() => toggleBookmark(unit.id)}
+                    >
+                      <Bookmark className={cn("h-4 w-4", marked && "fill-current")} aria-hidden />
+                    </button>
                   </div>
                 );
               })}
 
-              <nav aria-label={`After ${chapter.headingEn}`} className="mt-6 flex items-center justify-between gap-3 text-sm">
+              <nav aria-label={`After ${chapter.headingEn}`} className="mt-2 flex items-start justify-between gap-6 border-t border-line pt-5 text-sm">
                 {previous ? (
-                  <a href={`#${previous.id}`} className="btn btn-quiet !px-3">
-                    <ChevronLeft className="h-4 w-4" aria-hidden /> {previous.headingEn}
+                  <a href={`#${previous.id}`} className="group flex min-h-11 max-w-[45%] items-start gap-1.5 text-muted hover:text-ink">
+                    <ChevronLeft className="mt-0.5 h-4 w-4 shrink-0" aria-hidden />
+                    <span>
+                      <span className="block text-[0.68rem] uppercase tracking-[0.14em] text-faint">Previous</span>
+                      {previous.headingEn}
+                    </span>
                   </a>
                 ) : (
                   <span />
                 )}
                 {next ? (
-                  <a href={`#${next.id}`} className="btn btn-quiet !px-3">
-                    {next.headingEn} <ChevronRight className="h-4 w-4" aria-hidden />
+                  <a href={`#${next.id}`} className="group flex min-h-11 max-w-[45%] items-start justify-end gap-1.5 text-right text-muted hover:text-ink">
+                    <span>
+                      <span className="block text-[0.68rem] uppercase tracking-[0.14em] text-faint">Next</span>
+                      {next.headingEn}
+                    </span>
+                    <ChevronRight className="mt-0.5 h-4 w-4 shrink-0" aria-hidden />
                   </a>
                 ) : (
                   <span />
@@ -536,17 +528,18 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
           );
         })}
 
-        <footer className="border-t border-line pt-6 text-sm leading-relaxed text-muted [overflow-wrap:anywhere]">
+        <footer className="border-t border-line pt-6 text-center text-sm leading-relaxed text-muted [overflow-wrap:anywhere]">
+          <Rosette className="mx-auto mb-4 h-5 w-5 text-gold/80" />
           <p>
-            Arabic text from OpenITI, {content.source.license} ({content.source.openiti.replace(/^OpenITI /, "")}). Evident
-            copy errors are corrected and listed on the{" "}
-            <Link href="/about#corrections" className="font-medium text-ink underline decoration-gold/60 underline-offset-4">
+            Arabic text from OpenITI, {content.source.license} ({content.source.openiti.replace(/^OpenITI /, "")}). Evident copy
+            errors are corrected and listed on the{" "}
+            <Link href="/about#corrections" className="link font-normal">
               sources page
             </Link>
             .
           </p>
           <p className="mt-3">
-            <Link href={`/books/${book.id}`} className="font-medium text-ink underline decoration-gold/60 underline-offset-4">
+            <Link href={`/books/${book.id}`} className="link font-normal">
               Back to the book page
             </Link>
           </p>

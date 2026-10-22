@@ -22,10 +22,10 @@ export const books: Book[] = [
     summary:
       "A short Maliki manual of worship: what a person owes, then purification, then the prayer.",
     description:
-      "A short manual of worship according to Imam Malik. It opens with what an accountable person owes, then purification — wudu, ghusl, tayammum, menstruation, and postnatal bleeding — then the prayer: its times, its conditions, what it requires, and forgetfulness inside it. The Arabic is the OpenITI text. A licensed English translation of the book is not included.",
+      "A short manual of worship according to Imam Malik. It opens with what an accountable person owes, then purification — wudu, ghusl, tayammum, menstruation, and postnatal bleeding — then the prayer: its times, its conditions, what it requires, and forgetfulness inside it. The Arabic is the OpenITI text, and the English is the library's own translation, reviewed before publication.",
     status: "readable",
     coverGradient:
-      "linear-gradient(155deg, #071910 0%, #0c3b2e 42%, #146b4e 78%, #b08948 150%)",
+      "linear-gradient(170deg, #1b4638 0%, #143629 100%)",
     madhhab: "Maliki",
     originalLanguage: "Arabic",
     level: "First text",
@@ -64,7 +64,7 @@ export const books: Book[] = [
       "The classical Maliki primer students often open after a first manual of worship. Creed, fiqh, and manners in one matn. The text is not on this shelf yet.",
     status: "coming-soon",
     coverGradient:
-      "linear-gradient(160deg, #14182a 0%, #24315c 55%, #8d7340 150%)",
+      "linear-gradient(170deg, #262f45 0%, #1c2335 100%)",
     madhhab: "Maliki",
     originalLanguage: "Arabic",
     level: "Primer",
@@ -82,7 +82,7 @@ export const books: Book[] = [
       "The compact reference later Maliki study turns on. Dense, and not a starting point. Reserved here so the shelf has somewhere for it to land.",
     status: "coming-soon",
     coverGradient:
-      "linear-gradient(165deg, #1a1014 0%, #4a2430 50%, #a68448 145%)",
+      "linear-gradient(170deg, #4a2a2e 0%, #381f22 100%)",
     madhhab: "Maliki",
     originalLanguage: "Arabic",
     level: "Reference",
