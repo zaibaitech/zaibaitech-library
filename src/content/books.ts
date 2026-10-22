@@ -79,7 +79,7 @@ export const books: Book[] = [
     authorId: "khalil",
     summary: "The compact reference later Maliki study turns on.",
     description:
-      "The compact reference later Maliki study turns on. Dense, and not a starting point. Reserved here so the shelf has somewhere for it to land.",
+      "The compact reference later Maliki study turns on. Dense, and best read after the shorter primers. Planned for the library; its text is not here yet.",
     status: "coming-soon",
     coverGradient:
       "linear-gradient(170deg, #4a2a2e 0%, #381f22 100%)",

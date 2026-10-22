@@ -27,8 +27,9 @@ const config: Config = {
         water: token("water"),
       },
       fontFamily: {
-        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
-        display: ["var(--font-display)", "Georgia", "serif"],
+        // Amiri after the Latin faces supplies Arabic glyphs inside English text, such as ﷺ.
+        sans: ["var(--font-sans)", "var(--font-amiri)", "system-ui", "sans-serif"],
+        display: ["var(--font-display)", "var(--font-amiri)", "Georgia", "serif"],
         amiri: ["var(--font-amiri)", "serif"],
         arabic: ["var(--font-arabic)", "serif"],
       },

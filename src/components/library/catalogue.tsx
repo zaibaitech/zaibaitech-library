@@ -26,7 +26,7 @@ export function Catalogue({ entries }: { entries: CatalogueEntry[] }) {
   }, []);
 
   const shown = useMemo(
-    () => entries.filter((entry) => bookMatches(entry.book, entry.authorName, { query, subject })),
+    () => entries.filter((entry) => bookMatches(entry.book, entry.authorName, { query, subject }, entry.topics)),
     [entries, query, subject],
   );
   const readable = shown.filter((entry) => entry.readable);

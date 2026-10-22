@@ -43,11 +43,10 @@ export function ContinueCard({ entries, index }: { entries: CatalogueEntry[]; in
         </Link>
         <div className="min-w-0">
           <p className="font-display text-lg leading-snug text-ink">{entry.title}</p>
-          <p className="mt-0.5 truncate text-sm text-muted">
-            {resume.chapterEn}{" "}
-            <span className="font-amiri text-base" dir="rtl" lang="ar">
-              · {resume.chapterAr}
-            </span>
+          {/* Separate lines, so each language is shortened from its own end. */}
+          <p className="mt-0.5 truncate text-sm text-muted">{resume.chapterEn}</p>
+          <p className="w-fit max-w-full truncate font-amiri text-base text-muted" dir="rtl" lang="ar">
+            {resume.chapterAr}
           </p>
           <div className="mt-2.5 flex items-center gap-3">
             <div
@@ -60,7 +59,7 @@ export function ContinueCard({ entries, index }: { entries: CatalogueEntry[]; in
             >
               <div className="h-full rounded-full bg-gold" style={{ width: `${resume.percent}%` }} />
             </div>
-            <span className="text-xs tabular-nums text-muted">{resume.percent}%</span>
+            <span className="text-xs tabular-nums text-muted">{resume.percent}% through</span>
           </div>
         </div>
         <Link

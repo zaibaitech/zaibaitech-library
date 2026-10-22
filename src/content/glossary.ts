@@ -9,6 +9,11 @@ export type GlossaryTerm = {
   short: string;
   body: string;
   chapterId?: string;
+  /**
+   * Aliases whose letters are shared with an unrelated word, mapped to the vowelling the word must
+   * carry to count. Without tashkīl such a word is left unlinked rather than guessed.
+   */
+  vowelled?: Record<string, string>;
 };
 
 export const glossaryGroups: GlossaryGroup[] = [
@@ -258,6 +263,8 @@ export const glossary: GlossaryTerm[] = [
     arabic: "غسل",
     transliteration: "ghusl",
     aliases: ["غسل", "اغتسل", "اغتسلت"],
+    // غُسْل (ghusl, the full wash) shares its letters with غَسْل (washing a limb) and غُسِلَ (was washed).
+    vowelled: { غسل: "غُسْل" },
     group: "Purification",
     short: "The full wash. Due for three causes in this book.",
     body: "Ghusl is the full wash. This book makes it due for janaba, menstruation, and postnatal bleeding. Its obligations are the intention at the start, continuity, rubbing, and covering the body.",

@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Bookmark, Search, X } from "lucide-react";
 import type { BookContent } from "@/content/types";
 import { flattenUnits, searchContent } from "@/lib/reading";
+import { translationText } from "@/lib/translations";
 import { cn } from "@/lib/cn";
 
 export type SheetTab = "contents" | "search" | "bookmarks";
@@ -30,6 +31,24 @@ const TABS: { id: SheetTab; label: string }[] = [
 
 function snippet(text: string, max = 90) {
   return text.length > max ? `${text.slice(0, max).trimEnd()}…` : text;
+}
+
+/** The English around the first match, with the match marked. */
+function TranslationSnippet({ text, query }: { text: string; query: string }) {
+  const at = text.toLowerCase().indexOf(query.trim().toLowerCase());
+  if (at < 0) return <>{snippet(text, 120)}</>;
+  const end = at + query.trim().length;
+  const start = Math.max(0, text.lastIndexOf(" ", Math.max(0, at - 50)) + 1);
+  const stop = Math.min(text.length, end + 70);
+  return (
+    <>
+      {start > 0 ? "…" : ""}
+      {text.slice(start, at)}
+      <mark className="rounded-sm bg-gold-soft px-0.5 text-ink">{text.slice(at, end)}</mark>
+      {text.slice(end, stop).trimEnd()}
+      {stop < text.length ? "…" : ""}
+    </>
+  );
 }
 
 export function ReaderSheet(props: Props) {
@@ -191,7 +210,12 @@ export function ReaderSheet(props: Props) {
                   className="field min-h-12 py-2 pl-10 pr-4"
                 />
               </div>
-              <p className="mt-2 text-xs text-muted">Vowel marks and alif forms are ignored. Type at least two letters.</p>
+              <p className="mt-2 text-xs text-muted">
+                {translationId
+                  ? "Searches the Arabic and the English. In Arabic, vowel marks and alif forms are ignored."
+                  : "Searches the Arabic. Vowel marks and alif forms are ignored."}{" "}
+                Type at least two letters.
+              </p>
               <p role="status" aria-live="polite" className="mt-3 text-sm text-muted">
                 {query.trim().length >= 2 ? `${hits.length} ${hits.length === 1 ? "passage" : "passages"} found` : ""}
               </p>
@@ -206,9 +230,15 @@ export function ReaderSheet(props: Props) {
                       <span className="block text-xs text-muted">
                         {hit.chapter.headingEn} · passage {hit.unit.number}
                       </span>
-                      <span className="mt-1 block font-amiri text-xl leading-loose text-ink" dir="rtl" lang="ar">
-                        {snippet(hit.unit.arabic)}
-                      </span>
+                      {hit.field === "translation" && translationId ? (
+                        <span className="mt-1 block text-sm leading-relaxed text-ink-2">
+                          <TranslationSnippet text={translationText(hit.unit, translationId) ?? ""} query={query} />
+                        </span>
+                      ) : (
+                        <span className="mt-1 block font-amiri text-xl leading-loose text-ink" dir="rtl" lang="ar">
+                          {snippet(hit.unit.arabic)}
+                        </span>
+                      )}
                     </button>
                   </li>
                 ))}

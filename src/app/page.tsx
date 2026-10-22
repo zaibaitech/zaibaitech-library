@@ -62,7 +62,7 @@ export default function HomePage() {
         <p className="mt-1 max-w-xl text-sm leading-relaxed text-muted sm:mt-2 sm:text-base">
           The manuals in the library. Open one to read it, or see what is planned next.
         </p>
-        <ul className="mt-4 grid gap-4 sm:mt-6 lg:grid-cols-2">
+        <ul className="mt-4 grid gap-4 sm:mt-6 lg:grid-cols-2 xl:grid-cols-3">
           {shelf.map((entry) => (
             <li key={entry.id}>
               <BookRow entry={entry} />

@@ -33,7 +33,7 @@ export function ReadActions({
           <Link href={`${base}#${lastUnitId}`} className="btn btn-primary">
             Continue reading
           </Link>
-          <Link href={`${base}#${firstUnitId}`} className="link text-sm">
+          <Link href={`${base}#${firstUnitId}`} className="link inline-flex min-h-11 items-center text-sm">
             Start from the beginning
           </Link>
         </>

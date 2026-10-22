@@ -27,20 +27,28 @@ export type Segment = { text: string; termId?: string };
 
 export function segmentTerms(text: string, terms: GlossaryTerm[]): Segment[] {
   const map = new Map<string, string>();
+  const vowelling = new Map<string, string>();
   for (const term of terms) {
     map.set(foldArabic(term.arabic), term.id);
     for (const alias of term.aliases) map.set(foldArabic(alias), term.id);
+    for (const [alias, form] of Object.entries(term.vowelled ?? {})) vowelling.set(foldArabic(alias), form);
   }
+  /* A hit on an ambiguous alias counts only if the word carries the term's vowelling. */
+  const accept = (key: string, word: string) => {
+    const form = vowelling.get(key);
+    return !form || word.includes(form);
+  };
   const used = new Set<string>();
   return text.split(/([\u0600-\u06FF]+)/).map((part) => {
     if (!part || !/^[\u0600-\u06FF]+$/.test(part)) return { text: part };
     const folded = foldArabic(part);
-    let termId = map.get(folded);
+    let termId = accept(folded, part) ? map.get(folded) : undefined;
     if (!termId) {
       for (const prefix of PREFIXES) {
-        if (folded.startsWith(prefix) && folded.length - prefix.length >= 3) {
-          const hit = map.get(folded.slice(prefix.length));
-          if (hit) {
+        const stem = folded.slice(prefix.length);
+        if (folded.startsWith(prefix) && stem.length >= 3) {
+          const hit = map.get(stem);
+          if (hit && accept(stem, part)) {
             termId = hit;
             break;
           }

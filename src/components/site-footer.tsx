@@ -19,11 +19,11 @@ export function SiteFooter() {
             there are no accounts.
           </p>
         </div>
-        <nav aria-label="Footer" className="flex gap-6 text-muted sm:flex-col sm:gap-2 sm:text-right">
-          <Link href="/library" className="hover:text-ink">
+        <nav aria-label="Footer" className="flex gap-6 text-muted sm:flex-col sm:gap-0 sm:text-right">
+          <Link href="/library" className="inline-flex min-h-11 items-center hover:text-ink sm:justify-end">
             Library
           </Link>
-          <Link href="/about" className="hover:text-ink">
+          <Link href="/about" className="inline-flex min-h-11 items-center hover:text-ink sm:justify-end">
             Sources and licensing
           </Link>
         </nav>

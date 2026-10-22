@@ -47,7 +47,7 @@ export default function BookDetailPage({ params }: { params: Params }) {
       <nav aria-label="Breadcrumb" className="text-sm text-muted">
         <ol className="flex items-center gap-1.5">
           <li>
-            <Link href="/library" className="hover:text-ink">
+            <Link href="/library" className="-my-3 inline-flex min-h-11 items-center hover:text-ink">
               Library
             </Link>
           </li>
@@ -92,7 +92,7 @@ export default function BookDetailPage({ params }: { params: Params }) {
                 legacyIds={content.legacyIds}
               />
               <div className="mt-4 max-w-reading">
-                <BookLocalActions bookId={book.id} unitTotal={flat.length} />
+                <BookLocalActions bookId={book.id} unitIds={flat.map((item) => item.unit.id)} />
               </div>
             </div>
           ) : null}
@@ -171,7 +171,7 @@ export default function BookDetailPage({ params }: { params: Params }) {
                 {info.licenseUrl ? (
                   <>
                     {" · "}
-                    <a href={info.licenseUrl} className="link font-normal">
+                    <a href={info.licenseUrl} className="link -my-3 inline-flex min-h-11 items-center font-normal">
                       {info.license}
                     </a>
                   </>
@@ -201,13 +201,13 @@ export default function BookDetailPage({ params }: { params: Params }) {
                   <span className="[overflow-wrap:anywhere]">{content.source.openiti.replace(/^OpenITI /, "OpenITI ")}</span>
                 </Row>
                 <Row label="Licence">
-                  <a href={content.source.licenseUrl} className="link font-normal">
+                  <a href={content.source.licenseUrl} className="link -my-3 inline-flex min-h-11 items-center font-normal">
                     {content.source.license}
                   </a>
                   <span className="block text-faint">Attribution, non-commercial, share-alike</span>
                 </Row>
                 <Row label="Corrections">
-                  <Link href="/about#corrections" className="link font-normal">
+                  <Link href="/about#corrections" className="link -my-3 inline-flex min-h-11 items-center font-normal">
                     Listed on Sources
                   </Link>
                 </Row>

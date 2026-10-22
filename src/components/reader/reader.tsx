@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { Bookmark, ChevronLeft, ChevronRight, List, Search } from "lucide-react";
 import type { Book, BookContent, TranslationInfo } from "@/content/types";
@@ -77,12 +77,15 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
   const [termId, setTermId] = useState<string | null>(null);
   const [headerHidden, setHeaderHidden] = useState(false);
   const [displayOpen, setDisplayOpen] = useState(false);
+  const [justify, setJustify] = useState(true);
   const displayButtonRef = useRef<HTMLButtonElement>(null);
 
   const tracking = useRef(false);
   const commitRef = useRef<(() => void) | null>(null);
   const lastSaved = useRef<string | null>(null);
   const restored = useRef(false);
+  /** The passage at the top of the screen and its distance from the top, kept up to date while scrolling. */
+  const anchor = useRef<{ id: string; top: number } | null>(null);
 
   const current = flat.find((item) => item.unit.id === currentId) ?? null;
   const activeChapter = current?.chapter ?? content.chapters[0];
@@ -109,13 +112,21 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
     [book.id],
   );
 
-  /* Scroll to a passage or chapter by id. */
-  const scrollToId = useCallback((id: string) => {
-    const el = document.getElementById(id);
-    if (!el) return false;
-    el.scrollIntoView({ block: "start", behavior: "instant" });
-    return true;
-  }, []);
+  /* Scroll to a passage or chapter by id, and name it in the toolbar straight away. */
+  const scrollToId = useCallback(
+    (id: string) => {
+      const el = document.getElementById(id);
+      if (!el) return false;
+      el.scrollIntoView({ block: "start", behavior: "instant" });
+      // A chapter heading can fill the tracking band with no passage in it, so the observer may not report.
+      // A section title may hold no passages of its own: name the first passage after it.
+      const at = content.chapters.findIndex((c) => c.id === id);
+      const unitId = at < 0 ? id : content.chapters.slice(at).find((c) => c.units.length > 0)?.units[0].id;
+      if (unitId) setCurrentId(unitId);
+      return true;
+    },
+    [content],
+  );
 
   /* Jump from the panel: push a history entry so Back returns to where the reader was. */
   const jump = useCallback(
@@ -176,6 +187,59 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
     };
   }, [ready, book.id, content, scrollToId]);
 
+  /*
+   * Justify the Arabic only while a line holds enough words. Browsers widen word spaces (no kashida), so in a
+   * column under about 10.2 font sizes wide, as with large text on a phone, the gaps grow too wide to read well.
+   */
+  useEffect(() => {
+    const measure = () => {
+      const el = document.querySelector<HTMLElement>("p.arabic-text");
+      if (!el) return;
+      setJustify(el.clientWidth / parseFloat(getComputedStyle(el).fontSize) >= 10.2);
+    };
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, [fontSize, mode.kind]);
+
+  /* Remember which passage is at the top of the screen. */
+  useEffect(() => {
+    let frame = 0;
+    const capture = () => {
+      frame = 0;
+      for (const el of document.querySelectorAll<HTMLElement>("[data-unit]")) {
+        const rect = el.getBoundingClientRect();
+        // The reading line sits just below where jumps land (84px), inside the tracking band.
+        if (rect.bottom > 100) {
+          anchor.current = { id: el.id, top: rect.top };
+          return;
+        }
+      }
+    };
+    const onScroll = () => {
+      if (!frame) frame = window.requestAnimationFrame(capture);
+    };
+    capture();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.cancelAnimationFrame(frame);
+    };
+  }, []);
+
+  /*
+   * Changing what is shown or how large it is reflows every passage above the reader. Put the passage
+   * that was at the top back where it was, before the browser paints, so the place is never lost.
+   */
+  useLayoutEffect(() => {
+    const saved = anchor.current;
+    if (!tracking.current || !saved) return;
+    const el = document.getElementById(saved.id);
+    if (!el) return;
+    const shift = el.getBoundingClientRect().top - saved.top;
+    if (Math.abs(shift) > 1) window.scrollBy({ top: shift, behavior: "instant" });
+  }, [mode.kind, fontSize, translationFontSize, settings.vowelled, sheet, displayOpen, justify]);
+
   /* Track the passage at the top of the page; save it; keep the URL hash in step (replace, not push). */
   useEffect(() => {
     const nodes = document.querySelectorAll<HTMLElement>("[data-unit]");
@@ -209,7 +273,7 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
         window.clearTimeout(timer);
         timer = window.setTimeout(commit, 400);
       },
-      // The band starts just below where a jumped-to passage lands (scroll-margin 4.75rem = 76px), so the
+      // The band starts just below where a jumped-to passage lands (scroll-margin 5.25rem = 84px), so the
       // previous passage's bottom padding never counts as "on screen", and covers the top 40% of the screen.
       { rootMargin: "-92px 0px -60% 0px", threshold: 0 },
     );
@@ -236,13 +300,17 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
     return () => window.removeEventListener("popstate", onPop);
   }, [content, scrollToId]);
 
-  /* Hide the toolbar while reading down; show it on any upward scroll. */
+  /*
+   * Hide the toolbar while reading down; show it on any upward scroll. A jump (to a passage, a
+   * bookmark, a restored place) moves far in one step: show the toolbar then, so it names where the reader landed.
+   */
   useEffect(() => {
     let lastY = window.scrollY;
     const onScroll = () => {
       const y = window.scrollY;
-      if (y > lastY + 10 && y > 160) setHeaderHidden(true);
-      else if (y < lastY - 10 || y < 160) setHeaderHidden(false);
+      const jumped = Math.abs(y - lastY) > 600;
+      if (!jumped && y > lastY + 10 && y > 160) setHeaderHidden(true);
+      else if (jumped || y < lastY - 10 || y < 160) setHeaderHidden(false);
       lastY = y;
     };
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -260,7 +328,8 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
   ];
 
   return (
-    <div>
+    // The reader keeps its own place on reflow (see the layout effect above); the browser's scroll anchoring would correct twice.
+    <div className="[overflow-anchor:none]">
       <header
         className={cn(
           "sticky top-0 z-30 border-b border-line bg-paper/95 backdrop-blur-md transition-transform duration-200 motion-reduce:transition-none supports-[backdrop-filter]:bg-paper/85",
@@ -351,7 +420,7 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
             {showTranslation && info ? (
               <PanelRow label={`${info.languageLabel} size`}>
                 <Stepper
-                  label="translation"
+                  label={info.languageLabel}
                   sample="Aa"
                   sampleClass="font-display text-lg leading-none"
                   level={settings.translationScale}
@@ -451,7 +520,7 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
                     <span className="sr-only">Passage {unit.number}</span>
                     {arabicShown ? (
                       <p
-                        className={cn("arabic-text arabic-justify text-ink", wide && "lg:col-start-2 lg:row-start-1")}
+                        className={cn("arabic-text text-ink", justify && "arabic-justify", wide && "lg:col-start-2 lg:row-start-1")}
                         dir="rtl"
                         lang="ar"
                         style={{ fontSize }}
@@ -562,7 +631,8 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
           bookmarks={bookmarks}
           onToggleBookmark={toggleBookmark}
           onJump={jump}
-          translationId={info?.translationId}
+          // English is searchable whenever a translation is published, even while reading the Arabic alone.
+          translationId={info?.translationId ?? translations[0]?.translationId}
           practiceHref={practiceHref}
         />
       ) : null}

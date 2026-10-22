@@ -4,7 +4,7 @@ import { books } from "../src/content/books";
 import { authors } from "../src/content/authors";
 import { getBookContent } from "../src/content/library";
 import raw from "../src/content/books/akhdari.json";
-import { bookMatches, readableLanguages } from "../src/lib/catalogue";
+import { bookMatches, bookTopics, readableLanguages } from "../src/lib/catalogue";
 import {
   ARABIC_ONLY,
   availableTranslations,
@@ -15,7 +15,8 @@ import {
   translationText,
 } from "../src/lib/translations";
 import { positionFraction, resolveTarget, searchContent } from "../src/lib/reading";
-import { foldArabic } from "../src/lib/arabic";
+import { foldArabic, segmentTerms } from "../src/lib/arabic";
+import { glossary } from "../src/content/glossary";
 import type { Book, BookContent, TranslationFile, TranslationInfo } from "../src/content/types";
 import { attachTranslations, isPublishable, publicContent, publishBlockers } from "../src/lib/translations";
 import { validateTranslation } from "../src/lib/translation-validation";
@@ -233,4 +234,25 @@ test("validator checks notes and headings", () => {
   assert.match(all, /heading for "nowhere": no such chapter/);
   assert.match(all, /heading for "tayammum" is empty/);
   assert.doesNotMatch(all, /basmala_hamdala\.p01/);
+});
+
+test("glossary links ghusl only where the word is vowelled as ghusl", () => {
+  const linked = (text: string) => segmentTerms(text, glossary).filter((s) => s.termId === "ghusl").map((s) => s.text);
+  assert.deepEqual(linked("وَيَجِبُ الْغُسْلِ"), ["الْغُسْلِ"]);
+  // washing a limb, the passive verb, and an unvowelled form are not the full wash
+  assert.deepEqual(linked("وَغَسْلُ الْوَجْهِ"), []);
+  assert.deepEqual(linked("غُسِلَ"), []);
+  assert.deepEqual(linked("غسل"), []);
+  // other terms are unaffected
+  assert.ok(segmentTerms("الدَّلْكُ", glossary).some((s) => s.termId === "dalk"));
+});
+
+test("library search finds a book by the topics of its chapters", () => {
+  const book = books.find((b) => b.id === "akhdari")!;
+  const name = authors.find((a) => a.id === book.authorId)!.name;
+  const topics = bookTopics(getBookContent("akhdari"));
+  assert.equal(bookMatches(book, name, { query: "wudu" }), false);
+  assert.equal(bookMatches(book, name, { query: "wudu" }, topics), true);
+  assert.equal(bookMatches(book, name, { query: "tayammum" }, topics), true);
+  assert.equal(bookMatches(book, name, { query: "zzzz" }, topics), false);
 });
