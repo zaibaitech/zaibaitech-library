@@ -92,12 +92,18 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
   const commitRef = useRef<(() => void) | null>(null);
   const lastSaved = useRef<string | null>(null);
   const restored = useRef(false);
+  /** True while the contents/search/bookmarks sheet or the display panel is open. */
+  const panelOpen = useRef(false);
   /** The passage at the top of the screen and its distance from the top, kept up to date while scrolling. */
   const anchor = useRef<{ id: string; top: number } | null>(null);
 
   const current = flat.find((item) => item.unit.id === currentId) ?? null;
   const activeChapter = chapters.find((c) => c.id === headingId) ?? current?.chapter ?? chapters[0];
   const percent = Math.round(positionFraction(content, currentId) * 100);
+
+  useEffect(() => {
+    panelOpen.current = sheet !== null || displayOpen;
+  }, [sheet, displayOpen]);
 
   /* Bookmarks live on this device. */
   useEffect(() => {
@@ -140,6 +146,7 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
   const jump = useCallback(
     (id: string) => {
       setSheet(null);
+      panelOpen.current = false;
       window.history.pushState(null, "", `#${id}`);
       // wait for the panel to unlock page scrolling
       window.requestAnimationFrame(() => scrollToId(id));
@@ -281,6 +288,9 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
     let timer = 0;
     let top: string | null = null;
     const commit = () => {
+      // While a panel is open the reader is not reading: locking the page's scroll can shift which passage looks
+      // current (Safari), and that must not overwrite the saved place or the history entry Back returns to.
+      if (panelOpen.current) return;
       if (!top || lastSaved.current === top) return;
       lastSaved.current = top;
       const progress = loadProgress(book.id);

@@ -121,9 +121,12 @@ export default async function run({ browser, base, check, screenshot }) {
   check("deep link: lands on the passage", (await topPassage(p)) === "p6-ch2.p02", await topPassage(p));
   const saved = await p.evaluate(() => JSON.parse(localStorage.getItem("zaibaitech.library.progress.reviving-religion") || "{}").lastUnitId);
   check("progress: the place is saved", saved === "p6-ch2.p02", saved);
-  await p.goto(reader, { waitUntil: "networkidle" });
-  await p.waitForTimeout(1200);
-  check("progress: the bare reader URL reopens at the saved place", (await topPassage(p)) === "p6-ch2.p02", await topPassage(p));
+  // Coming back later: the book opened afresh at its bare URL.
+  const again = await ctx.newPage();
+  await again.goto(reader, { waitUntil: "networkidle" });
+  await again.waitForTimeout(1200);
+  check("progress: the bare reader URL reopens at the saved place", (await topPassage(again)) === "p6-ch2.p02", await topPassage(again));
+  await again.close();
   await p.goto(base + "/", { waitUntil: "networkidle" });
   const resume = p.locator("section[aria-labelledby=continue-heading] a.btn-primary");
   check("home: Continue reading goes to the saved place", (await resume.getAttribute("href")) === "/books/reviving-religion/read#p6-ch2.p02");
