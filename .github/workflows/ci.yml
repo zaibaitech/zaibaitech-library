@@ -58,6 +58,12 @@ jobs:
   webkit:
     name: Browser tests in WebKit (Safari engine)
     runs-on: ubuntu-latest
+    # Playwright's own image has WebKit and every system library it needs already installed, so the job does not
+    # download them from the Ubuntu mirror (which has taken most of half an hour on a slow day). The image tag must
+    # match the playwright version in package.json; the setup check below fails if they drift apart.
+    container:
+      image: mcr.microsoft.com/playwright:v1.56.1-noble
+      options: --user 1001
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
@@ -69,13 +75,14 @@ jobs:
 
       - run: npm ci
 
+      - name: Check WebKit is preinstalled for this Playwright version
+        run: node -e "const { webkit } = require('playwright'); require('node:fs').accessSync(webkit.executablePath()); console.log(webkit.executablePath())"
+
       - name: Production build
         run: npm run build
 
-      - name: Install WebKit for Playwright
-        run: npx playwright install --with-deps webkit
-
       - name: Browser tests (WebKit)
         run: npm run test:browser
+        timeout-minutes: 20
         env:
           BROWSER: webkit

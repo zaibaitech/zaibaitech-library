@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
-import { Bookmark, ChevronLeft, ChevronRight, List, Search } from "lucide-react";
+import { Bookmark, ChevronLeft, List, Search } from "lucide-react";
 import type { Book, ReadableContent, TranslationInfo } from "@/content/types";
 import { isProse } from "@/content/types";
 import { glossary } from "@/content/glossary";
@@ -597,10 +597,9 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
         {prose
           ? content.chapters.map((chapter, ci) => {
               const previous = content.chapters[ci - 1];
-              const next = content.chapters[ci + 1];
               const newPart = chapter.partEn !== "" && (!previous || previous.partEn !== chapter.partEn);
               return (
-                <section key={chapter.id} id={chapter.id} aria-labelledby={`${chapter.id}-h`} className="ebook-anchor pb-8 sm:pb-10">
+                <section key={chapter.id} id={chapter.id} aria-labelledby={`${chapter.id}-h`} className={sectionClass(ci)}>
                   <ProseHeading id={`${chapter.id}-h`} heading={chapter.headingEn} part={newPart || chapter.partEn === chapter.headingEn ? chapter.partEn : undefined} />
                   {chapter.units.map((unit) => {
                     const marked = bookmarks.includes(unit.id);
@@ -637,17 +636,15 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
                       </div>
                     );
                   })}
-                  <ChapterNav chapterId={chapter.id} headingEn={chapter.headingEn} previous={previous} next={next} />
                 </section>
               );
             })
           : content.chapters.map((chapter, ci) => {
           const previous = content.chapters[ci - 1];
-          const next = content.chapters[ci + 1];
           const showPart = !previous || previous.partEn !== chapter.partEn;
           const newPart = showPart && chapter.partAr !== chapter.headingAr;
           return (
-            <section key={chapter.id} id={chapter.id} aria-labelledby={`${chapter.id}-h`} className="ebook-anchor pb-8 sm:pb-10">
+            <section key={chapter.id} id={chapter.id} aria-labelledby={`${chapter.id}-h`} className={sectionClass(ci)}>
               <ChapterHeading
                 id={`${chapter.id}-h`}
                 index={ci + 1}
@@ -747,13 +744,25 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
                 );
               })}
 
-              <ChapterNav chapterId={chapter.id} headingEn={chapter.headingEn} previous={previous} next={next} />
             </section>
           );
         })}
 
         <footer className="border-t border-line pt-6 text-center text-sm leading-relaxed text-muted [overflow-wrap:anywhere]">
           <Rosette className="mx-auto mb-4 h-5 w-5 text-gold/80" />
+          {/* The end of the book: there is no next section, so the way on is back to the contents. */}
+          <div aria-label="End of the book" role="group" className="mb-6">
+            <p className="font-display text-base text-ink">End of {book.title}</p>
+            <button
+              type="button"
+              onClick={() => setSheet("contents")}
+              aria-haspopup="dialog"
+              className="btn btn-quiet mt-3 min-h-11 rounded-full px-5"
+            >
+              <List className="h-4 w-4" aria-hidden />
+              Back to contents
+            </button>
+          </div>
           {prose ? (
             <p lang="en">
               {content.source.copyright}. ISBN {content.source.isbn}. {content.source.edition}. All rights reserved; published in
@@ -824,44 +833,12 @@ function passageTap(id: string, setActive: (update: (current: string | null) => 
   };
 }
 
-/** Links to the sections before and after, at the foot of each section. */
-function ChapterNav({
-  chapterId,
-  headingEn,
-  previous,
-  next,
-}: {
-  chapterId: string;
-  headingEn: string;
-  previous?: { id: string; headingEn: string };
-  next?: { id: string; headingEn: string };
-}) {
-  return (
-    <nav aria-label={`After ${headingEn}`} data-after={chapterId} className="flex items-start justify-between gap-6 border-t border-line pt-2 text-sm">
-      {previous ? (
-        <a href={`#${previous.id}`} className="group flex min-h-11 max-w-[45%] items-start gap-1.5 text-muted hover:text-ink">
-          <ChevronLeft className="mt-0.5 h-4 w-4 shrink-0" aria-hidden />
-          <span>
-            <span className="block text-[0.68rem] uppercase tracking-[0.14em] text-faint">Previous</span>
-            {previous.headingEn}
-          </span>
-        </a>
-      ) : (
-        <span />
-      )}
-      {next ? (
-        <a href={`#${next.id}`} className="group flex min-h-11 max-w-[45%] items-start justify-end gap-1.5 text-right text-muted hover:text-ink">
-          <span>
-            <span className="block text-[0.68rem] uppercase tracking-[0.14em] text-faint">Next</span>
-            {next.headingEn}
-          </span>
-          <ChevronRight className="mt-0.5 h-4 w-4 shrink-0" aria-hidden />
-        </a>
-      ) : (
-        <span />
-      )}
-    </nav>
-  );
+/**
+ * The book reads as one continuous document: each section follows the last, set apart by a quiet rule and its
+ * heading rather than by a Previous/Next panel (the next section is already on the page below).
+ */
+function sectionClass(index: number) {
+  return cn("ebook-anchor pb-6 sm:pb-8", index > 0 && "border-t border-line/70 pt-8 sm:pt-10");
 }
 
 function ArabicLine({ text, onTerm }: { text: string; onTerm: (termId: string) => void }) {

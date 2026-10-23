@@ -71,6 +71,15 @@ export default async function run({ browser, base, check, screenshot }) {
     const gap = await p.evaluate(() => document.getElementById("p3-ch5").getBoundingClientRect().top - document.querySelector("header.sticky").getBoundingClientRect().bottom);
     check(`${tag}: the chapter lands clear of the toolbar`, gap >= 16, String(Math.round(gap)));
 
+    // Chapter transitions: the next chapter's heading follows the last paragraph closely, with no panel between.
+    const transition = await p.evaluate(() => {
+      const prev = document.getElementById("p3-ch4");
+      const lastPara = [...prev.querySelectorAll("[data-unit]")].at(-1).getBoundingClientRect();
+      const nextHeading = document.querySelector("#p3-ch5 h2").getBoundingClientRect();
+      return { gap: nextHeading.top - lastPara.bottom, between: prev.querySelectorAll("nav").length };
+    });
+    check(`${tag}: chapter transition is compact, with no panel`, transition.between === 0 && transition.gap > 24 && transition.gap < 140, `${Math.round(transition.gap)}px`);
+
     // Paragraph controls: no bookmark icon drawn after untouched paragraphs.
     const drawnAfterParagraphs = await p.evaluate(
       () =>
