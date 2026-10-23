@@ -1,25 +1,10 @@
 // The three English books (Omar Ceesay): discovery, the book pages, and reading them in the shared reader.
+import { watchErrors } from "./harness.mjs";
 const BOOKS = [
   { id: "reviving-religion", title: "Reviving Religion in the Self and Life", editor: "Bai Lamin Dondeh" },
   { id: "knowing-the-self", title: "Knowing the Self: The Path to Uprightness", editor: "Dr. Alieu Gibba" },
   { id: "balance-of-stations", title: "The Balance of Spiritual Stations in the Muslim’s Life", editor: "Muhammed MK Kah" },
 ];
-
-/** Page errors and console errors, leaving out the notice for a prefetch the browser cancelled when the test moved on. */
-function watch(page) {
-  const errors = [];
-  const cancelled = new Set();
-  page.on("pageerror", (e) => errors.push(e.message));
-  page.on("console", (m) => m.type() === "error" && errors.push(m.text()));
-  page.on("requestfailed", (r) => {
-    if (r.url().includes("_rsc=") && /ERR_ABORTED|cancel/i.test(r.failure()?.errorText ?? "")) cancelled.add(new URL(r.url()).pathname);
-  });
-  return () =>
-    errors.filter((text) => {
-      const m = /^Failed to fetch RSC payload for (\S+?)\.? Falling back/.exec(text);
-      return !(m && cancelled.has(new URL(m[1]).pathname));
-    });
-}
 
 const overflow = (page) => page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
 /** The passage at the reading line, as the reader's own tracking sees it. */
@@ -49,7 +34,10 @@ export default async function run({ browser, base, check, screenshot }) {
   for (const width of [360, 390, 1280]) {
     const ctx = await browser.newContext({ viewport: { width, height: 860 }, isMobile: width < 800, hasTouch: width < 800 });
     const p = await ctx.newPage();
-    const errors = watch(p);
+    const errors = (() => {
+    const w = watchErrors(p, { requests: false });
+    return () => w.problems();
+  })();
     for (const book of BOOKS) {
       await p.goto(`${base}/books/${book.id}`, { waitUntil: "networkidle" });
       check(`${width}px ${book.id}: book page has no horizontal overflow`, (await overflow(p)) <= 0, String(await overflow(p)));
@@ -78,8 +66,19 @@ export default async function run({ browser, base, check, screenshot }) {
 
   // Reading behaviours on a phone.
   const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
-  const p = await ctx.newPage();
-  const errors = watch(p);
+  // Each scenario after the history checks starts on a fresh page in the same context (saved progress and
+  // bookmarks carry over in localStorage), as in the navigation suite: in Playwright's WebKit, a full page load in
+  // a tab that has been through Back and Forward can crash the tab. Leaving the reader after Back and Forward is
+  // checked as a reader does it, by its own link, in the navigation suite.
+  let p = null;
+  const watchers = [];
+  const fresh = async () => {
+    if (p) await p.close();
+    p = await ctx.newPage();
+    watchers.push(watchErrors(p, { requests: false }));
+  };
+  const errors = () => watchers.flatMap((w) => w.problems());
+  await fresh();
   const reader = `${base}/books/reviving-religion/read`;
 
   // Settings: text size and theme only.
@@ -124,23 +123,33 @@ export default async function run({ browser, base, check, screenshot }) {
   const nextLink = p.locator("nav[data-after='p3-ch5'] a").filter({ hasText: "Next" });
   check("section nav: next section is Conclusion of Part 3", (await nextLink.innerText()).includes("Conclusion of Part 3"));
 
+  await fresh();
   // Deep link to a passage, and saved progress.
   await p.goto(`${reader}#p6-ch2.p02`, { waitUntil: "networkidle" });
   await p.waitForTimeout(1200);
   check("deep link: lands on the passage", (await topPassage(p)) === "p6-ch2.p02", await topPassage(p));
   const saved = await p.evaluate(() => JSON.parse(localStorage.getItem("zaibaitech.library.progress.reviving-religion") || "{}").lastUnitId);
   check("progress: the place is saved", saved === "p6-ch2.p02", saved);
-  await p.goto(reader, { waitUntil: "networkidle" });
-  await p.waitForTimeout(1200);
-  check("progress: the bare reader URL reopens at the saved place", (await topPassage(p)) === "p6-ch2.p02", await topPassage(p));
+  // Coming back later: the book opened afresh at its bare URL.
+  const again = await ctx.newPage();
+  await again.goto(reader, { waitUntil: "networkidle" });
+  await again.waitForTimeout(1200);
+  check("progress: the bare reader URL reopens at the saved place", (await topPassage(again)) === "p6-ch2.p02", await topPassage(again));
+  await again.close();
   await p.goto(base + "/", { waitUntil: "networkidle" });
   const resume = p.locator("section[aria-labelledby=continue-heading] a.btn-primary");
   check("home: Continue reading goes to the saved place", (await resume.getAttribute("href")) === "/books/reviving-religion/read#p6-ch2.p02");
 
+  await fresh();
   // Bookmarks.
   await p.goto(`${reader}#p6-ch2.p02`, { waitUntil: "networkidle" });
   await p.waitForTimeout(1000);
   const mark = p.getByRole("button", { name: /^Bookmark Chapter 2: Zakat as an Instrument of Social Justice, passage 2$/ });
+  // Paragraph actions stay out of the text until wanted: no button is drawn after an untouched passage.
+  const drawn = () => mark.evaluate((el) => getComputedStyle(el).clip !== "rect(0px, 0px, 0px, 0px)" && el.getBoundingClientRect().width >= 44);
+  check("bookmark: no button drawn after an untouched passage", !(await drawn()));
+  await p.locator("#p6-ch2\\.p02 p").first().click({ position: { x: 30, y: 10 } });
+  check("bookmark: tapping the passage shows its bookmark button", await drawn());
   await mark.click();
   check("bookmark: pressed", (await mark.getAttribute("aria-pressed")) === "true");
   await p.reload({ waitUntil: "networkidle" });
@@ -150,6 +159,7 @@ export default async function run({ browser, base, check, screenshot }) {
   check("bookmark: listed with its English text", (await p.getByRole("dialog").innerText()).includes("Zakat as an Instrument"));
   await p.keyboard.press("Escape");
 
+  await fresh();
   // Search, ignoring the transliteration marks.
   await p.goto(`${base}/books/balance-of-stations/read`, { waitUntil: "networkidle" });
   await p.getByRole("button", { name: "Search this book" }).click();
@@ -163,6 +173,7 @@ export default async function run({ browser, base, check, screenshot }) {
   await p.waitForTimeout(900);
   check("search: a result opens its passage", /#.+\.p\d\d$/.test(p.url()) && (await topPassage(p)) === new URL(p.url()).hash.slice(1), p.url());
 
+  await fresh();
   // A table, and the references.
   await p.goto(`${base}/books/knowing-the-self/read#p2-ch6.p05`, { waitUntil: "networkidle" });
   await p.waitForTimeout(800);
