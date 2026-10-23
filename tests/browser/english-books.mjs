@@ -119,9 +119,47 @@ export default async function run({ browser, base, check, screenshot }) {
   await p.waitForTimeout(1000);
   check("history: Forward returns to the chapter", (await topPassage(p)) === "p3-ch5.p01", await topPassage(p));
 
-  // Next and previous sections at the foot of each section.
-  const nextLink = p.locator("nav[data-after='p3-ch5'] a").filter({ hasText: "Next" });
-  check("section nav: next section is Conclusion of Part 3", (await nextLink.innerText()).includes("Conclusion of Part 3"));
+  // Continuous reading: one document, sections in book order, no Previous/Next panels between them.
+  const layout = await p.evaluate(() => {
+    const sections = [...document.querySelectorAll("article > section[id]")];
+    const after = document.getElementById("p3-ch5").nextElementSibling;
+    return {
+      ids: sections.map((s) => s.id),
+      headings: sections.map((s) => s.querySelector("h2").textContent.trim()),
+      navs: document.querySelectorAll("article nav").length,
+      prevNext: [...document.querySelectorAll("article a, article button")].filter((e) => /^(Previous|Next)\b/.test(e.textContent.trim())).length,
+      afterCh5: after?.id,
+      afterCh5Heading: after?.querySelector("h2")?.textContent.trim(),
+    };
+  });
+  await p.getByRole("button", { name: /^Contents/ }).click();
+  const listed = (await p.getByRole("dialog").locator("ol li button").allInnerTexts()).map((t) => t.trim());
+  await p.keyboard.press("Escape");
+  check("continuous: sections render in the order of the contents", layout.headings.join("|") === listed.join("|"), `${layout.headings.length} vs ${listed.length}`);
+  check("continuous: no Previous/Next panels between sections", layout.navs === 0 && layout.prevNext === 0, `${layout.navs} navs, ${layout.prevNext} links`);
+  check(
+    "continuous: Chapter 5 flows straight into the next section's heading",
+    layout.afterCh5 === "p3-conclusion" && layout.afterCh5Heading === "Conclusion of Part 3",
+    `${layout.afterCh5} ${layout.afterCh5Heading}`,
+  );
+
+  // The end of the book: a compact note and the way back to the contents; no next section is offered.
+  const end = p.getByRole("group", { name: "End of the book" });
+  await end.scrollIntoViewIfNeeded();
+  const endText = await end.innerText();
+  check("end of book: names the book", endText.includes("End of Reviving Religion in the Self and Life"), endText);
+  check("end of book: no Next action", !/\bNext\b/.test(endText) && (await end.getByRole("link").count()) === 0);
+  await end.getByRole("button", { name: "Back to contents" }).click();
+  const tab = await p.getByRole("tab", { selected: true }).innerText();
+  check("end of book: Back to contents opens the contents", (await p.getByRole("dialog").isVisible()) && tab.startsWith("Contents"), tab);
+  await p.keyboard.press("Escape");
+  // The Arabic reader reads the same way.
+  await p.goto(`${base}/books/akhdari/read`, { waitUntil: "networkidle" });
+  const akhdari = await p.evaluate(() => ({
+    navs: document.querySelectorAll("article nav").length,
+    sections: document.querySelectorAll("article > section[id]").length,
+  }));
+  check("continuous: Al-Akhdari has no Previous/Next panels either", akhdari.navs === 0 && akhdari.sections === 21, JSON.stringify(akhdari));
 
   await fresh();
   // Deep link to a passage, and saved progress.
