@@ -1,0 +1,69 @@
+{
+  "note": "Open questions for the reviewer. Nothing listed here has been changed in the text. Each entry: id, kind, passages (if any), detail, status ('open' until the reviewer decides).",
+  "issues": [
+    {
+      "id": "q1",
+      "kind": "editorial-insertion",
+      "passages": [
+        "quran-prostrations.p01",
+        "quran-prostrations.p03",
+        "fasting.p11",
+        "itikaf.p02",
+        "marriage-divorce.p09",
+        "marriage-divorce.p10",
+        "obligations-sunnas.p19",
+        "obligations-sunnas.p26"
+      ],
+      "detail": "The source carries modern sura-and-verse references in Western digits after Quran quotations (e.g. 'الأعراف 206', 'ص 24 ص 25'). They are almost certainly the printed edition's additions, not Ibn Abi Zayd's words. They are kept as the source has them. Reviewer to decide whether to drop them from the reading text or show them as references.",
+      "status": "open"
+    },
+    {
+      "id": "q2",
+      "kind": "markup",
+      "passages": [],
+      "detail": "The source marks 28 Quran quotations with @QB@...@QE@. The build removes the markers and keeps the words, so quotations are not yet set apart in the reader. A later change could mark them (for example with ornate brackets) once the reviewer confirms the spans.",
+      "status": "open"
+    },
+    {
+      "id": "q3",
+      "kind": "witness-variant",
+      "passages": [],
+      "detail": "Chapter headings: the base (JK000171) and the reference (Shamela0011373) agree on all 45 in order, except that the reference writes 'الماموم' for 'المأموم' (imamate) and shortens the heading of 'dying-and-the-dead' to 'باب ما يفعل بالمحتضر وفي غسل الميت'. The base wording is used.",
+      "status": "open"
+    },
+    {
+      "id": "q4",
+      "kind": "segmentation",
+      "passages": [
+        "muqaddima.p03",
+        "wudu.p05",
+        "ghusl.p01",
+        "prayer.p12",
+        "prayer-miscellany.p06",
+        "prayer-miscellany.p11",
+        "funeral-prayer.p03",
+        "zakat-livestock.p01",
+        "sales.p01",
+        "blood-hudud.p01",
+        "inheritance.p26",
+        "food-drink.p01"
+      ],
+      "detail": "Passages follow the source's paragraph marks (667 passages, median 29 words). These 12 run to 150-378 words. Boundaries should be checked against the chosen printed edition, as was done for al-Akhdari; any re-segmentation must keep earlier ids working through legacy ids.",
+      "status": "open"
+    },
+    {
+      "id": "q5",
+      "kind": "vowelling",
+      "passages": [],
+      "detail": "Every available OpenITI version is unvowelled. The edition will be published without tashkil unless a vowelled source with a compatible licence is found; the library does not add vowel marks itself.",
+      "status": "open"
+    },
+    {
+      "id": "q6",
+      "kind": "library-label",
+      "passages": [],
+      "detail": "The introduction has no heading in the source. The reader labels it 'المقدمة' / 'The author's introduction'. All English chapter labels in chapters.json are the library's navigation labels, unreviewed.",
+      "status": "open"
+    }
+  ]
+}

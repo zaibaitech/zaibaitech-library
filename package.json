@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "content": "node scripts/build-akhdari.mjs",
+    "content:risala": "node scripts/build-risala.mjs",
     "content:three-books": "node scripts/build-three-books.mjs",
     "test": "tsx --test tests/*.test.ts",
     "translations:check": "tsx scripts/validate-translations.ts",

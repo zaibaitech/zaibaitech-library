@@ -154,6 +154,8 @@ export type TextUnit = {
   number: number;
   arabic: string;
   arabicVowelled?: string;
+  /** Page of the source edition where the passage begins, e.g. "V01P012". */
+  sourcePage?: string;
   translations?: Translation[];
 };
 
