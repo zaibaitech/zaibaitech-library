@@ -35,8 +35,22 @@ npm run typecheck
 npm run lint
 npm test          # content integrity, translation rules, catalogue filter, local storage
 npm run build
+npm run test:browser   # needs the build; starts the server itself
 npm start
 ```
+
+`npm run test:browser` runs the Playwright suites in `tests/browser/` against the production build:
+- **accessibility:** contrast, focus, names, touch targets, 200% text, reduced motion.
+- **reader:** reading modes, sizes, tashkīl, bookmarks, search, restore.
+- **navigation:** landing on a passage, back/forward.
+- **migration:** old passage ids.
+- **publication:** what the published translation shows.
+- **qa-regressions:** the preview QA findings.
+- **arabic-collisions:** no vowel mark touches the line below, at six widths and sizes.
+
+Name suites to run only some (`npm run test:browser -- reader`). Set `SCREENSHOT_DIR` to save screenshots, `CHROMIUM_PATH` to use a particular browser, and `BASE_URL` to test a server that is already running.
+
+GitHub Actions (`.github/workflows/ci.yml`) runs every check above on each pull request and on `main`.
 
 Next.js 14 App Router, TypeScript, Tailwind, lucide-react. All book routes are statically generated. Reading position, bookmarks, text size, tashkīl, reading mode and theme live in `localStorage` on the device. No account, no payment, no database.
 
