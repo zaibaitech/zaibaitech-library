@@ -65,14 +65,17 @@ export async function scrollDown(page, pixels) {
 
 /**
  * Collects console errors, page errors and failed requests on a page, leaving out the trace of a Next.js prefetch
- * (?_rsc=) that the browser cancelled because the test itself navigated away. That is the test's doing, not the app's;
- * a prefetch the server actually fails still shows up as a 4xx/5xx response, and one that fails for any other reason
- * as a failed request.
- * A prefetch counts as cancelled when the browser reports it cancelled, or when it started and never got a response
- * or a failure before the page went away (WebKit does not always report those).
- * A cancelled prefetch leaves two kinds of console line: Next's "Failed to fetch RSC payload for <url>. Falling back"
- * notice (matched by page, since Chromium builds word it differently), and in WebKit the browser's own
- * "Fetch API cannot load <url> due to access control checks." (matched by that request's path and query).
+ * (?_rsc=) that the browser dropped because the test itself navigated away. That is the test's doing, not the app's;
+ * a prefetch the server actually fails still shows up as a 4xx/5xx response, and one that fails on the network for
+ * any other reason as a failed request.
+ * A dropped prefetch leaves one of two console lines:
+ * - Next's "Failed to fetch RSC payload for <url>. Falling back" notice. Excused only for a page whose prefetch the
+ *   browser reported cancelled, or that started and got neither a response nor a failure (matched by page, since
+ *   Chromium builds word the notice differently).
+ * - WebKit's own "… <url> due to access control checks." WebKit blocks a fetch started while the page unloads before
+ *   it reaches the network (so no request event is seen) and words it as an access-control failure. Access control
+ *   only applies across origins, so for a prefetch of the page's own origin the line can only mean that; it is
+ *   excused only for that origin.
  * Read `problems()` after the page has settled: a line and its cancelled request can arrive in either order.
  */
 export function watchErrors(page, { requests = true } = {}) {
@@ -82,8 +85,17 @@ export function watchErrors(page, { requests = true } = {}) {
   const started = new Set();
   const answered = new Set();
   const cancelled = new Set();
+  let unloadBlocked = 0;
   page.on("pageerror", (e) => errors.push(e.message));
-  page.on("console", (m) => m.type() === "error" && errors.push(m.text()));
+  page.on("console", (m) => {
+    if (m.type() !== "error") return;
+    const text = m.text();
+    const blocked = /(\S*_rsc=\S*?) due to access control checks/.exec(text);
+    // The line may or may not spell the scheme; compare what follows it with the page's own host.
+    const sameOrigin = blocked && blocked[1].replace(/^[a-z]+:/i, "").replace(/^\/+/, "").startsWith(`${new URL(page.url()).host}/`);
+    if (sameOrigin) unloadBlocked++;
+    else errors.push(text);
+  });
   page.on("request", (r) => r.url().includes("_rsc=") && started.add(key(r.url())));
   page.on("requestfinished", (r) => r.url().includes("_rsc=") && answered.add(key(r.url())));
   page.on("requestfailed", (r) => {
@@ -94,23 +106,18 @@ export function watchErrors(page, { requests = true } = {}) {
     }
   });
   if (requests) page.on("response", (r) => r.status() >= 400 && failed.push(`${r.status()} ${r.url()}`));
-  const wasDropped = (k) => cancelled.has(k) || (started.has(k) && !answered.has(k));
-  const cancelledTrace = (text) => {
+  const dropped = (path) =>
+    [...started, ...cancelled].some((k) => k.split("?")[0] === path && (cancelled.has(k) || !answered.has(k)));
+  const cancelledNotice = (text) => {
     const notice = /^Failed to fetch RSC payload for (\S+?)\.? Falling back/.exec(text);
-    if (notice) {
-      const path = new URL(notice[1]).pathname;
-      return [...started, ...cancelled].some((k) => k.split("?")[0] === path && wasDropped(k));
-    }
-    // The URL is matched by its ending, so it does not matter how the line writes the scheme and host.
-    const webkit = /(\S*_rsc=\S*?) due to access control checks/.exec(text);
-    return Boolean(webkit) && [...started, ...cancelled].some((k) => webkit[1].endsWith(k) && wasDropped(k));
+    return Boolean(notice) && dropped(new URL(notice[1]).pathname);
   };
   return {
     problems: () => {
-      const found = [...failed, ...errors.filter((text) => !cancelledTrace(text))];
+      const found = [...failed, ...errors.filter((text) => !cancelledNotice(text))];
       if (!found.length) return found;
       const unanswered = [...started].filter((k) => !answered.has(k) && !cancelled.has(k)).length;
-      return [`(prefetches: ${started.size} started, ${cancelled.size} reported cancelled, ${unanswered} unanswered)`, ...found];
+      return [`(prefetches: ${started.size} started, ${cancelled.size} reported cancelled, ${unanswered} unanswered, ${unloadBlocked} blocked on unload)`, ...found];
     },
   };
 }
