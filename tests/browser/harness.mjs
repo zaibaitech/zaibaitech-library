@@ -87,16 +87,29 @@ export function watchErrors(page, { requests = true } = {}) {
   const cancelled = new Set();
   let unloadBlocked = 0;
   page.on("pageerror", (e) => errors.push(e.message));
+  // The site's own host, from its own requests: page.url() can be mid-navigation when the line is logged.
+  const hosts = new Set();
+  const raw = [];
   page.on("console", (m) => {
     if (m.type() !== "error") return;
     const text = m.text();
     const blocked = /(\S*_rsc=\S*?) due to access control checks/.exec(text);
-    // The line may or may not spell the scheme; compare what follows it with the page's own host.
-    const sameOrigin = blocked && blocked[1].replace(/^[a-z]+:/i, "").replace(/^\/+/, "").startsWith(`${new URL(page.url()).host}/`);
+    // The line may or may not spell the scheme, so look for the host anywhere before the path.
+    const sameOrigin = blocked && [...hosts].some((host) => blocked[1].includes(`${host}/`));
     if (sameOrigin) unloadBlocked++;
-    else errors.push(text);
+    else {
+      errors.push(text);
+      if (raw.length < 2) raw.push(`${JSON.stringify(text).slice(0, 140)} on ${page.url()} hosts=${[...hosts].join(",")}`);
+    }
   });
-  page.on("request", (r) => r.url().includes("_rsc=") && started.add(key(r.url())));
+  page.on("request", (r) => {
+    try {
+      hosts.add(new URL(r.url()).host);
+    } catch {
+      /* not a URL with a host */
+    }
+    if (r.url().includes("_rsc=")) started.add(key(r.url()));
+  });
   page.on("requestfinished", (r) => r.url().includes("_rsc=") && answered.add(key(r.url())));
   page.on("requestfailed", (r) => {
     if (r.url().includes("_rsc=") && wasCancelled(r)) cancelled.add(key(r.url()));
@@ -117,7 +130,10 @@ export function watchErrors(page, { requests = true } = {}) {
       const found = [...failed, ...errors.filter((text) => !cancelledNotice(text))];
       if (!found.length) return found;
       const unanswered = [...started].filter((k) => !answered.has(k) && !cancelled.has(k)).length;
-      return [`(prefetches: ${started.size} started, ${cancelled.size} reported cancelled, ${unanswered} unanswered, ${unloadBlocked} blocked on unload)`, ...found];
+      return [
+        `(prefetches: ${started.size} started, ${cancelled.size} reported cancelled, ${unanswered} unanswered, ${unloadBlocked} blocked on unload; raw: ${raw.join(" ; ")})`,
+        ...found,
+      ];
     },
   };
 }

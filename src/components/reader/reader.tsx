@@ -321,15 +321,34 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
   useEffect(() => {
     const previous = window.history.scrollRestoration;
     window.history.scrollRestoration = "manual";
+    let settle = 0;
+    let userMoved = false;
+    const mark = () => {
+      userMoved = true;
+    };
     const onPop = () => {
       const hash = currentHash();
       if (!hash) return;
       const id = content.chapters.some((c) => c.id === hash) ? hash : (resolveTarget(content, hash)?.unit.id ?? hash);
+      userMoved = false;
       window.requestAnimationFrame(() => scrollToId(id));
+      // Safari can move the page again after popstate while the router finishes the history step: place the
+      // passage once more when that has settled, unless the reader has started scrolling themselves.
+      window.clearTimeout(settle);
+      settle = window.setTimeout(() => {
+        if (!userMoved) scrollToId(id);
+      }, 250);
     };
     window.addEventListener("popstate", onPop);
+    window.addEventListener("wheel", mark, { passive: true });
+    window.addEventListener("touchmove", mark, { passive: true });
+    window.addEventListener("keydown", mark);
     return () => {
       window.removeEventListener("popstate", onPop);
+      window.removeEventListener("wheel", mark);
+      window.removeEventListener("touchmove", mark);
+      window.removeEventListener("keydown", mark);
+      window.clearTimeout(settle);
       window.history.scrollRestoration = previous;
     };
   }, [content, scrollToId]);
