@@ -1,4 +1,4 @@
-import { openDisplay, closeDisplay, setShow, setTheme } from "./harness.mjs";
+import { openDisplay, closeDisplay, setShow, setTheme, scrollDown } from "./harness.mjs";
 
 export default async function run({ browser, base, check, screenshot }) {
   for (const w of [360, 390, 412]) {
@@ -64,7 +64,7 @@ export default async function run({ browser, base, check, screenshot }) {
   const topChapter = await page.evaluate(() => { const el = document.getElementById("tayammum"); return Math.round(el.getBoundingClientRect().top); });
   check("contents: jumped to tayammum", hash.startsWith("#tayammum") && topChapter < 250 && topChapter > -50, `${hash} top=${topChapter}`);
   // scroll then progress saved + restored
-  await page.mouse.wheel(0, 1500);
+  await scrollDown(page, 1500);
   await page.waitForTimeout(1200);
   const saved = await page.evaluate(() => JSON.parse(localStorage.getItem("zaibaitech.library.progress.akhdari") || "{}"));
   check("progress: saved while scrolling", !!saved.lastUnitId, saved.lastUnitId);

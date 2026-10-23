@@ -315,8 +315,12 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
   /*
    * Back and Forward between passages. Next's router owns popstate and the
    * browser does not scroll to the fragment for these entries, so do it here.
+   * The browser's own scroll restoration is switched off while the reader is open: Safari applied it after this
+   * handler, putting back a stale position (the right chapter, the wrong passage).
    */
   useEffect(() => {
+    const previous = window.history.scrollRestoration;
+    window.history.scrollRestoration = "manual";
     const onPop = () => {
       const hash = currentHash();
       if (!hash) return;
@@ -324,7 +328,10 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
       window.requestAnimationFrame(() => scrollToId(id));
     };
     window.addEventListener("popstate", onPop);
-    return () => window.removeEventListener("popstate", onPop);
+    return () => {
+      window.removeEventListener("popstate", onPop);
+      window.history.scrollRestoration = previous;
+    };
   }, [content, scrollToId]);
 
   /*

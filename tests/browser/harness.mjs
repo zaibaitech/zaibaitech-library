@@ -52,3 +52,13 @@ export async function setTheme(page, label) {
 
 /** A request the browser itself cancelled. Chromium says net::ERR_ABORTED; WebKit says it was cancelled. */
 export const wasCancelled = (request) => /ERR_ABORTED|cancel/i.test(request.failure()?.errorText ?? "");
+
+/** Scroll like a reader would. Playwright cannot send wheel events to mobile WebKit, so there it scrolls the window. */
+export async function scrollDown(page, pixels) {
+  try {
+    await page.mouse.wheel(0, pixels);
+  } catch (error) {
+    if (!/not supported/i.test(String(error?.message))) throw error;
+    await page.evaluate((dy) => window.scrollBy(0, dy), pixels);
+  }
+}

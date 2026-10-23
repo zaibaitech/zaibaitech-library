@@ -154,7 +154,16 @@ export default async function run({ browser, base, check }) {
       await p.goto(base + path, { waitUntil: "networkidle" });
       await p.addStyleTag({ content: "html{font-size:200% !important}" }); await p.waitForTimeout(300);
       const o = await p.evaluate(() => document.documentElement.scrollWidth - innerWidth);
-      if (o > 0) over.push(`${path}:${o}`);
+      if (o > 0) {
+        // Name what sticks out, so a failure says where to look.
+        const culprits = await p.evaluate(() =>
+          [...document.querySelectorAll("body *")]
+            .filter((e) => e.getBoundingClientRect().right > innerWidth + 0.5 && !e.closest("[aria-hidden=true], svg"))
+            .slice(0, 4)
+            .map((e) => `${e.tagName.toLowerCase()}${e.className && typeof e.className === "string" ? "." + e.className.split(" ").slice(0, 3).join(".") : ""} right=${Math.round(e.getBoundingClientRect().right)} "${(e.textContent || "").trim().slice(0, 30)}"`),
+        );
+        over.push(`${path}:${o} [${culprits.join("; ")}]`);
+      }
     }
     check("200% text size: no horizontal overflow", over.length === 0, over.join(" "));
     await ctx.close();
