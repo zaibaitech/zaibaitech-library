@@ -11,11 +11,15 @@ export default async function run({ browser, base, check, screenshot }) {
     // A Next.js prefetch (?_rsc=) still in flight when the test itself navigates away is cancelled by the browser
     // (net::ERR_ABORTED) and Next logs a fallback notice. That is the test's doing, not the app's; a prefetch the
     // server actually fails still shows up as a 4xx/5xx response below.
-    const cancelledPrefetch = (r) => r.url().includes("_rsc=") && r.failure()?.errorText === "net::ERR_ABORTED";
-    const cancelledNotice = (text) => text.startsWith("Failed to fetch RSC payload") && text.includes("TypeError: network error");
+    // Matched by page, not by message wording (Chromium builds word the fetch error differently), and only
+    // after all events are in, since the notice and the cancelled request can arrive in either order.
+    const cancelledPages = new Set();
     p.on("pageerror", (e) => errs.push(e.message));
-    p.on("console", (m) => m.type() === "error" && !cancelledNotice(m.text()) && errs.push(m.text()));
-    p.on("requestfailed", (r) => !cancelledPrefetch(r) && failed.push(`${r.failure()?.errorText} ${r.url()}`));
+    p.on("console", (m) => m.type() === "error" && errs.push(m.text()));
+    p.on("requestfailed", (r) => {
+      if (r.url().includes("_rsc=") && r.failure()?.errorText === "net::ERR_ABORTED") cancelledPages.add(new URL(r.url()).pathname);
+      else failed.push(`${r.failure()?.errorText} ${r.url()}`);
+    });
     p.on("response", (r) => r.status() >= 400 && failed.push(`${r.status()} ${r.url()}`));
     let over = [];
     for (const path of pages) {
@@ -24,7 +28,12 @@ export default async function run({ browser, base, check, screenshot }) {
       if (o > 0) over.push(`${path}:${o}`);
     }
     check(`${theme} ${w}px: no horizontal overflow on ${pages.length} pages`, over.length === 0, over.join(" "));
-    check(`${theme} ${w}px: no console errors or failed requests`, errs.length === 0 && failed.length === 0, [...errs, ...failed].join(" | ").slice(0, 300));
+    const cancelledNotice = (text) => {
+      const match = /^Failed to fetch RSC payload for (\S+?)\.? Falling back/.exec(text);
+      return Boolean(match) && cancelledPages.has(new URL(match[1]).pathname);
+    };
+    const realErrors = errs.filter((text) => !cancelledNotice(text));
+    check(`${theme} ${w}px: no console errors or failed requests`, realErrors.length === 0 && failed.length === 0, [...realErrors, ...failed].join(" | ").slice(0, 300));
     await ctx.close();
   }
 
