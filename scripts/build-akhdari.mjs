@@ -188,7 +188,7 @@ const chapterMeta = {
   },
   salah_title: {
     headingEn: "The prayer",
-    summaryEn: "A section title. The chapters after this one are about the prayer.",
+    summaryEn: "Opens the part of the book on the prayer: its times, conditions, form and makeup, and forgetfulness in it.",
     partEn: "Prayer",
     partAr: "الصلاة",
   },

@@ -17,7 +17,7 @@ export default function GlossaryPage() {
       <h1 className="mt-2 font-display text-4xl text-ink sm:text-5xl">Glossary</h1>
       <p className="mt-4 text-base leading-relaxed text-muted">
         These notes say how Mukhtasar al-Akhdari uses a word. They are not a translation of the sentences the word sits in.
-        In the reader, the first time a word appears in a passage it can be tapped.
+        In the reader, the first time a word appears in a passage it can be selected.
       </p>
       <p className="mt-3 rounded-2xl border border-line bg-paper-2 px-4 py-3 text-sm leading-relaxed text-muted">
         These are editorial notes for learners, written from the text of the book. They have not yet been reviewed by a
@@ -44,7 +44,7 @@ export default function GlossaryPage() {
                   {term.chapterId ? (
                     <Link
                       href={`/books/akhdari/read#${term.chapterId}`}
-                      className="mt-3 inline-flex text-sm font-medium text-emerald underline decoration-gold underline-offset-4"
+                      className="mt-1 inline-flex min-h-11 items-center text-sm font-medium text-emerald underline decoration-gold underline-offset-4"
                     >
                       Open the chapter
                     </Link>

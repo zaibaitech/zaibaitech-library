@@ -3,7 +3,7 @@ import { books } from "@/content/books";
 import { getBookContent } from "@/content/library";
 import { getSubject } from "@/content/subjects";
 import type { Book } from "@/content/types";
-import { readableLanguages } from "@/lib/catalogue";
+import { bookTopics, readableLanguages } from "@/lib/catalogue";
 import { flattenUnits } from "@/lib/reading";
 
 /** Plain, serialisable data for a catalogue card. Built on the server. */
@@ -20,6 +20,8 @@ export type CatalogueEntry = {
   authorAr: string;
   subjects: { id: string; label: string }[];
   languages: string[];
+  /** Chapter headings and summaries, searched by the library page. */
+  topics: string;
   coverGradient: string;
   /** Book fields the cover needs, kept whole so BookPlate stays a pure component. */
   book: Book;
@@ -46,6 +48,7 @@ export function catalogueEntries(): CatalogueEntry[] {
       authorAr: author.nameAr,
       subjects: book.subjects.map((id) => ({ id, label: getSubject(id).label })),
       languages: readableLanguages(book, content),
+      topics: bookTopics(content),
       coverGradient: book.coverGradient,
       book,
     };

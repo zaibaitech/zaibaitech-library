@@ -27,13 +27,13 @@ export function ReadActions({
 
   const base = `/books/${bookId}/read`;
   return (
-    <div className="flex flex-wrap items-center gap-3">
+    <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
       {lastUnitId ? (
         <>
           <Link href={`${base}#${lastUnitId}`} className="btn btn-primary">
             Continue reading
           </Link>
-          <Link href={`${base}#${firstUnitId}`} className="btn btn-quiet">
+          <Link href={`${base}#${firstUnitId}`} className="link inline-flex min-h-11 items-center text-sm">
             Start from the beginning
           </Link>
         </>

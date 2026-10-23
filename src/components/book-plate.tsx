@@ -1,43 +1,53 @@
 import type { Book } from "@/content/types";
-import { GeometricBackdrop } from "./geometric";
+import { cn } from "@/lib/cn";
+import { Rosette } from "./geometric";
 
 /**
- * A typographic cover generated from catalogue data. It is the library's own
- * cover, not an image of any published edition.
+ * A typographic cover generated from catalogue data, in book proportions (2:3).
+ * It is the library's own cover, not an image of any published edition.
  */
-export function BookPlate({
+export function BookCover({
   book,
   authorAr,
-  className = "",
-  compact = false,
+  className,
 }: {
   book: Book;
   authorAr: string;
   className?: string;
-  compact?: boolean;
 }) {
+  const forthcoming = book.status !== "readable";
   return (
     <div
       role="img"
-      aria-label={`Cover: ${book.title}`}
-      className={`relative overflow-hidden rounded-2xl text-white ${className}`}
-      style={{ background: book.coverGradient }}
+      aria-label={`Cover of ${book.title}${forthcoming ? ", forthcoming" : ""}`}
+      className={cn(
+        "relative aspect-[2/3] w-full overflow-hidden rounded-[3px] text-[#f4ecd8] shadow-cover",
+        forthcoming && "opacity-80 saturate-[0.55]",
+        className,
+      )}
+      // Lettering is sized in container units (cqw) so a cover looks the same at any size and any text setting.
+      style={{ background: book.coverGradient, containerType: "inline-size" }}
     >
-      <GeometricBackdrop className="absolute inset-0 h-full w-full text-white/20" />
-      <div className="absolute inset-2.5 rounded-xl border border-[#e4c78a]/45" />
-      <div className={`relative flex h-full flex-col justify-between ${compact ? "min-h-48 p-5" : "min-h-72 p-7"}`}>
-        <div className="flex items-center justify-between gap-3 text-[0.65rem] uppercase tracking-[0.2em] text-[#f3e6c4]">
-          <span>{book.madhhab}</span>
-          <span>{book.status === "readable" ? book.level : "Forthcoming"}</span>
-        </div>
-        <div dir="rtl" lang="ar" className="text-right">
-          <p className={`font-amiri leading-snug ${compact ? "text-3xl" : "text-4xl sm:text-5xl"}`}>
+      {/* spine shadow and a single fine gold frame */}
+      <div className="absolute inset-y-0 left-0 w-[6%] bg-gradient-to-r from-black/25 to-transparent" />
+      <div className="absolute inset-[6%] rounded-[2px] border border-[#c9a96a]/45" />
+      <div className="relative flex h-full flex-col items-center justify-between px-[13%] py-[14%] text-center">
+        <Rosette className="h-[13cqw] w-[13cqw] text-[#c9a96a]/80" />
+        <div dir="rtl" lang="ar">
+          <p className="font-amiri text-[15cqw] leading-[1.35]">
             {book.titleAr}
           </p>
-          <p className="mt-2 font-amiri text-base text-white/85">{authorAr}</p>
+          <p className="mt-[4cqw] font-amiri text-[7.5cqw] text-[#e6d6b0]/85">
+            {authorAr}
+          </p>
         </div>
-        <p className="max-w-[16rem] text-xs text-white/80">{book.subtitle}</p>
+        <p className={cn("text-[4.2cqw] uppercase tracking-[0.22em] text-[#e6d6b0]/75", forthcoming && "invisible")}>{book.madhhab}</p>
       </div>
+      {forthcoming ? (
+        <p className="absolute inset-x-0 bottom-0 bg-black/45 py-[2.5cqw] text-center text-[4.5cqw] font-medium uppercase tracking-[0.2em] text-[#f4ecd8]">
+          Forthcoming
+        </p>
+      ) : null}
     </div>
   );
 }

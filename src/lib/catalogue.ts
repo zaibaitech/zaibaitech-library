@@ -11,12 +11,13 @@ function fold(value: string) {
   return foldArabic(value).toLowerCase();
 }
 
-export function bookMatches(book: Book, authorName: string, filter: CatalogueFilter) {
+/** `topics` is the book's own chapter headings and summaries, so a search for "wudu" finds the book that teaches it. */
+export function bookMatches(book: Book, authorName: string, filter: CatalogueFilter, topics = "") {
   if (filter.subject && !book.subjects.includes(filter.subject)) return false;
   const needle = fold((filter.query ?? "").trim());
   if (!needle) return true;
   const haystack = fold(
-    [book.title, book.titleAr, book.subtitle, authorName, book.summary, book.madhhab, book.level].join(" "),
+    [book.title, book.titleAr, book.subtitle, authorName, book.summary, book.madhhab, book.level, topics].join(" "),
   );
   return needle.split(/\s+/).every((word) => haystack.includes(word));
 }
@@ -28,4 +29,10 @@ export function readableLanguages(book: Book, content: BookContent | null): stri
     for (const info of availableTranslations(book, content)) languages.push(info.languageLabel);
   }
   return languages;
+}
+
+/** Chapter headings (Arabic and English) and summaries of a readable book, for catalogue search. */
+export function bookTopics(content: BookContent | null): string {
+  if (!content) return "";
+  return content.chapters.map((c) => [c.headingEn, c.headingAr, c.summaryEn].join(" ")).join(" ");
 }
