@@ -1,6 +1,6 @@
 import { setTheme } from "./harness.mjs";
 
-export default async function run({ browser, base, check, screenshot }) {
+export default async function run({ browser, base, check }) {
   const b = browser;
   const ctx = await b.newContext({ viewport: { width: 390, height: 800 }, isMobile: true, hasTouch: true });
   const p = await ctx.newPage();
@@ -18,7 +18,7 @@ export default async function run({ browser, base, check, screenshot }) {
   await p.getByRole("dialog").getByRole("button", { name: /Prayer times/ }).first().click();
   await p.waitForTimeout(900);
   const afterJump = await topUnit();
-  const navs = await p.evaluate(() => performance.getEntriesByType("navigation").length);
+  await p.evaluate(() => performance.getEntriesByType("navigation").length);
   await p.goBack();
   await p.waitForTimeout(1200);
   const afterBack = await topUnit();

@@ -1,4 +1,4 @@
-export default async function run({ browser, base, check, screenshot }) {
+export default async function run({ browser, base, check }) {
   const b = browser;
   const B = base;
   const settings = (o) => JSON.stringify({ theme: "light", fontScale: 2, translationScale: 1, vowelled: true, mode: "both:en-zaibaitech-2026", ...o });

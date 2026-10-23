@@ -13,14 +13,16 @@ export function generateStaticParams() {
   return readableContentIds().map((id) => ({ id }));
 }
 
-export function generateMetadata({ params }: { params: Params }): Metadata {
-  const book = getBook(params.id);
+export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
+  const { id } = await params;
+  const book = getBook(id);
   return { title: book ? `Read ${book.title}` : "Reader" };
 }
 
-export default function ReadPage({ params }: { params: Params }) {
-  const book = getBook(params.id);
-  const content = getBookContent(params.id);
+export default async function ReadPage({ params }: { params: Promise<Params> }) {
+  const { id } = await params;
+  const book = getBook(id);
+  const content = getBookContent(id);
   if (!book || !content || book.status !== "readable") notFound();
   const practiceHref = studyToolsEnabled && getPractice(book.id) ? `/books/${book.id}/practice` : null;
   return (

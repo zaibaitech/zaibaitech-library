@@ -23,16 +23,18 @@ export function generateStaticParams() {
   return books.map((book) => ({ id: book.id }));
 }
 
-export function generateMetadata({ params }: { params: Params }): Metadata {
-  const book = getBook(params.id);
+export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
+  const { id } = await params;
+  const book = getBook(id);
   return {
     title: book?.title ?? "Book",
     description: book?.summary,
   };
 }
 
-export default function BookDetailPage({ params }: { params: Params }) {
-  const book = getBook(params.id);
+export default async function BookDetailPage({ params }: { params: Promise<Params> }) {
+  const { id } = await params;
+  const book = getBook(id);
   if (!book) notFound();
   const author = authorOf(book);
   const content = book.status === "readable" ? getBookContent(book.id) : null;
