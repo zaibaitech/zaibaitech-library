@@ -32,6 +32,12 @@ export const subjects: Subject[] = [
     blurb: "Character and conduct.",
   },
   {
+    id: "self",
+    label: "The self and the heart",
+    labelAr: "تزكية النفس",
+    blurb: "Knowing the self, uprightness, and living the religion.",
+  },
+  {
     id: "fiqh",
     label: "Fiqh reference",
     labelAr: "الفقه",

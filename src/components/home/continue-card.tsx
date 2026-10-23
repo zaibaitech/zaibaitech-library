@@ -7,7 +7,7 @@ import type { CatalogueEntry, ResumeIndex } from "@/lib/library-view";
 import { loadRecentBooks } from "@/lib/storage";
 import { BookCover } from "../book-plate";
 
-type Resume = { entry: CatalogueEntry; chapterEn: string; chapterAr: string; percent: number; unitId: string };
+type Resume = { entry: CatalogueEntry; chapterEn: string; chapterAr?: string; percent: number; unitId: string };
 
 /** Where this device left off. Renders nothing until a saved position is found, so the server output stays the same. */
 export function ContinueCard({ entries, index }: { entries: CatalogueEntry[]; index: ResumeIndex }) {
@@ -39,15 +39,17 @@ export function ContinueCard({ entries, index }: { entries: CatalogueEntry[]; in
       </h2>
       <div className="mt-4 grid grid-cols-[64px_minmax(0,1fr)] items-center gap-4 rounded-2xl border border-line-strong bg-paper-2 p-3.5 sm:grid-cols-[80px_minmax(0,1fr)_auto] sm:gap-5 sm:p-4">
         <Link href={`/books/${entry.id}`} tabIndex={-1} aria-hidden className="block">
-          <BookCover book={entry.book} authorAr={entry.authorAr} />
+          <BookCover book={entry.book} authorAr={entry.authorAr} authorName={entry.authorShort} />
         </Link>
         <div className="min-w-0">
           <p className="font-display text-lg leading-snug text-ink">{entry.title}</p>
           {/* Separate lines, so each language is shortened from its own end. */}
           <p className="mt-0.5 truncate text-sm text-muted">{resume.chapterEn}</p>
-          <p className="w-fit max-w-full truncate font-amiri text-base text-muted" dir="rtl" lang="ar">
-            {resume.chapterAr}
-          </p>
+          {resume.chapterAr ? (
+            <p className="w-fit max-w-full truncate font-amiri text-base text-muted" dir="rtl" lang="ar">
+              {resume.chapterAr}
+            </p>
+          ) : null}
           <div className="mt-2.5 flex items-center gap-3">
             <div
               role="progressbar"

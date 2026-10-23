@@ -15,7 +15,7 @@ export function SiteFooter() {
             <a className="link py-[13px] font-normal" href={TEXT_CREDIT.href}>
               {TEXT_CREDIT.label}
             </a>
-            . Translations are credited on each book&apos;s page. Your place, bookmarks and display choices stay on this device;
+            . Translations and books in English are credited on each book&apos;s page, with their own rights. Your place, bookmarks and display choices stay on this device;
             there are no accounts.
           </p>
         </div>

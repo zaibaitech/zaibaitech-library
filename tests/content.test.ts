@@ -4,7 +4,7 @@ import { books } from "../src/content/books";
 import { authors } from "../src/content/authors";
 import { subjects } from "../src/content/subjects";
 import { glossary } from "../src/content/glossary";
-import { getBookContent, readableContentIds } from "../src/content/library";
+import { getBookContent, getReadableContent, readableContentIds } from "../src/content/library";
 import { getPractice, practiceBookIds } from "../src/content/practice/index";
 import { foldArabic } from "../src/lib/arabic";
 import { translationFiles } from "../src/content/translations";
@@ -16,7 +16,7 @@ test("catalogue integrity", () => {
   for (const book of books) {
     assert.ok(authors.some((a) => a.id === book.authorId), `${book.id} author`);
     for (const s of book.subjects) assert.ok(subjects.some((x) => x.id === s), `${book.id} subject ${s}`);
-    const content = getBookContent(book.id);
+    const content = getReadableContent(book.id);
     if (book.status === "readable") assert.ok(content, `${book.id} readable needs content`);
     else assert.equal(content, null, `${book.id} forthcoming must have no content`);
     for (const info of book.translations) {

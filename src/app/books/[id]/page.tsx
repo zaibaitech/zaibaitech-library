@@ -6,7 +6,8 @@ import { BookCover } from "@/components/book-plate";
 import { BookLocalActions } from "@/components/book-local";
 import { ReadActions } from "@/components/ebook/read-actions";
 import { books, getBook } from "@/content/books";
-import { getBookContent } from "@/content/library";
+import { getReadableContent } from "@/content/library";
+import { isProse } from "@/content/types";
 import { getSubject } from "@/content/subjects";
 import { getPractice } from "@/content/practice";
 import { authorOf } from "@/lib/library-view";
@@ -16,6 +17,7 @@ import { availableTranslations, pendingTranslations } from "@/lib/translations";
 import { toArabicDigits } from "@/lib/arabic";
 import { longDate } from "@/lib/dates";
 import { glossaryEnabled, studyToolsEnabled } from "@/lib/flags";
+import { cn } from "@/lib/cn";
 
 type Params = { id: string };
 
@@ -37,10 +39,12 @@ export default async function BookDetailPage({ params }: { params: Promise<Param
   const book = getBook(id);
   if (!book) notFound();
   const author = authorOf(book);
-  const content = book.status === "readable" ? getBookContent(book.id) : null;
+  const content = book.status === "readable" ? getReadableContent(book.id) : null;
+  const prose = content && isProse(content) ? content : null;
+  const arabic = content && !isProse(content) ? content : null;
   const flat = content ? flattenUnits(content) : [];
-  const shown = content ? availableTranslations(book, content) : [];
-  const pending = content ? pendingTranslations(book, content) : book.translations;
+  const shown = arabic ? availableTranslations(book, arabic) : [];
+  const pending = arabic ? pendingTranslations(book, arabic) : prose ? [] : book.translations;
   const practice = studyToolsEnabled ? getPractice(book.id) : null;
   const languages = readableLanguages(book, content);
 
@@ -64,7 +68,7 @@ export default async function BookDetailPage({ params }: { params: Promise<Param
 
       <header className="mt-8 grid gap-8 sm:grid-cols-[12rem_1fr] sm:gap-12 lg:grid-cols-[15rem_1fr]">
         <div className="mx-auto w-40 sm:mx-0 sm:w-full">
-          <BookCover book={book} authorAr={author.nameAr} />
+          <BookCover book={book} authorAr={author.nameAr} authorName={author.shortName ?? author.name} />
         </div>
         <div className="min-w-0">
           {content ? null : (
@@ -77,9 +81,13 @@ export default async function BookDetailPage({ params }: { params: Promise<Param
             </p>
           )}
           <h1 className="font-display text-4xl leading-[1.08] tracking-tight text-ink sm:text-5xl">{book.title}</h1>
-          <p className="mt-2 w-fit max-w-full font-amiri text-3xl text-ink-2" dir="rtl" lang="ar">
-            {book.titleAr}
-          </p>
+          {book.titleAr ? (
+            <p className="mt-2 w-fit max-w-full font-amiri text-3xl text-ink-2" dir="rtl" lang="ar">
+              {book.titleAr}
+            </p>
+          ) : (
+            <p className="mt-3 max-w-reading font-display text-lg italic leading-snug text-ink-2">{book.subtitle}</p>
+          )}
           <p className="mt-3 text-base text-muted">
             {author.name}
             {author.diedAH ? <span className="text-faint"> · d. {author.diedAH} AH</span> : null}
@@ -109,11 +117,39 @@ export default async function BookDetailPage({ params }: { params: Promise<Param
                 Contents
               </h2>
               <p className="text-sm text-muted">
-                {content.chapters.length} chapters · {flat.length} passages
+                {content.chapters.length} {prose ? "sections" : "chapters"} · {flat.length} passages
               </p>
             </div>
+            {prose ? (
+              <ol>
+                {prose.chapters.map((chapter) => {
+                  const opensPart = chapter.partEn !== "" && chapter.partEn === chapter.headingEn;
+                  const inPart = chapter.partEn !== "" && !opensPart;
+                  return (
+                    <li key={chapter.id} className="border-b border-line">
+                      <Link
+                        href={`/books/${book.id}/read#${chapter.id}`}
+                        className={cn(
+                          "group flex items-baseline justify-between gap-4 py-3",
+                          inPart ? "pl-6 text-[0.95rem]" : "font-medium",
+                          opensPart && "pt-5",
+                        )}
+                      >
+                        <span className="min-w-0 text-ink group-hover:underline group-hover:decoration-line-strong group-hover:underline-offset-4">
+                          {chapter.headingEn}
+                        </span>
+                        <span className="shrink-0 text-sm tabular-nums text-faint">
+                          <span className="sr-only">page </span>
+                          {chapter.page}
+                        </span>
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ol>
+            ) : arabic ? (
             <ol>
-              {content.chapters.map((chapter, index) => (
+              {arabic.chapters.map((chapter, index) => (
                 <li key={chapter.id} className="border-b border-line">
                   <Link
                     href={`/books/${book.id}/read#${chapter.id}`}
@@ -141,6 +177,7 @@ export default async function BookDetailPage({ params }: { params: Promise<Param
                 </li>
               ))}
             </ol>
+            ) : null}
           </section>
         ) : null}
 
@@ -151,16 +188,28 @@ export default async function BookDetailPage({ params }: { params: Promise<Param
           <dl className="text-sm">
             <Row label="Author">
               {author.name}{" "}
-              <span className="font-amiri text-base text-muted" dir="rtl" lang="ar">
-                {author.nameAr}
-              </span>
+              {author.nameAr ? (
+                <span className="font-amiri text-base text-muted" dir="rtl" lang="ar">
+                  {author.nameAr}
+                </span>
+              ) : null}
               {author.diedAH ? (
                 <span className="block text-faint">
                   d. {author.diedAH} AH{author.datingSource ? ` — ${author.datingSource}` : ""}
                 </span>
               ) : null}
             </Row>
-            <Row label="School">{book.madhhab}</Row>
+            {book.edition ? (
+              <>
+                <Row label="Translator">{book.edition.translator}</Row>
+                <Row label="Editor">{book.edition.editor}</Row>
+                <Row label="Edition">{book.edition.edition}</Row>
+                <Row label="ISBN">{book.edition.isbn}</Row>
+                <Row label="Copyright">{book.edition.copyright}</Row>
+                <Row label="Printed by">{book.edition.printer}</Row>
+              </>
+            ) : null}
+            {book.madhhab ? <Row label="School">{book.madhhab}</Row> : null}
             <Row label="Level">{book.level}</Row>
             <Row label="Subjects">{book.subjects.map((id) => getSubject(id).label).join(", ")}</Row>
             <Row label="Languages">
@@ -185,7 +234,16 @@ export default async function BookDetailPage({ params }: { params: Promise<Param
                 ) : null}
               </Row>
             ))}
-            {content && shown.length === 0 ? (
+            {book.edition ? (
+              <Row label="Rights">
+                {book.edition.rightsNotice}
+                <span className="mt-1 block text-faint">
+                  {book.edition.permission.scope}: permitted by the rights holder (confirmed{" "}
+                  {longDate(book.edition.permission.confirmedOn)}).
+                </span>
+              </Row>
+            ) : null}
+            {arabic && shown.length === 0 ? (
               <Row label="Translation">
                 <span className="text-muted">None published yet. The reader shows the Arabic alone.</span>
               </Row>
@@ -197,14 +255,14 @@ export default async function BookDetailPage({ params }: { params: Promise<Param
                 </span>
               </Row>
             ) : null}
-            {content ? (
+            {arabic ? (
               <>
                 <Row label="Arabic source">
-                  <span className="[overflow-wrap:anywhere]">{content.source.openiti.replace(/^OpenITI /, "OpenITI ")}</span>
+                  <span className="[overflow-wrap:anywhere]">{arabic.source.openiti.replace(/^OpenITI /, "OpenITI ")}</span>
                 </Row>
                 <Row label="Licence">
-                  <a href={content.source.licenseUrl} className="link -my-3 inline-flex min-h-11 items-center font-normal">
-                    {content.source.license}
+                  <a href={arabic.source.licenseUrl} className="link -my-3 inline-flex min-h-11 items-center font-normal">
+                    {arabic.source.license}
                   </a>
                   <span className="block text-faint">Attribution, non-commercial, share-alike</span>
                 </Row>
@@ -217,7 +275,7 @@ export default async function BookDetailPage({ params }: { params: Promise<Param
             ) : null}
           </dl>
 
-          {content ? (
+          {arabic ? (
             <div className="mt-10">
               <h2 className="border-b border-line pb-3 font-display text-xl text-ink">Study aids</h2>
               <ul className="mt-3 space-y-2 text-sm text-muted">

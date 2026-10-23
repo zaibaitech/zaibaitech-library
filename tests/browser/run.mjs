@@ -12,7 +12,7 @@ import { setTimeout as sleep } from "node:timers/promises";
 import { chromium } from "playwright";
 import { recorder, screenshotter } from "./harness.mjs";
 
-const SUITES = ["accessibility", "reader", "navigation", "migration", "publication", "qa-regressions", "arabic-collisions"];
+const SUITES = ["accessibility", "reader", "navigation", "migration", "publication", "qa-regressions", "arabic-collisions", "english-books"];
 const only = process.argv.slice(2);
 const chosen = only.length ? SUITES.filter((name) => only.includes(name)) : SUITES;
 if (only.length && chosen.length !== only.length) {

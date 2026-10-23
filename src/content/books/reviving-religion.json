@@ -1,0 +1,2569 @@
+{
+ "id": "reviving-religion",
+ "language": "en",
+ "source": {
+  "work": "Three Books — Complete English Translation",
+  "author": "Abu Abdur-Rahman Omar Ibn Alhagie Abdullah Ceesay Ibn Alhagie Jibel Fana Sow Ceesay",
+  "translator": "Sidy Ahmad Gassama",
+  "copyright": "© Omar Ceesay",
+  "isbn": "978-9983-94-606-2",
+  "edition": "First Edition 1447H / 2026",
+  "printer": "DBC Printing Corporation, Banjul, The Gambia",
+  "rights": "All rights reserved. Published in the library with the rights holder's permission for full public display, as confirmed by the library owner on 23 October 2026.",
+  "title": "Reviving Religion in the Self and Life",
+  "editor": "Bai Lamin Dondeh",
+  "pdfPages": "2–83"
+ },
+ "chapters": [
+  {
+   "id": "translators-preface",
+   "order": 1,
+   "headingEn": "Translator's Preface",
+   "partEn": "",
+   "page": "vi",
+   "units": [
+    {
+     "id": "translators-preface.p01",
+     "number": 1,
+     "page": "vi",
+     "text": "When I first placed my hands on these three books, I did not know I would come away from them carrying more than I had brought to them. I began the work as someone tasked with carrying meaning from one language into another, only to find myself a student before an integrated intellectual project: one that reorders the Muslim's relationship with the self, with the stations of faith, and with religion in the full breadth of its civilizational reach."
+    },
+    {
+     "id": "translators-preface.p02",
+     "number": 2,
+     "page": "vi",
+     "text": "**Knowing the Self: The Path to Uprightness, The Balance of Spiritual Stations in the Muslim's Life, and Reviving Religion in the Self and Life,** three titles, yet at their core a single, continuous journey: from the self to the station, and from the station to life in its entirety. In carrying these books into English, I have taken care to remain faithful to this sequence, rendering a connected argument rather than sentences cut loose from their context."
+    },
+    {
+     "id": "translators-preface.p03",
+     "number": 3,
+     "page": "vi",
+     "text": "The greatest responsibility I felt as I translated was preserving the precise interweaving, so characteristic of these books, between the sacred text, whether a Qur'anic verse, a hadith, or a scholar's statement, and the educational commentary that so often follows it. This double register is not padding; it is the very heart of the method the author chose to bring sacred meaning within reach of the non-specialist reader without compromising its precision. I have rendered the meanings of the verses and hadiths through my own careful effort, out of scholarly conscientiousness, rather than borrowing a ready-made translation that might not sit naturally within the commentary surrounding it in the original."
+    },
+    {
+     "id": "translators-preface.p04",
+     "number": 4,
+     "page": "vii",
+     "text": "The greater challenge, though, was never simply carrying a word across, but rather carrying a spirit. How does one translate a term like **Istiqamah** (uprightness), **'ubudiyyah** (servitude), or **Istislam** (submission) into English without its weight being lost, without it collapsing into a pale synonym that carries only the husk of the meaning and none of its substance? At every turn I had to weigh terminological precision against clarity for a reader who may not carry a deep grounding in the religious sciences."
+    },
+    {
+     "id": "translators-preface.p05",
+     "number": 5,
+     "page": "vii",
+     "text": "I hope this translation has done some justice to these books before their new readers, and that it opens a door for them toward a wide readership that yearns, as so many of my own generation yearn, for an understanding of religion that unites fidelity to the text with the vitality of its living application."
+    },
+    {
+     "id": "translators-preface.p06",
+     "number": 6,
+     "page": "vii",
+     "text": "I ask Allah to make this effort sincerely for His sake, and of benefit both to the author of these books and to every reader who encounters them in a language other than their own."
+    },
+    {
+     "id": "translators-preface.p07",
+     "number": 7,
+     "page": "vii",
+     "text": "***Sidy Ahmad Gassama***\n**The Translator**",
+     "kind": "signature"
+    }
+   ]
+  },
+  {
+   "id": "introduction-to-the-book",
+   "order": 2,
+   "headingEn": "Introduction to the Book",
+   "partEn": "",
+   "page": "ix",
+   "units": [
+    {
+     "id": "introduction-to-the-book.p01",
+     "number": 1,
+     "page": "ix",
+     "text": "*In the name of Allah, the Most Gracious, the Most Merciful.*"
+    },
+    {
+     "id": "introduction-to-the-book.p02",
+     "number": 2,
+     "page": "ix",
+     "text": "All praise is due to Allah, who sent down religion as guidance for the human being, not a burden upon him, and made it a path for life, not rites cut off from reality. I bear witness that there is no god but Allah alone, without partner, and I bear witness that Muhammad is His servant and Messenger, who conveyed the message, established the balance, and left us upon the clear, radiant way."
+    },
+    {
+     "id": "introduction-to-the-book.p03",
+     "number": 3,
+     "page": "ix",
+     "text": "To proceed: the greatest affliction to have befallen this nation (ummah) in our time is not the onslaught of enemies, nor the acceleration of technology, nor the changing world, it is the misunderstanding of this religion: either a rigid understanding that has reduced it to lifeless moulds, or a hollowed-out understanding that has stripped it of its spirit and its purposes."
+    },
+    {
+     "id": "introduction-to-the-book.p04",
+     "number": 4,
+     "page": "ix",
+     "text": "The world has entered a new phase, in which concepts have shifted, minds have grown entangled, and culture, politics, economics, and technology have become interwoven. The human being now lives within a single global network, amid accelerating pressures, great questions, and a mounting existential unease. During this scene, a fundamental question arises: is Islam fit for this world? Or has the world moved beyond it?"
+    },
+    {
+     "id": "introduction-to-the-book.p05",
+     "number": 5,
+     "page": "x",
+     "text": "This question (however innocent it may appear to some) is, in truth, the product of ignorance of the true nature of this religion, for Islam has never been a mere reaction to reality; it has always been a shaper of reality, an architect of civilization, and a guide of humanity. Hence this book, *The Balanced Scale: A Contemporary Reading of Islam*, is a sincere attempt to present Islam not as a heritage to be merely preserved, nor slogans to be raised, but as a comprehensive system for living that understands the human being, builds the mind, purifies the spirit, and orders society."
+    },
+    {
+     "id": "introduction-to-the-book.p06",
+     "number": 6,
+     "page": "x",
+     "text": "This book does not address specialists alone, nor does it content itself with bare exhortation; rather, it seeks to simplify the great concepts, and to connect the pillars of faith and the acts of worship to their purposes, their effects, and their function in building the contemporary human being."
+    },
+    {
+     "id": "introduction-to-the-book.p07",
+     "number": 7,
+     "page": "x",
+     "text": "It is a candid call to move from a religion of habit to a religion of awareness, from formal commitment to civilizational commitment, and from an isolated, individualistic Islam to an Islam active in the world."
+    },
+    {
+     "id": "introduction-to-the-book.p08",
+     "number": 8,
+     "page": "x",
+     "text": "If I am right, it is from Allah alone; and if I have erred, and no doubt I have, it is from myself and from Satan, and Allah and His Messenger are innocent of it."
+    },
+    {
+     "id": "introduction-to-the-book.p09",
+     "number": 9,
+     "page": "x",
+     "text": "Our final call is that all praise is due to Allah, Lord of all the worlds."
+    }
+   ]
+  },
+  {
+   "id": "part-1",
+   "order": 3,
+   "headingEn": "Part 1: An Introduction to Understanding Religion in an Age of Transformation",
+   "partEn": "Part 1: An Introduction to Understanding Religion in an Age of Transformation",
+   "page": "1",
+   "units": [
+    {
+     "id": "part-1.p01",
+     "number": 1,
+     "page": "1",
+     "text": "**Introduction to Part 1:** the question of our age is no longer, “Do we believe?” but rather the deeper question has become: “How do we understand what we believe?”"
+    },
+    {
+     "id": "part-1.p02",
+     "number": 2,
+     "page": "1",
+     "text": "For many of the crises afflicting the Muslim today do not go back to any weakness in the text, nor to any lack of guidance, but rather to a defect in understanding, or to a disturbance in applying religion to a changing reality, or to a flaw in the path of understanding religion, in the manner of receiving knowledge, and in the method of its application. How much truth has been misunderstood until it turned into falsehood; and how much guidance has been confined within rigid moulds until it became a burden rather than a mercy."
+    },
+    {
+     "id": "part-1.p03",
+     "number": 3,
+     "page": "1",
+     "text": "The world today lives through unprecedented transformations: an acceleration of knowledge, an explosion of technology, an intellectual fluidity, and an unprecedented intermingling of cultures and identities. During this scene, many Muslims find themselves at a crossroads: either a retreat into a traditional understanding that does not answer the questions of the age, or a dissolving into a new reality that empties religion of its essence."
+    },
+    {
+     "id": "part-1.p04",
+     "number": 4,
+     "page": "1",
+     "text": "From this arises the pressing need to reopen the file of understanding religion, not to rewrite the texts, nor to revisit its fixed principles, but to reconnect religion with its original function: guiding the human being and building life according to time and place."
+    },
+    {
+     "id": "part-1.p05",
+     "number": 5,
+     "page": "2",
+     "text": "This Part is not a defence of Islam, for Islam has no need of defence; it is, rather, an attempt to reorder our angle of vision, so that religion may be understood as Allah intended it: guidance, construction, and a balance for life."
+    },
+    {
+     "id": "part-1.p06",
+     "number": 6,
+     "page": "2",
+     "text": "Islam is an eternal message, valid for every time and place, capable of addressing the human being at every stage of life, however much his tools and his questions may change. This Part contains four chapters and a conclusion."
+    }
+   ]
+  },
+  {
+   "id": "p1-ch1",
+   "order": 4,
+   "headingEn": "Chapter 1: Why Do We Need Today to Re-Understand Religion?",
+   "partEn": "Part 1: An Introduction to Understanding Religion in an Age of Transformation",
+   "page": "2",
+   "units": [
+    {
+     "id": "p1-ch1.p01",
+     "number": 1,
+     "page": "2",
+     "text": "Not because religion is deficient, nor because revelation falls short, but because the human being has changed, reality has shifted, and the questions have grown more complex, so an understanding that arose within a particular historical context may not, on its own, be sufficient to answer the challenges of a new context, even though the text remains one and the truth remains fixed."
+    },
+    {
+     "id": "p1-ch1.p02",
+     "number": 2,
+     "page": "2",
+     "text": "The first Muslims did not ask whether this religion was fit for life, because they saw it building life before their very eyes; but the difficulty arose when religion moved, in people’s minds, from being the leader of reality to being reality’s follower."
+    },
+    {
+     "id": "p1-ch1.p03",
+     "number": 3,
+     "page": "3",
+     "text": "The need to re-understand religion never means reinventing religion, nor casting doubt upon its fixed principles, nor reinterpreting it according to the whims of the age, it means one single, grave and important thing: liberating understanding from the moulds in which it has been frozen, or which have been emptied of meaning."
+    },
+    {
+     "id": "p1-ch1.p04",
+     "number": 4,
+     "page": "3",
+     "text": "The world has changed; patterns of thought have changed; the nature of the questions has changed; the means of influence have changed; and the human being’s image of himself and of the cosmos has changed, while religious discourse, in many instances, has continued to repeat the same answers, without ever touching the new questions, or consciously connecting the text to reality. Thus, a generation arose that knows the rulings but does not grasp their wisdom, that performs the acts of worship but does not feel their effects, that belongs to religion yet feels estranged from it in the details of daily life. Hence re-understanding became a religious and civilizational necessity, not an intellectual luxury."
+    },
+    {
+     "id": "p1-ch1.p05",
+     "number": 5,
+     "page": "3",
+     "text": "The contemporary human being has moved from a world of simplicity to a world of complexity, from local life to global life, from a slow rhythm to a feverish acceleration, and in the face of this transformation, it is no longer enough to be content with reductive answers or emotional discourse. Rather, the Muslim has come to need a conscious, balanced understanding, one that unites text and purpose, the fixed and the variable."
+    },
+    {
+     "id": "p1-ch1.p06",
+     "number": 6,
+     "page": "4",
+     "text": "Re-understanding does not mean renewing religion itself, but renewing our understanding of religion, that is, moving from rote instruction to awareness, from repetition to comprehension, and from an unexamined inheritance to an insightful understanding."
+    }
+   ]
+  },
+  {
+   "id": "p1-ch2",
+   "order": 5,
+   "headingEn": "Chapter 2: The Difference Between the Fixed Principles of Religion and the Variables of Reality",
+   "partEn": "Part 1: An Introduction to Understanding Religion in an Age of Transformation",
+   "page": "4",
+   "units": [
+    {
+     "id": "p1-ch2.p01",
+     "number": 1,
+     "page": "4",
+     "text": "Among the greatest confusions that have troubled contemporary Islamic thought is the conflation of what is fixed in religion, and does not change, with what is variable in reality, and shifts with the changing of time, place, and circumstance."
+    },
+    {
+     "id": "p1-ch2.p02",
+     "number": 2,
+     "page": "4",
+     "text": "The fixed principles of religion are the great fundamentals that do not change with the changing of time and circumstance:"
+    },
+    {
+     "id": "p1-ch2.p03",
+     "number": 3,
+     "page": "4",
+     "text": "1. Creed, in all its requirements, that is: faith, monotheism, revelation, moral values, and the fixed general purposes, these do not change.",
+     "kind": "item"
+    },
+    {
+     "id": "p1-ch2.p04",
+     "number": 4,
+     "page": "4",
+     "text": "2. The Shari’ah, in all its requirements, that is, the acts of worship made obligatory by definitive texts. These are not subject to negotiation, nor do they admit substitution, for they are bound up with the very reality of religion and with the human being’s own innate disposition (fitrah).",
+     "kind": "item"
+    },
+    {
+     "id": "p1-ch2.p05",
+     "number": 5,
+     "page": "5",
+     "text": "As for the variables, they are the means of application, the methods of calling people to Islam, the forms of organization, and the human efforts of independent reasoning (ijtihad) that are governed by benefit, circumstance, and reality. These change with the changing of time, place, or circumstance, vary with varying conditions, and diversify in their means and patterns, and herein lies the wonder of Islam and its capacity to engage with every age without losing its identity."
+    },
+    {
+     "id": "p1-ch2.p06",
+     "number": 6,
+     "page": "5",
+     "text": "Freezing the variables in the name of preserving religion produces rigidity, just as dissolving the fixed principles, that is, altering, diluting, or distorting religious fundamentals, in the name of keeping pace with the age produces deviation. The precise balance lies in combining fixity of reference with flexibility of application. The gravest disorder occurs when we turn the variable into religion itself or subject the fixed to the whims of reality: some people have frozen religion in historical forms, as though Islam had descended to live in a single age alone; others have dissolved religion into reality, until nothing of it remains but the name."
+    },
+    {
+     "id": "p1-ch2.p07",
+     "number": 7,
+     "page": "5",
+     "text": "The correct method is fixity in fundamentals, flexibility in means, awareness of purposes, and a sound grasp of reality."
+    },
+    {
+     "id": "p1-ch2.p08",
+     "number": 8,
+     "page": "5",
+     "text": "For the Shari’ah did not come to clash with innate human nature, nor to break the movement of life, but came to direct it, purify it, and prevent its deviation."
+    }
+   ]
+  },
+  {
+   "id": "p1-ch3",
+   "order": 6,
+   "headingEn": "Chapter 3: Religion Between Rigidity and Unrestraint",
+   "partEn": "Part 1: An Introduction to Understanding Religion in an Age of Transformation",
+   "page": "6",
+   "units": [
+    {
+     "id": "p1-ch3.p01",
+     "number": 1,
+     "page": "6",
+     "text": "Religion has, in many ages, been afflicted by two opposite extremes: a rigidity that reduces religion to appearances and forms and turns it into rituals devoid of spirit; and an unrestraint that empties it of its rulings and turns it into general values without discipline."
+    },
+    {
+     "id": "p1-ch3.p02",
+     "number": 2,
+     "page": "6",
+     "text": "Rigidity fears the question, is suspicious of reason, sanctifies the means as it sanctifies the end, and turns religion into memorized information, repeated forms, and practices without effect."
+    },
+    {
+     "id": "p1-ch3.p03",
+     "number": 3,
+     "page": "6",
+     "text": "Unrestraint, meanwhile, dreads commitment, invokes higher purposes to demolish specific rulings, and invokes mercy to disable obligation, turning religion into elastic slogans, vague and general expressions, subject to popular taste, without discipline or reference point. Both extremes do harm to religion; however different their intentions may be."
+    },
+    {
+     "id": "p1-ch3.p04",
+     "number": 4,
+     "page": "6",
+     "text": "True religion is neither a prison for the mind nor a pretext for dissolution, but a precise scale that preserves the human being from deviation while granting him, at the same time, the capacity for movement and construction."
+    },
+    {
+     "id": "p1-ch3.p05",
+     "number": 5,
+     "page": "6",
+     "text": "When religion is correctly understood, it does not halt at either extreme, but is the religion of disciplined reason, living spirit, and responsible action, a religion that opens the door to questioning, not to trifling; that liberates reason without severing its connection to revelation, freeing it from blind imitation; and that liberates the spirit from anxiety, and conduct from aimlessness. When it is misunderstood, however, it turns into a heavy burden rather than a mercy."
+    }
+   ]
+  },
+  {
+   "id": "p1-ch4",
+   "order": 7,
+   "headingEn": "Chapter 4: Islam Is the Religion of Innate Human Nature and Reason Together",
+   "partEn": "Part 1: An Introduction to Understanding Religion in an Age of Transformation",
+   "page": "7",
+   "units": [
+    {
+     "id": "p1-ch4.p01",
+     "number": 1,
+     "page": "7",
+     "text": "Among the greatest characteristics of Islam is that it does not clash with human nature (fitrah), nor disable reason, nor separate faith from thought. Islam did not address the human being as a body alone, nor as a bare intellect, nor as an isolated spirit, but addressed him as an integrated whole, addressing the mind with proof, the heart with tranquillity, and conduct with method. For this reason, its legislation came in harmony with innate nature, stimulating to reason, and refining of conduct."
+    },
+    {
+     "id": "p1-ch4.p02",
+     "number": 2,
+     "page": "7",
+     "text": "There is no contradiction in Islam between faith and thought, nor between submission and understanding, nor between worship and work, and every attempt to separate these elements is, in truth, a distortion of the reality of this religion."
+    },
+    {
+     "id": "p1-ch4.p03",
+     "number": 3,
+     "page": "7",
+     "text": "When Islam is correctly understood, it does not stand as an obstacle before progress but is a guide for it; it does not clash with science but frames it with values; and it does not isolate the human being from the world, but charges him with the responsibility of reforming it."
+    },
+    {
+     "id": "p1-ch4.p04",
+     "number": 4,
+     "page": "8",
+     "text": "This religion explains to the human being who he is, why he was created, and to where he is journeying, granting him great answers concerning existence, the purpose of existence, responsibility, and destiny."
+    },
+    {
+     "id": "p1-ch4.p05",
+     "number": 5,
+     "page": "8",
+     "text": "When the light of revelation meets the purity of innate nature and the guidance of reason, the balanced human being arises, one who worships Allah and understands life, who works for this world while remaining connected to the Hereafter, and who builds reality without losing his bearings. And here the path begins: a path of conscious understanding, a living religion, and a message capable of moving from the text to reality, and from faith to civilization."
+    }
+   ]
+  },
+  {
+   "id": "p1-conclusion",
+   "order": 8,
+   "headingEn": "Conclusion of Part 1",
+   "partEn": "Part 1: An Introduction to Understanding Religion in an Age of Transformation",
+   "page": "8",
+   "units": [
+    {
+     "id": "p1-conclusion.p01",
+     "number": 1,
+     "page": "8",
+     "text": "The crisis of the contemporary Muslim is not a crisis of text, but a crisis of understanding; it is not a crisis of religion, but a crisis of awareness of religion. When Islam is reconnected with its great function, religion returns to being a force of construction, not a burden, a message for living, not a seasonal ritual."
+    },
+    {
+     "id": "p1-conclusion.p02",
+     "number": 2,
+     "page": "8",
+     "text": "Understanding religion in an age of transformation does not mean changing religion but returning to it as it was revealed, with a conscious mind, a living heart, and an insightful view of reality, and it is from this correct understanding that the whole construction proceeds."
+    },
+    {
+     "id": "p1-conclusion.p03",
+     "number": 3,
+     "page": "9",
+     "text": "In the Parts to come, we shall proceed step by step in taking apart this understanding and rebuilding it anew, upon the foundation of revelation, the purposes of the Shari’ah, and the reality of the new world."
+    }
+   ]
+  },
+  {
+   "id": "part-2",
+   "order": 9,
+   "headingEn": "Part 2: Monotheism: the Centre of the Whole Structure",
+   "partEn": "Part 2: Monotheism: the Centre of the Whole Structure",
+   "page": "9",
+   "units": [
+    {
+     "id": "part-2.p01",
+     "number": 1,
+     "page": "9",
+     "text": "**Introduction to Part 2:** monotheism (tawhid) in Islam is not an abstract doctrinal matter, nor a theoretical subject taught and then set aside; it is the foundation upon which everything is built. From it the [Muslim’s] vision proceeds, by it conduct is determined, and upon it rests the value of deeds, thoughts, and stances."
+    },
+    {
+     "id": "part-2.p02",
+     "number": 2,
+     "page": "9",
+     "text": "Allah, the Exalted, says: *“Allah, there is no deity except Him. To Him belong the most beautiful names”* (Ta-Ha 20:8), and He, glorified is He, also says: *“And they were not commanded except to worship Allah, [being] sincere to Him in religion”* (Al-Bayyinah 98:5)."
+    },
+    {
+     "id": "part-2.p03",
+     "number": 3,
+     "page": "9",
+     "text": "When monotheism weakens in the heart, it is not only one aspect of religion that collapses, but the entire structure that is disturbed, for the human being turns into a contradictory being, worshipping Allah outwardly while his heart is attached to another inwardly, and so he loses his tranquillity, and his balance is lost with it."
+    },
+    {
+     "id": "part-2.p04",
+     "number": 4,
+     "page": "10",
+     "text": "Ibn Al-Qayyim (may Allah have mercy on him) said: “Monotheism is the refuge of hearts, the sanctuary of souls; by it deeds stand firm and states are set right.” (See his book *Al-Wabil Al-Sayyib wa Rafi’ Al-Kalim Al-Tayyib*.)"
+    },
+    {
+     "id": "part-2.p05",
+     "number": 5,
+     "page": "10",
+     "text": "From this, monotheism becomes the point of departure, the point of continuance, and the point of return whenever the path grows unsettled. This Part contains four chapters and a conclusion."
+    }
+   ]
+  },
+  {
+   "id": "p2-ch1",
+   "order": 10,
+   "headingEn": "Chapter 1: The Meaning of Monotheism Beyond Rote Instruction",
+   "partEn": "Part 2: Monotheism: the Centre of the Whole Structure",
+   "page": "10",
+   "units": [
+    {
+     "id": "p2-ch1.p01",
+     "number": 1,
+     "page": "10",
+     "text": "Many people have grown accustomed to receiving monotheism as a memorized definition: “singling out Allah for worship.” Though this definition is correct, reducing it to a bare verbal formula empties it of its profound effect on life. Allah, the Exalted, says: *“So know that there is no deity except Allah”* (Muhammad 47:19), beginning with knowledge before speech and deed."
+    },
+    {
+     "id": "p2-ch1.p02",
+     "number": 2,
+     "page": "10",
+     "text": "Monotheism, then, is knowledge that grants insight, certainty that moves one to act, and deed that translates belief into practice; it is a comprehensive redirection of the human being:"
+    },
+    {
+     "id": "p2-ch1.p03",
+     "number": 3,
+     "page": "10",
+     "text": "1. In his thinking, when he sees no true actor except Allah. Allah, the Exalted, says: *“While Allah created you and that which you do”* (As-Saffat 37:96).",
+     "kind": "item"
+    },
+    {
+     "id": "p2-ch1.p04",
+     "number": 4,
+     "page": "11",
+     "text": "2. In his heart, when his hope and his fear are attached to none but Him. Allah, the Exalted, says: *“And upon Allah let the believers rely”* (Al-Ma’idah 5:23).",
+     "kind": "item"
+    },
+    {
+     "id": "p2-ch1.p05",
+     "number": 5,
+     "page": "11",
+     "text": "3. In his conduct, when he submits to no command but his and refers his disputes to none but Him. Allah, the Exalted, says: *“But no, by your Lord, they will not [truly] believe until they make you, [O Muhammad], judge concerning that over which they dispute among themselves and then find within themselves no discomfort from what you have decided and submit in [full, willing] submission”* (An-Nisa’ 4:65).",
+     "kind": "item"
+    },
+    {
+     "id": "p2-ch1.p06",
+     "number": 6,
+     "page": "11",
+     "text": "Al-Hasan Al-Basri (may Allah have mercy on him) said: “Faith is not by wishful thinking, nor by outward adornment, but what settles firmly in the heart and is confirmed by deed.” (See: *Al-Musannaf* by Ibn Abi Shaybah.)"
+    }
+   ]
+  },
+  {
+   "id": "p2-ch2",
+   "order": 11,
+   "headingEn": "Chapter 2: The Effect of Monotheism in Liberating the Human Being",
+   "partEn": "Part 2: Monotheism: the Centre of the Whole Structure",
+   "page": "11",
+   "units": [
+    {
+     "id": "p2-ch2.p01",
+     "number": 1,
+     "page": "11",
+     "text": "The greatest thing monotheism grants the human being is liberation: liberation from servitude to other human beings, from the domination of fear, from the tyranny of appetite, and from weakness before reality. Allah, the Exalted, says: *“Is not Allah sufficient for His Servant [Prophet Muhammad]?”* (Az-Zumar 39:36), and He, the Exalted, says: *“And whoever relies upon Allah, then He is sufficient for him”* (At-Talaq 65:3)."
+    },
+    {
+     "id": "p2-ch2.p02",
+     "number": 2,
+     "page": "12",
+     "text": "The Prophet ﷺ said to Ibn Abbas (may Allah be pleased with them both): *“Guard Allah and He will guard you; guard Allah and you will find Him before you. If you ask, ask Allah, and if you seek help, seek help from Allah.”* (Reported by Al-Tirmidhi and Abu Dawud.)"
+    },
+    {
+     "id": "p2-ch2.p03",
+     "number": 3,
+     "page": "12",
+     "text": "So, the human being who truly professes Allah’s oneness does not submit to the authority of wealth, does not humble himself before rank, and does not bargain away his values in pursuit of acceptance, for he has come to realize that provision is in Allah’s hand, that honour comes from Him, and that the final return is to Him."
+    },
+    {
+     "id": "p2-ch2.p04",
+     "number": 4,
+     "page": "12",
+     "text": "Shaykh Al-Islam Ibn Taymiyyah (may Allah have mercy on him) said: “Servitude to Allah alone is the very essence of freedom, and whoever departs from it falls into servitude to something other than Him.” (See his book *Al-’Ubudiyyah*.) He also says, elsewhere in the same book: “Servitude to Allah is the goal beloved to Allah and pleasing to Him”, meaning servitude to Allah is the highest degree of freedom, because the human being is thereby liberated from the worship of other than Allah and becomes a servant to Allah alone."
+    },
+    {
+     "id": "p2-ch2.p05",
+     "number": 5,
+     "page": "12",
+     "text": "Allah, the Exalted, says: *“Unquestionably, for Allah is the pure religion”* (Az-Zumar 39:3), a comprehensive principle that dissolves every false dependency."
+    }
+   ]
+  },
+  {
+   "id": "p2-ch3",
+   "order": 12,
+   "headingEn": "Chapter 3: The Two Testimonies of Faith as a Way of Life, not a Verbal Formula",
+   "partEn": "Part 2: Monotheism: the Centre of the Whole Structure",
+   "page": "13",
+   "units": [
+    {
+     "id": "p2-ch3.p01",
+     "number": 1,
+     "page": "13",
+     "text": "The two testimonies of faith (the Shahadatayn) are not a single moment of entry into Islam, after which their function ends; they are, rather, a renewed way of life, in which every situation becomes a practical test of their meaning. Allah, the Exalted, says: *“Say, ‘Indeed, my prayer, my rites of sacrifice, my living and my dying are for Allah, Lord of the worlds’”* (Al-An’am 6:162)."
+    },
+    {
+     "id": "p2-ch3.p02",
+     "number": 2,
+     "page": "13",
+     "text": "The Prophet ﷺ said: *“The most fortunate of people to receive my intercession on the Day of Resurrection is the one who said, ‘There is no god but Allah,’ sincerely, from his heart or from his soul.”* (Reported by Al-Bukhari.) He also said: *“Whoever obeys me has obeyed Allah.”* (Agreed upon.)"
+    },
+    {
+     "id": "p2-ch3.p03",
+     "number": 3,
+     "page": "13",
+     "text": "Imam Al-Shafi’i (may Allah have mercy on him) said: “The Muslims are agreed that whoever is shown clearly the Sunnah of the Messenger of Allah ﷺ may not abandon it for anyone’s opinion.” (See: *Sifat Salat Al-Nabi* by Al-Albani.)"
+    }
+   ]
+  },
+  {
+   "id": "p2-ch4",
+   "order": 13,
+   "headingEn": "Chapter 4: The Messenger ﷺ as the Compass of Guidance",
+   "partEn": "Part 2: Monotheism: the Centre of the Whole Structure",
+   "page": "13",
+   "units": [
+    {
+     "id": "p2-ch4.p01",
+     "number": 1,
+     "page": "13",
+     "text": "The Messenger ﷺ was not a mere transmitter of revelation, but the practical embodiment of monotheism in every affair of life. Allah, the Exalted, says: *“There has certainly been for you in the Messenger of Allah an excellent pattern”* (Al-Ahzab 33:21)."
+    },
+    {
+     "id": "p2-ch4.p02",
+     "number": 2,
+     "page": "14",
+     "text": "Emulating him ﷺ is not a formal act of imitation, but a conscious commitment to a method that binds faith to reality and transforms creed into civilizational conduct."
+    },
+    {
+     "id": "p2-ch4.p03",
+     "number": 3,
+     "page": "14",
+     "text": "Imam Malik (may Allah have mercy on him) said: “The latter part of this nation will not be set right except by that which set right its earlier part.” (See: *Al-I’tisam* by Imam Al-Shatibi.)"
+    }
+   ]
+  },
+  {
+   "id": "p2-conclusion",
+   "order": 14,
+   "headingEn": "Conclusion of Part 2",
+   "partEn": "Part 2: Monotheism: the Centre of the Whole Structure",
+   "page": "14",
+   "units": [
+    {
+     "id": "p2-conclusion.p01",
+     "number": 1,
+     "page": "14",
+     "text": "Monotheism is a comprehensive force of construction: by it, intention is made sound; by it, worship is set upright; by it, character is made firm; and by it, balance is restored in a turbulent world."
+    },
+    {
+     "id": "p2-conclusion.p02",
+     "number": 2,
+     "page": "14",
+     "text": "Shaykh Al-Islam Ibn Taymiyyah (may Allah have mercy on him) said: “Monotheism is the greatest of what Allah has commanded, and associating partners with Him (shirk) is the greatest of what Allah has forbidden.” (See: *Majmu’ Al-Fatawa* by Shaykh Al-Islam Ibn Taymiyyah.)"
+    },
+    {
+     "id": "p2-conclusion.p03",
+     "number": 3,
+     "page": "14",
+     "text": "When monotheism is alive in the heart, religion moves out from the bounds of mere information into the space of life itself, and becomes an active guidance, not a raised slogan."
+    }
+   ]
+  },
+  {
+   "id": "part-3",
+   "order": 15,
+   "headingEn": "Part 3: Faith Between Its Attachment to Knowledge and Its Attachment to Submission",
+   "partEn": "Part 3: Faith Between Its Attachment to Knowledge and Its Attachment to Submission",
+   "page": "15",
+   "units": [
+    {
+     "id": "part-3.p01",
+     "number": 1,
+     "page": "15",
+     "text": "**Introduction to Part 3:** faith (Iman) is not a single, rigid state, nor a fixed degree that never changes; it is, rather, a composite reality that unites the heart’s affirmation, practical compliance, and the light of knowledge."
+    },
+    {
+     "id": "part-3.p02",
+     "number": 2,
+     "page": "15",
+     "text": "Disorder has crept into the understanding of faith whenever it has been separated from knowledge, or confined to a bare mental awareness, or removed from the sphere of conduct and life."
+    },
+    {
+     "id": "part-3.p03",
+     "number": 3,
+     "page": "15",
+     "text": "From this, this Part sets out to show that faith rests upon two kinds of attachment: attachment to the unseen, through submission and surrender; and attachment to the witnessed, through knowledge, inquiry, and reflection."
+    }
+   ]
+  },
+  {
+   "id": "p3-ch1",
+   "order": 16,
+   "headingEn": "Chapter 1: Faith in the Unseen, the Faith of Submission and Surrender",
+   "partEn": "Part 3: Faith Between Its Attachment to Knowledge and Its Attachment to Submission",
+   "page": "15",
+   "units": [
+    {
+     "id": "p3-ch1.p01",
+     "number": 1,
+     "page": "15",
+     "text": "The unseen (Al-ghayb) is that whose true reality is hidden from the senses and the intellects, not because of any deficiency in it, but because of the limitation of the human being’s instruments in encompassing it. Allah has made faith in the unseen the first of the believers’ qualities, saying: *“This is the Book about which there is no doubt, a guidance for those conscious of Allah, those who believe in the unseen”* (Al-Baqarah 2:2–3)."
+    },
+    {
+     "id": "p3-ch1.p02",
+     "number": 2,
+     "page": "16",
+     "text": "Among the unseen realities that must be believed in, without seeking to grasp their inner nature, are faith in Allah, the Exalted; faith in divine decree and predestination; faith in the Last Day; faith in the angels and the jinn; and faith in what Allah and His Messenger have informed us of, of matters beyond the reach of the senses."
+    },
+    {
+     "id": "p3-ch1.p03",
+     "number": 3,
+     "page": "16",
+     "text": "This faith is not a faith of ignorance, but a faith of submission, submission to Allah’s choice, and trust in His knowledge and wisdom. Allah, the Exalted, says: *“It is not for a believing man or a believing woman, when Allah and His Messenger have decided a matter, that they should [thereafter] have any choice about their affair”* (Al-Ahzab 33:36)."
+    },
+    {
+     "id": "p3-ch1.p04",
+     "number": 4,
+     "page": "16",
+     "text": "Imam Malik (may Allah have mercy on him) said on the unseen: “The manner in which [Allah] is established [upon the Throne] is known, its precise modality is unknown, faith in it is obligatory, and asking about it is an innovation.”"
+    },
+    {
+     "id": "p3-ch1.p05",
+     "number": 5,
+     "page": "16",
+     "text": "Faith in the unseen thus cultivates within the soul a humility about the limits of one’s own knowledge, breaks the illusion of intellectual mastery, and establishes the servitude of the heart before the servitude of the intellect."
+    }
+   ]
+  },
+  {
+   "id": "p3-ch2",
+   "order": 17,
+   "headingEn": "Chapter 2: Faith in the Witnessed, the Faith of Knowledge and Reflection",
+   "partEn": "Part 3: Faith Between Its Attachment to Knowledge and Its Attachment to Submission",
+   "page": "17",
+   "units": [
+    {
+     "id": "p3-ch2.p01",
+     "number": 1,
+     "page": "17",
+     "text": "Opposite faith in the unseen stands another kind of faith, one founded only upon knowledge, inquiry, and reflection: faith in the messengers, upon them be Allah’s prayers and peace, in the heavenly scriptures, in the biography of the prophets and messengers, in the truthfulness of revelation, and in the effects of the [prophetic] messages upon history and reality."
+    },
+    {
+     "id": "p3-ch2.p02",
+     "number": 2,
+     "page": "17",
+     "text": "Allah, the Exalted, says: *“Say, ‘Produce your proof, if you should be truthful’”* (Al-Baqarah 2:111), and He, glorified and exalted, says: *“Then do they not reflect upon the Qur’an?”* (An-Nisa’ 4:82)."
+    },
+    {
+     "id": "p3-ch2.p03",
+     "number": 3,
+     "page": "17",
+     "text": "Faith in the Messenger ﷺ, then, is not a faith of blind surrender, but a faith founded upon the truthfulness of his biography; the trustworthiness of his conveyance; the miraculous nature of the Qur’an; and the testimony of reality and history."
+    },
+    {
+     "id": "p3-ch2.p04",
+     "number": 4,
+     "page": "17",
+     "text": "Shaykh Al-Islam Ibn Taymiyyah said: “Faith cannot occur except through knowledge, though not every knowledge is faith.” (See his two books: *Majmu’ Al-Fatawa* and *Al-Jawab Al-Sahih*.) This statement shows that faith is only realized through knowledge, though not every piece of knowledge leads to faith."
+    },
+    {
+     "id": "p3-ch2.p05",
+     "number": 5,
+     "page": "17",
+     "text": "Imam Al-Ghazali (may Allah have mercy on him) said: “Knowledge is the path of faith, and deed is its fruit; there is no good in knowledge that bears no fruit.” (See *Ihya’ ’Ulum Al-Din* and *Al-Munqidh min Al-Dalal*, both by Imam Al-Ghazali.) This statement shows that knowledge is the path to faith, that deed is the fruit of knowledge, and that knowledge is of no benefit unless it bears the fruit of righteous action."
+    },
+    {
+     "id": "p3-ch2.p06",
+     "number": 6,
+     "page": "18",
+     "text": "Reason here, then, is the raw material of faith, not its judge over it, and reflection is a path to reverence, not a path to doubt."
+    }
+   ]
+  },
+  {
+   "id": "p3-ch3",
+   "order": 18,
+   "headingEn": "Chapter 3: The Increase and Decrease of Faith Between Knowledge and Deed",
+   "partEn": "Part 3: Faith Between Its Attachment to Knowledge and Its Attachment to Submission",
+   "page": "18",
+   "units": [
+    {
+     "id": "p3-ch3.p01",
+     "number": 1,
+     "page": "18",
+     "text": "Faith increases and decreases, a reality agreed upon among the people of the Sunnah. Allah, the Exalted, says: *“That they would increase [in] faith along with their [present] faith”* (Al-Fath 48:4)."
+    },
+    {
+     "id": "p3-ch3.p02",
+     "number": 2,
+     "page": "18",
+     "text": "The Prophet ﷺ said: *“Faith has over seventy branches, the highest of which is the saying, ‘There is no god but Allah,’ and the lowest of which is removing a harmful object from the road, and modesty (haya’) is a branch of faith.”* (Reported by Muslim.)"
+    },
+    {
+     "id": "p3-ch3.p03",
+     "number": 3,
+     "page": "18",
+     "text": "Faith increases through increase in knowledge of Allah, His names, and His attributes; reflection upon revelation and the cosmos; righteous deeds; and the purification of the soul."
+    },
+    {
+     "id": "p3-ch3.p04",
+     "number": 4,
+     "page": "19",
+     "text": "Faith decreases through ignorance and heedlessness; the abandonment of righteous deeds; persistence in sin; and the corruption of purpose and intention."
+    },
+    {
+     "id": "p3-ch3.p05",
+     "number": 5,
+     "page": "19",
+     "text": "Al-Hasan Al-Basri (may Allah have mercy on him) said: “Faith is not by wishful thinking, nor by outward adornment, but what settles firmly in the heart and is confirmed by deed.”"
+    }
+   ]
+  },
+  {
+   "id": "p3-ch4",
+   "order": 19,
+   "headingEn": "Chapter 4: Life Is Part of Faith",
+   "partEn": "Part 3: Faith Between Its Attachment to Knowledge and Its Attachment to Submission",
+   "page": "19",
+   "units": [
+    {
+     "id": "p3-ch4.p01",
+     "number": 1,
+     "page": "19",
+     "text": "Faith is not a mental idea, nor an isolated emotional state, but a way of life. Allah, the Exalted, says: *“Say, ‘Indeed, my prayer, my rites of sacrifice, my living and my dying are for Allah, Lord of the worlds’”* (Al-An’am 6:162)."
+    },
+    {
+     "id": "p3-ch4.p02",
+     "number": 2,
+     "page": "19",
+     "text": "Conduct, work, relationships, and daily choices, all of these are branches among the branches of faith."
+    },
+    {
+     "id": "p3-ch4.p03",
+     "number": 3,
+     "page": "19",
+     "text": "Imam Ibn Al-Qayyim (may Allah have mercy on him) said: “The idea that never turns into conduct remains an illusion; however, sound it may be [in theory].”"
+    }
+   ]
+  },
+  {
+   "id": "p3-ch5",
+   "order": 20,
+   "headingEn": "Chapter 5: Modesty (Haya’) Is Part of Faith",
+   "partEn": "Part 3: Faith Between Its Attachment to Knowledge and Its Attachment to Submission",
+   "page": "19",
+   "units": [
+    {
+     "id": "p3-ch5.p01",
+     "number": 1,
+     "page": "19",
+     "text": "If faith unites the knowledge that guides the mind with the submission that humbles the heart, then modesty (haya’) is the fruit of this balance. It is not merely a social virtue, nor a passing emotional reaction, but a station of faith reflecting Allah’s presence in the heart, and His watchfulness in secret and in the open."
+    },
+    {
+     "id": "p3-ch5.p02",
+     "number": 2,
+     "page": "20",
+     "text": "The Prophet ﷺ joined modesty to faith as a part is joined to the whole, saying: *“Modesty is a branch of faith,”* reported by Abu ’Ubayd in his book *Al-Iman*; and in another narration: *“Modesty brings nothing but good,”* reported by Abu Dawud Al-Tayalisi in his Musnad."
+    },
+    {
+     "id": "p3-ch5.p03",
+     "number": 3,
+     "page": "20",
+     "text": "1. **The concept of modesty in the balance of faith.** Modesty, in its true reality, is a breaking of the heart before what is repugnant, despite one’s capacity to commit it, an effect among the effects of magnifying Allah, not a weakness or hesitancy. A person may refrain from wrongdoing out of fear of people, and this is social modesty; or out of fear of punishment, and this is external deterrence; or out of a sense of shame before Allah, and this is the modesty of faith. This last is proof that faith has moved from being mere knowledge to becoming an inward state and a practical conduct.",
+     "kind": "item"
+    },
+    {
+     "id": "p3-ch5.p04",
+     "number": 4,
+     "page": "20",
+     "text": "2. **Modesty is the fruit of knowledge of Allah, Mighty and Sublime.** The more a servant’s knowledge of Allah, the Exalted, increases, of His names, His attributes, His nearness, His knowledge, and His awareness, the more his modesty before Him grows. Modesty is not ignorance, but the result of knowledge. Some of the righteous predecessors said: “Whoever truly knows Allah is truly modest before Him.” From this we understand that knowledge which produces no modesty is knowledge of deficient effect, one that has not reached the heart.",
+     "kind": "item"
+    },
+    {
+     "id": "p3-ch5.p05",
+     "number": 5,
+     "page": "21",
+     "text": "3. **Modesty is a station of submission, not a mere character trait.** Modesty is not merely ethical refinement, but an inward submission, a silent surrender to Allah’s command. The modest servant abandons sin: not because people see him, and not because the law forbids it, but because his heart cannot bear to disobey the One he reveres. This is the very essence of faith: to act as though you see Allah, for even if you do not see Him, He surely sees you.",
+     "kind": "item"
+    },
+    {
+     "id": "p3-ch5.p06",
+     "number": 6,
+     "page": "21",
+     "text": "4. **The kinds of modesty and their relationship to faith.** Modesty may be distinguished into three levels: an innate, instinctive modesty, which is a trait of character and may be found in the believer and the non-believer alike; an acquired, cultivated modesty, arising from habits, customs, and environment; and a modesty of faith, which is the one intended here, springing from magnifying Allah and being conscious of His watchfulness, increasing as faith increases and decreasing as it decreases. For this reason, the departure of modesty is a sign of a defect in faith, not merely in character.",
+     "kind": "item"
+    },
+    {
+     "id": "p3-ch5.p07",
+     "number": 7,
+     "page": "21",
+     "text": "5. **There is no contradiction between modesty and boldness in [defending] the truth.** Among the common errors is to consider modesty a form of weakness or hesitancy. The modesty of faith does not prevent one from: speaking the truth; enjoining good; or showing courage when it is called for. Rather, it prevents shamelessness; transgression; and boldness against the limits set by Allah. The Prophet ﷺ said: *“If you feel no shame, then do as you wish,”* reported by Ma’mar ibn Rashid in his book *Al-Jami’*, meaning when modesty departs, every restraint falls away with it.",
+     "kind": "item"
+    },
+    {
+     "id": "p3-ch5.p08",
+     "number": 8,
+     "page": "22",
+     "text": "6. **The effect of modesty on conduct and uprightness.** Modesty of faith guards the limbs, disciplines the tongue, refines intention, and prevents persistence in wrongdoing. It is among the greatest causes of uprightness free from both excess and harshness, for the person who possesses it has no need of constant external supervision, since their heart has already been filled with an inward watchfulness.",
+     "kind": "item"
+    },
+    {
+     "id": "p3-ch5.p09",
+     "number": 9,
+     "page": "22",
+     "text": "**Chapter Conclusion:** modesty is not a secondary virtue in religion, but a precise indicator of the vitality of faith in the heart. Whenever modesty weakens, it is a warning that faith has become knowledge without effect, or awareness without submission. And when knowledge that recognizes Allah, submission that yields to Him, and modesty that prevents disobeying Him are all united, the complete picture of a living faith is realized, one that sets right both the heart and conduct together."
+    }
+   ]
+  },
+  {
+   "id": "p3-conclusion",
+   "order": 21,
+   "headingEn": "Conclusion of Part 3",
+   "partEn": "Part 3: Faith Between Its Attachment to Knowledge and Its Attachment to Submission",
+   "page": "23",
+   "units": [
+    {
+     "id": "p3-conclusion.p01",
+     "number": 1,
+     "page": "23",
+     "text": "Faith is an unseen realm submitted to; a witnessed realm reflected upon and understood; a knowledge that is put into practice; a deed that is translated into action; and a life that is lived."
+    },
+    {
+     "id": "p3-conclusion.p02",
+     "number": 2,
+     "page": "23",
+     "text": "Whoever combines submission in matters of the unseen, reflection in matters of the witnessed, and action in reality, has walked the path of uprightness, and has realized knowledge of the self upon the guidance of revelation."
+    }
+   ]
+  },
+  {
+   "id": "part-4",
+   "order": 22,
+   "headingEn": "Part 4: Acts of Worship Between Form and Function",
+   "partEn": "Part 4: Acts of Worship Between Form and Function",
+   "page": "23",
+   "units": [
+    {
+     "id": "part-4.p01",
+     "number": 1,
+     "page": "23",
+     "text": "**Introduction to Part 4:** the acts of worship were not legislated in Islam to be bodily movements, or seasonal rituals cut off from the reality of life, performed and then forgotten, nor obligations discharged from one’s liability without leaving any trace upon the soul or upon life."
+    },
+    {
+     "id": "part-4.p02",
+     "number": 2,
+     "page": "23",
+     "text": "Rather, the acts of worship were legislated to bring about an inward transformation, to build a God-fearing human being, to refine conduct, and to reorder the human being’s relationship with his Lord, with himself, and with other people, carrying the Muslim from one state to another, and from one level of faith to a loftier one."
+    },
+    {
+     "id": "part-4.p03",
+     "number": 3,
+     "page": "24",
+     "text": "The command to worship was never an end, but a path to realizing a conscious servitude that delivers the human being from inner chaos and grants him a fixed moral compass in a turbulent world."
+    },
+    {
+     "id": "part-4.p04",
+     "number": 4,
+     "page": "24",
+     "text": "When worship is emptied of its function, it turns from a force of reform into an inherited habit, and from a message of transformation into a seasonal practice that leaves no notable trace upon conduct or values."
+    },
+    {
+     "id": "part-4.p05",
+     "number": 5,
+     "page": "24",
+     "text": "Having clarified, in the preceding Parts, the meaning and reality of faith, and the effects of Islam upon the life of the individual and society, we turn in this Part to a central issue in which disorder frequently occurs in understanding the acts of worship between their outward form and their inward function."
+    },
+    {
+     "id": "part-4.p06",
+     "number": 6,
+     "page": "24",
+     "text": "The acts of worship in Islam were not legislated merely for the performance of bodily movements or verbal utterances but were legislated to realize tremendous purposes: building the human being from within, purifying the soul, disciplining conduct, and binding the servant to his Lord in every affair of his life."
+    },
+    {
+     "id": "part-4.p07",
+     "number": 7,
+     "page": "24",
+     "text": "**First: the problem of separating form from function.** Some Muslim societies have become afflicted with a merely formal performance of the acts of worship, with a weakening of their effects on character and transactions, such that one finds a person who prays, yet whose prayer does not restrain him from indecency and wrongdoing; who fasts, yet whose fasting leaves no imprint on his tongue or his conduct; who performs the pilgrimage, then returns as he was before; who observes the rites, without their bearing fruit in uprightness, awareness, or a sense of responsibility."
+    },
+    {
+     "id": "part-4.p08",
+     "number": 8,
+     "page": "25",
+     "text": "Thus, many acts of worship have become bodily movements devoid of spirit. Here, the disorder does not lie in the act of worship itself, but in the understanding of it, in one’s presence of heart within it, and in its purposes. This disorder does not go back to any deficiency in the legislation, but to a poor understanding and application, since worship has, for some, turned from a means of purification and construction into a repeated habit empty of spirit and purpose."
+    },
+    {
+     "id": "part-4.p09",
+     "number": 9,
+     "page": "25",
+     "heading": "Second: the concept of form and function in acts of worship performed daily, weekly, or yearly.",
+     "text": "1. Form is the outward shape of the act of worship, its pillars, conditions, and manner, and this is required, for the act of worship is not valid without it.",
+     "kind": "item"
+    },
+    {
+     "id": "part-4.p10",
+     "number": 10,
+     "page": "25",
+     "text": "2. Function is the purpose for which the act of worship was legislated: God-consciousness (Taqwa), discipline, purification, uprightness, and the reform of the individual and society.",
+     "kind": "item"
+    },
+    {
+     "id": "part-4.p11",
+     "number": 11,
+     "page": "25",
+     "text": "The Islamic method does not accept a separation between the two; rather, it rests upon realizing the correct form while keeping the intended function ever in mind. Allah, the Exalted, says: *“Their meat will not reach Allah, nor will their blood, but what reaches Him is piety from you”* (Al-Hajj 22:37)."
+    },
+    {
+     "id": "part-4.p12",
+     "number": 12,
+     "page": "26",
+     "text": "**Third: the importance of this Part in building the true Muslim who understands his religion.** The importance of this Part flows from the fact that it restores the correction of the concept of formal worship into conscious religiosity and shows that the acts of worship are instruments of transformation and reform, not frozen rituals."
+    },
+    {
+     "id": "part-4.p13",
+     "number": 13,
+     "page": "26",
+     "text": "**Fourth: the method of this Part.** This Part will address, Allah willing, the essential acts of worship in Islam, such as prayer, zakat, fasting, and pilgrimage, not merely from the angle of formal performance, but from the angle of understanding, function, and effect. We shall consider each act of worship in its correct legal form, its educational and doctrinal function, and its behavioural, social, economic, and cultural effects, exposing the disorder present in its understanding or its practice, and clarifying the gap between the purpose for which it was legislated and what it has become, for many people today, in practice. This Part contains four chapters and a conclusion."
+    }
+   ]
+  },
+  {
+   "id": "p4-ch1",
+   "order": 23,
+   "headingEn": "Chapter 1: Why Were Acts of Worship Legislated?",
+   "partEn": "Part 4: Acts of Worship Between Form and Function",
+   "page": "26",
+   "units": [
+    {
+     "id": "p4-ch1.p01",
+     "number": 1,
+     "page": "26",
+     "text": "The fundamental principle regarding the acts of worship is that they are instruments of formation before they are outward expressions of commitment. Allah, the Exalted, says, stating the comprehensive purpose of worship: *“O mankind, worship your Lord, who created you and those before you, that you may become righteous”* (Al-Baqarah 2:21), the great goal, then, is God-consciousness (Taqwa), and God-consciousness is not merely a word to be uttered, but a state of awareness, watchfulness, and inward discipline."
+    },
+    {
+     "id": "p4-ch1.p02",
+     "number": 2,
+     "page": "27",
+     "text": "Allah, the Exalted, says: *“And I did not create the jinn and mankind except to worship Me”* (Adh-Dhariyat 51:56). Ibn Kathir (may Allah have mercy on him), in his exegesis, said this means that they may profess His oneness, submit to Him, and humble themselves before Him in obedience."
+    },
+    {
+     "id": "p4-ch1.p03",
+     "number": 3,
+     "page": "27",
+     "text": "Worship reorders the human being’s relationship with his Lord, liberates him from false servitudes, and grants him a lasting moral compass."
+    },
+    {
+     "id": "p4-ch1.p04",
+     "number": 4,
+     "page": "27",
+     "text": "Shaykh Al-Islam Ibn Taymiyyah (may Allah have mercy on him) said: “Worship is a comprehensive term for everything Allah loves and is pleased with, of sayings and deeds, outward and inward.” (See: *Majmu’ Al-Fatawa* by Shaykh Al-Islam Ibn Taymiyyah.)"
+    },
+    {
+     "id": "p4-ch1.p05",
+     "number": 5,
+     "page": "27",
+     "text": "Worship, then, is not confined to the mosque, nor cut off from life, but extends to encompass intention, conduct, dealings, and work."
+    }
+   ]
+  },
+  {
+   "id": "p4-ch2",
+   "order": 24,
+   "headingEn": "Chapter 2: Acts of Worship and the Building of the Balanced Human Being",
+   "partEn": "Part 4: Acts of Worship Between Form and Function",
+   "page": "28",
+   "units": [
+    {
+     "id": "p4-ch2.p01",
+     "number": 1,
+     "page": "28",
+     "text": "Among the wisdoms of Allah, the Exalted, is that He distributed the acts of worship across the limbs, the hearts, and the times and seasons, so that no one dimension might overwhelm the others. Worship in Islam purifies the spirit, disciplines the self, and sets conduct upright. Allah, the Exalted, says: *“He has certainly succeeded who purifies it [the soul], and he has certainly failed who instils it [with corruption]”* (Ash-Shams 91:9–10)."
+    },
+    {
+     "id": "p4-ch2.p02",
+     "number": 2,
+     "page": "28",
+     "text": "The Messenger of Allah ﷺ said: *“Indeed, within the body there is a morsel of flesh: if it is sound, the whole body is sound, and if it is corrupt, the whole body is corrupt, indeed, it is the heart.”* (Agreed upon.) The acts of worship, then, are not a mere accumulation of deeds, but a reform of the seat of command: the heart."
+    },
+    {
+     "id": "p4-ch2.p03",
+     "number": 3,
+     "page": "28",
+     "text": "Imam Al-Ghazali (may Allah have mercy on him) said: “The deeds of the limbs avail nothing unless they revive the deeds of the heart.” (See: *Ihya’ ’Ulum Al-Din*, chapter on the secrets of prayer.)"
+    },
+    {
+     "id": "p4-ch2.p04",
+     "number": 4,
+     "page": "28",
+     "text": "For this reason, the Prophet ﷺ always linked worship to conduct, as in his saying: *“O Mu’adh, be conscious of Allah wherever you are, follow a bad deed with a good one that will erase it, and treat people with good character.”* (Reported by Al-Tirmidhi.) The true fruit of worship, then, is the balanced human being who worships Allah, does good to His creation, and disciplines himself."
+    }
+   ]
+  },
+  {
+   "id": "p4-ch3",
+   "order": 25,
+   "headingEn": "Chapter 3: When Worship Is Severed from Its Effect",
+   "partEn": "Part 4: Acts of Worship Between Form and Function",
+   "page": "29",
+   "units": [
+    {
+     "id": "p4-ch3.p01",
+     "number": 1,
+     "page": "29",
+     "text": "Among the gravest afflictions besetting religiosity today is that worship turns into mere habit and loses its capacity for transformation. Allah, the Exalted, says: *“So woe to those who pray, [but] who are heedless of their prayer”* (Al-Ma’un 107:4–5)."
+    },
+    {
+     "id": "p4-ch3.p02",
+     "number": 2,
+     "page": "29",
+     "text": "Ibn Abbas (may Allah be pleased with them both) said: “They are those who delay it past its proper time, or do not perform it as it should be performed.” (See the exegeses of Imam Ibn Jarir Al-Tabari and Ibn Kathir.)"
+    },
+    {
+     "id": "p4-ch3.p03",
+     "number": 3,
+     "page": "29",
+     "text": "The Prophet ﷺ said: *“How many a fasting person gains nothing from his fast but hunger and thirst.”* (Reported by Ibn Majah in his Sunan.)"
+    },
+    {
+     "id": "p4-ch3.p04",
+     "number": 4,
+     "page": "29",
+     "text": "This indicates that worship without presence, without understanding, and without struggle against the self, may remain merely an outward form devoid of spirit."
+    },
+    {
+     "id": "p4-ch3.p05",
+     "number": 5,
+     "page": "29",
+     "text": "Al-Hasan Al-Basri (may Allah have mercy on him) said: “Faith is not by wishful thinking, nor by outward adornment, but what settles firmly in the heart and is confirmed by deed.” (See: *Al-Musannaf* by Ibn Abi Shaybah.) This statement means: faith is not mere speech or wishful thinking but must reside in the heart and be translated into deeds."
+    },
+    {
+     "id": "p4-ch3.p06",
+     "number": 6,
+     "page": "30",
+     "text": "When worship becomes severed from its effect, people lose confidence in religiosity, religion turns into a heavy burden, and the door opens to hypocrisy or aversion. The greatest danger is that a person may imagine himself close to Allah through his prayer, his fasting, his remembrance, and his recitation of the Qur’an, while in truth he is far from Him in his conduct, his character, and his dealings."
+    }
+   ]
+  },
+  {
+   "id": "p4-ch4",
+   "order": 26,
+   "headingEn": "Chapter 4: Worship, A Force of Inner Transformation",
+   "partEn": "Part 4: Acts of Worship Between Form and Function",
+   "page": "30",
+   "units": [
+    {
+     "id": "p4-ch4.p01",
+     "number": 1,
+     "page": "30",
+     "text": "When worship is performed with awareness, it becomes an energy for reform, a source of strength, and a motive for commitment. Allah, the Exalted, says of prayer: *“Indeed, prayer prohibits immorality and wrongdoing”* (Al-’Ankabut 29:45)."
+    },
+    {
+     "id": "p4-ch4.p02",
+     "number": 2,
+     "page": "30",
+     "text": "The Prophet ﷺ said: *“Whoever does not abandon false speech and acting upon it, and ignorant behaviour, Allah has no need of his leaving his food and drink.”* (Reported by Al-Bukhari.)"
+    },
+    {
+     "id": "p4-ch4.p03",
+     "number": 3,
+     "page": "30",
+     "text": "True worship changes the way a person thinks, reorders his desires, and strengthens his will in the face of appetite."
+    },
+    {
+     "id": "p4-ch4.p04",
+     "number": 4,
+     "page": "30",
+     "text": "Ibn Al-Qayyim (may Allah have mercy on him) said: “Servitude (’ubudiyyah) is the perfection of love joined with the perfection of submission, and the heart is not set right except by this.” (See: *Madarij Al-Salikin* by Imam Ibn Al-Qayyim.)"
+    },
+    {
+     "id": "p4-ch4.p05",
+     "number": 5,
+     "page": "31",
+     "text": "When the Muslim comes to understand why he worships, how he worships, and what ought to change in him after worship, the acts of worship transform from heavy obligations into stations of construction and purification."
+    }
+   ]
+  },
+  {
+   "id": "p4-conclusion",
+   "order": 27,
+   "headingEn": "Conclusion of Part 4",
+   "partEn": "Part 4: Acts of Worship Between Form and Function",
+   "page": "31",
+   "units": [
+    {
+     "id": "p4-conclusion.p01",
+     "number": 1,
+     "page": "31",
+     "text": "The acts of worship in Islam are not intended for their own sake alone, but for what they produce within the human being. Every act of worship that does not set the heart right, does not refine conduct, and does not bring one nearer to Allah, is an act of worship in need of a review of its understanding, not of its abandonment."
+    },
+    {
+     "id": "p4-conclusion.p02",
+     "number": 2,
+     "page": "31",
+     "text": "From here we move from worship as mere form to worship as effect, and from ritual to transformation."
+    }
+   ]
+  },
+  {
+   "id": "part-5",
+   "order": 28,
+   "headingEn": "Part 5: Prayer, the Bond of Life, a Permanent Connection, not a Temporary Duty",
+   "partEn": "Part 5: Prayer, the Bond of Life, a Permanent Connection, not a Temporary Duty",
+   "page": "31",
+   "units": [
+    {
+     "id": "part-5.p01",
+     "number": 1,
+     "page": "31",
+     "text": "**Introduction to Part 5:** prayer is not merely an obligation to be discharged, nor repeated movements performed at fixed times, but a daily, ever-renewed relationship between the servant and his Lord, one that resets the heart, straightens conduct, and grants the human being the capacity to remain firm in a turbulent world. If prayer is sound, the scale of life is set upright; if it is corrupted, everything is disturbed."
+    },
+    {
+     "id": "part-5.p02",
+     "number": 2,
+     "page": "32",
+     "text": "In its true reality, prayer is not a temporary spiritual respite, but a system of permanent connection between the servant and his Lord, resetting the heart five times a day, amid the noise of life and the entanglement of worldly interests. Allah, the Exalted, says: *“And establish prayer for My remembrance”* (Ta-Ha 20:14), the remembrance of Allah is the very essence of prayer, and it is what grants prayer its capacity to restore inward balance. This Part contains four chapters and a conclusion."
+    }
+   ]
+  },
+  {
+   "id": "p5-ch1",
+   "order": 29,
+   "headingEn": "Chapter 1: Prayer in the Balance of Faith",
+   "partEn": "Part 5: Prayer, the Bond of Life, a Permanent Connection, not a Temporary Duty",
+   "page": "32",
+   "units": [
+    {
+     "id": "p5-ch1.p01",
+     "number": 1,
+     "page": "32",
+     "text": "Allah made prayer the pillar of religion, and the first thing the servant will be asked about on the Day of Resurrection. The Prophet ﷺ said: *“The head of the matter is Islam, its pillar is prayer, and the peak of its hump is jihad.”* (Reported by Al-Tirmidhi, who said it is a sound, authentic hadith.)"
+    },
+    {
+     "id": "p5-ch1.p02",
+     "number": 2,
+     "page": "32",
+     "text": "The Prophet ﷺ said: *“The first matter the servant will be brought to account for on the Day of Resurrection is his prayer: if it is sound, the rest of his deeds are sound, and if it is corrupt, the rest of his deeds are corrupt.”* (Reported by Abu Dawud Al-Tayalisi in his Musnad and Al-Tabarani in *Al-Mu’jam Al-Awsat*, and graded sound by several scholars.)"
+    },
+    {
+     "id": "p5-ch1.p03",
+     "number": 3,
+     "page": "33",
+     "text": "Allah, the Exalted, says: *“And establish prayer and do not be of those who associate others with Allah”* (Ar-Rum 30:31), Allah thereby linked prayer to monotheism, and made its abandonment among the greatest gateways to deviation."
+    },
+    {
+     "id": "p5-ch1.p04",
+     "number": 4,
+     "page": "33",
+     "text": "’Umar ibn Al-Khattab (may Allah be pleased with him) said: “There is no share in Islam for one who abandons prayer.” (See: *Al-Musannaf* by Ibn Abi Shaybah, and *Al-Muwatta’* of Imam Malik.)"
+    },
+    {
+     "id": "p5-ch1.p05",
+     "number": 5,
+     "page": "33",
+     "text": "Imam Ahmad (may Allah have mercy on him) said: “Prayer is the pillar of Islam; whoever demolishes it has demolished religion.” (See: *Kitab Al-Salah* by Imam Ahmad.)"
+    },
+    {
+     "id": "p5-ch1.p06",
+     "number": 6,
+     "page": "33",
+     "text": "Prayer, then, is not a secondary branch, but the centre of gravity of faith in the Muslim’s life. Prayer that does not renew faith, does not set character right, and does not soften the hardness of the heart, is a prayer performed only in form, from which the function has been absent."
+    }
+   ]
+  },
+  {
+   "id": "p5-ch2",
+   "order": 30,
+   "headingEn": "Chapter 2: The Philosophy of Repetition and Temporal Discipline",
+   "partEn": "Part 5: Prayer, the Bond of Life, a Permanent Connection, not a Temporary Duty",
+   "page": "33",
+   "units": [
+    {
+     "id": "p5-ch2.p01",
+     "number": 1,
+     "page": "33",
+     "text": "Among the wisdoms of Allah, the Exalted, is that He made prayer obligatory five times in the day and night, so that it might be a continuous renewal of faith, or a wireless network, as it were, connecting the servant to his Creator, Mighty and Sublime, without interruption."
+    },
+    {
+     "id": "p5-ch2.p02",
+     "number": 2,
+     "page": "34",
+     "text": "Allah, the Exalted, says: *“So maintain prayer. Indeed, prayer has been decreed upon the believers a decree of specified times”* (An-Nisa’ 4:103), prayer, then, organizes time, trains the soul in discipline, and binds the human being to heaven amid the crowded press of the earth."
+    },
+    {
+     "id": "p5-ch2.p03",
+     "number": 3,
+     "page": "34",
+     "text": "The Prophet ﷺ said: *“What do you think, if there were a river at the door of one of you, in which he bathed five times every day, would any trace of dirt remain on him?” They said, “No trace of dirt would remain on him.” He said, “That is the likeness of the five prayers: Allah erases sins by them.”* (Agreed upon.)"
+    },
+    {
+     "id": "p5-ch2.p04",
+     "number": 4,
+     "page": "34",
+     "text": "Imam Ibn Rajab Al-Hanbali (may Allah have mercy on him) said: “Repeated prayer purifies the heart just as water purifies the body.” (See: *Al-Khushu’ fi Al-Salah* by Imam Ibn Rajab Al-Hanbali.)"
+    },
+    {
+     "id": "p5-ch2.p05",
+     "number": 5,
+     "page": "34",
+     "text": "Repetition in prayer, then, is not a tiresome repetition, but an educational mercy, for the human being weakens and grows heedless."
+    }
+   ]
+  },
+  {
+   "id": "p5-ch3",
+   "order": 31,
+   "headingEn": "Chapter 3: The Effect of Prayer on Conduct and Character",
+   "partEn": "Part 5: Prayer, the Bond of Life, a Permanent Connection, not a Temporary Duty",
+   "page": "35",
+   "units": [
+    {
+     "id": "p5-ch3.p01",
+     "number": 1,
+     "page": "35",
+     "text": "Allah did not make prayer an end, but a means to the reform of conduct. Allah, the Exalted, says: *“And establish prayer. Indeed, prayer prohibits immorality and wrongdoing”* (Al-’Ankabut 29:45). Ibn Kathir (may Allah have mercy on him), in his exegesis, said this means that prayer, containing as it does the remembrance of Allah, restrains its performer from acts of disobedience."
+    },
+    {
+     "id": "p5-ch3.p02",
+     "number": 2,
+     "page": "35",
+     "text": "Ibn Abi Hatim related in his exegesis, on the authority of ’Imran ibn Husayn, who said: “The Prophet ﷺ was asked about the meaning of Allah’s words, ‘Indeed, prayer prohibits immorality and wrongdoing.’ He said, ‘Whoever’s prayer does not restrain him from immorality and wrongdoing has no [true] prayer.’” (Reported by Al-Tabarani in *Al-Mu’jam*, and Sa’id ibn Mansur in his Sunan.) The scholars said this means there is no complete prayer [in such a case]."
+    },
+    {
+     "id": "p5-ch3.p03",
+     "number": 3,
+     "page": "35",
+     "text": "True prayer refines the tongue, restrains appetite, that is, governs and curbs it, or reduces its influence, and revives the conscience. Al-Hasan Al-Basri (may Allah have mercy on him) said: “Prayer, for whoever truly performs it, restrains from immorality and wrongdoing.” (See: the exegesis of Ibn Kathir, and *Al-Durr Al-Manthur* by Al-Suyuti.) This means: a prayer complete in its pillars and its humility is what restrains its performer from immorality and wrongdoing."
+    },
+    {
+     "id": "p5-ch3.p04",
+     "number": 4,
+     "page": "36",
+     "text": "If you see one who prays yet commits injustice, lies, or betrays trust, then know that the flaw is not in the prayer, but in the absence of the heart and a failure to understand worship."
+    }
+   ]
+  },
+  {
+   "id": "p5-ch4",
+   "order": 32,
+   "headingEn": "Chapter 4: Why Does Prayer Sometimes Fail to Bring About Change?",
+   "partEn": "Part 5: Prayer, the Bond of Life, a Permanent Connection, not a Temporary Duty",
+   "page": "36",
+   "units": [
+    {
+     "id": "p5-ch4.p01",
+     "number": 1,
+     "page": "36",
+     "text": "This is a candid question that must be asked, for reality bears witness that many people pray without their lives ever changing. There are many reasons for this, among the most important:"
+    },
+    {
+     "id": "p5-ch4.p02",
+     "number": 2,
+     "page": "36",
+     "text": "1. **The absence of humility (khushu’).** Allah, the Exalted, says: *“In the name of Allah, the Most Gracious, the Most Merciful. Certainly, will the believers have succeeded, they who are during their prayer humbly submissive”* (Al-Mu’minun 23:1–2). The Prophet ﷺ said: *“Indeed, a man may finish his prayer, and nothing has been recorded for him of it but a tenth of it, or a ninth, or an eighth, or a seventh, or a sixth, or a fifth, or a quarter, or a third, or a half.”* (Reported by Abu Dawud in his Sunan.)",
+     "kind": "item"
+    },
+    {
+     "id": "p5-ch4.p03",
+     "number": 3,
+     "page": "36",
+     "text": "2. **Performing prayer as a habit, not as an act of worship.** Ibn Al-Qayyim (may Allah have mercy on him) said: “A prayer that produces neither reverence nor restraint from wrongdoing is a prayer in form only, without its true reality.” (See: *Al-Jawab Al-Kafi* by Imam Ibn Al-Qayyim.) This means: a prayer that neither increases humility nor prevents wrongdoing more closely resembles mere movements than a true prayer.",
+     "kind": "item"
+    },
+    {
+     "id": "p5-ch4.p04",
+     "number": 4,
+     "page": "37",
+     "text": "3. **Failure to understand what is recited within the prayer.** Shaykh Al-Islam Ibn Taymiyyah (may Allah have mercy on him) said: “Among the greatest causes of the heart’s presence is understanding the meanings of what the one praying recites.” (See: *Majmu’ Al-Fatawa* by Shaykh Al-Islam Ibn Taymiyyah.) This means understanding the meanings of the Qur’an and the remembrances recited in prayer is among the most important causes of the heart’s presence and its humility.",
+     "kind": "item"
+    },
+    {
+     "id": "p5-ch4.p05",
+     "number": 5,
+     "page": "37",
+     "text": "4. **A weakness in struggle after the prayer.** Allah, the Exalted, says: *“And seek help through patience and prayer, and indeed, it is difficult except for the humbly submissive [to Allah]”* (Al-Baqarah 2:45). Prayer assists, but it does not dispense with continued struggle against the self.",
+     "kind": "item"
+    }
+   ]
+  },
+  {
+   "id": "p5-conclusion",
+   "order": 33,
+   "headingEn": "Conclusion of Part 5",
+   "partEn": "Part 5: Prayer, the Bond of Life, a Permanent Connection, not a Temporary Duty",
+   "page": "37",
+   "units": [
+    {
+     "id": "p5-conclusion.p01",
+     "number": 1,
+     "page": "37",
+     "text": "Prayer is not merely a temporary connection, but a complete connection to life itself; it is the balance of faith, the school of discipline, the engine of character, and the source of firmness in an age of trials. Whoever wishes to reform his life should begin by reforming his prayer, in understanding, in presence, and in conduct."
+    }
+   ]
+  },
+  {
+   "id": "part-6",
+   "order": 34,
+   "headingEn": "Part 6: Zakat, the Economy of Mercy, the Worship of Wealth, and the Purification of Society",
+   "partEn": "Part 6: Zakat, the Economy of Mercy, the Worship of Wealth, and the Purification of Society",
+   "page": "38",
+   "units": [
+    {
+     "id": "part-6.p01",
+     "number": 1,
+     "page": "38",
+     "text": "**Introduction to Part 6:** Islam did not make wealth a god to be worshipped, nor an evil to be shunned, but a means of stewardship and a trial, by which the sincerity of faith is measured, and the balance of society is built."
+    },
+    {
+     "id": "part-6.p02",
+     "number": 2,
+     "page": "38",
+     "text": "Zakat is not an optional charity, nor a social tax, but one of the pillars of religion, a rite of profound civilizational effect, purifying the soul of the disease of miserliness and redistributing mercy within society."
+    },
+    {
+     "id": "part-6.p03",
+     "number": 3,
+     "page": "38",
+     "text": "When zakat is discharged as Allah intended, the doors of class-based resentment are closed, poverty is contained, and society becomes settled. When zakat is neglected, wealth becomes detached from values, trust collapses, and social bonds are severed. The Prophet ﷺ said: *“There is no possessor of hoarded wealth who does not pay its zakat, but it will be heated in the fire of Hell [and used to brand him].”* (Reported by Muslim.)"
+    },
+    {
+     "id": "part-6.p04",
+     "number": 4,
+     "page": "38",
+     "text": "When zakat turns into a figure paid without awareness, it loses a great part of its educational and social effect, remaining legally valid while deficient in effect. This Part contains four chapters and a conclusion."
+    }
+   ]
+  },
+  {
+   "id": "p6-ch1",
+   "order": 35,
+   "headingEn": "Chapter 1: Wealth Between Stewardship and Ownership",
+   "partEn": "Part 6: Zakat, the Economy of Mercy, the Worship of Wealth, and the Purification of Society",
+   "page": "39",
+   "units": [
+    {
+     "id": "p6-ch1.p01",
+     "number": 1,
+     "page": "39",
+     "text": "Islam sets right, from the outset, the concept of wealth, so that the human being is not left to wander between greed and deprivation. Allah, the Exalted, says: *“And give them from the wealth of Allah which He has given you”* (An-Nur 24:33), wealth, then, belongs to Allah in its creation, and to the human being in his acquisition of it; it is a trust before it is a possession. Allah, the Exalted, says: *“Believe in Allah and His Messenger and spend out of that in which He has made you successors [i.e., stewards]”* (Al-Hadid 57:7)."
+    },
+    {
+     "id": "p6-ch1.p02",
+     "number": 2,
+     "page": "39",
+     "text": "Imam Al-Qurtubi (may Allah have mercy on him) said, in his exegesis: “In this verse is proof that wealth is not, in true reality, owned by us, but that we are made stewards over it.”"
+    },
+    {
+     "id": "p6-ch1.p03",
+     "number": 3,
+     "page": "39",
+     "text": "The Prophet ﷺ said: *“The feet of a servant will not move on the Day of Resurrection until he is asked about four things: about his life, how he spent it; about his youth, how he wore it out; about his wealth, whence he acquired it and how he spent it; and about his knowledge, what he did with it.”* (Reported by Al-Tirmidhi.)"
+    },
+    {
+     "id": "p6-ch1.p04",
+     "number": 4,
+     "page": "39",
+     "text": "Zakat, then, resets the human being’s relationship with wealth, and liberates him from servitude to it."
+    }
+   ]
+  },
+  {
+   "id": "p6-ch2",
+   "order": 36,
+   "headingEn": "Chapter 2: Zakat as an Instrument of Social Justice",
+   "partEn": "Part 6: Zakat, the Economy of Mercy, the Worship of Wealth, and the Purification of Society",
+   "page": "40",
+   "units": [
+    {
+     "id": "p6-ch2.p01",
+     "number": 1,
+     "page": "40",
+     "text": "Allah, the Exalted, has linked zakat to prayer in dozens of places in His Book, to show that faith is not complete without social justice. Allah, the Exalted, says: *“And establish prayer and give zakat and bow with those who bow [in worship and obedience]”* (Al-Baqarah 2:43). He has clarified its designated recipients with precision, saying: *“Zakat expenditures are only for the poor and for the needy and for those employed to collect [zakat] and for bringing hearts together [for Islam] and for freeing captives [or slaves] and for those in debt and for the cause of Allah and for the [stranded] traveller, an obligation [imposed] by Allah. And Allah is Knowing and Wise”* (At-Tawbah 9:60)."
+    },
+    {
+     "id": "p6-ch2.p02",
+     "number": 2,
+     "page": "40",
+     "text": "Imam Ibn ’Ashur (may Allah have mercy on him) said, in his exegesis *Al-Tahrir wa’l-Tanwir*: “Zakat is a complete social system aiming to preserve the balance of society.”"
+    },
+    {
+     "id": "p6-ch2.p03",
+     "number": 3,
+     "page": "40",
+     "text": "It is related from Ibn Abbas that Mu’adh said: *“The Messenger of Allah ﷺ sent me and said: ‘You are going to a people of the Scripture. Invite them first to testify that there is no god but Allah and that I am the Messenger of Allah. If they obey that, then inform them that Allah has made five prayers obligatory upon them in every day and night. If they obey that, then inform them that Allah has made charity obligatory upon them, to be taken from their rich and given to their poor. If they obey that, then beware of [taking] the best of their wealth, and beware of the supplication of the one wronged, for there is no barrier between it and Allah.’”* (Agreed upon.) Zakat, then, is not a mere favour, but an established right, one that safeguards the dignity of society and purifies the soul of the wealthy."
+    }
+   ]
+  },
+  {
+   "id": "p6-ch3",
+   "order": 37,
+   "headingEn": "Chapter 3: The Effects of Neglecting Zakat in Societies",
+   "partEn": "Part 6: Zakat, the Economy of Mercy, the Worship of Wealth, and the Purification of Society",
+   "page": "41",
+   "units": [
+    {
+     "id": "p6-ch3.p01",
+     "number": 1,
+     "page": "41",
+     "text": "When zakat is disabled, it is not only the economy that is disturbed, but values that collapse. Allah, the Exalted, warns those who withhold zakat, saying: *“And those who hoard gold and silver and spend it not in the way of Allah, give them tidings of a painful punishment”* (At-Tawbah 9:34)."
+    },
+    {
+     "id": "p6-ch3.p02",
+     "number": 2,
+     "page": "41",
+     "text": "The Messenger of Allah ﷺ said: *“No people withhold zakat, but Allah afflicts them with years of drought.”* (Reported by Al-Tabarani in *Al-Mu’jam Al-Awsat*.)"
+    },
+    {
+     "id": "p6-ch3.p03",
+     "number": 3,
+     "page": "41",
+     "text": "Abu Bakr (may Allah be pleased with him) said: “By Allah, I shall surely fight whoever separates prayer from zakat, for zakat is the due of wealth. By Allah, if they withhold from me [even] a young she-goat that they used to render to the Messenger of Allah ﷺ, I would fight them for withholding it.” ’Umar then said: “By Allah, it was only that I saw that Allah had opened Abu Bakr’s breast to fight, and I recognized that it was the truth.” (Reported by ’Abd Al-Razzaq in his Musannaf.)"
+    },
+    {
+     "id": "p6-ch3.p04",
+     "number": 4,
+     "page": "41",
+     "text": "Imam Al-Shatibi (may Allah have mercy on him) said: “The disabling of zakat portends the collapse of the social purposes of the Shari’ah.” (See: *Al-Muwafaqat fi Usul Al-Shari’ah* by Imam Al-Shatibi.) This means: the failure to pay zakat threatens the realization of the social objectives of Islamic law."
+    },
+    {
+     "id": "p6-ch3.p05",
+     "number": 5,
+     "page": "42",
+     "text": "The absence of zakat leads to the intensification of poverty, the accumulation of wealth in the hands of a few, the spread of social resentment, and a weakening sense of belonging."
+    }
+   ]
+  },
+  {
+   "id": "p6-ch4",
+   "order": 38,
+   "headingEn": "Chapter 4: Mutual Solidarity, the Foundation of Civilizational Stability",
+   "partEn": "Part 6: Zakat, the Economy of Mercy, the Worship of Wealth, and the Purification of Society",
+   "page": "42",
+   "units": [
+    {
+     "id": "p6-ch4.p01",
+     "number": 1,
+     "page": "42",
+     "text": "Civilizations are not built on production alone, but on justice and mutual mercy. Allah, the Exalted, says: *“Take, [O Muhammad], from their wealth a charity by which you purify them and cause them increase, and invoke [Allah’s blessings] upon them”* (At-Tawbah 9:103)."
+    },
+    {
+     "id": "p6-ch4.p02",
+     "number": 2,
+     "page": "42",
+     "text": "Zakat purifies wealth, purifies the soul, and builds bridges of trust. The Prophet ﷺ said: *“The believers, in their mutual love, mercy, and compassion, are like a single body: when one part of it complains [of illness], the rest of the body responds to it with wakefulness and fever.”* (Agreed upon.)"
+    },
+    {
+     "id": "p6-ch4.p03",
+     "number": 3,
+     "page": "42",
+     "text": "Imam Ibn Al-Qayyim (may Allah have mercy on him) said: “Zakat is among the greatest causes of the soundness of wealth, and of preserving societies from ruin.” (See: *Al-Wabil Al-Sayyib* by Imam Ibn Al-Qayyim.) This means zakat is among the most important causes that purify wealth and increase its blessing."
+    },
+    {
+     "id": "p6-ch4.p04",
+     "number": 4,
+     "page": "43",
+     "text": "When society discharges its zakat, crime diminishes, souls settle, and a sense of shared destiny grows stronger, and this is the very essence of the economy of mercy."
+    }
+   ]
+  },
+  {
+   "id": "p6-conclusion",
+   "order": 39,
+   "headingEn": "Conclusion of Part 6",
+   "partEn": "Part 6: Zakat, the Economy of Mercy, the Worship of Wealth, and the Purification of Society",
+   "page": "43",
+   "units": [
+    {
+     "id": "p6-conclusion.p01",
+     "number": 1,
+     "page": "43",
+     "text": "Zakat is not merely a financial act of worship, but a project of justice, a system of social security, and a civilizational balance. If we desire settled societies, a humane economy, and a sincere religiosity, then zakat must return from a neglected line item to the very heart of the Islamic system."
+    }
+   ]
+  },
+  {
+   "id": "part-7",
+   "order": 40,
+   "headingEn": "Part 7: Fasting, Rebuilding the Human Being, and a School for Disciplining the Will",
+   "partEn": "Part 7: Fasting, Rebuilding the Human Being, and a School for Disciplining the Will",
+   "page": "43",
+   "units": [
+    {
+     "id": "part-7.p01",
+     "number": 1,
+     "page": "43",
+     "text": "**Introduction to Part 7:** fasting, in its true reality, is not merely abstention from food and drink, nor a passing seasonal act of worship, but a profound program of formation, reordering the human being’s inward life: his desires, his will, his awareness, and his conscience."
+    },
+    {
+     "id": "part-7.p02",
+     "number": 2,
+     "page": "43",
+     "text": "It is a comprehensive educational program, teaching the soul the meaning of mastery rather than submission [to appetite]."
+    },
+    {
+     "id": "part-7.p03",
+     "number": 3,
+     "page": "43",
+     "text": "In a world governed by desire, and fed by haste, in which the human being is measured by what he consumes, fasting comes to say to him: you are greater than your desire, stronger than your appetite, and loftier than your momentary life. This Part contains four chapters and a conclusion."
+    }
+   ]
+  },
+  {
+   "id": "p7-ch1",
+   "order": 41,
+   "headingEn": "Chapter 1: Fasting and the Liberation of the Will",
+   "partEn": "Part 7: Fasting, Rebuilding the Human Being, and a School for Disciplining the Will",
+   "page": "44",
+   "units": [
+    {
+     "id": "p7-ch1.p01",
+     "number": 1,
+     "page": "44",
+     "text": "The first evident purpose of fasting is to build a free will, enslaved neither by appetite nor by habit. Allah, the Exalted, says: *“O you who have believed, decreed upon you is fasting as it was decreed upon those before you, that you may become righteous”* (Al-Baqarah 2:183)."
+    },
+    {
+     "id": "p7-ch1.p02",
+     "number": 2,
+     "page": "44",
+     "text": "Allah thus made the great purpose of fasting to be God-consciousness (Taqwa), and it is the fruit of awareness, discipline, and watchfulness."
+    },
+    {
+     "id": "p7-ch1.p03",
+     "number": 3,
+     "page": "44",
+     "text": "The Prophet ﷺ said: *“O assembly of young men, whoever among you is able to marry, let him marry, for it is more restraining of the gaze and more protective of chastity; and whoever is unable, let him fast, for it is a shield for him.”* (Agreed upon.) That is: fasting restrains sexual appetite and strengthens one’s mastery over the self."
+    },
+    {
+     "id": "p7-ch1.p04",
+     "number": 4,
+     "page": "44",
+     "text": "Imam Ibn Al-Qayyim (may Allah have mercy on him) said: “In fasting there is a subduing of the self, a breaking of its dominance, and a reminder to it of its own weakness and its need for Allah.” (See: *Zad Al-Ma’ad* by Imam Ibn Al-Qayyim.) This means there is, in fasting, a restraint of the self and a training of it to abandon its desires."
+    },
+    {
+     "id": "p7-ch1.p05",
+     "number": 5,
+     "page": "45",
+     "text": "Fasting, then, is a school of inward strength, not bodily weakness, nor mere deprivation of food and drink."
+    }
+   ]
+  },
+  {
+   "id": "p7-ch2",
+   "order": 42,
+   "headingEn": "Chapter 2: Purifying the Soul in the School of Ramadan",
+   "partEn": "Part 7: Fasting, Rebuilding the Human Being, and a School for Disciplining the Will",
+   "page": "45",
+   "units": [
+    {
+     "id": "p7-ch2.p01",
+     "number": 1,
+     "page": "45",
+     "text": "Ramadan is not a month of mere abstention, but a month of comprehensive purification. Allah, the Exalted, says: *“He has certainly succeeded who purifies it [the soul]”* (Ash-Shams 91:9)."
+    },
+    {
+     "id": "p7-ch2.p02",
+     "number": 2,
+     "page": "45",
+     "text": "The Prophet ﷺ said: *“Whoever fasts Ramadan out of faith and in expectation of reward, his previous sins will be forgiven.”* (Agreed upon.) He also said: *“When Ramadan comes, the gates of Paradise are opened, the gates of Hell are closed, and the devils are chained.”* (Agreed upon.)"
+    },
+    {
+     "id": "p7-ch2.p03",
+     "number": 3,
+     "page": "45",
+     "text": "Imam Al-Ghazali (may Allah have mercy on him) said: “The true reality of fasting is the restraint of the limbs from sin, and of the heart from base ambitions.” (See: *Ihya’ ’Ulum Al-Din* by Imam Al-Ghazali.) Imam Al-Ghazali, may Allah the Exalted have mercy on him, states in *Ihya’ ’Ulum Al-Din* that fasting is of three degrees:"
+    },
+    {
+     "id": "p7-ch2.p04",
+     "number": 4,
+     "page": "45",
+     "text": "1. **The fasting of the common people:** restraining the stomach and the private parts, and all the other bodily faculties, from satisfying appetite.",
+     "kind": "item"
+    },
+    {
+     "id": "p7-ch2.p05",
+     "number": 5,
+     "page": "46",
+     "text": "2. **The fasting of the elect:** restraining the hearing, the sight, the tongue, the hand, the foot, and the other limbs from sin.",
+     "kind": "item"
+    },
+    {
+     "id": "p7-ch2.p06",
+     "number": 6,
+     "page": "46",
+     "text": "3. **The fasting of the elect of the elect:** restraining the heart from base concerns and worldly preoccupations.",
+     "kind": "item"
+    },
+    {
+     "id": "p7-ch2.p07",
+     "number": 7,
+     "page": "46",
+     "text": "Al-Hasan Al-Basri (may Allah have mercy on him) said: “Allah has made Ramadan a racecourse for His servants, in which they compete with one another in obedience to Him.” (See: *Ihya’ ’Ulum Al-Din* by Imam Al-Ghazali.) This means: Ramadan is an arena for worshippers, in which they compete for obedience and God-consciousness, some race ahead and are victorious, and some lag and lose."
+    },
+    {
+     "id": "p7-ch2.p08",
+     "number": 8,
+     "page": "46",
+     "text": "Ramadan, then, awakens the conscience, softens the heart, and intensifies self-examination."
+    }
+   ]
+  },
+  {
+   "id": "p7-ch3",
+   "order": 43,
+   "headingEn": "Chapter 3: Fasting and Resisting Consumerism and Appetite",
+   "partEn": "Part 7: Fasting, Rebuilding the Human Being, and a School for Disciplining the Will",
+   "page": "46",
+   "units": [
+    {
+     "id": "p7-ch3.p01",
+     "number": 1,
+     "page": "46",
+     "text": "In an age of excessive consumption, fasting comes to break this cycle. The Prophet ﷺ said: *“Fasting is a shield”* (Agreed upon), that is, a protection from appetite, from anger, and from behavioural excess."
+    },
+    {
+     "id": "p7-ch3.p02",
+     "number": 2,
+     "page": "47",
+     "text": "The Prophet ﷺ said: *“When one of you is fasting, let him not use obscene speech, nor act in ignorance; and if someone fights him or insults him, let him say, ‘I am fasting.’”* (Agreed upon.)"
+    },
+    {
+     "id": "p7-ch3.p03",
+     "number": 3,
+     "page": "47",
+     "text": "Ibn Rajab Al-Hanbali (may Allah have mercy on him) said: “Fasting narrows the pathways of Satan and prevents the expansion of appetite.” (See: *Lata’if Al-Ma’arif* by Imam Ibn Rajab Al-Hanbali.) This means fasting narrows Satan’s pathways within the human being, weakening his whispers and diminishing his influence."
+    },
+    {
+     "id": "p7-ch3.p04",
+     "number": 4,
+     "page": "47",
+     "text": "Fasting, then, trains a person in contentment, curbs extravagance, and restores due regard for values, and for this reason fasting was a civilizational tool before it was an individual act of worship."
+    }
+   ]
+  },
+  {
+   "id": "p7-ch4",
+   "order": 44,
+   "headingEn": "Chapter 4: Why Do Some People Leave Ramadan Unchanged?",
+   "partEn": "Part 7: Fasting, Rebuilding the Human Being, and a School for Disciplining the Will",
+   "page": "47",
+   "units": [
+    {
+     "id": "p7-ch4.p01",
+     "number": 1,
+     "page": "47",
+     "text": "This painful question exposes a defect in understanding and in practice. Among the most prominent causes:"
+    },
+    {
+     "id": "p7-ch4.p02",
+     "number": 2,
+     "page": "47",
+     "text": "1. **Reducing fasting to mere hunger**, that is, treating fasting as nothing more than abstention from food and drink. The Prophet ﷺ said: *“How many a fasting person gains nothing from his fast but hunger and thirst.”* (Reported by Ibn Majah.)",
+     "kind": "item"
+    },
+    {
+     "id": "p7-ch4.p03",
+     "number": 3,
+     "page": "48",
+     "text": "2. **A weakness in the heart’s watchfulness.** Allah, the Exalted, says: *“Indeed, Allah is ever, over you, an Observer”* (An-Nisa’ 4:1).",
+     "kind": "item"
+    },
+    {
+     "id": "p7-ch4.p04",
+     "number": 4,
+     "page": "48",
+     "text": "3. **The absence of continuity after Ramadan.** Allah, the Exalted, says: *“And worship your Lord until there comes to your certainty [i.e., death]”* (Al-Hijr 15:99).",
+     "kind": "item"
+    },
+    {
+     "id": "p7-ch4.p05",
+     "number": 5,
+     "page": "48",
+     "text": "Ibn Al-Qayyim (may Allah have mercy on him) said: “Among the signs of an accepted deed is that it bears the fruit of a righteous deed after it.” (See: *Madarij Al-Salikin* by Imam Ibn Al-Qayyim.) This means among the signs that a righteous deed has been accepted is that it is followed by another righteous deed, for a righteous deed draws further righteous deeds in its wake."
+    },
+    {
+     "id": "p7-ch4.p06",
+     "number": 6,
+     "page": "48",
+     "text": "The great function of fasting is God-consciousness (Taqwa), and this is an inward discipline that accompanies the human being after Ramadan, not only during it."
+    },
+    {
+     "id": "p7-ch4.p07",
+     "number": 7,
+     "page": "48",
+     "text": "Fasting, then, is not a temporal end, but a point of departure toward a better state."
+    }
+   ]
+  },
+  {
+   "id": "p7-conclusion",
+   "order": 45,
+   "headingEn": "Conclusion of Part 7",
+   "partEn": "Part 7: Fasting, Rebuilding the Human Being, and a School for Disciplining the Will",
+   "page": "48",
+   "units": [
+    {
+     "id": "p7-conclusion.p01",
+     "number": 1,
+     "page": "48",
+     "text": "Fasting rebuilds the will, purifies the soul, and liberates the human being from consumption. If the Muslim emerges from Ramadan with a stronger will, a purer heart, and more disciplined conduct, then fasting has fulfilled its function; if not, the review that is required is not of the fast itself, but of one’s understanding of it."
+    }
+   ]
+  },
+  {
+   "id": "part-8",
+   "order": 46,
+   "headingEn": "Part 8: Hajj, the Nation in a Single Scene, for the Building of Unity",
+   "partEn": "Part 8: Hajj, the Nation in a Single Scene, for the Building of Unity",
+   "page": "49",
+   "units": [
+    {
+     "id": "part-8.p01",
+     "number": 1,
+     "page": "49",
+     "text": "**Introduction to Part 8:** the Hajj is not an individual spiritual journey, nor a seasonal rite of limited effect, but a global event of faith, in which hearts meet before bodies, in which differences dissolve, and in which the very meaning of “nation” (ummah) is reformulated."
+    },
+    {
+     "id": "part-8.p02",
+     "number": 2,
+     "page": "49",
+     "text": "In the Hajj, the human being sheds every mark of distinction and dons the pure garment of servitude, moving within a congregation defined by neither homeland nor colour, but by creed and a single direction of prayer alone."
+    },
+    {
+     "id": "part-8.p03",
+     "number": 3,
+     "page": "49",
+     "text": "It is not merely an individual journey of faith, but a project of grand unity: to stand as a servant of Allah alongside millions of Allah’s servants, in the best of seasons, in the most sacred of lands, in the presence of the finest of Allah’s servants, the guests of the Most Merciful. In it, the message of Hajj is made manifest in building a collective consciousness, a sense of shared destiny, and a responsibility for reform. This Part contains four chapters and a conclusion."
+    }
+   ]
+  },
+  {
+   "id": "p8-ch1",
+   "order": 47,
+   "headingEn": "Chapter 1: Hajj Between Rite and Purpose",
+   "partEn": "Part 8: Hajj, the Nation in a Single Scene, for the Building of Unity",
+   "page": "50",
+   "units": [
+    {
+     "id": "p8-ch1.p01",
+     "number": 1,
+     "page": "50",
+     "text": "Allah, the Exalted, has made clear that Hajj is not a movement without purpose, but an act of worship with manifest aims. Allah, the Exalted, says: *“And [due] to Allah from the people is a pilgrimage to the House, for whoever is able to find thereto a way”* (Aal ’Imran 3:97)."
+    },
+    {
+     "id": "p8-ch1.p02",
+     "number": 2,
+     "page": "50",
+     "text": "He, the Exalted, also says: *“That they may witness benefits for themselves”* (Al-Hajj 22:28). Ibn Kathir (may Allah have mercy on him), in his exegesis, said: these benefits encompass both religious and worldly good."
+    },
+    {
+     "id": "p8-ch1.p03",
+     "number": 3,
+     "page": "50",
+     "text": "The Prophet ﷺ said: *“An accepted Hajj has no reward but Paradise.”* (Agreed upon.)"
+    },
+    {
+     "id": "p8-ch1.p04",
+     "number": 4,
+     "page": "50",
+     "text": "Hajj, then, binds the servant to monotheism, trains him in absolute obedience, and instils in him the meaning of compliance with the commands of Allah, the Exalted."
+    },
+    {
+     "id": "p8-ch1.p05",
+     "number": 5,
+     "page": "50",
+     "text": "Imam Al-Shatibi (may Allah have mercy on him) said: “Hajj gathers together the greatest purposes of the Shari’ah.” (See: *Al-Muwafaqat* by Imam Al-Shatibi.) This means: Hajj brings together the most important purposes of Islamic law."
+    }
+   ]
+  },
+  {
+   "id": "p8-ch2",
+   "order": 48,
+   "headingEn": "Chapter 2: The Unity of the Nation in a Single Garment",
+   "partEn": "Part 8: Hajj, the Nation in a Single Scene, for the Building of Unity",
+   "page": "50",
+   "units": [
+    {
+     "id": "p8-ch2.p01",
+     "number": 1,
+     "page": "50",
+     "text": "Among the greatest scenes of the Hajj is the shedding of distinctions of class, race, colour, dress, and affiliation. The Prophet ﷺ said: *“Indeed, Allah does not look at your outward forms, nor at your bodies, but He looks at your hearts and your deeds.”* (Reported by Muslim.)"
+    },
+    {
+     "id": "p8-ch2.p02",
+     "number": 2,
+     "page": "51",
+     "text": "The Prophet ﷺ said: *“O people, indeed your Lord is one, and indeed your father [Adam] is one. There is no superiority of an Arab over a non-Arab, nor of a non-Arab over an Arab, nor of a red [-skinned person] over a black one, nor of a black one over a red one, except by God-consciousness.”* (Reported by Imam Ahmad and ’Abdullah ibn Al-Mubarak in his Musnad.)"
+    },
+    {
+     "id": "p8-ch2.p03",
+     "number": 3,
+     "page": "51",
+     "text": "Allah, the Exalted, says: *“Indeed, the most noble of you in the sight of Allah is the most righteous of you”* (Al-Hujurat 49:13). Imam Al-Nawawi (may Allah have mercy on him) said: “In the pilgrim’s state of ritual consecration (ihram) there is a reminder of the equality of all creation.” (See: *Al-Majmu’ Sharh Al-Muhadhdhab* by Imam Al-Nawawi.)"
+    },
+    {
+     "id": "p8-ch2.p04",
+     "number": 4,
+     "page": "51",
+     "text": "This means: the state of ihram reminds Muslims of their equality with one another, for those in the state of consecration are equal in their simple garments of ihram, without distinction between rich or poor, great or small, African or American, European or Asian."
+    },
+    {
+     "id": "p8-ch2.p05",
+     "number": 5,
+     "page": "51",
+     "text": "Hajj, then, redefines identity, corrects the scale of distinction, and cultivates brotherhood."
+    }
+   ]
+  },
+  {
+   "id": "p8-ch3",
+   "order": 49,
+   "headingEn": "Chapter 3: Hajj, A Global Congress of Faith",
+   "partEn": "Part 8: Hajj, the Nation in a Single Scene, for the Building of Unity",
+   "page": "52",
+   "units": [
+    {
+     "id": "p8-ch3.p01",
+     "number": 1,
+     "page": "52",
+     "text": "In the Hajj, Muslims gather from every distant corner, carrying with them concerns, questions, and challenges. Allah, the Exalted, says: *“And proclaim to the people the Hajj; they will come to you on foot and on every lean camel, coming from every distant pass”* (Al-Hajj 22:27). Allah, the Exalted, also says: *“Indeed this, your religion, is one religion, and I am your Lord, so worship Me”* (Al-Anbiya 21:92)."
+    },
+    {
+     "id": "p8-ch3.p02",
+     "number": 2,
+     "page": "52",
+     "text": "The Prophet ﷺ said: *“The believer to the believer is like a structure, parts of which support other parts,”* and he interlaced his fingers. (Agreed upon.)"
+    },
+    {
+     "id": "p8-ch3.p03",
+     "number": 3,
+     "page": "52",
+     "text": "Imam Muhammad Rashid Rida (may Allah have mercy on him) said: “Hajj is the greatest annual Islamic congress; where it put to good use, it would transform the nation.” (See: *Manasik Al-Hajj: Ahkamuhu wa Hikamuhu* by Imam Muhammad Rashid Rida.) This means it affirms the importance of Hajj in uniting Muslims and strengthening Islamic solidarity and considers Hajj an opportunity for the exchange of ideas and cooperation among Muslims."
+    },
+    {
+     "id": "p8-ch3.p04",
+     "number": 4,
+     "page": "52",
+     "text": "Hajj is thus an opportunity for acquaintance, and a field for the exchange of experiences, opinions, resources, and expertise, and a reminder of a shared destiny."
+    }
+   ]
+  },
+  {
+   "id": "p8-ch4",
+   "order": 50,
+   "headingEn": "Chapter 4: Civilizational Lessons from the Rites of Hajj",
+   "partEn": "Part 8: Hajj, the Nation in a Single Scene, for the Building of Unity",
+   "page": "53",
+   "units": [
+    {
+     "id": "p8-ch4.p01",
+     "number": 1,
+     "page": "53",
+     "text": "Every rite of the Hajj carries a profound civilizational lesson for the Islamic nation, wherever its members may be and wherever they may be found in the world:"
+    },
+    {
+     "id": "p8-ch4.p02",
+     "number": 2,
+     "page": "53",
+     "text": "**The circumambulation of the House (tawaf):** Allah, the Exalted, says: *“And let them circumambulate the ancient House”* (Al-Hajj 22:29). Ibn Al-Qayyim (may Allah have mercy on him) said: “In the circumambulation is a declaration that Allah is the centre of life.” (See: *Zad Al-Ma’ad* by Imam Ibn Al-Qayyim.) This means circumambulating the Ka’bah is a declaration of Allah’s centrality in the Muslim’s life and affirms the importance of circumambulation in strengthening one’s love for Allah and attachment to Him."
+    },
+    {
+     "id": "p8-ch4.p03",
+     "number": 3,
+     "page": "53",
+     "text": "**The going back and forth between Safa and Marwah (sa’i):** Allah, the Exalted, says: *“Indeed, Safa and Marwah are among the symbols of Allah. So, whoever makes Hajj to the House or performs ’umrah, there is no blame upon him for walking between them”* (Al-Baqarah 2:158). Imam Ibn Kathir (may Allah have mercy on him) said, in his exegesis, that the sa’i is an emulation of the Lady Hagar, and a training in taking up the means [to one’s ends]."
+    },
+    {
+     "id": "p8-ch4.p04",
+     "number": 4,
+     "page": "53",
+     "text": "**Standing at ’Arafah:** The Prophet ﷺ said: *“Hajj is ’Arafah.”* (Reported by Al-Tirmidhi.) Imam Ibn Rajab Al-Hanbali (may Allah have mercy on him) said: “The Day of ’Arafah is a scene that recalls the Day of Gathering [i.e., the Day of Judgement].” (See: *Lata’if Al-Ma’arif* by Imam Ibn Rajab Al-Hanbali.) This means: the Day of ’Arafah is a magnificent scene in which the human being is reminded of the Day of Gathering and its terrors, and it affirms the importance of the Day of ’Arafah in the forgiveness of sins and liberation from the Fire."
+    },
+    {
+     "id": "p8-ch4.p05",
+     "number": 5,
+     "page": "54",
+     "text": "**Spending the night at Muzdalifah:** this reminds the pilgrims of the true reality of patience and obedience, of cooperation and mutual mercy, and of equality among themselves. All of them spend the night sleeping upon the ground, and their sleeping side by side reminds them of the grave, where no distinction is made between rich and poor, ruler and ruled, slave and free."
+    },
+    {
+     "id": "p8-ch4.p06",
+     "number": 6,
+     "page": "54",
+     "text": "**The stoning of the pillars (rami Al-jamarat):** this reminds the pilgrims of defiance and steadfastness, our master Abraham defied Satan and stoned him with pebbles, and of unity and gathering, as millions of Muslims cast stones with a single purpose and a single united act, and of ridding oneself of evil, for the stoning of the pillars is a symbol of casting off desires and evil whisperings, and of obedience to Allah, for the stoning of the pillars expresses obedience to Allah and the carrying out of His commands."
+    },
+    {
+     "id": "p8-ch4.p07",
+     "number": 7,
+     "page": "54",
+     "text": "Hajj, then, binds this world to the next, deed to reliance upon Allah, and the individual to the nation, and is a tremendous opportunity for acquaintance and the exchange of experience and knowledge, as well as both worldly and otherworldly benefits."
+    }
+   ]
+  },
+  {
+   "id": "p8-conclusion",
+   "order": 51,
+   "headingEn": "Conclusion of Part 8",
+   "partEn": "Part 8: Hajj, the Nation in a Single Scene, for the Building of Unity",
+   "page": "55",
+   "units": [
+    {
+     "id": "p8-conclusion.p01",
+     "number": 1,
+     "page": "55",
+     "text": "Hajj is not an individual journey, but a declaration of nationhood, a renewal of covenant, and the building of a collective consciousness. Whoever performs the Hajj and returns humble, unburdened of pretension, and aware of his responsibility toward the nation, has fulfilled the function of the Hajj."
+    }
+   ]
+  },
+  {
+   "id": "part-9",
+   "order": 52,
+   "headingEn": "Part 9: Islam and the System of Contemporary Life",
+   "partEn": "Part 9: Islam and the System of Contemporary Life",
+   "page": "55",
+   "units": [
+    {
+     "id": "part-9.p01",
+     "number": 1,
+     "page": "55",
+     "text": "**Introduction to Part 9:** Islam did not come to be an isolated spiritual rite, nor a devotional system confined to the mosque, but came as comprehensive guidance, organizing the human being’s relationship with his Lord, with himself, with others, and with the world around him."
+    },
+    {
+     "id": "part-9.p02",
+     "number": 2,
+     "page": "55",
+     "text": "With the complexity of contemporary life, and the intertwining of politics, economics, science, and technology, the question renews itself: does Islam possess a vision for modern life? The answer is neither a defence nor a justification, but a historical and religious truth: that Islam is fit for every time and place, because it engages with the human being, whether male or female, young or old, slave or free, rich or poor, ruler or ruled, learned or ignorant, resident or traveller, before it engages with particulars. This Part contains four chapters and a conclusion."
+    }
+   ]
+  },
+  {
+   "id": "p9-ch1",
+   "order": 53,
+   "headingEn": "Chapter 1: Islam and Knowledge",
+   "partEn": "Part 9: Islam and the System of Contemporary Life",
+   "page": "56",
+   "units": [
+    {
+     "id": "p9-ch1.p01",
+     "number": 1,
+     "page": "56",
+     "text": "From the very first verse revealed, Islam placed knowledge at the heart of its civilizational project. Allah, the Exalted, says: *“Read in the name of your Lord who created”* (Al-’Alaq 96:1)."
+    },
+    {
+     "id": "p9-ch1.p02",
+     "number": 2,
+     "page": "56",
+     "text": "Allah, the Exalted, also says: *“Say, ‘Are those who know equal to those who do not know?’”* (Az-Zumar 39:9), and He, the Exalted, says: *“Only those fear Allah, from among His servants, who have knowledge”* (Fatir 35:28)."
+    },
+    {
+     "id": "p9-ch1.p03",
+     "number": 3,
+     "page": "56",
+     "text": "The Prophet ﷺ said: *“Seeking knowledge is an obligation upon every Muslim.”* (Reported by Ibn Majah in his Sunan, and graded sound by the scholars.)"
+    },
+    {
+     "id": "p9-ch1.p04",
+     "number": 4,
+     "page": "56",
+     "text": "Imam Al-Ghazali (may Allah the Exalted have mercy on him) said: “Knowledge is the root of happiness, and from it deeds spring forth.” (See: *Ihya’ ’Ulum Al-Din* by Imam Al-Ghazali.) This means knowledge is the root of happiness, and righteous deeds spring from correct knowledge, and it affirms the importance of knowledge in the reform of the self and the improvement of one’s deeds."
+    },
+    {
+     "id": "p9-ch1.p05",
+     "number": 5,
+     "page": "57",
+     "text": "Imam Ibn Taymiyyah (may Allah have mercy on him) said: “Religion does not oppose sound knowledge; rather, it bears witness to it and guides it.” (See: *Majmu’ Al-Fatawa* by Shaykh Al-Islam Ibn Taymiyyah.) This means: the religion of Islam does not conflict with sound knowledge but bears witness to it and guides it toward the truth, and it affirms the importance of harmony between sound knowledge and the religion of Islam."
+    },
+    {
+     "id": "p9-ch1.p06",
+     "number": 6,
+     "page": "57",
+     "text": "Islam, then, does not fear knowledge, nor is it hostile to reason, but disciplines knowledge with values."
+    }
+   ]
+  },
+  {
+   "id": "p9-ch2",
+   "order": 54,
+   "headingEn": "Chapter 2: Islam and the Economy",
+   "partEn": "Part 9: Islam and the System of Contemporary Life",
+   "page": "57",
+   "units": [
+    {
+     "id": "p9-ch2.p01",
+     "number": 1,
+     "page": "57",
+     "text": "Islam did not leave wealth without direction, nor the economy without ethics. Allah, the Exalted, says: *“But seek, through that which Allah has given you, the home of the Hereafter; and [yet], do not forget your share of the world”* (Al-Qasas 28:77)."
+    },
+    {
+     "id": "p9-ch2.p02",
+     "number": 2,
+     "page": "57",
+     "text": "Allah, the Exalted, also says: *“But Allah has permitted trade and has forbidden interest”* (Al-Baqarah 2:275)."
+    },
+    {
+     "id": "p9-ch2.p03",
+     "number": 3,
+     "page": "57",
+     "text": "The Prophet ﷺ said: *“The truthful, trustworthy merchant will be with the prophets, the truthful, and the martyrs.”* (Reported by Al-Tirmidhi.)"
+    },
+    {
+     "id": "p9-ch2.p04",
+     "number": 4,
+     "page": "57",
+     "text": "Imam Ibn Khaldun (may Allah have mercy on him) said: “Transactions in the Shari’ah are built upon securing benefit and repelling harm.” (See: *Al-Muqaddimah* by Ibn Khaldun.) This statement affirms the importance of taking public interests into account, and of avoiding harm, within Islamic law."
+    },
+    {
+     "id": "p9-ch2.p05",
+     "number": 5,
+     "page": "58",
+     "text": "The economy in Islam, then, is production without oppression, earning without exploitation, and mutual solidarity that does not efface the individual."
+    }
+   ]
+  },
+  {
+   "id": "p9-ch3",
+   "order": 55,
+   "headingEn": "Chapter 3: Islam and Society",
+   "partEn": "Part 9: Islam and the System of Contemporary Life",
+   "page": "58",
+   "units": [
+    {
+     "id": "p9-ch3.p01",
+     "number": 1,
+     "page": "58",
+     "text": "Islam came to build a cohesive society founded upon justice, mercy, and responsibility. Allah, the Exalted, says: *“Indeed, Allah orders justice and good conduct and giving to relatives”* (An-Nahl 16:90)."
+    },
+    {
+     "id": "p9-ch3.p02",
+     "number": 2,
+     "page": "58",
+     "text": "The Prophet ﷺ said: *“The best of people are those most beneficial to people.”* (Reported by Al-Tabarani.)"
+    },
+    {
+     "id": "p9-ch3.p03",
+     "number": 3,
+     "page": "58",
+     "text": "The Prophet ﷺ said: *“Each of you is a shepherd, and each of you is responsible for his flock.”* (Agreed upon.)"
+    },
+    {
+     "id": "p9-ch3.p04",
+     "number": 4,
+     "page": "58",
+     "text": "Imam Ibn ’Ashur (may Allah have mercy on him) said: “The greatest purpose of the Shari’ah is the preservation of the order of the nation.” (See: *Maqasid Al-Shari’ah Al-Islamiyyah* by Ibn ’Ashur.) This statement affirms the importance of achieving social stability and order in the life of the nation."
+    },
+    {
+     "id": "p9-ch3.p05",
+     "number": 5,
+     "page": "59",
+     "text": "Society in Islam, then, is not a collection of isolated individuals, but a network of mutual solidarity and shared responsibility."
+    }
+   ]
+  },
+  {
+   "id": "p9-ch4",
+   "order": 56,
+   "headingEn": "Chapter 4: Islam in a Changing World",
+   "partEn": "Part 9: Islam and the System of Contemporary Life",
+   "page": "59",
+   "units": [
+    {
+     "id": "p9-ch4.p01",
+     "number": 1,
+     "page": "59",
+     "text": "Among the characteristics of Islam is that it unites the fixity of its principles with the flexibility of its means. Allah, the Exalted, says: *“So remain upright as you have been commanded”* (Hud 11:112)."
+    },
+    {
+     "id": "p9-ch4.p02",
+     "number": 2,
+     "page": "59",
+     "text": "The Prophet ﷺ said to the Companions: *“You are more knowledgeable in the affairs of your worldly life.”* (Reported by Muslim.)"
+    },
+    {
+     "id": "p9-ch4.p03",
+     "number": 3,
+     "page": "59",
+     "text": "Imam Ibn Al-Qayyim (may Allah have mercy on him) said: “The Shari’ah is justice entire, mercy entire, and wisdom entire.” (See: *I’lam Al-Muwaqqi’in ’an Rabb Al-’Alamin* by Imam Ibn Al-Qayyim.) This statement affirms the importance of understanding the Shari’ah in realizing the public interest and justice."
+    },
+    {
+     "id": "p9-ch4.p04",
+     "number": 4,
+     "page": "59",
+     "text": "Imam Al-Shatibi (may Allah the Exalted have mercy on him) said: “The purposes are fixed, while the means change with the changing of the times.” (See: *Al-Muwafaqat fi Usul Al-Shari’ah* by Imam Al-Shatibi.) This means: the fundamental purposes of the Shari’ah are fixed, but the means of realizing them change according to time and circumstance, and this statement affirms the importance of accounting for changing conditions, and of adapting the means to realize the purposes of the Shari’ah."
+    },
+    {
+     "id": "p9-ch4.p05",
+     "number": 5,
+     "page": "60",
+     "text": "Islam, then, does not clash with the age, nor dissolve within it, but directs it by the highest values."
+    }
+   ]
+  },
+  {
+   "id": "p9-conclusion",
+   "order": 57,
+   "headingEn": "Conclusion of Part 9",
+   "partEn": "Part 9: Islam and the System of Contemporary Life",
+   "page": "60",
+   "units": [
+    {
+     "id": "p9-conclusion.p01",
+     "number": 1,
+     "page": "60",
+     "text": "Islam is a comprehensive vision, a system for living, and a civilizational project. When Islam is understood in its entirety, the illusory conflict with the age dissolves, religiosity turns into a force of construction, and religion recovers its role in guiding the human being."
+    },
+    {
+     "id": "p9-conclusion.p02",
+     "number": 2,
+     "page": "60",
+     "text": "From this understanding we move to the final question: how do we transform this awareness into practical action?"
+    }
+   ]
+  },
+  {
+   "id": "part-10",
+   "order": 58,
+   "headingEn": "Part 10: From Understanding to Action",
+   "partEn": "Part 10: From Understanding to Action",
+   "page": "60",
+   "units": [
+    {
+     "id": "part-10.p01",
+     "number": 1,
+     "page": "60",
+     "text": "**Introduction to Part 10:** the crisis of the nation today does not lie in a shortage of texts, nor in the obscurity of revelation, nor in the scarcity of exhortation, but in the gap between what we know and what we live."
+    },
+    {
+     "id": "part-10.p02",
+     "number": 2,
+     "page": "60",
+     "text": "How many a Muslim memorizes the verses of the Qur’an, repeats the Prophetic hadiths, and performs the religious rites, and yet this is never reflected in his character, his dealings, or his decisions."
+    },
+    {
+     "id": "part-10.p03",
+     "number": 3,
+     "page": "61",
+     "text": "For this reason, the transition from understanding to action is the true challenge of contemporary religiosity, and it is the true measure of the fruit of faith. This Part contains four chapters and a conclusion."
+    }
+   ]
+  },
+  {
+   "id": "p10-ch1",
+   "order": 59,
+   "headingEn": "Chapter 1: A Crisis of Application, Not a Crisis of Text",
+   "partEn": "Part 10: From Understanding to Action",
+   "page": "61",
+   "units": [
+    {
+     "id": "p10-ch1.p01",
+     "number": 1,
+     "page": "61",
+     "text": "Revelation is complete, guidance is clear, but the disorder lies in its implementation. Allah, the Exalted, says: *“This day I have perfected for you your religion and completed My favour upon you and have approved for you Islam as religion”* (Al-Ma’idah 5:3)."
+    },
+    {
+     "id": "p10-ch1.p02",
+     "number": 2,
+     "page": "61",
+     "text": "Allah, the Exalted, also says: *“[This is] a blessed Book which We have revealed to you, [O Muhammad], that they might reflect upon its verses and that those of understanding would be reminded”* (Sad 38:29)."
+    },
+    {
+     "id": "p10-ch1.p03",
+     "number": 3,
+     "page": "61",
+     "text": "The Prophet ﷺ said: *“I have left among you that which, if you hold fast to it, you will never go astray after me: the Book of Allah.”* (Reported by Muslim.)"
+    },
+    {
+     "id": "p10-ch1.p04",
+     "number": 4,
+     "page": "61",
+     "text": "Imam Malik (may Allah the Exalted have mercy on him) said: “The latter part of this nation will not be set right except by that which set right its earlier part.” (See: *Al-I’tisam* by Imam Al-Shatibi.) This means: the reform of the latter part of this nation lies in returning to the way of the righteous predecessors, and this statement affirms the importance of following the method of the predecessors in reforming the nation."
+    },
+    {
+     "id": "p10-ch1.p05",
+     "number": 5,
+     "page": "62",
+     "text": "Imam Ibn Taymiyyah (may Allah have mercy on him) said: “The obligation is to follow the texts with a correct understanding of them and their proper application to reality.” (See: *Majmu’ Al-Fatawa* by Shaykh Al-Islam Ibn Taymiyyah.) This means it is obligatory upon Muslims to follow the religious texts of the Qur’an and Sunnah with a correct understanding of them, and this affirms the importance of understanding the texts according to their linguistic and legal significations."
+    },
+    {
+     "id": "p10-ch1.p06",
+     "number": 6,
+     "page": "62",
+     "text": "The crisis, then, is not in the text, but in its partial understanding, or in its selective application, that is, its application in some instances and not in others."
+    }
+   ]
+  },
+  {
+   "id": "p10-ch2",
+   "order": 60,
+   "headingEn": "Chapter 2: The Muslim Individual and the Building of Reality",
+   "partEn": "Part 10: From Understanding to Action",
+   "page": "62",
+   "units": [
+    {
+     "id": "p10-ch2.p01",
+     "number": 1,
+     "page": "62",
+     "text": "Change always begins with the individual, not with slogans, but with practical commitment. Allah, the Exalted, says: *“Indeed, Allah will not change the condition of a people until they change what is in themselves”* (Ar-Ra’d 13:11)."
+    },
+    {
+     "id": "p10-ch2.p02",
+     "number": 2,
+     "page": "63",
+     "text": "The Prophet ﷺ said: *“The strong believer is better and more beloved to Allah than the weak believer.”* (Reported by Muslim.)"
+    },
+    {
+     "id": "p10-ch2.p03",
+     "number": 3,
+     "page": "63",
+     "text": "The Prophet ﷺ said: *“The best of you is the best of you to his family.”* (Reported by Al-Tirmidhi in his Sunan, and Al-Darimi in his Musnad.)"
+    },
+    {
+     "id": "p10-ch2.p04",
+     "number": 4,
+     "page": "63",
+     "text": "Imam Al-Hasan Al-Basri (may Allah have mercy on him) said: “Allah is worshipped by nothing more excellent than an understanding that bears fruit in action.” (See: *Al-Faqih wa’l-Mutafaqqih* by Al-Khatib Al-Baghdadi.) This statement indicates the importance of acting upon knowledge, and that understanding which bears no fruit in action is of no benefit to its possessor."
+    },
+    {
+     "id": "p10-ch2.p05",
+     "number": 5,
+     "page": "63",
+     "text": "The Muslim individual, then, is a project of reform, a point of departure, and a silent model, and if the individual is set right, society is built upon that foundation."
+    }
+   ]
+  },
+  {
+   "id": "p10-ch3",
+   "order": 61,
+   "headingEn": "Chapter 3: From Individual Piety to Collective Responsibility",
+   "partEn": "Part 10: From Understanding to Action",
+   "page": "63",
+   "units": [
+    {
+     "id": "p10-ch3.p01",
+     "number": 1,
+     "page": "63",
+     "text": "Islam is not content with a selfish religiosity, nor with worship isolated from the concerns of the nation. Allah, the Exalted, says: *“And cooperate in righteousness and piety”* (Al-Ma’idah 5:2). The Prophet ﷺ said: *“The believers, in their mutual love and mercy, are like a single body: if the head complains, the rest of it responds with sleeplessness and fever.”* (Agreed upon.)"
+    },
+    {
+     "id": "p10-ch3.p02",
+     "number": 2,
+     "page": "64",
+     "text": "Imam Al-Shatibi (may Allah the Exalted have mercy on him) said: “The Shari’ah came to establish the interests of the community, not merely of individuals.” (See: *Al-Muwafaqat fi Usul Al-Shari’ah* and *Maqasid Al-Shari’ah*, both by Imam Al-Shatibi.) This statement shows that Islamic law aims to realize the interests of the community and the nation, not merely of individuals."
+    },
+    {
+     "id": "p10-ch3.p03",
+     "number": 3,
+     "page": "64",
+     "text": "Ibn ’Ashur (may Allah the Exalted have mercy on him) said: “Collective responsibility is an authentic purpose within Islam.” (See: *Maqasid Al-Shari’ah Al-Islamiyyah* and *Usul Al-Nizam Al-Ijtima’i fi Al-Islam*, both by Ibn ’Ashur.) This statement shows that Islam places great emphasis on the importance of the nation’s collective responsibility."
+    },
+    {
+     "id": "p10-ch3.p04",
+     "number": 4,
+     "page": "64",
+     "text": "True religiosity, then, builds institutions, reforms systems, confronts corruption, and carries the concerns of the nation."
+    }
+   ]
+  },
+  {
+   "id": "p10-ch4",
+   "order": 62,
+   "headingEn": "Chapter 4: How Do We Restore Religion’s Effect on Life?",
+   "partEn": "Part 10: From Understanding to Action",
+   "page": "64",
+   "units": [
+    {
+     "id": "p10-ch4.p01",
+     "number": 1,
+     "page": "64",
+     "text": "Restoring religion’s effect on the daily life of the nation is achieved neither through confrontation nor through isolation, but through awareness and shared action together:"
+    },
+    {
+     "id": "p10-ch4.p02",
+     "number": 2,
+     "page": "65",
+     "text": "1. **A purposive understanding.** Al-Shatibi (may Allah have mercy on him) said: “Whoever does not understand the purposes of the Shari’ah errs in applying it.” (See: *Al-Muwafaqat fi Usul Al-Shari’ah* and *Maqasid Al-Shari’ah*, both by Imam Al-Shatibi.) This statement affirms the importance of understanding the purposes of the Shari’ah in applying Islamic rulings.",
+     "kind": "item"
+    },
+    {
+     "id": "p10-ch4.p03",
+     "number": 3,
+     "page": "65",
+     "text": "2. **A practical example.** The Prophet ﷺ said: *“I was only sent to perfect noble character.”* (Reported by Imam Ahmad.)",
+     "kind": "item"
+    },
+    {
+     "id": "p10-ch4.p04",
+     "number": 4,
+     "page": "65",
+     "text": "3. **Institutional action.** Allah, the Exalted, says: *“Indeed, Allah loves those who fight in His cause in a row, as though they are a solid structure”* (As-Saff 61:4).",
+     "kind": "item"
+    },
+    {
+     "id": "p10-ch4.p05",
+     "number": 5,
+     "page": "65",
+     "text": "4. **Patience and gradualism.** Allah, the Exalted, says: *“So be patient, [O Muhammad], as were those of determination among the messengers”* (Al-Ahqaf 46:35). Imam Ibn Al-Qayyim (may Allah the Exalted have mercy on him) said: “Religion is a continuous work, not a series of temporary leaps.” (See: *Madarij Al-Salikin* and *Al-Fawa’id*, both by Imam Ibn Al-Qayyim.) This statement shows that the religion of Islam is not merely a set of temporary acts, but continuous, unceasing work, until death, in accordance with Allah’s saying: *“And worship your Lord until there comes to your certainty [i.e., death]”* (Al-Hijr 15:99).",
+     "kind": "item"
+    }
+   ]
+  },
+  {
+   "id": "p10-conclusion",
+   "order": 63,
+   "headingEn": "Conclusion of Part 10",
+   "partEn": "Part 10: From Understanding to Action",
+   "page": "66",
+   "units": [
+    {
+     "id": "p10-conclusion.p01",
+     "number": 1,
+     "page": "66",
+     "text": "Religion is not merely information to be memorized, but a commitment; it is not merely rites, but a responsibility. When the Muslim moves from conscious understanding to sincere action, and from individual piety to a positive effect upon society, religion recovers its influence, its dignity, and its civilizational role."
+    }
+   ]
+  },
+  {
+   "id": "conclusion",
+   "order": 64,
+   "headingEn": "Conclusion",
+   "partEn": "",
+   "page": "66",
+   "units": [
+    {
+     "id": "conclusion.p01",
+     "number": 1,
+     "page": "66",
+     "heading": "The Path to Allah, Glorified and Exalted: Clarity of Understanding of the Sacred Texts, and Sincerity of Collective Action",
+     "text": "The path to Allah is neither obscure, nor complicated, nor confined to an elite few apart from the rest of humanity, that is, reserved for some to the exclusion of others, but is, rather, a path of clear waymarks, whose method is plain, and which sincere hearts, possessed of conscious minds and firm deeds, may walk."
+    },
+    {
+     "id": "conclusion.p02",
+     "number": 2,
+     "page": "66",
+     "text": "This religion has taught us that nearness to Allah is not measured by an abundance of slogans, nor by the sharpness of one’s rhetoric, nor by the inflation of disagreements, but is measured by a precise scale: the sincerity of faith, the soundness of deed, and benefit brought to Allah’s creation. Allah, the Exalted, says: *“Indeed, those who have believed and done righteous deeds…”* (Al-Buruj 85:11), He never once separated faith from deed, nor made either stand without the other."
+    },
+    {
+     "id": "conclusion.p03",
+     "number": 3,
+     "page": "67",
+     "text": "The Prophet ﷺ said: *“Indeed, Allah does not look at your outward forms, nor at your bodies, but He looks at your hearts and your deeds.”* (Reported by Muslim.)"
+    },
+    {
+     "id": "conclusion.p04",
+     "number": 4,
+     "page": "67",
+     "text": "The heart, then, is the point of departure, and the deed is the proof, and the path is not to be walked by intentions alone, nor by deeds devoid of awareness."
+    },
+    {
+     "id": "conclusion.p05",
+     "number": 5,
+     "page": "67",
+     "text": "This book has attempted to reorder our relationship with religion, not to alter its essence, but to remove what has clouded our understanding, and what has accumulated, in practice, of rigidity or hollowness, affirming that:"
+    },
+    {
+     "id": "conclusion.p06",
+     "number": 6,
+     "page": "67",
+     "text": "1. Monotheism is the liberation of the human being, before it is a doctrinal or verbal concept.",
+     "kind": "item"
+    },
+    {
+     "id": "conclusion.p07",
+     "number": 7,
+     "page": "67",
+     "text": "2. The acts of worship are instruments for building a conscious human being, not mere ritual performance.",
+     "kind": "item"
+    },
+    {
+     "id": "conclusion.p08",
+     "number": 8,
+     "page": "67",
+     "text": "3. Prayer is the bond of life, not bodily movements or verbal utterances.",
+     "kind": "item"
+    },
+    {
+     "id": "conclusion.p09",
+     "number": 9,
+     "page": "67",
+     "text": "4. Zakat is an economy of mercy, not merely the payment of taxes or the giving away of money.",
+     "kind": "item"
+    },
+    {
+     "id": "conclusion.p10",
+     "number": 10,
+     "page": "68",
+     "text": "5. Fasting is a school of the will, not merely the abandonment of food, drink, and appetite.",
+     "kind": "item"
+    },
+    {
+     "id": "conclusion.p11",
+     "number": 11,
+     "page": "68",
+     "text": "6. Hajj is a declaration of nationhood, not a commercial journey, nor an inspection tour, nor a mere excursion.",
+     "kind": "item"
+    },
+    {
+     "id": "conclusion.p12",
+     "number": 12,
+     "page": "68",
+     "text": "7. Islam is a comprehensive system for life, not a daily or yearly ceremony.",
+     "kind": "item"
+    },
+    {
+     "id": "conclusion.p13",
+     "number": 13,
+     "page": "68",
+     "text": "8. True religiosity is a transition from understanding to action, not merely the retention of information or understanding alone.",
+     "kind": "item"
+    },
+    {
+     "id": "conclusion.p14",
+     "number": 14,
+     "page": "68",
+     "text": "Imam Ibn Al-Qayyim (may Allah the Exalted have mercy on him) said: “Religion, in its entirety, is character; whoever surpasses you in character has surpassed you in religion.” (See this statement in three of Ibn Al-Qayyim’s books: *Madarij Al-Salikin*, *Al-Fawa’id*, and *Tahdhib Madarij Al-Salikin*.) This statement shows that the religion of Islam encompasses every dimension of life, and that character is the very foundation of religion."
+    },
+    {
+     "id": "conclusion.p15",
+     "number": 15,
+     "page": "68",
+     "text": "Imam Al-Shatibi (may Allah the Exalted have mercy on him) said: “The Shari’ah was established only for the benefit of [Allah’s] servants, in this life and the next”, end of his statement, meaning in this world and the Hereafter. (See: *Al-Muwafaqat fi Usul Al-Shari’ah* and *Maqasid Al-Shari’ah*, both by Imam Al-Shatibi.) This statement shows that Islamic law aims to realize the benefit of human beings, in this world and the Hereafter."
+    },
+    {
+     "id": "conclusion.p16",
+     "number": 16,
+     "page": "69",
+     "text": "The path to Allah is not a flight from reality, nor an isolation from the world, nor a blind clash with the age, but an awareness of revelation, an understanding of reality, and a wisdom in application. Allah, the Exalted, says: *“And thus We have made you a just, balanced (median) community”* (Al-Baqarah 2:143), balanced in understanding, balanced in conduct, balanced in engaging with life."
+    },
+    {
+     "id": "conclusion.p17",
+     "number": 17,
+     "page": "69",
+     "text": "Shaykh Al-Islam Ibn Taymiyyah (may Allah have mercy on him) said: “The Shari’ah is founded upon justice, mercy, benefit, and wisdom.” (See: *Majmu’ Al-Fatawa* and *Al-Siyasah Al-Shar’iyyah*, both by Shaykh Al-Islam Ibn Taymiyyah.) This statement shows that Islamic law is founded upon the principles of justice, mercy, benefit, and wisdom."
+    },
+    {
+     "id": "conclusion.p18",
+     "number": 18,
+     "page": "69",
+     "text": "Dear reader, this book does not ask of you that you become an ideal, nor that you change all at once, but invites you to a sincere beginning, a clear direction, and a steady step, for Allah does not look at the speed of one’s course, but at its sincerity. The Prophet ﷺ said: *“The most beloved deeds to Allah are those most consistent, even if small.”* (Agreed upon.)"
+    },
+    {
+     "id": "conclusion.p19",
+     "number": 19,
+     "page": "69",
+     "text": "And in closing: if we are right, it is from Allah alone; and if we have erred, and no doubt there is error in it, it is from ourselves and from Satan, and Allah and His Messenger are innocent of it."
+    },
+    {
+     "id": "conclusion.p20",
+     "number": 20,
+     "page": "70",
+     "text": "We ask Allah, the Exalted, to make this work sincerely for His noble sake, to benefit by it its author, its reader, and whoever helped in its dissemination, and to make it a building block in the construction of a rightly guided awareness of faith, and a practical proof that Islam has never been a burden upon life, but has always been a path for it. Allah, the Exalted, says: *“And those who strive for Us, We will surely guide them to Our ways. And indeed, Allah is with the doers of good”* (Al-’Ankabut 29:69)."
+    },
+    {
+     "id": "conclusion.p21",
+     "number": 21,
+     "page": "70",
+     "text": "All praise is due to Allah, Lord of all the worlds."
+    }
+   ]
+  },
+  {
+   "id": "general-summary-of-the-book",
+   "order": 65,
+   "headingEn": "General Summary of the Book",
+   "partEn": "",
+   "page": "70",
+   "units": [
+    {
+     "id": "general-summary-of-the-book.p01",
+     "number": 1,
+     "page": "70",
+     "text": "*The Balanced Scale: A Contemporary Reading of Islam, and a Renewal of Religion’s Effect on Life*"
+    },
+    {
+     "id": "general-summary-of-the-book.p02",
+     "number": 2,
+     "page": "70",
+     "text": "This book proceeds from a central premise: that the crisis of Muslims today is not a crisis of religion, but a crisis of understanding and application of it, for the text has not changed, and revelation remains preserved, but reality has been transformed, and the variables of reality have multiplied."
+    },
+    {
+     "id": "general-summary-of-the-book.p03",
+     "number": 3,
+     "page": "70",
+     "text": "**Part 1, Introduction to the Book: An Age of Transformations.** This Part affirms that understanding religion in an age of transformation requires a renewal of understanding, not a renewal of religion itself, and confirms that stagnation freezes religion within the moulds of its own history, while dissolution empties it of the essence of its message; and it presents Islam as the religion of innate human nature and reason together, balancing between fixity and movement, between discipline and flexibility."
+    },
+    {
+     "id": "general-summary-of-the-book.p04",
+     "number": 4,
+     "page": "71",
+     "text": "**Part 2, Monotheism: The Centre of the Whole Structure.** The book presents monotheism not as a mere doctrinal, verbal concept, but as that which liberates the human being from servitude to creation and makes him a servant of Allah alone; the two testimonies of faith are not a verbal formula, but a way of life; and the Messenger of Allah ﷺ is not merely a conveyor of legislation, but the one who connects revelation’s guidance to practical action in reality."
+    },
+    {
+     "id": "general-summary-of-the-book.p05",
+     "number": 5,
+     "page": "71",
+     "heading": "Part 3, Faith: Between Its Attachment to Knowledge and Its Attachment to Submission.",
+     "text": "**Part 4, Acts of Worship: Between Form and Function.** The book clarifies that acts of worship were legislated to build the balanced human being, and that measuring their soundness by their behavioural effect is one of the greatest signs of formal religiosity, whereas true worship is an inward expression, not a ritual detached from life."
+    },
+    {
+     "id": "general-summary-of-the-book.p06",
+     "number": 6,
+     "page": "71",
+     "text": "**Part 5, Prayer: The Bond of Life.** The book presents prayer as the balance of one’s daily faith, and a school of discipline and self-mastery, and the book uncovers that a false sense of futility is often the cause of a person’s aversion to worship if the awareness of its wisdom and purpose is lacking."
+    },
+    {
+     "id": "general-summary-of-the-book.p07",
+     "number": 7,
+     "page": "72",
+     "text": "**Part 6, Zakat: An Economy of Mercy.** The book demonstrates that wealth is a trust, not an act of ownership; that zakat is a tool of justice, addressed to society, not merely to the individual; and that mutual solidarity is the foundation for achieving social balance, and the key to civilizational stability."
+    },
+    {
+     "id": "general-summary-of-the-book.p08",
+     "number": 8,
+     "page": "72",
+     "text": "**Part 7, Fasting: Rebuilding the Human Being.** The book presents fasting as a school for training the will and self-restraint, and resisting consumerism and appetite, and affirms that leaving Ramadan without any real change is a warning sign requiring a review of one’s understanding of the fast’s true purpose."
+    },
+    {
+     "id": "general-summary-of-the-book.p09",
+     "number": 9,
+     "page": "72",
+     "text": "**Part 8, Hajj: The Nation in a Single Scene.** The book presents Hajj as a rite that unites the nation across time and space, embodying its unity in its outward appearance, and re-establishing this unity in the greater purpose, and gathers civilizational lessons in discipline, equality, and collective responsibility."
+    },
+    {
+     "id": "general-summary-of-the-book.p10",
+     "number": 10,
+     "page": "72",
+     "text": "**Part 9, Islam: And the System of Contemporary Life.** The book affirms that Islam does not clash with knowledge, nor is it hostile to reason, but presents a rightly guided, comprehensive vision that engages with the variables of the age, uniting between the fixed and the practical."
+    },
+    {
+     "id": "general-summary-of-the-book.p11",
+     "number": 11,
+     "page": "72",
+     "text": "**Part 10, From Understanding to Action.** The book concludes that the true crisis lies not in the text, but in its application, nor in the Shari’ah, but in the human being, whose understanding has not been transformed into responsibility, for individual piety, without a collective consciousness, is not sufficient to help build reality."
+    },
+    {
+     "id": "general-summary-of-the-book.p12",
+     "number": 12,
+     "page": "73",
+     "text": "**Conclusion.** The book concludes that the path to Allah is neither obscure nor complicated, but requires clarity of understanding, sincerity of deed, and steadfastness of method, for Islam was never, in the mind of its Founder, Allah, exalted is He above such a description, a burden upon life, but has always been a way to its flourishing and to guiding it, together."
+    }
+   ]
+  }
+ ]
+}
