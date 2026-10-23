@@ -66,11 +66,19 @@ export default async function run({ browser, base, check, screenshot }) {
 
   // Reading behaviours on a phone.
   const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
-  const p = await ctx.newPage();
-  const errors = (() => {
-    const w = watchErrors(p, { requests: false });
-    return () => w.problems();
-  })();
+  // Each scenario after the history checks starts on a fresh page in the same context (saved progress and
+  // bookmarks carry over in localStorage), as in the navigation suite: in Playwright's WebKit, a full page load in
+  // a tab that has been through Back and Forward can crash the tab. Leaving the reader after Back and Forward is
+  // checked as a reader does it, by its own link, in the navigation suite.
+  let p = null;
+  const watchers = [];
+  const fresh = async () => {
+    if (p) await p.close();
+    p = await ctx.newPage();
+    watchers.push(watchErrors(p, { requests: false }));
+  };
+  const errors = () => watchers.flatMap((w) => w.problems());
+  await fresh();
   const reader = `${base}/books/reviving-religion/read`;
 
   // Settings: text size and theme only.
@@ -115,6 +123,7 @@ export default async function run({ browser, base, check, screenshot }) {
   const nextLink = p.locator("nav[data-after='p3-ch5'] a").filter({ hasText: "Next" });
   check("section nav: next section is Conclusion of Part 3", (await nextLink.innerText()).includes("Conclusion of Part 3"));
 
+  await fresh();
   // Deep link to a passage, and saved progress.
   await p.goto(`${reader}#p6-ch2.p02`, { waitUntil: "networkidle" });
   await p.waitForTimeout(1200);
@@ -131,6 +140,7 @@ export default async function run({ browser, base, check, screenshot }) {
   const resume = p.locator("section[aria-labelledby=continue-heading] a.btn-primary");
   check("home: Continue reading goes to the saved place", (await resume.getAttribute("href")) === "/books/reviving-religion/read#p6-ch2.p02");
 
+  await fresh();
   // Bookmarks.
   await p.goto(`${reader}#p6-ch2.p02`, { waitUntil: "networkidle" });
   await p.waitForTimeout(1000);
@@ -144,6 +154,7 @@ export default async function run({ browser, base, check, screenshot }) {
   check("bookmark: listed with its English text", (await p.getByRole("dialog").innerText()).includes("Zakat as an Instrument"));
   await p.keyboard.press("Escape");
 
+  await fresh();
   // Search, ignoring the transliteration marks.
   await p.goto(`${base}/books/balance-of-stations/read`, { waitUntil: "networkidle" });
   await p.getByRole("button", { name: "Search this book" }).click();
@@ -157,6 +168,7 @@ export default async function run({ browser, base, check, screenshot }) {
   await p.waitForTimeout(900);
   check("search: a result opens its passage", /#.+\.p\d\d$/.test(p.url()) && (await topPassage(p)) === new URL(p.url()).hash.slice(1), p.url());
 
+  await fresh();
   // A table, and the references.
   await p.goto(`${base}/books/knowing-the-self/read#p2-ch6.p05`, { waitUntil: "networkidle" });
   await p.waitForTimeout(800);
