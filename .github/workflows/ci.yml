@@ -58,7 +58,9 @@ jobs:
   webkit:
     name: Browser tests in WebKit (Safari engine)
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    # WebKit's system packages come from the Ubuntu mirror, which is sometimes slow enough to take most of half an
+    # hour on its own; the install and the tests each get their own limit so a slow mirror cannot use up the tests' time.
+    timeout-minutes: 70
     steps:
       - uses: actions/checkout@v4
 
@@ -74,8 +76,10 @@ jobs:
 
       - name: Install WebKit for Playwright
         run: npx playwright install --with-deps webkit
+        timeout-minutes: 35
 
       - name: Browser tests (WebKit)
         run: npm run test:browser
+        timeout-minutes: 25
         env:
           BROWSER: webkit
