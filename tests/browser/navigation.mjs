@@ -30,7 +30,7 @@ export default async function run({ browser, base, check }) {
   await p.goBack();
   await p.waitForTimeout(1200);
   const afterBack = await topUnit();
-  check("history: Back after contents jump returns to previous passage", afterBack === "tayammum.p03", `${afterJump} -> ${afterBack}`);
+  check("history: Back after contents jump returns to previous passage", afterBack === "tayammum.p03", `${afterJump} -> ${afterBack} (URL after Back: ${new URL(p.url()).hash})`);
   check("history: Back did not reload the page", (await p.evaluate(() => performance.getEntriesByType("navigation")[0].type)) !== "reload");
   await p.goForward();
   await p.waitForTimeout(1200);

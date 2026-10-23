@@ -72,7 +72,8 @@ export async function scrollDown(page, pixels) {
  * - Next's "Failed to fetch RSC payload for <url>. Falling back" notice. Excused only for a page whose prefetch the
  *   browser reported cancelled, or that started and got neither a response nor a failure (matched by page, since
  *   Chromium builds word the notice differently).
- * - WebKit's own "… <url> due to access control checks." WebKit blocks a fetch started while the page unloads before
+ * - WebKit's own "… <url> due to access control checks.", as a console line or as the page error of the unhandled
+ *   rejection it causes. WebKit blocks a fetch started while the page unloads before
  *   it reaches the network (so no request event is seen) and words it as an access-control failure. Access control
  *   only applies across origins, so for a prefetch of the page's own origin the line can only mean that; it is
  *   excused only for that origin.
@@ -86,22 +87,22 @@ export function watchErrors(page, { requests = true } = {}) {
   const answered = new Set();
   const cancelled = new Set();
   let unloadBlocked = 0;
-  page.on("pageerror", (e) => errors.push(e.message));
   // The site's own host, from its own requests: page.url() can be mid-navigation when the line is logged.
   const hosts = new Set();
   const raw = [];
-  page.on("console", (m) => {
-    if (m.type() !== "error") return;
-    const text = m.text();
+  // WebKit reports the blocked fetch on either channel: as a console line, or as the unhandled rejection it causes.
+  const record = (channel, text) => {
     const blocked = /(\S*_rsc=\S*?) due to access control checks/.exec(text);
     // The line may or may not spell the scheme, so look for the host anywhere before the path.
     const sameOrigin = blocked && [...hosts].some((host) => blocked[1].includes(`${host}/`));
     if (sameOrigin) unloadBlocked++;
     else {
       errors.push(text);
-      if (raw.length < 2) raw.push(`${JSON.stringify(text).slice(0, 140)} on ${page.url()} hosts=${[...hosts].join(",")}`);
+      if (raw.length < 2) raw.push(`${channel} ${JSON.stringify(text).slice(0, 140)} on ${page.url()} hosts=${[...hosts].join(",")}`);
     }
-  });
+  };
+  page.on("pageerror", (e) => record("pageerror", e.message));
+  page.on("console", (m) => m.type() === "error" && record("console", m.text()));
   page.on("request", (r) => {
     try {
       hosts.add(new URL(r.url()).host);
