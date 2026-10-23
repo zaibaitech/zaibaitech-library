@@ -5,11 +5,12 @@
  *   npm run test:browser -- reader publication   (only the named suites)
  *
  * Starts `next start` on PORT (default 3100) unless BASE_URL points at a running server.
+ * BROWSER picks the engine: chromium (default) or webkit (Safari's engine).
  * Set CHROMIUM_PATH to use a particular Chromium; otherwise Playwright's own is used.
  */
 import { spawn } from "node:child_process";
 import { setTimeout as sleep } from "node:timers/promises";
-import { chromium } from "playwright";
+import { chromium, webkit } from "playwright";
 import { recorder, screenshotter } from "./harness.mjs";
 
 const SUITES = ["accessibility", "reader", "navigation", "migration", "publication", "qa-regressions", "arabic-collisions", "english-books", "reader-polish"];
@@ -17,6 +18,13 @@ const only = process.argv.slice(2);
 const chosen = only.length ? SUITES.filter((name) => only.includes(name)) : SUITES;
 if (only.length && chosen.length !== only.length) {
   console.error(`Unknown suite. Available: ${SUITES.join(", ")}`);
+  process.exit(2);
+}
+
+const engine = process.env.BROWSER ?? "chromium";
+const engines = { chromium, webkit };
+if (!engines[engine]) {
+  console.error(`Unknown BROWSER "${engine}". Use chromium or webkit.`);
   process.exit(2);
 }
 
@@ -43,13 +51,15 @@ let failed = 0;
 let total = 0;
 try {
   await waitForServer();
-  const browser = await chromium.launch(process.env.CHROMIUM_PATH ? { executablePath: process.env.CHROMIUM_PATH } : {});
+  const options = engine === "chromium" && process.env.CHROMIUM_PATH ? { executablePath: process.env.CHROMIUM_PATH } : {};
+  const browser = await engines[engine].launch(options);
+  console.log(`Browser: ${engine} ${browser.version()}`);
   const screenshot = screenshotter();
   for (const name of chosen) {
     const { check, results } = recorder(name);
     const { default: run } = await import(`./${name}.mjs`);
     try {
-      await run({ browser, base, check, screenshot });
+      await run({ browser, base, check, screenshot, engine });
     } catch (error) {
       check("suite ran to completion", false, error?.stack ?? error);
     }
@@ -62,5 +72,5 @@ try {
 } finally {
   if (server) process.kill(-server.pid, "SIGTERM");
 }
-console.log(`\nBrowser checks: ${total - failed}/${total} passed`);
+console.log(`\nBrowser checks (${engine}): ${total - failed}/${total} passed`);
 process.exit(failed ? 1 : 0);

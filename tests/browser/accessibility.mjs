@@ -1,4 +1,6 @@
 // Phase 2 interaction and accessibility checks against the production build.
+import { watchErrors } from "./harness.mjs";
+
 export default async function run({ browser, base, check }) {
   const b = browser;
   const pages = ["/", "/books/akhdari", "/books/risala", "/books/khalil", "/books/akhdari/read", "/about", "/glossary"];
@@ -7,20 +9,8 @@ export default async function run({ browser, base, check }) {
   for (const theme of ["light", "dark"]) for (const w of [360, 390, 412, 1280]) {
     const ctx = await b.newContext({ viewport: { width: w, height: 860 } });
     await ctx.addInitScript((t) => localStorage.setItem("zaibaitech.library.settings", JSON.stringify({ theme: t, mode: "both:en-zaibaitech-2026" })), theme);
-    const p = await ctx.newPage(); const errs = [], failed = [];
-    // A Next.js prefetch (?_rsc=) still in flight when the test itself navigates away is cancelled by the browser
-    // (net::ERR_ABORTED) and Next logs a fallback notice. That is the test's doing, not the app's; a prefetch the
-    // server actually fails still shows up as a 4xx/5xx response below.
-    // Matched by page, not by message wording (Chromium builds word the fetch error differently), and only
-    // after all events are in, since the notice and the cancelled request can arrive in either order.
-    const cancelledPages = new Set();
-    p.on("pageerror", (e) => errs.push(e.message));
-    p.on("console", (m) => m.type() === "error" && errs.push(m.text()));
-    p.on("requestfailed", (r) => {
-      if (r.url().includes("_rsc=") && r.failure()?.errorText === "net::ERR_ABORTED") cancelledPages.add(new URL(r.url()).pathname);
-      else failed.push(`${r.failure()?.errorText} ${r.url()}`);
-    });
-    p.on("response", (r) => r.status() >= 400 && failed.push(`${r.status()} ${r.url()}`));
+    const p = await ctx.newPage();
+    const watch = watchErrors(p);
     let over = [];
     for (const path of pages) {
       await p.goto(base + path, { waitUntil: "networkidle" });
@@ -28,12 +18,8 @@ export default async function run({ browser, base, check }) {
       if (o > 0) over.push(`${path}:${o}`);
     }
     check(`${theme} ${w}px: no horizontal overflow on ${pages.length} pages`, over.length === 0, over.join(" "));
-    const cancelledNotice = (text) => {
-      const match = /^Failed to fetch RSC payload for (\S+?)\.? Falling back/.exec(text);
-      return Boolean(match) && cancelledPages.has(new URL(match[1]).pathname);
-    };
-    const realErrors = errs.filter((text) => !cancelledNotice(text));
-    check(`${theme} ${w}px: no console errors or failed requests`, realErrors.length === 0 && failed.length === 0, [...realErrors, ...failed].join(" | ").slice(0, 300));
+    const problems = watch.problems();
+    check(`${theme} ${w}px: no console errors or failed requests`, problems.length === 0, problems.join(" | ").slice(0, 600));
     await ctx.close();
   }
 
@@ -144,8 +130,9 @@ export default async function run({ browser, base, check }) {
     check("tab bar marks Home as the current page", (await p.locator("nav[aria-label='Main'] a[aria-current='page']").filter({ visible: true }).innerText()).trim() === "Home");
     await p.getByRole("link", { name: "Search the library" }).click();
     await p.waitForURL(/\/library#search$/);
-    await p.waitForTimeout(300);
-    check("header search opens the library with the field focused", await p.evaluate(() => document.activeElement?.id === "library-search"));
+    // Wait for the focus rather than a fixed delay: WebKit mounts the page a little later than Chromium.
+    const focused = await p.waitForFunction(() => document.activeElement?.id === "library-search", null, { timeout: 3000 }).then(() => true, () => false);
+    check("header search opens the library with the field focused", focused);
     const small2 = await p.evaluate(() => [...document.querySelectorAll("[aria-label='Filter by subject'] button")].filter((e) => e.getBoundingClientRect().height < 44).length);
     check("library filters ≥ 44px tall", small2 === 0, String(small2));
     await p.getByRole("searchbox", { name: "Search the library" }).fill("risala");
@@ -164,7 +151,16 @@ export default async function run({ browser, base, check }) {
       await p.goto(base + path, { waitUntil: "networkidle" });
       await p.addStyleTag({ content: "html{font-size:200% !important}" }); await p.waitForTimeout(300);
       const o = await p.evaluate(() => document.documentElement.scrollWidth - innerWidth);
-      if (o > 0) over.push(`${path}:${o}`);
+      if (o > 0) {
+        // Name what sticks out, so a failure says where to look.
+        const culprits = await p.evaluate(() =>
+          [...document.querySelectorAll("body *")]
+            .filter((e) => e.getBoundingClientRect().right > innerWidth + 0.5 && !e.closest("[aria-hidden=true], svg"))
+            .slice(0, 4)
+            .map((e) => `${e.tagName.toLowerCase()}${e.className && typeof e.className === "string" ? "." + e.className.split(" ").slice(0, 3).join(".") : ""} right=${Math.round(e.getBoundingClientRect().right)} "${(e.textContent || "").trim().slice(0, 30)}"`),
+        );
+        over.push(`${path}:${o} [${culprits.join("; ")}]`);
+      }
     }
     check("200% text size: no horizontal overflow", over.length === 0, over.join(" "));
     await ctx.close();

@@ -1,12 +1,11 @@
-import { openDisplay, closeDisplay, setShow, setTheme } from "./harness.mjs";
+import { openDisplay, closeDisplay, setShow, setTheme, scrollDown, watchErrors } from "./harness.mjs";
 
 export default async function run({ browser, base, check, screenshot }) {
   for (const w of [360, 390, 412]) {
     const ctx = await browser.newContext({ viewport: { width: w, height: 800 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
     const page = await ctx.newPage();
-    const errors = [];
-    page.on("pageerror", (e) => errors.push(e.message));
-    page.on("console", (m) => m.type() === "error" && errors.push(m.text()));
+    // Console and page errors only, as before; a prefetch cancelled by the next goto is not one (see watchErrors).
+    const watch = watchErrors(page, { requests: false });
     for (const [name, url] of [["home", "/"], ["book", "/books/akhdari"], ["risala", "/books/risala"], ["read", "/books/akhdari/read"], ["about", "/about"], ["glossary", "/glossary"]]) {
       await page.goto(base + url, { waitUntil: "networkidle" });
       await page.evaluate(() => document.fonts.ready);
@@ -14,6 +13,7 @@ export default async function run({ browser, base, check, screenshot }) {
       check(`${w}px ${name}: no horizontal overflow`, over <= 0, `scrollWidth overflow=${over}`);
       if (w === 360 || name === "read") await screenshot(page, `${w}-${name}`, { fullPage: name !== "read" && name !== "glossary" });
     }
+    const errors = watch.problems();
     check(`${w}px no console errors`, errors.length === 0, errors.join(" | "));
     await ctx.close();
   }
@@ -64,7 +64,7 @@ export default async function run({ browser, base, check, screenshot }) {
   const topChapter = await page.evaluate(() => { const el = document.getElementById("tayammum"); return Math.round(el.getBoundingClientRect().top); });
   check("contents: jumped to tayammum", hash.startsWith("#tayammum") && topChapter < 250 && topChapter > -50, `${hash} top=${topChapter}`);
   // scroll then progress saved + restored
-  await page.mouse.wheel(0, 1500);
+  await scrollDown(page, 1500);
   await page.waitForTimeout(1200);
   const saved = await page.evaluate(() => JSON.parse(localStorage.getItem("zaibaitech.library.progress.akhdari") || "{}"));
   check("progress: saved while scrolling", !!saved.lastUnitId, saved.lastUnitId);
