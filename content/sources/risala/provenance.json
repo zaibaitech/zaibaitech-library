@@ -1,0 +1,42 @@
+{
+  "work": "al-Risala (الرسالة)",
+  "author": "Abu Muhammad Abd Allah ibn Abi Zayd al-Qayrawani (d. 386 AH)",
+  "openitiWorkUri": "0386IbnAbiZaydQayrawani.Risala",
+  "authorWikidata": "Q5984167",
+  "repository": "https://github.com/OpenITI/0400AH",
+  "repositoryCommit": "5bb6966d8df2ed22b1bff5cdbe29bb9c24f3ca29",
+  "repositoryCommitDate": "2025-11-28T08:57:02+00:00",
+  "retrievedOn": "2026-10-23",
+  "citation": "Romanov, Maxim, and Masoumeh Seydi. OpenITI: A Machine-Readable Corpus of Islamicate Texts. Zenodo. doi:10.5281/zenodo.3082463",
+  "licence": {
+    "name": "CC BY-NC-SA 4.0",
+    "url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "status": "reported-not-verified",
+    "evidence": "A web search index reports the OpenITI Primary Version release on Zenodo (doi:10.5281/zenodo.10021513) as CC BY-NC-SA 4.0, matching the licence recorded for al-Akhdari. The Zenodo record could not be opened from the build environment (egress blocked), and the OpenITI 0400AH repository contains no licence file. Confirm on the Zenodo record before publication."
+  },
+  "files": [
+    {
+      "role": "base",
+      "path": "0386IbnAbiZaydQayrawani.Risala.JK000171-ara1",
+      "sourcePath": "data/0386IbnAbiZaydQayrawani/0386IbnAbiZaydQayrawani.Risala/0386IbnAbiZaydQayrawani.Risala.JK000171-ara1",
+      "sha256": "ad0697bbdb24f2a84891fc43a0bac56c785f5f6e2da8961038e11b511c9bf7ca",
+      "notes": "Marked PRIMARY_VERSION and CLEANED_VERSION in OpenITI (paratext removed in 2023). Header: Dar al-Fikr, Beirut; editor, year and ISBN not recorded. Unvowelled. Contains the author's introduction and all 45 chapters, with page markers V01P001 to V01P170."
+    },
+    {
+      "role": "reference",
+      "path": "0386IbnAbiZaydQayrawani.Risala.Shamela0011373-ara1",
+      "sourcePath": "data/0386IbnAbiZaydQayrawani/0386IbnAbiZaydQayrawani.Risala/0386IbnAbiZaydQayrawani.Risala.Shamela0011373-ara1",
+      "sha256": "f20a50969199e69238e87f1949a5c9a0a725d586a4ad409151363702043258ab",
+      "notes": "Shamela 11373, 'Matn al-Risala', Dar al-Fikr, same 170-page numbering. Unvowelled. Omits the author's introduction. Used only to cross-check the 45 chapter headings; no wording is taken from it."
+    },
+    { "role": "metadata", "path": "0386IbnAbiZaydQayrawani.Risala.JK000171-ara1.yml", "sha256": "885007bce3d0be99c9bd2d746deb900fa818a0481e30c5cbe4fb74d94387d2c4" },
+    { "role": "metadata", "path": "0386IbnAbiZaydQayrawani.Risala.Shamela0011373-ara1.yml", "sha256": "1f0e5833786c63ec2e8c70b8086bd7179b7d0508d6892445028327565460783d" },
+    { "role": "metadata", "path": "0386IbnAbiZaydQayrawani.Risala.yml", "sha256": "738b6478384523d9b510ed733699b5ef99e753291de6b006d612ccaeb7177852" }
+  ],
+  "notUsed": [
+    { "version": "0386IbnAbiZaydQayrawani.Risala.Shamela0097806-ara1", "reason": "Only the creed introduction ('Aqidat al-Salaf'), ed. Bakr Abu Zayd, Dar al-Asima; not the whole work." },
+    { "version": "0386IbnAbiZaydQayrawani.Risala.Shia000903-ara1", "reason": "Opens with the preface of Salih Abd al-Sami' al-Abi al-Azhari, a later compiler; no edition recorded and the death year given as 389. Not a clean witness of the matn." }
+  ],
+  "vowelling": "None. All three full OpenITI versions have no vowel marks (0 marks in about 25,000 words). The library does not add tashkil to this text.",
+  "printedEditionComparison": "Not done. No printed edition has been chosen or inspected; see docs/RISALA.md."
+}

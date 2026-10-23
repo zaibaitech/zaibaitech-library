@@ -1,0 +1,4 @@
+{
+  "note": "Editorial corrections to the base source, applied by scripts/build-risala.mjs. None has been made: no printed edition has been chosen to check against. Each entry needs: id (r1, r2, ...), passageId, was (exact text, found exactly once in that passage), now, reason, reference (the edition, manuscript or witness that supports it, with page), status ('applied' or 'proposed'; only 'applied' entries change the text). An uncertain reading stays as the source has it and goes in review-issues.json instead.",
+  "corrections": []
+}
