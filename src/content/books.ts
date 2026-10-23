@@ -1,10 +1,29 @@
-import type { Book } from "./types";
+import type { Book, BookEdition } from "./types";
 
 /** Visible credit required on every surface that shows the Arabic text. */
 export const TEXT_CREDIT = {
   label: "Arabic text from OpenITI, CC BY-NC-SA 4.0",
   href: "https://creativecommons.org/licenses/by-nc-sa/4.0/",
   openiti: "0983IbnMuhammadSahgirAkhdari.MukhtasarFiCibadat.JK009285-ara1",
+};
+
+/** Shared by the three books of Omar Ceesay, from the edition's title and copyright pages. */
+const CEESAY_EDITION: Omit<BookEdition, "fullTitle" | "editor"> = {
+  language: "en",
+  languageLabel: "English",
+  author: "Abu Abdur-Rahman Omar Ibn Alhagie Abdullah Ceesay Ibn Alhagie Jibel Fana Sow Ceesay",
+  translator: "Sidy Ahmad Gassama",
+  copyright: "© Omar Ceesay",
+  isbn: "978-9983-94-606-2",
+  edition: "First Edition 1447H / 2026",
+  printer: "DBC Printing Corporation, Banjul, The Gambia",
+  rightsNotice:
+    "All rights reserved. No part of this publication may be reproduced, stored in a retrieval system, or transmitted, in any form, or by any means, electronic, mechanical, photocopying, recording or otherwise, without the prior permission of the publisher.",
+  permission: {
+    scope: "Full public display of the complete text in this library",
+    confirmedBy: "The library owner, on the rights holder's behalf",
+    confirmedOn: "2026-10-23",
+  },
 };
 
 /**
@@ -52,6 +71,68 @@ export const books: Book[] = [
       },
     ],
     excerptAr: "بسم الله الرحمن الرحيم وصلى الله على سيدنا محمد وآله وصحبه وسلم.",
+  },
+  {
+    id: "reviving-religion",
+    title: "Reviving Religion in the Self and Life",
+    subtitle: "The Balanced Scale: A Contemporary Reading of Islam, a Renewal of Religion, and Its Effect on Life",
+    authorId: "omar-ceesay",
+    summary: "Understanding religion in an age of change: monotheism, faith, the acts of worship, and Islam in contemporary life.",
+    description:
+      "Ten parts on understanding religion in an age of transformation: monotheism as the centre of the whole structure, faith between knowledge and submission, the acts of worship between form and function — prayer, zakat, fasting and Hajj — Islam and the system of contemporary life, and the move from understanding to action. English translation by Sidy Ahmad Gassama.",
+    status: "readable",
+    coverGradient: "linear-gradient(170deg, #20434f 0%, #17323b 100%)",
+    originalLanguage: "English",
+    level: "General reader",
+    subjects: ["foundations", "self"],
+    translations: [],
+    edition: {
+      ...CEESAY_EDITION,
+      fullTitle:
+        "Reviving Religion in the Self and Life. The Balanced Scale: A Contemporary Reading of Islam, a Renewal of Religion, and Its Effect on Life",
+      editor: "Bai Lamin Dondeh",
+    },
+  },
+  {
+    id: "knowing-the-self",
+    title: "Knowing the Self: The Path to Uprightness",
+    subtitle: "The self, the stages of life, and uprightness",
+    authorId: "omar-ceesay",
+    summary: "The human being between the pull of the earth and the pull of the heaven, through every stage of life.",
+    description:
+      "Seven parts on the human being between the pull of the earth and the pull of the heaven: the stages of life and the trials of each, from childhood to advanced old age, the just educational balance between them, and uprightness amid environment and society. English translation by Sidy Ahmad Gassama.",
+    status: "readable",
+    coverGradient: "linear-gradient(170deg, #3d3350 0%, #2c253b 100%)",
+    originalLanguage: "English",
+    level: "General reader",
+    subjects: ["self"],
+    translations: [],
+    edition: {
+      ...CEESAY_EDITION,
+      fullTitle: "Knowing the Self: The Path to Uprightness",
+      editor: "Dr. Alieu Gibba",
+    },
+  },
+  {
+    id: "balance-of-stations",
+    title: "The Balance of Spiritual Stations in the Muslim’s Life",
+    subtitle: "Servitude, belonging, emulation, and receiving knowledge from a sheikh",
+    authorId: "omar-ceesay",
+    summary: "Four stations of a Muslim’s life: servitude, belonging, emulation, and learning from a sheikh.",
+    description:
+      "Four parts, one for each station: the Muslim as a servant of Allah, Mighty and Sublime; as one who belongs to Islam, as identity and as method; as one who emulates the Messenger ﷺ; and as a seeker of knowledge raised by an educator, the sheikh as a model. With a summary, a conclusion, and the list of references. English translation by Sidy Ahmad Gassama.",
+    status: "readable",
+    coverGradient: "linear-gradient(170deg, #4a3b22 0%, #382c19 100%)",
+    originalLanguage: "English",
+    level: "General reader",
+    subjects: ["self"],
+    translations: [],
+    edition: {
+      ...CEESAY_EDITION,
+      fullTitle:
+        "The Balance of Spiritual Stations in the Muslim’s Life. Servitude | Belonging | Emulation | Receiving Knowledge from a Sheikh",
+      editor: "Muhammed MK Kah",
+    },
   },
   {
     id: "risala",

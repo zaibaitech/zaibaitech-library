@@ -1,5 +1,5 @@
 // Phase 2 interaction and accessibility checks against the production build.
-export default async function run({ browser, base, check, screenshot }) {
+export default async function run({ browser, base, check }) {
   const b = browser;
   const pages = ["/", "/books/akhdari", "/books/risala", "/books/khalil", "/books/akhdari/read", "/about", "/glossary"];
 

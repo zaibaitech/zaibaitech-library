@@ -7,7 +7,7 @@ import { BookCover } from "../book-plate";
 export function BookTile({ entry }: { entry: CatalogueEntry }) {
   return (
     <Link href={`/books/${entry.id}`} className="group block rounded-sm focus-visible:outline-offset-4">
-      <BookCover book={entry.book} authorAr={entry.authorAr} className="transition-transform duration-300 group-hover:-translate-y-0.5 motion-reduce:transition-none motion-reduce:group-hover:translate-y-0" />
+      <BookCover book={entry.book} authorAr={entry.authorAr} authorName={entry.authorShort} className="transition-transform duration-300 group-hover:-translate-y-0.5 motion-reduce:transition-none motion-reduce:group-hover:translate-y-0" />
       <h3 className="mt-4 font-display text-lg leading-snug text-ink group-hover:underline group-hover:decoration-line-strong group-hover:underline-offset-4">
         {entry.title}
       </h3>

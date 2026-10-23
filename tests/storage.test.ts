@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import * as s from "../src/lib/storage";
 
 const store = new Map<string, string>();
-(globalThis as any).window = {
+(globalThis as unknown as { window: unknown }).window = {
   localStorage: {
     getItem: (k: string) => store.get(k) ?? null,
     setItem: (k: string, v: string) => void store.set(k, v),

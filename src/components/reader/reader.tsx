@@ -3,7 +3,8 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { Bookmark, ChevronLeft, ChevronRight, List, Search } from "lucide-react";
-import type { Book, BookContent, TranslationInfo } from "@/content/types";
+import type { Book, ReadableContent, TranslationInfo } from "@/content/types";
+import { isProse } from "@/content/types";
 import { glossary } from "@/content/glossary";
 import { segmentTerms, toArabicDigits } from "@/lib/arabic";
 import { cn } from "@/lib/cn";
@@ -33,10 +34,12 @@ import { Rosette } from "../geometric";
 import { ChapterHeading } from "./chapter-banner";
 import { DisplayPanel, PanelRow, Segmented, Stepper, Switch } from "./display-panel";
 import { ReaderSheet, type SheetTab } from "./reader-sheet";
+import { ProseHeading, ProsePassage } from "./prose";
 
 type Props = {
   book: Book;
-  content: BookContent;
+  /** Arabic text units, or the passages of an English book (`isProse`), which has no Arabic layer. */
+  content: ReadableContent;
   /** Verified translations that have text. Empty when the book has none to show. */
   translations: TranslationInfo[];
   practiceHref: string | null;
@@ -64,7 +67,10 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
     setTheme,
   } = useSettings();
 
+  const prose = isProse(content);
   const flat = useMemo(() => flattenUnits(content), [content]);
+  /** What place-keeping needs from either kind of book. */
+  const chapters: { id: string; headingEn: string; partEn: string; units: { id: string }[] }[] = content.chapters;
   const mode = resolveMode(parseModeKey(settings.mode), translations);
   const info = mode.kind === "arabic" ? null : translations.find((t) => t.translationId === mode.translationId) ?? null;
   const showArabic = mode.kind !== "translation";
@@ -90,7 +96,7 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
   const anchor = useRef<{ id: string; top: number } | null>(null);
 
   const current = flat.find((item) => item.unit.id === currentId) ?? null;
-  const activeChapter = content.chapters.find((c) => c.id === headingId) ?? current?.chapter ?? content.chapters[0];
+  const activeChapter = chapters.find((c) => c.id === headingId) ?? current?.chapter ?? chapters[0];
   const percent = Math.round(positionFraction(content, currentId) * 100);
 
   /* Bookmarks live on this device. */
@@ -122,12 +128,12 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
       el.scrollIntoView({ block: "start", behavior: "instant" });
       // A chapter heading can fill the tracking band with no passage in it, so the observer may not report.
       // A section title may hold no passages of its own: name the first passage after it.
-      const at = content.chapters.findIndex((c) => c.id === id);
-      const unitId = at < 0 ? id : content.chapters.slice(at).find((c) => c.units.length > 0)?.units[0].id;
+      const at = chapters.findIndex((c) => c.id === id);
+      const unitId = at < 0 ? id : chapters.slice(at).find((c) => c.units.length > 0)?.units[0].id;
       if (unitId) setCurrentId(unitId);
       return true;
     },
-    [content],
+    [chapters],
   );
 
   /* Jump from the panel: push a history entry so Back returns to where the reader was. */
@@ -153,7 +159,7 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
       const seen = Array.from(new Set(progress.seen.map((id) => currentPassageId(content, id))));
       saveProgress(book.id, { seen, lastUnitId: saved, updatedAt: progress.updatedAt });
     }
-    const isChapter = content.chapters.some((c) => c.id === hash);
+    const isChapter = chapters.some((c) => c.id === hash);
     const hashTarget = isChapter ? hash : (resolveTarget(content, hash)?.unit.id ?? null);
     // An unknown or stale hash must not cost the reader their saved place.
     const targetId = hashTarget ?? saved;
@@ -187,7 +193,7 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
       window.removeEventListener("touchmove", mark);
       window.removeEventListener("keydown", mark);
     };
-  }, [ready, book.id, content, scrollToId]);
+  }, [ready, book.id, content, chapters, scrollToId]);
 
   /*
    * Justify the Arabic only while a line holds enough words. Browsers widen word spaces (no kashida), so in a
@@ -320,12 +326,12 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
     const onPop = () => {
       const hash = currentHash();
       if (!hash) return;
-      const id = content.chapters.some((c) => c.id === hash) ? hash : (resolveTarget(content, hash)?.unit.id ?? hash);
+      const id = chapters.some((c) => c.id === hash) ? hash : (resolveTarget(content, hash)?.unit.id ?? hash);
       window.requestAnimationFrame(() => scrollToId(id));
     };
     window.addEventListener("popstate", onPop);
     return () => window.removeEventListener("popstate", onPop);
-  }, [content, scrollToId]);
+  }, [content, chapters, scrollToId]);
 
   /*
    * Hide the toolbar while reading down; show it on any upward scroll. A jump (to a passage, a
@@ -402,7 +408,7 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
             ref={displayButtonRef}
             type="button"
             className="tool-btn shrink-0 !px-0 font-display text-[1.05rem]"
-            aria-label="Display settings: text size, tashkīl, language and theme"
+            aria-label={prose ? "Display settings: text size and theme" : "Display settings: text size, tashkīl, language and theme"}
             aria-expanded={displayOpen}
             aria-controls="display-panel"
             onClick={() => setDisplayOpen((open) => !open)}
@@ -423,7 +429,19 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
 
         {displayOpen ? (
           <DisplayPanel id="display-panel" onClose={closeDisplay} anchorRef={displayButtonRef}>
-            {translations.length > 0 ? (
+            {prose ? (
+              // An English book: no Arabic, so no language choice, Arabic size or tashkīl.
+              <PanelRow label="Text size">
+                <Stepper
+                  label="reading"
+                  sample="Aa"
+                  sampleClass="font-display text-lg leading-none"
+                  level={settings.translationScale}
+                  levels={TRANSLATION_SCALES.length}
+                  onStep={(delta) => setTranslationScale(settings.translationScale + delta)}
+                />
+              </PanelRow>
+            ) : translations.length > 0 ? (
               <PanelRow label="Show">
                 <Segmented label="Show" value={modeKey(mode)} choices={modeChoices} onChange={setMode} />
               </PanelRow>
@@ -432,7 +450,7 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
                 <p className="text-sm text-ink">Arabic</p>
               </PanelRow>
             )}
-            {showArabic ? (
+            {showArabic && !prose ? (
               <PanelRow label="Arabic size">
                 <Stepper
                   label="Arabic"
@@ -444,7 +462,7 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
                 />
               </PanelRow>
             ) : null}
-            {showTranslation && info ? (
+            {showTranslation && info && !prose ? (
               <PanelRow label={`${info.languageLabel} size`}>
                 <Stepper
                   label={info.languageLabel}
@@ -456,12 +474,14 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
                 />
               </PanelRow>
             ) : null}
-            <Switch
-              label="Tashkīl (vowel marks)"
-              hint="Show the Arabic fully vowelled"
-              checked={settings.vowelled}
-              onChange={setVowelled}
-            />
+            {prose ? null : (
+              <Switch
+                label="Tashkīl (vowel marks)"
+                hint="Show the Arabic fully vowelled"
+                checked={settings.vowelled}
+                onChange={setVowelled}
+              />
+            )}
             <PanelRow label="Theme">
               <Segmented
                 label="Theme"
@@ -475,30 +495,86 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
       </header>
 
       <article className={cn("mx-auto px-4 pb-24 pt-6 sm:px-8 sm:pt-10", wide ? "max-w-2xl lg:max-w-5xl" : "max-w-2xl")}>
-        <header className="mb-8 text-center sm:mb-10">
-          <p className="font-amiri text-[2rem] leading-snug text-ink sm:text-[2.4rem]" lang="ar" dir="rtl">
-            {book.titleAr}
-          </p>
-          <h1 className="font-display text-lg text-ink-2">{book.title}</h1>
-          <div className="mx-auto mt-3 max-w-md space-y-0.5 text-xs leading-relaxed text-muted">
-            <p>
-              Arabic text: OpenITI, {content.source.license}.{" "}
-              <Link href="/about#corrections" className="underline decoration-line-strong underline-offset-4 hover:text-ink">
-                Corrections
-              </Link>
-            </p>
-            {info ? (
+        {prose ? (
+          <header className="mb-8 text-center sm:mb-10" lang="en">
+            <h1 className="mx-auto max-w-xl text-balance font-display text-[1.75rem] leading-tight text-ink sm:text-[2.2rem]">{book.title}</h1>
+            <div className="mx-auto mt-3 max-w-md space-y-0.5 text-xs leading-relaxed text-muted">
+              <p>{content.source.author}</p>
               <p>
-                {info.languageLabel} translation: {info.translator}, {info.license}
-                {info.review ? `. Reviewed for publication ${longDate(info.review.reviewedOn)}` : ""}.
+                Translated by {content.source.translator} · Edited by {content.source.editor}
               </p>
-            ) : translations.length === 0 ? (
-              <p>No translation of this book has been published yet.</p>
-            ) : null}
-          </div>
-        </header>
+              <p>
+                {content.source.copyright} · {content.source.edition}. Published here with the rights holder&apos;s permission.
+              </p>
+            </div>
+          </header>
+        ) : (
+        <header className="mb-8 text-center sm:mb-10">
+            <p className="font-amiri text-[2rem] leading-snug text-ink sm:text-[2.4rem]" lang="ar" dir="rtl">
+              {book.titleAr}
+            </p>
+            <h1 className="font-display text-lg text-ink-2">{book.title}</h1>
+            <div className="mx-auto mt-3 max-w-md space-y-0.5 text-xs leading-relaxed text-muted">
+              <p>
+                Arabic text: OpenITI, {content.source.license}.{" "}
+                <Link href="/about#corrections" className="underline decoration-line-strong underline-offset-4 hover:text-ink">
+                  Corrections
+                </Link>
+              </p>
+              {info ? (
+                <p>
+                  {info.languageLabel} translation: {info.translator}, {info.license}
+                  {info.review ? `. Reviewed for publication ${longDate(info.review.reviewedOn)}` : ""}.
+                </p>
+              ) : translations.length === 0 ? (
+                <p>No translation of this book has been published yet.</p>
+              ) : null}
+            </div>
+          </header>
+  
+        )}
 
-        {content.chapters.map((chapter, ci) => {
+        {prose
+          ? content.chapters.map((chapter, ci) => {
+              const previous = content.chapters[ci - 1];
+              const next = content.chapters[ci + 1];
+              const newPart = chapter.partEn !== "" && (!previous || previous.partEn !== chapter.partEn);
+              return (
+                <section key={chapter.id} id={chapter.id} aria-labelledby={`${chapter.id}-h`} className="ebook-anchor pb-8 sm:pb-10">
+                  <ProseHeading id={`${chapter.id}-h`} heading={chapter.headingEn} part={newPart || chapter.partEn === chapter.headingEn ? chapter.partEn : undefined} />
+                  {chapter.units.map((unit) => {
+                    const marked = bookmarks.includes(unit.id);
+                    return (
+                      <div key={unit.id} id={unit.id} data-unit={unit.id} className="ebook-anchor relative pb-5 sm:pb-6">
+                        <span className="sr-only">Passage {unit.number}</span>
+                        <ProsePassage
+                          unit={unit}
+                          fontSize={translationFontSize}
+                          after={
+                            <button
+                              type="button"
+                              className={cn(
+                                "tool-btn !px-0 md:absolute md:-left-16 md:top-1 md:m-0",
+                                unit.kind === "table" ? "mt-1" : "-my-3 ms-0.5 align-middle",
+                                marked ? "!text-gold" : "!text-faint hover:!text-ink",
+                              )}
+                              style={{ textIndent: 0 }}
+                              aria-pressed={marked}
+                              aria-label={`Bookmark ${chapter.headingEn}, passage ${unit.number}`}
+                              onClick={() => toggleBookmark(unit.id)}
+                            >
+                              <Bookmark className={cn("h-4 w-4", marked && "fill-current")} aria-hidden />
+                            </button>
+                          }
+                        />
+                      </div>
+                    );
+                  })}
+                  <ChapterNav chapterId={chapter.id} headingEn={chapter.headingEn} previous={previous} next={next} />
+                </section>
+              );
+            })
+          : content.chapters.map((chapter, ci) => {
           const previous = content.chapters[ci - 1];
           const next = content.chapters[ci + 1];
           const showPart = !previous || previous.partEn !== chapter.partEn;
@@ -602,44 +678,28 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
                 );
               })}
 
-              <nav aria-label={`After ${chapter.headingEn}`} className="flex items-start justify-between gap-6 border-t border-line pt-2 text-sm">
-                {previous ? (
-                  <a href={`#${previous.id}`} className="group flex min-h-11 max-w-[45%] items-start gap-1.5 text-muted hover:text-ink">
-                    <ChevronLeft className="mt-0.5 h-4 w-4 shrink-0" aria-hidden />
-                    <span>
-                      <span className="block text-[0.68rem] uppercase tracking-[0.14em] text-faint">Previous</span>
-                      {previous.headingEn}
-                    </span>
-                  </a>
-                ) : (
-                  <span />
-                )}
-                {next ? (
-                  <a href={`#${next.id}`} className="group flex min-h-11 max-w-[45%] items-start justify-end gap-1.5 text-right text-muted hover:text-ink">
-                    <span>
-                      <span className="block text-[0.68rem] uppercase tracking-[0.14em] text-faint">Next</span>
-                      {next.headingEn}
-                    </span>
-                    <ChevronRight className="mt-0.5 h-4 w-4 shrink-0" aria-hidden />
-                  </a>
-                ) : (
-                  <span />
-                )}
-              </nav>
+              <ChapterNav chapterId={chapter.id} headingEn={chapter.headingEn} previous={previous} next={next} />
             </section>
           );
         })}
 
         <footer className="border-t border-line pt-6 text-center text-sm leading-relaxed text-muted [overflow-wrap:anywhere]">
           <Rosette className="mx-auto mb-4 h-5 w-5 text-gold/80" />
-          <p>
-            Arabic text from OpenITI, {content.source.license} ({content.source.openiti.replace(/^OpenITI /, "")}). Evident copy
-            errors are corrected and listed on the{" "}
-            <Link href="/about#corrections" className="link font-normal">
-              sources page
-            </Link>
-            .
-          </p>
+          {prose ? (
+            <p lang="en">
+              {content.source.copyright}. ISBN {content.source.isbn}. {content.source.edition}. All rights reserved; published in
+              this library with the rights holder&apos;s permission. Not for copying or redistribution.
+            </p>
+          ) : (
+            <p>
+              Arabic text from OpenITI, {content.source.license} ({content.source.openiti.replace(/^OpenITI /, "")}). Evident copy
+              errors are corrected and listed on the{" "}
+              <Link href="/about#corrections" className="link font-normal">
+                sources page
+              </Link>
+              .
+            </p>
+          )}
           <p className="mt-3">
             <Link href={`/books/${book.id}`} className="link font-normal">
               Back to the book page
@@ -665,6 +725,46 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
       ) : null}
       {glossaryEnabled ? <GlossarySheet termId={termId} bookId={book.id} onClose={() => setTermId(null)} /> : null}
     </div>
+  );
+}
+
+/** Links to the sections before and after, at the foot of each section. */
+function ChapterNav({
+  chapterId,
+  headingEn,
+  previous,
+  next,
+}: {
+  chapterId: string;
+  headingEn: string;
+  previous?: { id: string; headingEn: string };
+  next?: { id: string; headingEn: string };
+}) {
+  return (
+    <nav aria-label={`After ${headingEn}`} data-after={chapterId} className="flex items-start justify-between gap-6 border-t border-line pt-2 text-sm">
+      {previous ? (
+        <a href={`#${previous.id}`} className="group flex min-h-11 max-w-[45%] items-start gap-1.5 text-muted hover:text-ink">
+          <ChevronLeft className="mt-0.5 h-4 w-4 shrink-0" aria-hidden />
+          <span>
+            <span className="block text-[0.68rem] uppercase tracking-[0.14em] text-faint">Previous</span>
+            {previous.headingEn}
+          </span>
+        </a>
+      ) : (
+        <span />
+      )}
+      {next ? (
+        <a href={`#${next.id}`} className="group flex min-h-11 max-w-[45%] items-start justify-end gap-1.5 text-right text-muted hover:text-ink">
+          <span>
+            <span className="block text-[0.68rem] uppercase tracking-[0.14em] text-faint">Next</span>
+            {next.headingEn}
+          </span>
+          <ChevronRight className="mt-0.5 h-4 w-4 shrink-0" aria-hidden />
+        </a>
+      ) : (
+        <span />
+      )}
+    </nav>
   );
 }
 

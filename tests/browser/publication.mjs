@@ -1,6 +1,6 @@
 import { openDisplay, closeDisplay, setShow, showValue } from "./harness.mjs";
 
-export default async function run({ browser, base, check, screenshot }) {
+export default async function run({ browser, base, check }) {
   const b = browser;
   const geo = (p, id) => p.evaluate((id) => {
     // content box: the border box minus the element's own padding

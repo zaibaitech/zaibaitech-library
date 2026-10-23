@@ -1,0 +1,2587 @@
+{
+ "id": "balance-of-stations",
+ "language": "en",
+ "source": {
+  "work": "Three Books — Complete English Translation",
+  "author": "Abu Abdur-Rahman Omar Ibn Alhagie Abdullah Ceesay Ibn Alhagie Jibel Fana Sow Ceesay",
+  "translator": "Sidy Ahmad Gassama",
+  "copyright": "© Omar Ceesay",
+  "isbn": "978-9983-94-606-2",
+  "edition": "First Edition 1447H / 2026",
+  "printer": "DBC Printing Corporation, Banjul, The Gambia",
+  "rights": "All rights reserved. Published in the library with the rights holder's permission for full public display, as confirmed by the library owner on 23 October 2026.",
+  "title": "The Balance of Spiritual Stations in the Muslim’s Life",
+  "editor": "Muhammed MK Kah",
+  "pdfPages": "147–236"
+ },
+ "chapters": [
+  {
+   "id": "introduction-to-the-book",
+   "order": 1,
+   "headingEn": "Introduction to the Book",
+   "partEn": "",
+   "page": "138",
+   "units": [
+    {
+     "id": "introduction-to-the-book.p01",
+     "number": 1,
+     "page": "138",
+     "text": "*In the name of Allah, the Most Gracious, the Most Merciful.*"
+    },
+    {
+     "id": "introduction-to-the-book.p02",
+     "number": 2,
+     "page": "138",
+     "text": "All praise is due to Allah, who created the human being for His worship, who legislated for him a sound religion, who gave him in His Messenger ﷺ the excellent example, and who prepared for him, among the scholars and guides, those who direct him to the path of understanding and action. Prayers and peace be upon our master Muhammad, the teaching Prophet and the wise educator, and upon his family, his companions, and all who follow his guidance until the Day of Judgement. To proceed:"
+    },
+    {
+     "id": "introduction-to-the-book.p03",
+     "number": 3,
+     "page": "138",
+     "text": "Among the greatest afflictions besetting the Muslim in this age is a disorder in the balance of spiritual stations within their religious life. The defect no longer lies in a shortage of texts or an absence of models, but in the poor ordering of foundations and means, of ultimate purposes and subordinate matters. One sees a Muslim in whom one dimension of religiosity has come to dominate, overwhelming all the others, producing thereby a deficient understanding and an unsettled conduct, even where this appears, on its surface, to be devotion and zeal."
+    },
+    {
+     "id": "introduction-to-the-book.p04",
+     "number": 4,
+     "page": "138",
+     "text": "Some people have reduced religion to a bare spiritual feeling, thereby weakening the meaning of practical servitude. Others have made belonging to Islam a cultural identity rather than a religious obligation. Others still have claimed to emulate the Messenger ﷺ without any awareness of his comprehensive method. And others have exalted their sheikh or mentor until they raised him, beyond the bounds of a mere means, to a station that rivals the text and the [Prophetic] example itself. All of this represents a disturbance in the balance, not an absence of love for religion in people’s hearts."
+    },
+    {
+     "id": "introduction-to-the-book.p05",
+     "number": 5,
+     "page": "139",
+     "text": "Islam never intended for the Muslim to live these stations in discord or conflict with one another; rather, it intended them to be integrated and harmonious, each with its own limit, its own function, and its own effect in building the human being."
+    },
+    {
+     "id": "introduction-to-the-book.p06",
+     "number": 6,
+     "page": "139",
+     "text": "Servitude to Allah is the foundation upon which the life of faith is built; belonging to Islam is the methodological framework that organizes this servitude; emulation of the Messenger ﷺ is the practical form in which this religion is embodied in reality; and seeking knowledge at the hands of scholars and educators is the means that safeguards understanding from deviation and conduct from disorder."
+    },
+    {
+     "id": "introduction-to-the-book.p07",
+     "number": 7,
+     "page": "139",
+     "text": "Yet disorder begins the moment a subordinate matter is given precedence over a foundation, or a means is elevated to the rank of an ultimate purpose, or emulation is severed from understanding, or religion is made subordinate to persons rather than the reverse."
+    },
+    {
+     "id": "introduction-to-the-book.p08",
+     "number": 8,
+     "page": "139",
+     "text": "[In summary: giving precedence to secondary matters over essential ones; elevating means as though they were ends in themselves; imitation without understanding; and making religion subordinate to individuals, rather than individuals subordinate to religion.]"
+    },
+    {
+     "id": "introduction-to-the-book.p09",
+     "number": 9,
+     "page": "140",
+     "text": "At that point, partial expressions of religiosity turn into causes of division, and commitment becomes a source of tension rather than a path to tranquillity and uprightness."
+    },
+    {
+     "id": "introduction-to-the-book.p10",
+     "number": 10,
+     "page": "140",
+     "text": "Hence this book, titled *The Balance of Spiritual Stations in the Muslim’s Life: Servitude, Belonging, Emulation, Receiving Knowledge from a Sheikh*, is a practical, educational attempt to recalibrate this balance, and to return each station to its rightful place, without erasing it or diminishing it, and without excess or harshness. It does not call for belittling knowledge or education, nor for marginalizing belonging or emulation; rather, it calls for a sound understanding that unites rather than divides and builds rather than demolishes."
+    },
+    {
+     "id": "introduction-to-the-book.p11",
+     "number": 11,
+     "page": "140",
+     "text": "The book follows an analytical, educational method, attentive to the sacred texts, mindful of the overarching purposes of the Shari’ah, and engaged with reality without capitulating to it, keeping always in view the building of the balanced Muslim: one who knows their Lord, understands their religion, emulates their Prophet, and learns with insight."
+    },
+    {
+     "id": "introduction-to-the-book.p12",
+     "number": 12,
+     "page": "140",
+     "text": "In presenting this work, we do not claim comprehensiveness, nor do we claim perfection; it is a human effort whose aim is reform and correction. We hope it may serve as a building block in constructing sound religious awareness, and a step on the path toward restoring due regard for the balance by which the lives of individuals are set right, and the nation (ummah) is healed."
+    },
+    {
+     "id": "introduction-to-the-book.p13",
+     "number": 13,
+     "page": "141",
+     "text": "We ask Allah, the Exalted, to make this work sincerely for His noble sake, of benefit to its reader, an aid to understanding and action, and to grant us and you sincerity in servitude, soundness in belonging, correctness in emulation, and wisdom in seeking knowledge. He is the One who grants that, and He is fully capable of it."
+    },
+    {
+     "id": "introduction-to-the-book.p14",
+     "number": 14,
+     "page": "141",
+     "text": "*[A note on the importance of establishing a clear Muslim identity in an age in which the spiritual stations have become confused, one overwhelming another, producing disorder: some have let spiritual sentiment override the Shari’ah and thus neglected it; some have turned Islam into a bare identity devoid of servitude; some have made their sheikh the foundation and the Messenger ﷺ merely subordinate to him; and some have claimed emulation without knowledge or proper formation. This introduction affirms that this book is an attempt to restore the correct ordering of these stations, not to separate them, but to bind them together in balanced relation.]*"
+    }
+   ]
+  },
+  {
+   "id": "prologue",
+   "order": 2,
+   "headingEn": "Prologue: The Human Being Between Reception and Obligation",
+   "partEn": "",
+   "page": "141",
+   "units": [
+    {
+     "id": "prologue.p01",
+     "number": 1,
+     "page": "141",
+     "text": "**Themes of the Prologue:** the human being is a worshipping creature before being a “belonging” creature; the difference between a station and a means; the danger of conflating the religious stations; Islam’s approach to ordering priorities."
+    },
+    {
+     "id": "prologue.p02",
+     "number": 2,
+     "page": "142",
+     "text": "**Summary of the Prologue:** the Muslim’s life cannot be sound unless these stations are understood in their true reality, and unless the limit and function of each station is known."
+    }
+   ]
+  },
+  {
+   "id": "part-1",
+   "order": 3,
+   "headingEn": "Part 1: The Muslim Is a Servant of Allah, Mighty and Sublime",
+   "partEn": "Part 1: The Muslim Is a Servant of Allah, Mighty and Sublime",
+   "page": "142",
+   "units": [
+    {
+     "id": "part-1.p01",
+     "number": 1,
+     "page": "142",
+     "text": "Servitude is the foundation of every station, for it lays down the great principle upon which all the stations of faith and states of conduct are built; it reorders one’s concepts, so that every noble station arises only from the realization of servitude to Allah, and every disorder among the stations traces back, in truth, to a defect in understanding servitude or a weakness in its realization. This Part contains eight chapters."
+    }
+   ]
+  },
+  {
+   "id": "p1-ch1",
+   "order": 4,
+   "headingEn": "Chapter 1: The Meaning of Servitude in the Islamic Conception",
+   "partEn": "Part 1: The Muslim Is a Servant of Allah, Mighty and Sublime",
+   "page": "142",
+   "units": [
+    {
+     "id": "p1-ch1.p01",
+     "number": 1,
+     "page": "142",
+     "text": "Servitude (’ubudiyyah) is not merely the performance of rites, nor is it a state of passive submission; rather, it is perfect love joined with perfect humility before Allah, together with perfect obedience, submission, contentment, and surrender. The true servant is one who loves Allah with the utmost love, magnifies Him with the utmost reverence, and submits to Him outwardly and inwardly. Allah says: *“And I did not create the jinn and mankind except to worship Me”* (Adh-Dhariyat 51:56). Servitude, then, is the supreme purpose of creation, and from it all the [other] stations branch out."
+    },
+    {
+     "id": "p1-ch1.p02",
+     "number": 2,
+     "page": "143",
+     "text": "**The meaning of comprehensive servitude:** servitude in Islam is not a partial concept confined to the performance of outward acts of worship, nor a fleeting psychological state, but rather a comprehensive existential condition that orders the whole of a person’s life, outward and inward, heart and form, secret and open. Through this, servitude is realized in its complete sense. Comprehensive servitude is the surrender of the heart to Allah in love and reverence, together with the compliance of the limbs to Him in obedience and submission. From here, comprehensive servitude divides into two fundamental sections:"
+    },
+    {
+     "id": "p1-ch1.p03",
+     "number": 3,
+     "page": "143",
+     "heading": "Section One: Servitude Between Love and Compliance",
+     "text": "Servitude rests upon two great pillars, neither separable from the other:"
+    },
+    {
+     "id": "p1-ch1.p04",
+     "number": 4,
+     "page": "143",
+     "text": "1. **Love**, which is the spirit of servitude and its beating heart, there is no servitude without love, and no obedience without reverence. Allah says: *“But those who believe are stronger in love for Allah”* (Al-Baqarah 2:165). Love of Allah means giving precedence to what Allah wills over what people will, rejoicing in obeying Him, grieving over disobeying Him, and yearning to meet Him. Whoever loves Allah sincerely finds every obligation made easy for them.",
+     "kind": "item"
+    },
+    {
+     "id": "p1-ch1.p05",
+     "number": 5,
+     "page": "144",
+     "text": "2. **Compliance**, which is the fruit of love and the proof of its sincerity, for not everyone who claims love is sincere in that claim, until its effect appears in their conduct. Allah says: *“Say, [O Muhammad], ‘If you should love Allah, then follow me, [so] Allah will love you’”* (Aal ’Imran 3:31). Compliance includes obeying commands, avoiding prohibitions, submitting to Allah’s rulings, and being content with His decree. Love without compliance is an empty claim, and compliance without love is dry and lifeless; true servitude unites both together.",
+     "kind": "item"
+    },
+    {
+     "id": "p1-ch1.p06",
+     "number": 6,
+     "page": "144",
+     "heading": "Section Two: Servitude of the Heart and Servitude of the Limbs",
+     "text": "Comprehensive servitude is only realized through the union of two kinds of servitude:"
+    },
+    {
+     "id": "p1-ch1.p07",
+     "number": 7,
+     "page": "144",
+     "text": "1. **Servitude of the heart**, which is the root of all servitude, from which all deeds spring. It includes the deeds of the heart, such as sincerity, reliance upon Allah, fear, hope, love, and turning [in repentance]. If the heart is sound, the whole body is sound, and if the heart is corrupt, the whole body is corrupt. Servitude of the heart is the true measure by which deeds are accepted.",
+     "kind": "item"
+    },
+    {
+     "id": "p1-ch1.p08",
+     "number": 8,
+     "page": "144",
+     "text": "2. **Servitude of the limbs**, which is the translation of the heart’s servitude into tangible practical reality. It includes prayer, fasting, almsgiving, pilgrimage, dutifulness to parents, maintaining family ties, and all other acts of obedience, together with abandoning what is forbidden. Sincerity of intention does not dispense with the soundness of the deed, just as the deed avails nothing without sincere intention.",
+     "kind": "item"
+    },
+    {
+     "id": "p1-ch1.p09",
+     "number": 9,
+     "page": "145",
+     "text": "**The integration of the two kinds:** servitude of the heart is the root, and servitude of the limbs is the branch. If the root is sound, the branch bears fruit; if the root is corrupt, the branch withers. For this reason, uniting both is a condition for realizing comprehensive servitude."
+    },
+    {
+     "id": "p1-ch1.p10",
+     "number": 10,
+     "page": "145",
+     "text": "**Summary of the two sections:** comprehensive servitude rests upon: sincere love, complete compliance, a living heart, and active limbs. Through this, the Muslim becomes a true servant of Allah, and servitude carries them along the path of the [spiritual] stations, rising from one station to the next, until they reach whatever nearness [to Allah] He has willed for them to attain."
+    },
+    {
+     "id": "p1-ch1.p11",
+     "number": 11,
+     "page": "145",
+     "text": "**Summary of the chapter’s meaning:** servitude means that Allah alone is the object of one’s intention, love, obedience, hope, and fear."
+    }
+   ]
+  },
+  {
+   "id": "p1-ch2",
+   "order": 5,
+   "headingEn": "Chapter 2: Why Is Servitude the Root of Every Station?",
+   "partEn": "Part 1: The Muslim Is a Servant of Allah, Mighty and Sublime",
+   "page": "145",
+   "units": [
+    {
+     "id": "p1-ch2.p01",
+     "number": 1,
+     "page": "145",
+     "text": "Because the [spiritual] stations are not independent goals, but rather fruits of a single tree, the tree of servitude. There is no sound repentance, no sincere devotion, no beautiful patience, no beneficial asceticism, and no firm reliance upon Allah, except where its root is sincere servitude to Allah, the Exalted."
+    },
+    {
+     "id": "p1-ch2.p02",
+     "number": 2,
+     "page": "146",
+     "text": "Whoever worships Allah for Allah’s sake, Allah opens for them the doors of the [spiritual] stations; and whoever worships the stations [themselves] loses both servitude and the stations together."
+    },
+    {
+     "id": "p1-ch2.p03",
+     "number": 3,
+     "page": "146",
+     "text": "**The effects of servitude on the self and conduct:** servitude is not an abstract theoretical concept, but a living reality that bears clear fruits within a person’s inward and outward life, in their psychology, their conduct, and their outlook on life. Whenever comprehensive servitude is realized in heart and limb, blessed fruits appear, among the greatest of which are: a person’s liberation from servitude to anything other than Allah, the attainment of inner tranquillity, and the emergence of a heightened sense of responsibility and discipline. These effects divide into two main sections:"
+    },
+    {
+     "id": "p1-ch2.p04",
+     "number": 4,
+     "page": "146",
+     "heading": "Section One: Liberating the Human Being from Attachment to Other than Allah",
+     "text": "The greatest fruit of servitude is that it releases the heart’s bonds from everything besides Allah, for the human being is by nature disposed to attachment, if they do not attach themselves to Allah, they attach themselves to something else: wealth, status, people, appetites, or position. When a person realizes servitude to Allah: they are no longer a captive to people’s opinions, nor fearful of losing this world, nor attached to what is in the hands of others. Allah says: *“Unquestionably, by the remembrance of Allah hearts are assured”* (Ar-Ra’d 13:28). Among the manifestations of this liberation:"
+    },
+    {
+     "id": "p1-ch2.p05",
+     "number": 5,
+     "page": "147",
+     "text": "1. Liberation from servitude to desire, a person governs their appetite rather than being governed by it.",
+     "kind": "item"
+    },
+    {
+     "id": "p1-ch2.p06",
+     "number": 6,
+     "page": "147",
+     "text": "2. Liberation from servitude to created beings, a person no longer makes their approval the highest standard but makes Allah’s approval their goal.",
+     "kind": "item"
+    },
+    {
+     "id": "p1-ch2.p07",
+     "number": 7,
+     "page": "147",
+     "text": "3. Liberation from servitude to this world, a person takes from it only what they need, making it a means, not an end.",
+     "kind": "item"
+    },
+    {
+     "id": "p1-ch2.p08",
+     "number": 8,
+     "page": "147",
+     "text": "This liberation does not mean abandoning this world but placing it in its proper position."
+    },
+    {
+     "id": "p1-ch2.p09",
+     "number": 9,
+     "page": "147",
+     "heading": "Section Two: Tranquillity and Responsibility",
+     "text": "Sincere servitude produces two inseparable effects within the human soul:"
+    },
+    {
+     "id": "p1-ch2.p10",
+     "number": 10,
+     "page": "147",
+     "text": "1. **Tranquillity**, because the servant knows that: they have a Lord who governs their affairs, a God who does not neglect His servant, and a refuge to which they may turn in every circumstance. Their soul settles, their heart grows calm, and turbulent anxiety departs from them. The servant neither despairs like one without hope, nor exults like one filled with arrogance, for they see everything as coming from Allah and returning to Allah.",
+     "kind": "item"
+    },
+    {
+     "id": "p1-ch2.p11",
+     "number": 11,
+     "page": "148",
+     "text": "2. **Responsibility**, true servitude does not produce a passive human being, but rather one who is: aware of their role, upright in their work, trustworthy in what they are charged with, because they feel Allah’s watchfulness over them, in secret and in the open. They act because they are commanded, they strive because they are accountable, and they perfect their work because they know Allah sees them. From this arise the character traits of honesty, trustworthiness, discipline, and excellence in work.",
+     "kind": "item"
+    },
+    {
+     "id": "p1-ch2.p12",
+     "number": 12,
+     "page": "148",
+     "text": "**The relationship between tranquillity and responsibility:** tranquillity grants the heart stillness, and responsibility grants the limbs motion. Through this, the balanced Muslim is formed: a heart at rest in Allah, and limbs active for Allah’s sake, and this is the perfection of servitude."
+    },
+    {
+     "id": "p1-ch2.p13",
+     "number": 13,
+     "page": "148",
+     "text": "**Summary of this chapter:** the more a servant realizes servitude, the more they are liberated from other than Allah, the more tranquillity fills their heart, and the more committed their conduct becomes. Servitude thus transforms from a mere concept into a way of life."
+    }
+   ]
+  },
+  {
+   "id": "p1-ch3",
+   "order": 6,
+   "headingEn": "Chapter 3: Servitude and True Freedom",
+   "partEn": "Part 1: The Muslim Is a Servant of Allah, Mighty and Sublime",
+   "page": "149",
+   "units": [
+    {
+     "id": "p1-ch3.p01",
+     "number": 1,
+     "page": "149",
+     "text": "Many people imagine that freedom means breaking every restraint and being liberated from every authority. Yet this understanding has led humanity into new forms of servitude, harsher than the old."
+    },
+    {
+     "id": "p1-ch3.p02",
+     "number": 2,
+     "page": "149",
+     "text": "Islam, however, establishes a great truth: no human being is ever without servitude of some kind, the only real question is, to whom does that servitude belong? For a person is either a servant of Allah, Mighty and Sublime, or a servant of their own desire, their appetite, or another created being like themselves."
+    },
+    {
+     "id": "p1-ch3.p03",
+     "number": 3,
+     "page": "149",
+     "text": "**Comprehensive servitude, inward and outward:** sincere servitude to Allah, the Exalted, is realized through three integrated circles:"
+    },
+    {
+     "id": "p1-ch3.p04",
+     "number": 4,
+     "page": "149",
+     "text": "1. **Servitude of the heart**, including sincerity, reliance upon Allah, fear and hope, love and turning [to Him], for the heart is the centre of servitude. The Prophet ﷺ said: *“Indeed, within the body there is a morsel of flesh: if it is sound, the whole body is sound, and if it is corrupt, the whole body is corrupt. Indeed, it is the heart.”* (Agreed upon).",
+     "kind": "item"
+    },
+    {
+     "id": "p1-ch3.p05",
+     "number": 5,
+     "page": "149",
+     "text": "2. **Servitude of the tongue**, including remembrance of Allah, supplication, recitation, and enjoining good and forbidding evil.",
+     "kind": "item"
+    },
+    {
+     "id": "p1-ch3.p06",
+     "number": 6,
+     "page": "150",
+     "text": "3. **Servitude of the limbs**, including prayer, fasting, almsgiving, pilgrimage, and all other bodily acts of obedience, together with abandoning all that is forbidden. None of these aspects can substitute for another.",
+     "kind": "item"
+    },
+    {
+     "id": "p1-ch3.p07",
+     "number": 7,
+     "page": "150",
+     "text": "From here it follows that servitude to Allah alone is true freedom. This chapter divides into two sections:"
+    },
+    {
+     "id": "p1-ch3.p08",
+     "number": 8,
+     "page": "150",
+     "heading": "Section One: The Difference Between Servitude to Allah and Servitude to Created Beings",
+     "text": "1. **Servitude to Allah** rests upon love, justice, and mercy. The servant, with Allah knows their purpose, feels secure about their destiny, and finds rest in the justice of their Lord. Allah says: *“Allah is the ally of those who believe. He brings them out from darknesses into the light”* (Al-Baqarah 2:257). Servitude to Allah liberates the heart, purifies the soul, and sets conduct right, and the more a servant submits to Allah, the more liberated they become from everything else.",
+     "kind": "item"
+    },
+    {
+     "id": "p1-ch3.p09",
+     "number": 9,
+     "page": "150",
+     "text": "2. **Servitude to created beings** takes many forms, among them: servitude to desire, servitude to wealth, servitude to status, servitude to appetite, and servitude to people, a servitude built upon anxiety, turbulence, fear, and never being satisfied. The one enslaved to creation chases without ever arriving, seeks without ever being quenched. Allah says: *“Have you seen the one who takes as his god his own desire?”* (Al-Jathiyah 45:23). This servitude degrades a person even if they imagine themselves free.",
+     "kind": "item"
+    },
+    {
+     "id": "p1-ch3.p10",
+     "number": 10,
+     "page": "151",
+     "text": "**Comparing the two kinds of servitude:** servitude to Allah brings tranquillity, dignity, and uprightness; servitude to creation brings anxiety, humiliation, and turmoil. Whoever recognizes this difference chooses the path of servitude to Allah with clear insight."
+    },
+    {
+     "id": "p1-ch3.p11",
+     "number": 11,
+     "page": "151",
+     "heading": "Section Two: Servitude Is the Path to Honour, Not Humiliation",
+     "text": "Some people imagine that servitude is a form of humiliation. The truth is that humiliation in Islam belongs only to submission before other than Allah, while humbling oneself before Allah is honour itself. Allah says: *“And to Allah belongs [all] honour, and to His Messenger, and to the believers”* (Al-Munafiqun 63:8). When the servant submits to Allah, Allah raises them, honours them, and dignifies them; whereas whoever is too proud to serve Allah, Allah humbles them through something else."
+    },
+    {
+     "id": "p1-ch3.p12",
+     "number": 12,
+     "page": "151",
+     "text": "**Manifestations of the servant’s honour through servitude:** firmness upon truth, strength of principle, independence from the pressure of others, courage in speaking the truth, and self-respect, all of these are fruits of sincere servitude."
+    },
+    {
+     "id": "p1-ch3.p13",
+     "number": 13,
+     "page": "151",
+     "text": "**A great Qur’anic equation:** whoever humbles themselves for Allah, He raises them; and whoever grows arrogant, He lowers them. Servitude, then, is not a fall but an ascent, not disgrace but elevation."
+    },
+    {
+     "id": "p1-ch3.p14",
+     "number": 14,
+     "page": "152",
+     "text": "**Summary of Chapter 3:** true freedom lies not in breaking every restraint, but in choosing the correct restraint. Whoever chooses to be a servant of Allah is liberated from everything else and attains honour in this world and happiness in the Hereafter."
+    }
+   ]
+  },
+  {
+   "id": "p1-ch4",
+   "order": 7,
+   "headingEn": "Chapter 4: Servitude in States of Ease and Hardship",
+   "partEn": "Part 1: The Muslim Is a Servant of Allah, Mighty and Sublime",
+   "page": "152",
+   "units": [
+    {
+     "id": "p1-ch4.p01",
+     "number": 1,
+     "page": "152",
+     "text": "True servitude is not a passing condition, nor a temporary stance connected to hardship alone; it is a permanent station that encompasses all the changing circumstances of human life, in abundance and constraint, in health and illness, in strength and weakness, in obedience and shortcoming. The true servant does not turn their heart in a different direction as circumstances change, but remains oriented toward Allah in every state, holding fast to His door, acknowledging their need for Him, and disclaiming any power or strength of their own."
+    },
+    {
+     "id": "p1-ch4.p02",
+     "number": 2,
+     "page": "152",
+     "text": "In times of ease, the servant is grateful, seeing blessing as coming from Allah and returning to Allah, meeting it with praise and thanksgiving, translating their gratitude into obedience, uprightness, and the good use of what they have been given."
+    },
+    {
+     "id": "p1-ch4.p03",
+     "number": 3,
+     "page": "153",
+     "text": "In times of hardship, the servant is patient, knowing that what has befallen them could not have missed them, and that behind every decree lies wisdom and mercy. Their heart remains steady, they submit to their Lord’s command, and they grow nearer [to Him], not further away."
+    },
+    {
+     "id": "p1-ch4.p04",
+     "number": 4,
+     "page": "153",
+     "text": "In a state of sin, the servant repents, not persisting in wrongdoing, nor too proud to return, but fleeing to Allah as a broken soul in need flees, acknowledging their weakness, hoping for His forgiveness."
+    },
+    {
+     "id": "p1-ch4.p05",
+     "number": 5,
+     "page": "153",
+     "text": "In a state of obedience, the servant seeks forgiveness, claiming no merit for themselves, not deceived by their own deeds, but ever conscious of their shortcomings however hard they strive, seeking forgiveness for the deficiency of their worship just as they would for a sin. It is related, in the four collections of Sunan, that the Prophet ﷺ used to seek his Lord’s forgiveness three times immediately after concluding the prayer with the closing salutation, saying: *“I seek Allah’s forgiveness”* (repeated three times)."
+    },
+    {
+     "id": "p1-ch4.p06",
+     "number": 6,
+     "page": "153",
+     "text": "Such a servant turns wherever Allah’s command turns them, their heart moving between gratitude and patience, their tongue between praise and seeking forgiveness, their spirit between fear and hope. This conscious movement between the stations of servitude is the secret of remaining firm upon the path, the root of safety from deviation, and the balance of uprightness without excess or harshness."
+    }
+   ]
+  },
+  {
+   "id": "p1-ch5",
+   "order": 8,
+   "headingEn": "Chapter 5: The Relationship Between Servitude and the Stations of Faith",
+   "partEn": "Part 1: The Muslim Is a Servant of Allah, Mighty and Sublime",
+   "page": "154",
+   "units": [
+    {
+     "id": "p1-ch5.p01",
+     "number": 1,
+     "page": "154",
+     "text": "Servitude is not a station separate from the rest of the stations of faith; rather, it is their root, from which they branch out, their source, from which they draw nourishment, and their centre, around which they are organized. Every sound station of faith is, in truth, one of the fruits of sincere servitude, and every disorder among the stations traces back to a defect in the realization of servitude. This relationship can be shown as an integrated, interlinked chain:"
+    },
+    {
+     "id": "p1-ch5.p02",
+     "number": 2,
+     "page": "154",
+     "text": "1. **Sincere servitude → sincerity of intention (Ikhlas):** once the meaning of servitude settles in the heart, one’s purpose becomes devoted to Allah alone; nothing is sought through one’s deeds but His pleasure, and nothing is hoped for but His approval.",
+     "kind": "item"
+    },
+    {
+     "id": "p1-ch5.p03",
+     "number": 3,
+     "page": "154",
+     "text": "2. **Sincerity → acceptance:** whatever is sincerely devoted to Allah deserves to be raised up and accepted, for acceptance is the fruit of purity of intention before it is the fruit of an abundance of deeds.",
+     "kind": "item"
+    },
+    {
+     "id": "p1-ch5.p04",
+     "number": 4,
+     "page": "154",
+     "text": "3. **Acceptance → tranquillity:** when the servant is certain that their deed is accepted by Allah, their heart settles, their turmoil vanishes, and they find rest in their Lord’s mercy and favour.",
+     "kind": "item"
+    },
+    {
+     "id": "p1-ch5.p05",
+     "number": 5,
+     "page": "155",
+     "text": "4. **Tranquillity → reliance upon Allah (tawakkul):** the tranquil heart entrusts its affairs to Allah, depends upon Him, and trusts in His good management.",
+     "kind": "item"
+    },
+    {
+     "id": "p1-ch5.p06",
+     "number": 6,
+     "page": "155",
+     "text": "5. **Reliance → contentment:** whoever truly relies upon Allah becomes content with whatever He decrees, for their own choice has become subordinate to their Lord’s choice.",
+     "kind": "item"
+    },
+    {
+     "id": "p1-ch5.p07",
+     "number": 7,
+     "page": "155",
+     "text": "6. **Contentment → serenity (Sakinah):** when the servant is content, a special stillness and an inner peace, unshaken by storms, is poured into their heart.",
+     "kind": "item"
+    },
+    {
+     "id": "p1-ch5.p08",
+     "number": 8,
+     "page": "155",
+     "text": "7. **Serenity → nearness to Allah:** serenity is the sign of intimacy [with Allah], and nearness is the fruit of that intimacy, and whoever draws near to Allah finds this world and all that is in it to be of little consequence.",
+     "kind": "item"
+    },
+    {
+     "id": "p1-ch5.p09",
+     "number": 9,
+     "page": "155",
+     "text": "Thus, it becomes clear that the root is one, servitude, while the fruits are many, the stations of faith, and that walking toward Allah is not a leap between stations, but a gradual, natural growth that begins with correcting one’s servitude and ends with nearness to Allah, the Exalted."
+    },
+    {
+     "id": "p1-ch5.p10",
+     "number": 10,
+     "page": "155",
+     "text": "This can be shown in a clear sequence: sincere servitude leads to sincerity, sincerity leads to acceptance, acceptance leads to tranquillity, tranquillity leads to reliance, reliance leads to contentment, contentment leads to serenity, serenity leads to nearness to Allah. The root, then, is one, while the fruits are many."
+    }
+   ]
+  },
+  {
+   "id": "p1-ch6",
+   "order": 9,
+   "headingEn": "Chapter 6: The Gravest Deviations from the Concept of Servitude",
+   "partEn": "Part 1: The Muslim Is a Servant of Allah, Mighty and Sublime",
+   "page": "156",
+   "units": [
+    {
+     "id": "p1-ch6.p01",
+     "number": 1,
+     "page": "156",
+     "text": "Just as worship has a unifying root from which the stations of faith branch out, it also has grave afflictions which, if they creep into the heart, corrupt its true nature and divert the course of one’s journey toward Allah, from a path of nearness to a path of severance, while the one afflicted may imagine themselves to be upon good, when in reality they are regressing or going astray."
+    },
+    {
+     "id": "p1-ch6.p02",
+     "number": 2,
+     "page": "156",
+     "text": "The gravest of these deviations do not always take the form of open disbelief or manifest sin; they often come dressed in the garb of religiosity, or in the name of freedom, or under the banner of relying on one’s own deeds. For this reason, exposing and explaining them is a necessity for anyone who seeks true servitude:"
+    },
+    {
+     "id": "p1-ch6.p03",
+     "number": 3,
+     "page": "156",
+     "text": "1. **Worship of the self:** following one’s own desire and giving precedence to fleeting worldly wishes, making one’s own inclination the supreme reference point, so that worldly desires, immediate appetites, and psychological leanings are given precedence over Allah’s command and His law.",
+     "kind": "item"
+    },
+    {
+     "id": "p1-ch6.p04",
+     "number": 4,
+     "page": "157",
+     "text": "The standard, for such a person, becomes what I want, not what pleases Allah; what I deem good, not what Allah has commanded."
+    },
+    {
+     "id": "p1-ch6.p05",
+     "number": 5,
+     "page": "157",
+     "text": "This form of deviation corrupts the very root of servitude, for the true reality of servitude is to relinquish choice for oneself and affirm that choice belongs to Allah."
+    },
+    {
+     "id": "p1-ch6.p06",
+     "number": 6,
+     "page": "157",
+     "text": "Whoever worships their own desire is cut off from sincerity, and stumbles along the path of the [spiritual] stations, for a heart imprisoned by its own appetite cannot ascend the degrees of nearness [to Allah]."
+    },
+    {
+     "id": "p1-ch6.p07",
+     "number": 7,
+     "page": "157",
+     "text": "2. **Worship of created beings:** seeking people’s approval at the expense of Allah’s approval, the heart turns toward people’s gaze and their praise, so that one acts for the sake of being praised, or abandons truth for fear of being blamed, or changes one’s positions to preserve one’s social image.",
+     "kind": "item"
+    },
+    {
+     "id": "p1-ch6.p08",
+     "number": 8,
+     "page": "157",
+     "text": "This deviation contradicts sincerity and turns the servant from one oriented toward Allah into one attached to His creation."
+    },
+    {
+     "id": "p1-ch6.p09",
+     "number": 9,
+     "page": "157",
+     "text": "Whoever attaches their heart to people is punished with turmoil and anxiety, for the hearts of created beings are ever-changing, and none of them possesses the power to benefit or harm. There is no acceptance without sincerity, and no sincerity alongside servitude to creation."
+    },
+    {
+     "id": "p1-ch6.p10",
+     "number": 10,
+     "page": "158",
+     "text": "3. **Worship of deeds:** relying upon acts of obedience while forgetting the Bestower, the servant relies upon their own deeds, sees merit in themselves on their account, and forgets that success comes from Allah alone, and that the favour belongs to Him alone. They become deceived by the abundance of their prayer, their fasting, their knowledge, or their da’wah, and the awareness of their own shortcoming and need weakens in their heart. Allah says: *“Rather, Allah has conferred favour upon you that He has guided you to faith, if you should be truthful”* (Al-Hujurat 49:17), that is, it is Allah alone who has conferred favour upon you by granting you success in believing in Him, if you are truthful.",
+     "kind": "item"
+    },
+    {
+     "id": "p1-ch6.p11",
+     "number": 11,
+     "page": "158",
+     "text": "This deviation cuts off the path of nearness [to Allah], for one does not draw near to Allah through bare deeds alone, but through a sense of need and humility accompanying one’s deeds."
+    },
+    {
+     "id": "p1-ch6.p12",
+     "number": 12,
+     "page": "158",
+     "text": "**Summary of the chapter:** these three deviations, worship of the self, worship of created beings, and worship of one’s deeds, share a single trait: each, in its own way, turns the heart away from Allah."
+    },
+    {
+     "id": "p1-ch6.p13",
+     "number": 13,
+     "page": "158",
+     "text": "Whoever is spared these deviations, and realizes pure servitude, finds the doors of the [spiritual] stations opened to them, and walks toward Allah upon a straight, secure path, Allah willing."
+    }
+   ]
+  },
+  {
+   "id": "p1-ch7",
+   "order": 10,
+   "headingEn": "Chapter 7: How Does the Muslim Train Themselves to Realize Servitude?",
+   "partEn": "Part 1: The Muslim Is a Servant of Allah, Mighty and Sublime",
+   "page": "159",
+   "units": [
+    {
+     "id": "p1-ch7.p01",
+     "number": 1,
+     "page": "159",
+     "text": "Realizing servitude is not a claim to be raised, nor a wish to be hoped for; it is continuous formation, constant struggle, and a daily, conscious practice. For the heart wavers, the self-weakens, and this world presses in, and the servant does not remain firm upon the station of servitude except through a clear, practical method by which they purify themselves and correct their course. Among the most important features of this method are the following:"
+    },
+    {
+     "id": "p1-ch7.p02",
+     "number": 2,
+     "page": "159",
+     "text": "1. **Correcting one’s intention before every deed**, for intention is the gateway to servitude, and by its soundness the whole deed becomes sound. Before acting, the servant asks themselves: why am I doing this? And for whom am I doing it? If they find in their heart any turning toward other than Allah, they struggle against it until their purpose is Allah’s face alone. The Messenger of Allah ﷺ said: *“Deeds are only by intentions.”* (Reported by Al-Bukhari and Muslim.)",
+     "kind": "item"
+    },
+    {
+     "id": "p1-ch7.p03",
+     "number": 3,
+     "page": "159",
+     "text": "2. **Abundant remembrance of Allah and seeking forgiveness**, for remembrance is the life of hearts and seeking forgiveness mends what is broken. Through both, the heart is purified of heedlessness, the sense of servitude is renewed, and the servant remains connected to their Lord in every state. Allah says: *“…and the men who remember Allah often and the women who remember [Him]…”* (Al-Ahzab 33:35).",
+     "kind": "item"
+    },
+    {
+     "id": "p1-ch7.p04",
+     "number": 4,
+     "page": "160",
+     "text": "3. **Holding oneself to account daily**, the servant looks over their day: what did they contribute, and where did they fall short? They give thanks for their obedience, repent of their disobedience, and resolve to reform, for without such accounting, errors accumulate until they harden the heart. Allah says: *“O you who have believed, fear Allah. And let every soul look to what it has put forth for tomorrow”* (Al-Hashr 59:18). ’Umar ibn Al-Khattab (may Allah be pleased with him) said: *“Hold yourselves to account before you are held to account, for that will be easier for your reckoning, or he said, lighter, and weigh yourselves before you are weighed, and prepare for the greatest presentation: ‘That Day you will be exhibited [for judgement]; not hidden among you is anything concealed’”* [Al-Haqqah 69:18]. (*Az-Zuhd wa’r-Raqa’iq*, Ibn Al-Mubarak.)",
+     "kind": "item"
+    },
+    {
+     "id": "p1-ch7.p05",
+     "number": 5,
+     "page": "160",
+     "text": "4. **Contemplating the Noble Qur’an**, for the Qur’an is the first book of servitude, containing Allah’s commands and prohibitions, His promise and His warning, His names and His attributes. Contemplating it acquaints the servant with their Lord, and the more they come to know their Lord, the more their servitude to Him deepens. Allah says: *“[This is] a blessed Book which We have revealed to you, [O Muhammad], that they might reflect upon its verses and that those of understanding would be reminded”* (Sad 38:29).",
+     "kind": "item"
+    },
+    {
+     "id": "p1-ch7.p06",
+     "number": 6,
+     "page": "161",
+     "text": "5. **Righteous companionship**, for the human being is weak alone, but strong among their brothers and sisters. Righteous companionship reminds one of Allah, assists one toward obedience, calls one back from heedlessness, and encourages one when weary. Allah says: *“O you who have believed, fear Allah and be with those who are true”* (At-Tawbah 9:119), meaning, the believer should take care to keep the company of people of truthfulness and righteousness, for they help him toward good. He also says: *“And keep yourself patient [by being] with those who call upon their Lord in the morning and the evening, seeking His face”* (Al-Kahf 18:28), that is, keep to the company of those who remember Allah and seek His pleasure. The Prophet ﷺ said: *“A person follows the religion of his close friend, so let each of you look closely at whom he befriends.”* (Reported by Abu Dawud and Al-Tirmidhi), meaning, a person is influenced by their friend and their friend’s character. Abu Dawud Al-Tayalisi related in his Musnad, from Hammad ibn Salamah, from Thabit, from Anas, from Abu Musa, who said: *“The likeness of a righteous companion is like that of a perfumer: if he does not give you any of his perfume, you will still catch its scent from him; and the likeness of a bad companion is like that of a blacksmith: if his fire does not burn you, his smoke will still reach you.”*",
+     "kind": "item"
+    },
+    {
+     "id": "p1-ch7.p07",
+     "number": 7,
+     "page": "162",
+     "text": "6. **Constant supplication for the realization of servitude**, for hearts are in Allah’s hand, and success comes only from Him. The servant should frequently ask their Lord to grant them sincere servitude, purity of purpose, and firm steadfastness. Among the most comprehensive of supplications is: *“O Allah, help me to remember You, to give You thanks, and to worship You well.”* (Reported by Ibn Abi Shaybah in *Al-Musannaf*.)",
+     "kind": "item"
+    },
+    {
+     "id": "p1-ch7.p08",
+     "number": 8,
+     "page": "162",
+     "text": "**Summary of the chapter:** whoever walks these paths sincerely, progressing through them with patience, will find their effect in their heart and conduct, and will move from servitude in name to servitude in reality, from merely knowing the path to walking it, Allah willing."
+    }
+   ]
+  },
+  {
+   "id": "p1-ch8",
+   "order": 11,
+   "headingEn": "Chapter 8: The Fruit of This Part in the Muslim’s Life",
+   "partEn": "Part 1: The Muslim Is a Servant of Allah, Mighty and Sublime",
+   "page": "162",
+   "units": [
+    {
+     "id": "p1-ch8.p01",
+     "number": 1,
+     "page": "162",
+     "text": "When servitude is realized in the Muslim’s heart, in knowledge, in state, and indeed, it no longer remains a mere theoretical concept, but transforms into a living reality reflected in their thought, their conduct, their choices, and their outlook on themselves, this world, and the Hereafter. The following are among the greatest fruits the Muslim reaps from realizing this Part:"
+    },
+    {
+     "id": "p1-ch8.p02",
+     "number": 2,
+     "page": "162",
+     "text": "1. **Clarity of purpose:** they know why they were created, for whom they live, and where they are headed. Their direction toward Allah becomes unified, confusion falls away, and their course becomes upright.",
+     "kind": "item"
+    },
+    {
+     "id": "p1-ch8.p03",
+     "number": 3,
+     "page": "163",
+     "text": "2. **Firmness upon the path:** they are not shaken by trials, nor broken by obstacles, nor turned back by stumbling, because their heart is bound to Allah, not to circumstances.",
+     "kind": "item"
+    },
+    {
+     "id": "p1-ch8.p04",
+     "number": 4,
+     "page": "163",
+     "text": "3. **Inner peace:** stillness in the heart, tranquillity in the soul, and rest of conscience, because they are at peace with their Lord, and whoever is at peace with Allah finds their inward self at peace.",
+     "kind": "item"
+    },
+    {
+     "id": "p1-ch8.p05",
+     "number": 5,
+     "page": "163",
+     "text": "4. **Balance between this world and the Hereafter:** they take from this world only what they need and make the Hereafter their goal, so they work, they strive, and they cultivate the earth, without ever forgetting their final destination.",
+     "kind": "item"
+    },
+    {
+     "id": "p1-ch8.p06",
+     "number": 6,
+     "page": "163",
+     "text": "5. **Liberation from servitude to creation and desire:** they are not enslaved by people’s opinions, nor led by appetite, nor possessed by material things, but become master of themselves, precisely because they are a servant of their Lord.",
+     "kind": "item"
+    },
+    {
+     "id": "p1-ch8.p07",
+     "number": 7,
+     "page": "163",
+     "text": "6. **The Muslim becomes a servant of Allah alone:** free from everything else, self-sufficient through Allah rather than dependent on others, honoured through obedience to Him, and at peace through nearness to Him.",
+     "kind": "item"
+    },
+    {
+     "id": "p1-ch8.p08",
+     "number": 8,
+     "page": "164",
+     "text": "**Summary of Part 1:** servitude is not a restraint that shackles a person, but rather the greatest liberation; it is not a narrowing of life, but the secret of its happiness. Whoever tastes the sweetness of servitude to Allah will never again be satisfied with any substitute."
+    },
+    {
+     "id": "p1-ch8.p09",
+     "number": 9,
+     "page": "164",
+     "text": "Servitude is not merely one station among the stations of the journey to Allah, it is the root from which every station sprouts, and the foundation upon which the entire edifice of faith is built. Whoever’s servitude is sound, their path is sound; whoever’s path is upright, their life is upright; whoever’s life is upright, their striving is accepted; and whoever’s striving is accepted rises through the degrees of nearness to Allah, the Exalted."
+    },
+    {
+     "id": "p1-ch8.p10",
+     "number": 10,
+     "page": "164",
+     "text": "Servitude, then, is both the beginning and the end; it is both the path and the destination. Whoever enters it sincerely emerges from it with a living heart, a tranquil soul, and an upright course."
+    },
+    {
+     "id": "p1-ch8.p11",
+     "number": 11,
+     "page": "164",
+     "text": "Servitude to Allah, the Exalted, is the root upon which all the [spiritual] stations are built, and it is the standard by which the soundness of the path and the uprightness of conduct are measured."
+    },
+    {
+     "id": "p1-ch8.p12",
+     "number": 12,
+     "page": "164",
+     "text": "The more sincere and complete one’s servitude, the firmer and more upright the [other] stations become; and every defect in servitude is reflected as disorder in religion, disturbance in understanding, deviation in conduct, and unease in life."
+    }
+   ]
+  },
+  {
+   "id": "part-2",
+   "order": 12,
+   "headingEn": "Part 2: The Muslim Belongs to Islam, as Identity and as Method",
+   "partEn": "Part 2: The Muslim Belongs to Islam, as Identity and as Method",
+   "page": "165",
+   "units": [
+    {
+     "id": "part-2.p01",
+     "number": 1,
+     "page": "165",
+     "text": "This Part affirms that a Muslim’s belonging to Islam is not a slogan to be raised aloft, nor a social inheritance one merely settles for; it is a conscious identity, a comprehensive commitment, and an integrated way of life embodied in belief and conduct, in the Muslim’s relationship with themselves and with others, and in their presence within society and contemporary reality."
+    },
+    {
+     "id": "part-2.p02",
+     "number": 2,
+     "page": "165",
+     "text": "Its first chapter shows that Islam unites sound creed, which reforms the heart; just legislation, which organizes life; and elevated character, which purifies conduct, and that this integration makes Islam fit to guide both the individual and the building of society at once, without conflict between worship and worldly development, nor between spirit and matter."
+    },
+    {
+     "id": "part-2.p03",
+     "number": 3,
+     "page": "165",
+     "text": "Its second chapter highlights that true belonging is a conscious, chosen belonging, springing from conviction, understanding, and love, not a mere hereditary or formal affiliation. Sincere belonging shows itself in obedience, in uprightness, and in governing daily conduct by Islamic values, as well as in bearing the responsibility of representing this religion in word and deed."
+    },
+    {
+     "id": "part-2.p04",
+     "number": 4,
+     "page": "165",
+     "text": "Its third chapter establishes that Islam combines the fixity of its fundamentals with the flexibility of its means: its fixed principles are preserved and unchanging, while its variables allow ample room for independent reasoning (ijtihad) and renewal, in a manner that realizes the purposes of the Shari’ah in every time and place. It also warns of the need for caution regarding two deviant extremes:"
+    },
+    {
+     "id": "part-2.p05",
+     "number": 5,
+     "page": "166",
+     "text": "1. The extreme of dissolution, which abandons Islamic identity in the name of contemporaneity.",
+     "kind": "item"
+    },
+    {
+     "id": "part-2.p06",
+     "number": 6,
+     "page": "166",
+     "text": "2. The extreme of extremism, which freezes upon a narrow understanding and constricts what Allah has made spacious.",
+     "kind": "item"
+    },
+    {
+     "id": "part-2.p07",
+     "number": 7,
+     "page": "166",
+     "text": "The Part concludes that the truly belonging Muslim is one who lives Islam as an identity in their heart, a method in their thought, and conduct in their reality, remaining firm upon their fundamentals, open to their age, balanced in their understanding, and positive in their impact, thereby realizing the meaning of belonging that pleases Allah, benefits the human being, and builds up life. It contains five chapters."
+    }
+   ]
+  },
+  {
+   "id": "p2-ch1",
+   "order": 13,
+   "headingEn": "Chapter 1: Islam Is Creed, Law, and Character",
+   "partEn": "Part 2: The Muslim Belongs to Islam, as Identity and as Method",
+   "page": "166",
+   "units": [
+    {
+     "id": "p2-ch1.p01",
+     "number": 1,
+     "page": "166",
+     "text": "This chapter establishes a central truth: that Islam is not a collection of rituals detached from life, nor a dry system of laws, nor a set of abstract moral exhortations, but an integrated structure whose pillars are a creed that sets faith right, a law (Shari’ah) that organizes action, and a character that purifies conduct. If any of these pillars is disturbed, the balance in the Muslim’s personality, and in the image of Islam in reality, is disturbed along with it."
+    },
+    {
+     "id": "p2-ch1.p02",
+     "number": 2,
+     "page": "167",
+     "text": "1. **Creed** is the foundation upon which the Muslim’s personality is built, for it acquaints them with their Lord, with the purpose of their existence, and with their destiny, instilling in their heart monotheism, certainty, dependence on Allah, awe of Him, and hope in His mercy. The more deeply rooted the creed in the heart, the firmer a person’s steadfastness against temptation, and the more upright their conduct in private and in public, for righteous conduct is the fruit of living faith, not mere outward compliance.",
+     "kind": "item"
+    },
+    {
+     "id": "p2-ch1.p03",
+     "number": 3,
+     "page": "167",
+     "text": "2. **The Shari’ah** is the practical application of that creed within the reality of life, organizing a person’s relationship with their Lord through acts of worship, their relationship with people through transactions, and their relationship with themselves through what preserves their religion, mind, self, wealth, and honour. The Shari’ah is not a restriction of freedom, but a direction for it; not a heavy burden upon the human being, but a mercy and a justice that secure their interests in this world and the next.",
+     "kind": "item"
+    },
+    {
+     "id": "p2-ch1.p04",
+     "number": 4,
+     "page": "167",
+     "text": "3. **Character** is the spirit that runs through both creed and law together, making faith living and effective, and legislation beautiful and beloved. The Muslim’s honesty, trustworthiness, justice, forbearance, mercy, and humility are not secondary matters, but lie at the very heart of the religion, by them is the truth of one’s religiosity measured, and the sincerity of one’s belonging to Islam recognized.",
+     "kind": "item"
+    },
+    {
+     "id": "p2-ch1.p05",
+     "number": 5,
+     "page": "168",
+     "text": "This chapter shows that separating these three dimensions is a grave error: there is no sound creed without a behavioural effect, no applied law without character, and no firmly rooted character without a doctrinal foundation. Islam, in its complete form, is a faith confirmed by action, an action purified by character, and a character springing from a heart united in devotion to Allah."
+    },
+    {
+     "id": "p2-ch1.p06",
+     "number": 6,
+     "page": "168",
+     "text": "Thus, the balanced Muslim personality is formed: a heart bound to Allah, conduct disciplined by His law, and dealings with others founded upon noble character, becoming a living model of Islam, a silent call to it before ever being words or speech."
+    }
+   ]
+  },
+  {
+   "id": "p2-ch2",
+   "order": 14,
+   "headingEn": "Chapter 2: The Comprehensiveness of Islam for the Individual and Society",
+   "partEn": "Part 2: The Muslim Belongs to Islam, as Identity and as Method",
+   "page": "168",
+   "units": [
+    {
+     "id": "p2-ch2.p01",
+     "number": 1,
+     "page": "168",
+     "text": "This chapter establishes that Islam did not come to reform a single aspect of human life to the exclusion of others but brought a comprehensive method that addresses the human being in themselves, sets right their relationship with their Lord, organizes their relationship with people, and lays the foundations for building a righteous, cohesive society. Islam addresses the individual to reform them into an upright human being and addresses the community to establish through it a nation that bears witness to humanity."
+    },
+    {
+     "id": "p2-ch2.p02",
+     "number": 2,
+     "page": "169",
+     "text": "On the individual’s side, Islam attends to forming the human being from within before the without instilling faith in their heart, purifying their soul of the diseases of arrogance, envy, and ostentation, accustoming them to Allah’s watchfulness in secret and in the open, and refining their conduct through acts of worship that purify the spirit, rulings that discipline the limbs, and character that elevates the self. The individual in Islam is not a mere number within society, but an essential building block, and their own soundness is a necessary precondition for the soundness of the community."
+    },
+    {
+     "id": "p2-ch2.p03",
+     "number": 3,
+     "page": "169",
+     "text": "On society’s side, Islam establishes an integrated system of values and structures that safeguard rights, realize justice and mutual solidarity, prevent oppression and aggression, and build people’s relationships upon mercy, honesty, and trustworthiness, organizing the affairs of the family, the economy, the judiciary, politics, and social relations upon a foundation of justice and responsibility, not upon desire and narrow self-interest."
+    },
+    {
+     "id": "p2-ch2.p04",
+     "number": 4,
+     "page": "169",
+     "text": "This chapter affirms that the relationship between the individual and society in Islam is one of integration, not conflict: the righteous individual contributes to building a righteous society, and the righteous society helps the individual toward uprightness. The individual’s right is not lost in the name of the collective, nor is the collective’s interest neglected in the name of individual freedom, rather, the balance is achieved that preserves human dignity while safeguarding the unity of the nation."
+    },
+    {
+     "id": "p2-ch2.p05",
+     "number": 5,
+     "page": "170",
+     "text": "The chapter further shows that Islam’s comprehensiveness does not mean rigidity, but rather the capacity of the Islamic method to absorb changing reality and direct it according to fixed purposes, such that Islam remains present in every time and place, fit to reform souls and to build civilizations."
+    },
+    {
+     "id": "p2-ch2.p06",
+     "number": 6,
+     "page": "170",
+     "text": "The chapter concludes that Islam, when correctly understood and applied, is a comprehensive project of reform: it builds the individual in faith and conduct, establishes society in justice and mutual mercy, and produces a nation that carries the message of guidance for the whole of humanity."
+    }
+   ]
+  },
+  {
+   "id": "p2-ch3",
+   "order": 15,
+   "headingEn": "Chapter 3: The Difference Between True Belonging and Hereditary Belonging",
+   "partEn": "Part 2: The Muslim Belongs to Islam, as Identity and as Method",
+   "page": "170",
+   "units": [
+    {
+     "id": "p2-ch3.p01",
+     "number": 1,
+     "page": "170",
+     "text": "This chapter addresses a pivotal issue in the reality of the [Muslim] nation: distinguishing between belonging to Islam as a conscious choice and sincere commitment and belonging to it as a mere hereditary or social affiliation that does not go beyond the name or the outward form. Not everyone born a Muslim is necessarily a true believer in the full sense of belonging, just as the truth of belonging is not measured by slogans, but by awareness, conduct, and commitment."
+    },
+    {
+     "id": "p2-ch3.p02",
+     "number": 2,
+     "page": "171",
+     "text": "True belonging springs from firm faith and inner conviction; the one who possesses it grasps the meaning of Islam and the purpose of their existence and embraces its commands and prohibitions out of love and reverence, not out of mere imitation or conformity to their surroundings. This kind of belonging bears fruit in obedience, uprightness, eagerness to learn, and a sense of responsibility toward the religion and the propagation of its values."
+    },
+    {
+     "id": "p2-ch3.p03",
+     "number": 3,
+     "page": "171",
+     "text": "Hereditary belonging, by contrast, is when a person is affiliated with Islam by virtue of their birth, environment, or customs, without this being accompanied by any true understanding of its meanings or serious commitment to its rulings. Religion becomes, for such a person, more a cultural identity than a way of life, and they may content themselves with appearances and rites, while the effects of faith remain absent from their conduct and character."
+    },
+    {
+     "id": "p2-ch3.p04",
+     "number": 4,
+     "page": "171",
+     "text": "This chapter shows that the danger of hereditary belonging lies in the fact that it produces a fragile religiosity, quickly swayed by doubts, weak in the face of temptations, because its roots were never planted in the heart upon a foundation of knowledge and certainty. True belonging, by contrast, produces a firm character, confident in its religion, capable of distinguishing truth from falsehood, and equipped to carry the message of Islam within a changing reality."
+    },
+    {
+     "id": "p2-ch3.p05",
+     "number": 5,
+     "page": "172",
+     "text": "The chapter also explains that the transition from hereditary to true belonging is possible and available to every Muslim, through seeking knowledge, contemplating the Qur’an, holding oneself to account, keeping the company of the righteous, and connecting acts of worship to their purposes and meanings, until Islam becomes a daily, renewed choice, not merely a historical inheritance."
+    },
+    {
+     "id": "p2-ch3.p06",
+     "number": 6,
+     "page": "172",
+     "text": "The chapter concludes that a Muslim’s worth in Allah’s sight is not based on themselves or their environment, but on the sincerity of their faith and God-consciousness, and that the nation cannot rise except through those who belong to Islam in awareness, love, and commitment, not merely in name and outward form."
+    }
+   ]
+  },
+  {
+   "id": "p2-ch4",
+   "order": 16,
+   "headingEn": "Chapter 4: Manifestations of Behavioural Belonging",
+   "partEn": "Part 2: The Muslim Belongs to Islam, as Identity and as Method",
+   "page": "172",
+   "units": [
+    {
+     "id": "p2-ch4.p01",
+     "number": 1,
+     "page": "172",
+     "text": "If true belonging to Islam rests upon awareness and conviction, its practical field is conduct, for the sincerity of belonging is not known by frequent claims, but by what appears in one’s limbs as commitment, in one’s character as uprightness, and in one’s dealings as honesty and trustworthiness. Conduct is the daily translation of the Muslim’s identity and method."
+    },
+    {
+     "id": "p2-ch4.p02",
+     "number": 2,
+     "page": "172",
+     "text": "Among the most prominent manifestations of behavioural belonging is adherence to religious duties and obligations: praying on time, taking care with ritual purity, giving alms, fasting Ramadan, and observing the other rites of Islam are not merely inherited customs, but a practical expression of submission to Allah and reverence for His commands. This belonging grows firmer through attentiveness to the recommended acts and forms of obedience, not out of formality, but out of love and a desire for nearness to Allah."
+    },
+    {
+     "id": "p2-ch4.p03",
+     "number": 3,
+     "page": "173",
+     "text": "Another manifestation is governing one’s character by Islamic values: the Muslim is truthful in speech, fulfils trusts, is just in judgement, forbearing when angered, merciful to the weak, and does good to all people. Character is not an external adornment, but a clear sign of the depth of one’s belonging to the religion."
+    },
+    {
+     "id": "p2-ch4.p04",
+     "number": 4,
+     "page": "173",
+     "text": "Behavioural belonging also appears in the mastery of one’s appetites and commitment to the boundaries of Shari’ah: the Muslim chooses the lawful even when it is harder, and avoids the unlawful even when it is tempting, out of the awareness that Allah’s pleasure takes precedence over the desire of the self."
+    },
+    {
+     "id": "p2-ch4.p05",
+     "number": 5,
+     "page": "173",
+     "text": "This belonging is also evident in commitment to Islamic identity without blind zealotry or dissolution: the Muslim appears confident in their values, preserving their distinctiveness, open toward others with justice and kindness, without compromising their fixed principles."
+    },
+    {
+     "id": "p2-ch4.p06",
+     "number": 6,
+     "page": "173",
+     "text": "Among its important manifestations, too, is a positive presence within society: the belonging Muslim does not live in isolation, but contributes to reform, offers wise counsel, participates in serving people, works to spread good, and stands with truth wherever it may be found."
+    },
+    {
+     "id": "p2-ch4.p07",
+     "number": 7,
+     "page": "174",
+     "text": "This chapter concludes that behavioural belonging is the practical measure of the sincerity of one’s inward belonging, for the more a Muslim’s worship is committed, their conduct upright, and their dealings sound, the more this demonstrates the firmness of their belonging to Islam as an identity and a way of life."
+    }
+   ]
+  },
+  {
+   "id": "p2-ch5",
+   "order": 17,
+   "headingEn": "Chapter 5: Belonging Between Fixity and Renewal",
+   "partEn": "Part 2: The Muslim Belongs to Islam, as Identity and as Method",
+   "page": "174",
+   "units": [
+    {
+     "id": "p2-ch5.p01",
+     "number": 1,
+     "page": "174",
+     "text": "This chapter addresses a delicate equation in the Muslim’s life: how to remain fixed in belonging regarding fundamentals and identity, while remaining renewable in means, understanding, and application, without an excess that freezes, or a laxity that dilutes:"
+    },
+    {
+     "id": "p2-ch5.p02",
+     "number": 2,
+     "page": "174",
+     "text": "1. **The meaning of belonging in this conception:** belonging in Islam is not merely a slogan or a cultural identity, but rather: a doctrinal bond with Allah, the Exalted; a methodological commitment to what has come in the Noble Qur’an and the Sunnah; and a sense of responsibility toward religion, the nation, and humanity. Whoever belongs to Islam draws honour from their religion, derives from it their vision of the universe, life, and humanity, and makes their supreme reference point revelation, not desire, nor external pressure.",
+     "kind": "item"
+    },
+    {
+     "id": "p2-ch5.p03",
+     "number": 3,
+     "page": "175",
+     "text": "2. **Fixity in belonging, what does not change?** Fixity means holding fast to the definitive fundamentals that admit no alteration, foremost among them: the fixity of creed, monotheism, faith in Allah, His angels, His books, His messengers, the Last Day, and divine decree; the fixity of the great values, honesty, trustworthiness, justice, mercy, chastity, and excellence; and the fixity of the ethical framework, that the lawful remains lawful and the unlawful remains unlawful, however times may change.",
+     "kind": "item"
+    },
+    {
+     "id": "p2-ch5.p04",
+     "number": 4,
+     "page": "175",
+     "text": "3. **Renewal in belonging, what does change?** Renewal does not mean changing the religion, but rather reviving its meanings within hearts, applying it well to changing reality, and developing means and methods. The fields of renewal include renewal of understanding, connecting texts to their great underlying purposes and understanding them considering reality; renewal of discourse, using language closer to people, clearer in meaning, gentler in style; and renewal of means, using media, technology, and modern education in service of da’wah. Renewal, then, is a movement in means and understanding, not in fundamentals and principles.",
+     "kind": "item"
+    },
+    {
+     "id": "p2-ch5.p05",
+     "number": 5,
+     "page": "176",
+     "text": "4. **The relationship between fixity and renewal:** the two are not opposites, but two wings, fixity protects against deviation, and renewal protects against rigidity. A defect in either produces harm: fixity without renewal leads to rigidity, harshness, and disconnection from reality; renewal without fixity leads to the dilution and loss of identity.",
+     "kind": "item"
+    },
+    {
+     "id": "p2-ch5.p06",
+     "number": 6,
+     "page": "176",
+     "text": "5. **Features of balanced belonging:** sound belonging is characterized by pride without zealotry, openness without dissolution, commitment without extremism, and mercy without vagueness [that is, without speech becoming unclear or incomprehensible].",
+     "kind": "item"
+    },
+    {
+     "id": "p2-ch5.p07",
+     "number": 7,
+     "page": "176",
+     "text": "6. **The effects of balanced belonging in a Muslim’s life:** inner tranquillity and psychological stability, clarity of positions and choices, the ability to engage positively with one’s age, and a sense of responsibility toward reform.",
+     "kind": "item"
+    },
+    {
+     "id": "p2-ch5.p08",
+     "number": 8,
+     "page": "176",
+     "text": "**Summary:** true belonging is fixity in fundamentals and renewal in understanding and means, and through this the Muslim remains true to their identity, present in their age, influential in their reality, and a witness before people through their religion and character."
+    },
+    {
+     "id": "p2-ch5.p09",
+     "number": 9,
+     "page": "177",
+     "heading": "Section One: The Fixed Principles of Islam and the Variables of the Age",
+     "text": "This section establishes the great rule for understanding Islam and for how the Muslim engages with reality: that this religion combines firmly rooted, unchanging fundamentals with vast space for independent reasoning (ijtihad) and renewal that engages with the variables of time and place. Through this balance, the religion is preserved from distortion while retaining its constant capacity to keep pace with life."
+    },
+    {
+     "id": "p2-ch5.p10",
+     "number": 10,
+     "page": "177",
+     "text": "The fixed principles of Islam are the definitive fundamentals that admit no alteration or compromise, encompassing the great doctrines, the pillars of Islam, the fundamental ethical values, the general principles of the Shari’ah, and its supreme purposes, such as the preservation of religion, life, intellect, lineage, and property. These fixed principles represent the identity and essence of Islam, and their remaining constant is the secret of the religion’s continued fitness for every time and place."
+    },
+    {
+     "id": "p2-ch5.p11",
+     "number": 11,
+     "page": "177",
+     "text": "The variables of the age, on the other hand, fall within the sphere of means, methods, and the practical application of rulings, matters open to independent reasoning according to recognized benefit and changing circumstances, such as modes of education, means of da’wah, methods of administration, the organization of state and society, modern technologies, and the like. These variables are not understood in isolation from the fixed principles but are governed and directed within their framework. This section shows that error occurs at one of two extremes:"
+    },
+    {
+     "id": "p2-ch5.p12",
+     "number": 12,
+     "page": "178",
+     "text": "1. An extreme that glorifies the variables and treats them as though they were fixed principles, thereby narrowing what is broad and making things difficult for people.",
+     "kind": "item"
+    },
+    {
+     "id": "p2-ch5.p13",
+     "number": 13,
+     "page": "178",
+     "text": "2. An extreme that dilutes the fixed principles and subjects them to desires and pressures, thereby emptying religion of its content.",
+     "kind": "item"
+    },
+    {
+     "id": "p2-ch5.p14",
+     "number": 14,
+     "page": "178",
+     "text": "The correct approach is precise discrimination between what is a fixed foundation and what is a changeable branch, followed by positive engagement with the age through sound understanding and insight, preserving the purity of Islam’s identity while, at the same time, enabling it to direct reality and shape the future."
+    },
+    {
+     "id": "p2-ch5.p15",
+     "number": 15,
+     "page": "178",
+     "heading": "Section Two: Confronting Dissolution and Extremism",
+     "text": "This section addresses one of the gravest challenges facing religious belonging in the modern age: deviation between two opposing extremes, the extreme of dissolution and laxity, and the extreme of extremism and excess, both of which take the Muslim outside the middle path (wasatiyyah) that Islam brought."
+    },
+    {
+     "id": "p2-ch5.p16",
+     "number": 16,
+     "page": "178",
+     "text": "Dissolution into the “other” means the Muslim’s loss of their doctrinal, cultural, and behavioural distinctiveness, until they become a follower in their thought, values, and lifestyle, imitating others without discernment, and growing shy of displaying their own identity. This may reach the point of doubting the fixed principles of their religion or belittling them in the name of progress and contemporaneity, a path that ultimately leads to spiritual emptiness, psychological disturbance, and severance from one’s roots."
+    },
+    {
+     "id": "p2-ch5.p17",
+     "number": 17,
+     "page": "179",
+     "text": "Conversely, extremism and excess mean transgressing the bounds of moderation, being overly rigid in understanding and application, narrowing what Allah has made broad, and obligating people to things the Shari’ah never obligated them to, accompanied by harshness in discourse, poor treatment of others, and an exclusionary view of them. This path harms the image of Islam, drives people away from it, and turns religiosity from a mercy and a guidance into a burden and a source of aversion."
+    },
+    {
+     "id": "p2-ch5.p18",
+     "number": 18,
+     "page": "179",
+     "text": "This section shows that the correct Islamic approach is the way of moderation and balance (wasatiyyah), founded upon a balanced understanding of the texts, combining ultimate purposes with specific rulings, and distinguishing between the fixed and the variable, the definitive and the probabilistic, and between what is intended for its own sake and what is merely a means to it. It also explains that confronting these two deviations comes through: establishing methodical religious knowledge rather than superficial culture; developing awareness of the overarching purposes of Islamic law; raising Muslims to understand the proper handling of disagreement and to have breadth of heart; and connecting religiosity to character, mercy, and good conduct."
+    },
+    {
+     "id": "p2-ch5.p19",
+     "number": 19,
+     "page": "180",
+     "text": "This section concludes that sound religious belonging is a conscious, balanced belonging, fixed in its fundamentals, flexible in its means, which preserves the Muslim’s identity from dissolution, and protects them from sliding into extremism, so that Islam remains, in their life, a light of guidance, a method of construction, and a message of mercy to all the worlds."
+    }
+   ]
+  },
+  {
+   "id": "p2-summary",
+   "order": 18,
+   "headingEn": "Summary of Part 2: The Muslim Belongs to Islam, as Identity and as Method",
+   "partEn": "Part 2: The Muslim Belongs to Islam, as Identity and as Method",
+   "page": "180",
+   "units": [
+    {
+     "id": "p2-summary.p01",
+     "number": 1,
+     "page": "180",
+     "text": "This Part affirms that belonging to Islam is not a mere nominal or hereditary affiliation, nor a fleeting emotional state, but a conscious choice, a firmly rooted identity, and a comprehensive way of life embodied in belief, thought, conduct, and action."
+    },
+    {
+     "id": "p2-summary.p02",
+     "number": 2,
+     "page": "180",
+     "text": "The Part has shown that Islam is an integrated religion, uniting the creed that sets the heart right, the law that organizes life, and the character that purifies conduct, and that this integration is the foundation for forming the balanced Muslim personality, capable of both firmness and giving."
+    },
+    {
+     "id": "p2-summary.p03",
+     "number": 3,
+     "page": "180",
+     "text": "It has also clarified that true belonging differs fundamentally from formal or hereditary belonging: the former rests upon understanding, conviction, love, and commitment, while the latter is content with a name and an appearance, without any deep effect on conduct and choices. Hence, practical conduct and daily character are the true measure of the sincerity of one’s belonging."
+    },
+    {
+     "id": "p2-summary.p04",
+     "number": 4,
+     "page": "181",
+     "text": "The Part has likewise shown that Islam unites the fixity of its fundamentals with the flexibility of its means: its fixed principles are preserved and unchanging, and its variables offer broad scope for independent reasoning and renewal, enabling the Muslim to engage positively with their age without compromising their identity."
+    },
+    {
+     "id": "p2-summary.p05",
+     "number": 5,
+     "page": "181",
+     "text": "It has also warned of the danger of deviating between the two extremes of dissolution and extremism, affirming that the safe path is moderation and balance, founded upon knowledge, sound understanding, attention to the underlying purposes, and good character."
+    },
+    {
+     "id": "p2-summary.p06",
+     "number": 6,
+     "page": "181",
+     "text": "The Part concludes that the truly belonging Muslim is one who lives Islam as an identity in their heart, a method in their thought, and conduct in their reality, remaining firm upon their religion, open to their age, positive in their society, and a witness before people through their character before their words, and through their deeds before their slogans."
+    },
+    {
+     "id": "p2-summary.p07",
+     "number": 7,
+     "page": "181",
+     "text": "Belonging to Islam is a conscious commitment to its method, not a mere slogan, and it is a natural fruit of sincere servitude."
+    }
+   ]
+  },
+  {
+   "id": "part-3",
+   "order": 19,
+   "headingEn": "Part 3: The Muslim Emulates the Messenger ﷺ",
+   "partEn": "Part 3: The Muslim Emulates the Messenger ﷺ",
+   "page": "182",
+   "units": [
+    {
+     "id": "part-3.p01",
+     "number": 1,
+     "page": "182",
+     "text": "This Part establishes a great principle of faith: that emulating the Messenger of Allah ﷺ is not a secondary matter or an optional practice, but a genuine pillar in realizing sincere servitude to Allah, and a clear sign of the sincerity of one’s love and belonging to this religion. The Prophet ﷺ is the one who conveyed Allah’s message, who explained His law, and who provided the complete practical model for embodying Islam in the reality of life."
+    },
+    {
+     "id": "part-3.p02",
+     "number": 2,
+     "page": "182",
+     "text": "This Part shows that emulating the Messenger ﷺ encompasses every aspect of life: creed, worship, character, transactions, social and foreign relations, managing disagreement, facing trials, and building the individual, the family, and society. He is the excellent example (uswah hasanah) in whom the meanings of mercy, justice, wisdom, patience, humility, courage, and good character are embodied."
+    },
+    {
+     "id": "part-3.p03",
+     "number": 3,
+     "page": "182",
+     "text": "The Part also clarifies that true emulation does not mean [merely copying] outward appearances or confining oneself to externals, but rather a comprehensive understanding of the Prophet’s ﷺ guidance that unites the purposes of his Sunnah with its specific rulings, and its spirit with its applications, while accounting for the differences of time and place in matters of means, alongside the fixity of values and fundamentals."
+    },
+    {
+     "id": "part-3.p04",
+     "number": 4,
+     "page": "183",
+     "text": "The Part further affirms that love for the Prophet ﷺ is measured by the extent of one’s obedience to him, one’s reverence for his Sunnah, one’s propagation of his guidance, one’s defence of him, and one’s walking upon his path in da’wah and reform, not by mere sentiment or claim."
+    },
+    {
+     "id": "part-3.p05",
+     "number": 5,
+     "page": "183",
+     "text": "The Part concludes that the more a Muslim emulates the Messenger of Allah ﷺ, the closer they draw to Allah, the more upright their life becomes, the more blessing enters their work, and the more they are accepted among people, for the Prophet ﷺ is the practical path to realizing Islam in its most beautiful and complete form. It contains three chapters."
+    }
+   ]
+  },
+  {
+   "id": "p3-ch1",
+   "order": 20,
+   "headingEn": "Chapter 1: The Meaning and Reality of Emulation",
+   "partEn": "Part 3: The Muslim Emulates the Messenger ﷺ",
+   "page": "183",
+   "units": [
+    {
+     "id": "p3-ch1.p01",
+     "number": 1,
+     "page": "183",
+     "text": "Emulating the Messenger of Allah ﷺ is among the greatest expressions of servitude to Allah, and among the clearest proofs of the sincerity of one’s faith and love, for true following of Allah is realized only through following His Messenger, and Allah’s commands and prohibitions cannot be understood in their full practical sense except through the guidance and Sunnah of the Prophet ﷺ."
+    },
+    {
+     "id": "p3-ch1.p02",
+     "number": 2,
+     "page": "183",
+     "text": "Emulation, in its true reality, means that the Muslim makes the Prophet ﷺ their model and example in belief, worship, character, conduct, and choices, walking upon his path with knowledge and insight, not blind imitation or mere emotional admiration."
+    },
+    {
+     "id": "p3-ch1.p03",
+     "number": 3,
+     "page": "184",
+     "text": "This chapter shows that true emulation rests upon three fundamental pillars:"
+    },
+    {
+     "id": "p3-ch1.p04",
+     "number": 4,
+     "page": "184",
+     "text": "1. **Knowledge of the Prophet’s ﷺ guidance**, for there is no emulation without knowledge. One must learn his biography, his Sunnah, and his noble characteristics, and understand his purposes, so that one’s following is based on awareness and understanding, not mere conjecture or ignorance.",
+     "kind": "item"
+    },
+    {
+     "id": "p3-ch1.p05",
+     "number": 5,
+     "page": "184",
+     "text": "2. **Sincere love for him ﷺ**, for love is the inner motive for emulation. The greater a servant’s love for their Prophet ﷺ, the easier it becomes for them to follow him, hold fast to his Sunnah, and give precedence to his guidance over their own desires and people’s customs.",
+     "kind": "item"
+    },
+    {
+     "id": "p3-ch1.p06",
+     "number": 6,
+     "page": "184",
+     "text": "3. This chapter also clarifies that emulation is not confined to one aspect to the exclusion of others, but is comprehensive of everything authentically established from the Prophet ﷺ, whether in speech, action, or tacit approval, while distinguishing between what constitutes general legislation for the whole nation, what pertained specifically to him, and what belongs to the category of custom and means, in which variation is permissible.",
+     "kind": "item"
+    },
+    {
+     "id": "p3-ch1.p07",
+     "number": 7,
+     "page": "184",
+     "text": "This chapter concludes that the true meaning of emulation is that the Prophet ﷺ transforms, in the Muslim’s life, from a revered historical figure in the mind into a living model present in conduct, decision, and direction, thereby realizing the meaning of following that yields Allah’s pleasure, the soundness of the heart, and the uprightness of life. It contains two sections:"
+    },
+    {
+     "id": "p3-ch1.p08",
+     "number": 8,
+     "page": "185",
+     "heading": "Section One: The Difference Between Love and Following",
+     "text": "Distinguishing between love and following is among the important issues in the matter of emulating the Messenger of Allah ﷺ, for many people imagine that mere heartfelt love suffices to realize emulation, whereas the Qur’anic and Prophetic method establishes that sincere love is never separate from following, and that following is the practical proof of the sincerity of that love."
+    },
+    {
+     "id": "p3-ch1.p09",
+     "number": 9,
+     "page": "185",
+     "text": "Love is the heart’s inclination toward the Prophet ﷺ, its reverence and honouring of him, its joy in mentioning him, its yearning for his Sunnah, and its defence of him. This love is a great foundation of faith, a servant’s faith is not sound without it, and it is a heart-state that stirs the emotions and prompts reverence and veneration."
+    },
+    {
+     "id": "p3-ch1.p10",
+     "number": 10,
+     "page": "185",
+     "text": "Following, however, is the translation of that love into practical reality, through obeying his commands, avoiding what he prohibited, emulating his guidance in worship, transactions, and character, and referring to his Sunnah in matters of dispute. It is manifest, practical conduct, indicating what lies within the heart of love and reverence."
+    },
+    {
+     "id": "p3-ch1.p11",
+     "number": 11,
+     "page": "186",
+     "text": "This section shows that love without following is an incomplete claim, it may be accompanied by emotion, but it lacks practical evidence, while following without love is dry and burdensome, lacking spirit and sweetness. Perfection lies in uniting the two: love in the heart and following in action."
+    },
+    {
+     "id": "p3-ch1.p12",
+     "number": 12,
+     "page": "186",
+     "text": "It also shows that the measure of the sincerity of one’s love is the extent to which one’s daily life conforms to the guidance of the Prophet ﷺ, in worship, character, dealings, and choices, the more one holds to his Sunnah, the more this proves the sincerity of one’s love."
+    },
+    {
+     "id": "p3-ch1.p13",
+     "number": 13,
+     "page": "186",
+     "text": "This section concludes that the correct path in emulation is for love to become commitment, and for commitment to become a firmly rooted habit, so that the Muslim lives with the Prophet ﷺ, with love in their heart, following in their conduct, and his guidance present in their reality."
+    },
+    {
+     "id": "p3-ch1.p14",
+     "number": 14,
+     "page": "186",
+     "heading": "Section Two: Following in Acts of Worship and Transactions",
+     "text": "This section affirms that emulating the Messenger of Allah ﷺ is not complete unless its effect appears in two great dimensions of a Muslim’s life: the dimension of worship, which binds them to their Lord, and the dimension of transactions, which organizes their relationships with people. Following is not restricted to devotional rites alone, nor to general character alone, but is a comprehensive method directing the Muslim’s entire life."
+    },
+    {
+     "id": "p3-ch1.p15",
+     "number": 15,
+     "page": "187",
+     "text": "In worship, following is realized through performing what the Prophet ﷺ legislated in the manner he explained, without innovative addition or deficient omission."
+    },
+    {
+     "id": "p3-ch1.p16",
+     "number": 16,
+     "page": "187",
+     "text": "The Muslim takes care to learn the manner of prayer as the Prophet ﷺ prayed it, the form of ablution as he performed it, and the rulings of fasting, pilgrimage, and almsgiving as he legislated them, bearing in mind that acceptance with Allah depends upon sincerity and conformity together. Through this, following in worship becomes an expression of the perfection of servitude, and a sincere submission to Allah’s command."
+    },
+    {
+     "id": "p3-ch1.p17",
+     "number": 17,
+     "page": "187",
+     "text": "In transactions, following is manifest in adherence to the Prophet’s ﷺ guidance regarding honesty, trustworthiness, justice, fulfilling covenants, good neighbourliness, mercy toward the weak, fairness in disputes, and avoiding fraud, betrayal, and injustice."
+    },
+    {
+     "id": "p3-ch1.p18",
+     "number": 18,
+     "page": "187",
+     "text": "The Muslim who truly emulates the Prophet ﷺ does not separate their religiosity in the mosque from their religiosity in the marketplace, at work, or at home, but makes the Sunnah of the Prophet ﷺ the standard for their conduct in every place."
+    },
+    {
+     "id": "p3-ch1.p19",
+     "number": 19,
+     "page": "187",
+     "text": "This section shows that following in worship preserves the purity and soundness of religion, while following in transactions preserves its beauty and its effect in reality, and through both together, the complete image of Islam as Allah, Mighty and Sublime, intended it, becomes manifest."
+    },
+    {
+     "id": "p3-ch1.p20",
+     "number": 20,
+     "page": "188",
+     "text": "It also shows that among the signs of sincere following is the Muslim’s keenness to correct their worship, review their conduct, hold themselves to account for shortcomings, and constantly strive to draw nearer to the guidance of the Prophet ﷺ."
+    },
+    {
+     "id": "p3-ch1.p21",
+     "number": 21,
+     "page": "188",
+     "text": "This section concludes that true following means the Muslim lives with the Sunnah of the Prophet ﷺ as a firm method in their worship, and a just standard in their transactions, thereby realizing the perfection of emulation, the beauty of religiosity, and soundness of state in this world and the next."
+    }
+   ]
+  },
+  {
+   "id": "p3-ch2",
+   "order": 21,
+   "headingEn": "Chapter 2: The Comprehensiveness of Prophetic Emulation",
+   "partEn": "Part 3: The Muslim Emulates the Messenger ﷺ",
+   "page": "188",
+   "units": [
+    {
+     "id": "p3-ch2.p01",
+     "number": 1,
+     "page": "188",
+     "text": "This chapter establishes that emulating the Messenger of Allah ﷺ is not confined to a particular aspect of life, nor to a narrow circle of behaviours, but is a comprehensive emulation extending to thought, heart, and action, encompassing the affairs of the individual, the family, and society."
+    },
+    {
+     "id": "p3-ch2.p02",
+     "number": 2,
+     "page": "188",
+     "text": "The Prophet ﷺ was not merely a preacher in speech, but a complete practical model for embodying Islam in reality."
+    },
+    {
+     "id": "p3-ch2.p03",
+     "number": 3,
+     "page": "188",
+     "text": "The comprehensiveness of emulation means that the Muslim makes the Prophet ﷺ the supreme reference point in building their character, following his example in his profound faith in Allah, his reliance upon Him, his awe of Him, and his hope in His mercy, as well as in his honesty, trustworthiness, patience, forbearance, humility, courage, and good treatment of people regardless of their circumstances."
+    },
+    {
+     "id": "p3-ch2.p04",
+     "number": 4,
+     "page": "189",
+     "text": "Emulation likewise extends to the spheres of family and social life: the Muslim follows the Prophet’s ﷺ example as a merciful spouse, a compassionate father, a wise educator, a good neighbour, and a loyal companion, making their home a practical field for applying the Sunnah, not merely a place to live."
+    },
+    {
+     "id": "p3-ch2.p05",
+     "number": 5,
+     "page": "189",
+     "text": "The comprehensiveness of emulation also extends to the sphere of da’wah and reform: the Muslim learns from the Prophet ﷺ wisdom in discourse, gentleness with those being called, patience with harm, gradualism in bringing about change, and a concern for guiding people rather than for personal victory."
+    },
+    {
+     "id": "p3-ch2.p06",
+     "number": 6,
+     "page": "189",
+     "text": "This chapter shows that comprehensive emulation does not mean replicating every outward form and detail, but emulating the purposes, the spirit, and the meanings, while adhering to the fixed rulings and considering the differences of time and place with respect to means and methods."
+    },
+    {
+     "id": "p3-ch2.p07",
+     "number": 7,
+     "page": "189",
+     "text": "The chapter concludes that the comprehensiveness of Prophetic emulation means that the Muslim lives with the Messenger of Allah ﷺ as a living example present in their thought, a leader guiding their method, and a supreme model for their conduct, so that Islam becomes, in their life, a moving reality, not merely theoretical knowledge or historical admiration. It contains two sections:"
+    },
+    {
+     "id": "p3-ch2.p08",
+     "number": 8,
+     "page": "190",
+     "heading": "Section One: The Prophet ﷺ as Educator, Leader, and Spouse",
+     "text": "The Prophet ﷺ was a teacher and an educator, an imam and a leader, the head of a town and a head of state, a husband and a father. This section shows that the comprehensiveness of Prophetic emulation is clearly manifest in the multiplicity and integration of the Prophet’s ﷺ roles, for he was a complete model of the Muslim human being across different positions and responsibilities, such that every Muslim, whatever their position in life, can find in the Prophet’s biography a model suited to their own reality."
+    },
+    {
+     "id": "p3-ch2.p09",
+     "number": 9,
+     "page": "190",
+     "text": "The Prophet ﷺ was a teacher who conveyed Allah’s message with clear explanation, brought meanings closer to people, addressed both minds and hearts, and employed wisdom, parables, and gradualism in teaching."
+    },
+    {
+     "id": "p3-ch2.p10",
+     "number": 10,
+     "page": "190",
+     "text": "The Prophet ﷺ was an educator who attended to purifying souls before multiplying information, instilling faith, strengthening character, gently correcting errors, encouraging good, and being patient with shortcomings."
+    },
+    {
+     "id": "p3-ch2.p11",
+     "number": 11,
+     "page": "190",
+     "text": "He ﷺ was, in the people’s daily affairs, like the head of a town: judging between them, resolving their disputes, checking on their circumstances, attending to the poor and the weak, and sharing in their joys and sorrows. He was likewise a head of state, establishing justice, concluding treaties, organizing internal and external relations, and founding a society built upon both law and mercy together."
+    },
+    {
+     "id": "p3-ch2.p12",
+     "number": 12,
+     "page": "191",
+     "text": "And in his home, the Prophet ﷺ was a merciful husband, treating his family kindly, being gentle with them, valuing their feelings, and sharing in household affairs, and a compassionate father, raising his children upon faith and character, instilling values in them through example before words."
+    },
+    {
+     "id": "p3-ch2.p13",
+     "number": 13,
+     "page": "191",
+     "text": "This section concludes that the greatness of the Prophet ﷺ lies not merely in his being the bearer of a message, but in his being a practical model in every position of his life, and that comprehensive emulation of him requires the Muslim to follow his example in whatever role they occupy, whatever their position or responsibility, so that Islam becomes a living reality embodied in their daily life."
+    },
+    {
+     "id": "p3-ch2.p14",
+     "number": 14,
+     "page": "191",
+     "heading": "Section Two: Emulation in Character Before Appearances",
+     "text": "This section affirms that the essence of emulating the Messenger of Allah ﷺ rests first upon emulating his character and his practical example, before attending to appearances and formalities, for character is the spirit of the Sunnah, the greatest thing that distinguished the Prophet’s ﷺ personality, and the clearest thing that drew hearts to his message."
+    },
+    {
+     "id": "p3-ch2.p15",
+     "number": 15,
+     "page": "192",
+     "text": "The Prophet ﷺ was the highest example in honesty, trustworthiness, mercy, forbearance, forgiveness, humility, justice, patience, and good treatment of others, and this character was the silent call that preceded much of his speech and words."
+    },
+    {
+     "id": "p3-ch2.p16",
+     "number": 16,
+     "page": "192",
+     "text": "For this reason, the truly emulating Muslim is one who strives for these values to be reflected in their daily conduct with their family, neighbours, colleagues, and those who agree or disagree with them."
+    },
+    {
+     "id": "p3-ch2.p17",
+     "number": 17,
+     "page": "192",
+     "text": "This section shows that preoccupation with appearances alone, without attention to the essence of character, may lead to a distorted image of religiosity, in which rites appear without their effect appearing in conduct, whereas the Prophetic method closely links worship with good character, and makes the perfection of character part of the perfection of faith, as the Prophet ﷺ said: *“The most complete of the believers in faith are those best in character.”* (Reported by Ibn Wahb in his book *Al-Jami’*.)"
+    },
+    {
+     "id": "p3-ch2.p18",
+     "number": 18,
+     "page": "192",
+     "text": "It also shows that emulating character does not mean neglecting legitimate outward practices but rather giving precedence to inward formation over outward formation, so that outward appearances become a natural fruit of sincere character, not a mask concealing a defect in conduct."
+    },
+    {
+     "id": "p3-ch2.p19",
+     "number": 19,
+     "page": "192",
+     "text": "This section concludes that whoever seeks true emulation of the Prophet ﷺ should make their first measure: have I grown more truthful? More merciful? Humbler, forbearing, and just? If these meanings are realized, this is evidence that one is walking the path of correct emulation, making the Sunnah of the Prophet ﷺ a living reality walking upon the earth, through his character before his appearances."
+    }
+   ]
+  },
+  {
+   "id": "p3-ch3",
+   "order": 22,
+   "headingEn": "Chapter 3: The Danger of Separating the Sunnah from Reality",
+   "partEn": "Part 3: The Muslim Emulates the Messenger ﷺ",
+   "page": "193",
+   "units": [
+    {
+     "id": "p3-ch3.p01",
+     "number": 1,
+     "page": "193",
+     "text": "This chapter addresses a serious problem in understanding and applying religion: treating the Sunnah of the Prophet ﷺ as a heritage preserved in books, or texts for blessing and reading, without its ever becoming a living method guiding reality. The Sunnah was not transmitted merely to be memorized, but to be lived in conduct, translated into decisions, and drawn upon in building the individual and society."
+    },
+    {
+     "id": "p3-ch3.p02",
+     "number": 2,
+     "page": "193",
+     "text": "Separating the Sunnah from reality practically means disabling its essential function, so that knowledge of it becomes abstract, theoretical knowledge, producing no real effect on character, transactions, or ways of life. This separation empties emulation of its content and turns religiosity into a formal image devoid of spirit. This chapter shows that among the gravest consequences of separating the Sunnah from reality are:"
+    },
+    {
+     "id": "p3-ch3.p03",
+     "number": 3,
+     "page": "193",
+     "text": "1. **The weakening effect of religion on conduct**, where acts of worship are performed, but are not reflected in honesty, trustworthiness, and justice, so that a contradiction appears between what a person worships with and what they live in their daily dealings.",
+     "kind": "item"
+    },
+    {
+     "id": "p3-ch3.p04",
+     "number": 4,
+     "page": "194",
+     "text": "2. **The distortion of Islam’s image**, because people do not judge religion through abstract texts, but through the conduct of its followers; when the Sunnah is absent from reality, the beauty of Islam disappears.",
+     "kind": "item"
+    },
+    {
+     "id": "p3-ch3.p05",
+     "number": 5,
+     "page": "194",
+     "text": "3. **Opening the door to desires and deviant interpretations**, for when the Sunnah is isolated from directing life, it becomes easy to replace it with human ideas or foreign standards given precedence over the guidance of the Prophet ﷺ.",
+     "kind": "item"
+    },
+    {
+     "id": "p3-ch3.p06",
+     "number": 6,
+     "page": "194",
+     "text": "The chapter also shows that the Sunnah came to address the real, practical issues of human life: within the family, the marketplace, the factory, the workshop, social relations, the management of disagreement, and the building of values, for it is a way of life before it is a collection of legal texts."
+    },
+    {
+     "id": "p3-ch3.p07",
+     "number": 7,
+     "page": "194",
+     "text": "The chapter affirms that the correct path is to connect the Sunnah to reality with conscious understanding, through grasping its purposes, recalling its wisdom, and applying it to new developments with sound understanding and insight, so that it remains present in the Muslim’s life, guiding rather than absent, and effective rather than marginalized (that is, not neglected or set aside without application; ethical values ought never to be marginalized in society, nor should they be neglected)."
+    },
+    {
+     "id": "p3-ch3.p08",
+     "number": 8,
+     "page": "195",
+     "text": "The chapter concludes that the nation’s remaining upon the right path depends on the extent to which the Sunnah of the Prophet ﷺ is present in its reality, and that the greatest form of emulation is that the Sunnah transforms from pages that are merely read into a life that is actually lived, from information stored away into ever-renewed conduct that shapes the human being and builds up society. It contains two sections:"
+    },
+    {
+     "id": "p3-ch3.p09",
+     "number": 9,
+     "page": "195",
+     "heading": "Section One: Turning the Sunnah into Frozen Ritual",
+     "text": "This section shows that among the gravest forms of separating the Sunnah from reality is reducing it to formal practices or limited rituals performed at particular times, without their becoming a comprehensive method that guides conduct and shapes character, for the Sunnah, in its fundamentals, came to build the human being from within and without, not to become empty gestures devoid of meaning."
+    },
+    {
+     "id": "p3-ch3.p10",
+     "number": 10,
+     "page": "195",
+     "text": "Turning the Sunnah into frozen ritual means focusing on outward performance while neglecting its purposes and aims. Some people maintain certain outward practices of the Sunnah while their effect fails to appear in honesty, trustworthiness, mercy, justice, guarding one’s tongue, or good conduct, thereby severing worship from character, and emptying the Sunnah of its spirit. This section shows that this course leads to several negative effects, the most important of which are:"
+    },
+    {
+     "id": "p3-ch3.p11",
+     "number": 11,
+     "page": "196",
+     "text": "1. **Formal religiosity without spirit**, where performance abounds while effect diminishes, weakening the influence of religion on the self and on life.",
+     "kind": "item"
+    },
+    {
+     "id": "p3-ch3.p12",
+     "number": 12,
+     "page": "196",
+     "text": "2. **Weariness with worship**, for worship, when emptied of meaning, turns into a heavy habit rather than a beloved act of nearness [to Allah].",
+     "kind": "item"
+    },
+    {
+     "id": "p3-ch3.p13",
+     "number": 13,
+     "page": "196",
+     "text": "3. **Misunderstanding of the Sunnah**, some people imagine the Sunnah to be mere formal details, whereas its true reality is that it is a comprehensive way of life.",
+     "kind": "item"
+    },
+    {
+     "id": "p3-ch3.p14",
+     "number": 14,
+     "page": "196",
+     "text": "This section also shows that the remedy lies in reviving the meanings and purposes behind the acts of the Sunnah, connecting every act of worship to its educational aim, and every Prophetic guidance to its behavioural effect, so that the Sunnah returns to its original function: the formation of the righteous human being."
+    },
+    {
+     "id": "p3-ch3.p15",
+     "number": 15,
+     "page": "196",
+     "text": "This section concludes that the Sunnah is not meant to be frozen ritual, but living guidance that purifies the heart, sets conduct right, and builds a society founded upon values, and through this, true emulation of the Messenger of Allah ﷺ is realized."
+    },
+    {
+     "id": "p3-ch3.p16",
+     "number": 16,
+     "page": "197",
+     "heading": "Section Two: Understanding the Sunnah Within Its Purposive Context",
+     "text": "This section affirms that among the greatest means of connecting the Sunnah to reality, and freeing it from rigidity or misunderstanding, is viewing it within its purposive context, that is, understanding it in light of the great aims it came to achieve, and the wisdoms the Lawgiver intended by legislating it, rather than confining oneself to the outward wording or forms detached from their meanings."
+    },
+    {
+     "id": "p3-ch3.p17",
+     "number": 17,
+     "page": "197",
+     "text": "The Prophetic Sunnah did not come as scattered, unconnected rulings, but within an integrated system aiming to preserve religion, build the human being, realize justice, spread mercy, purify souls, and establish balance in life, and every hadith or Prophetic guidance falls, ultimately, under one of these great purposes."
+    },
+    {
+     "id": "p3-ch3.p18",
+     "number": 18,
+     "page": "197",
+     "text": "This section shows that understanding the Sunnah within its purposive context prevents falling into two dangerous extremes:"
+    },
+    {
+     "id": "p3-ch3.p19",
+     "number": 19,
+     "page": "197",
+     "text": "1. **The extreme of rigidity**, which is content with outward appearance, applying texts without regard to their underlying reasons, wisdoms, and outcomes.",
+     "kind": "item"
+    },
+    {
+     "id": "p3-ch3.p20",
+     "number": 20,
+     "page": "197",
+     "text": "2. **The extreme of laxity**, which invokes purposes as a pretext to disable or bypass the texts.",
+     "kind": "item"
+    },
+    {
+     "id": "p3-ch3.p21",
+     "number": 21,
+     "page": "198",
+     "text": "The correct method is to unite text and purpose: the text is respected and followed, and the purpose is understood and kept in mind, thereby realizing conscious, balanced following."
+    },
+    {
+     "id": "p3-ch3.p22",
+     "number": 22,
+     "page": "198",
+     "text": "This section also shows that bearing the purposes in mind assists in applying the Sunnah to new and emerging matters, making it fit to address contemporary issues without compromising its fixed principles or departing from its spirit."
+    },
+    {
+     "id": "p3-ch3.p23",
+     "number": 23,
+     "page": "198",
+     "text": "This section concludes that understanding the Sunnah within its purposive context transforms it from rigid texts into a living, ever-renewed method, and makes emulation of the Prophet ﷺ a conscious, insightful emulation that realizes the purposes of the Shari’ah and produces a balanced human being and a rightly guided society."
+    }
+   ]
+  },
+  {
+   "id": "p3-summary",
+   "order": 23,
+   "headingEn": "Summary of Part 3",
+   "partEn": "Part 3: The Muslim Emulates the Messenger ﷺ",
+   "page": "198",
+   "units": [
+    {
+     "id": "p3-summary.p01",
+     "number": 1,
+     "page": "198",
+     "text": "Emulating the Messenger ﷺ is the practical formation of servitude and belonging, without which religion becomes merely theoretical. This Part affirms that emulating the Messenger of Allah ﷺ is not a mere supplementary aspect of the Muslim’s life, but the practical path to establishing servitude to Allah and embodying true belonging to Islam, for the Prophet ﷺ is the complete applied model of what Allah wants from His servants in belief, conduct, and method."
+    },
+    {
+     "id": "p3-summary.p02",
+     "number": 2,
+     "page": "199",
+     "text": "The Part has shown that the meaning of emulation rests upon knowledge of the Messenger’s ﷺ guidance, sincere love for him, and practical obedience to his commands, and that uniting these pillars is what produces true following. It has also clarified that emulation encompasses both worship and transactions together, for there is no religiosity without sound worship, and no sincere worship without an ethical and behavioural effect."
+    },
+    {
+     "id": "p3-summary.p03",
+     "number": 3,
+     "page": "199",
+     "text": "The Part has highlighted the comprehensiveness of Prophetic emulation across every sphere of life, the Prophet ﷺ being a model for the teacher and the educator, the leader and the ruler, the husband and the father, the individual in solitude, and society in its relations, making his biography a source of guidance for every Muslim, whatever their position or responsibility."
+    },
+    {
+     "id": "p3-summary.p04",
+     "number": 4,
+     "page": "199",
+     "text": "The Part has also warned of the danger of separating the Sunnah from reality, whether by turning it into frozen ritual or by removing it from its purposive context, affirming that the Sunnah came to be lived and applied, not merely preserved theoretically."
+    },
+    {
+     "id": "p3-summary.p05",
+     "number": 5,
+     "page": "199",
+     "text": "The Part concludes that emulating the Messenger ﷺ is the practical formation that carries servitude from the level of feeling to the level of conduct, and belonging from the level of claim to the level of commitment, the closer a Muslim draws to the guidance of the Prophet ﷺ, the closer they draw to Allah, the more sincere their belonging to their religion, and the greater their effect upon themselves and their society."
+    }
+   ]
+  },
+  {
+   "id": "part-4",
+   "order": 24,
+   "headingEn": "Part 4: The Muslim as a Seeker of Knowledge and One Who Is Raised by an Educator, the Sheikh as a Model",
+   "partEn": "Part 4: The Muslim as a Seeker of Knowledge and One Who Is Raised by an Educator, the Sheikh as a Model",
+   "page": "200",
+   "units": [
+    {
+     "id": "part-4.p01",
+     "number": 1,
+     "page": "200",
+     "text": "This Part establishes a great meaning in building the Muslim character: that the Muslim, on their journey with Allah, is always a seeker of knowledge, never content with what they have attained, never stopping at a fixed limit, for knowledge is the path of guidance, the foundation of uprightness, and the standard by which truth is distinguished from falsehood. It also shows that the presence of a mentoring sheikh in the life of the seeker of knowledge represents a practical model of purification and guidance, uniting knowledge with action, and understanding with formation."
+    },
+    {
+     "id": "part-4.p02",
+     "number": 2,
+     "page": "200",
+     "text": "Seeking knowledge in Islam is not an intellectual luxury, nor is it confined to a particular group, the Prophet ﷺ said: *“Seeking knowledge is an obligation upon every Muslim”* (Agreed upon), rather, it is an obligation according to one’s circumstance, and a necessity for building sound faith, correcting worship, disciplining conduct, and properly applying religion to reality. The more knowledge a Muslim gain, the more their awe of Allah grows. Allah says: *“Only those fear Allah, from among His servants, who have knowledge”* (Fatir 35:28), and their insight broadens, and their capacity to face doubts and desires strengthens."
+    },
+    {
+     "id": "part-4.p03",
+     "number": 3,
+     "page": "201",
+     "text": "This Part shows that the mentoring sheikh is not merely a transmitter of information, but an educational model, teaching with their tongue and educating with their state before their words, assisting the seeker of knowledge to purify their soul, hold their heart to account, order their priorities, and walk the path of uprightness with steadiness and balance."
+    },
+    {
+     "id": "part-4.p04",
+     "number": 4,
+     "page": "201",
+     "text": "The Part also clarifies that the relationship between the seeker of knowledge and the sheikh should be founded upon respect, trust, and conscious reception, while preserving the standing of knowledge and its people, without excess regarding individuals or the deification of human beings, for the true standard is the Book and the Sunnah, and the sheikh is a guide to the path, not a substitute for the guide [i.e., not a substitute for revelation itself]."
+    },
+    {
+     "id": "part-4.p05",
+     "number": 5,
+     "page": "201",
+     "text": "The Part concludes that combining the pursuit of knowledge with formation at the hands of a mentoring sheikh produces a conscious Muslim, firmly grounded in their understanding, upright in their conduct, capable of worshipping Allah with insight, and of serving their religion and nation with sincerity and wisdom. It contains three chapters."
+    }
+   ]
+  },
+  {
+   "id": "p4-ch1",
+   "order": 25,
+   "headingEn": "Chapter 1: Knowledge and Purification Without Deification",
+   "partEn": "Part 4: The Muslim as a Seeker of Knowledge and One Who Is Raised by an Educator, the Sheikh as a Model",
+   "page": "201",
+   "units": [
+    {
+     "id": "p4-ch1.p01",
+     "number": 1,
+     "page": "201",
+     "text": "This chapter establishes that among the greatest purposes of seeking knowledge in Islam is the attainment of guidance and the purification of the soul, not the manufacture of human idols, nor the attachment of hearts to individuals. Knowledge, in its true reality, is a means to know Allah, to revere Him, to comply with His command, and to walk toward Him with insight, and purification (tazkiyah) is the fruit of this knowledge when it transforms into awe, uprightness, character, and righteous conduct."
+    },
+    {
+     "id": "p4-ch1.p02",
+     "number": 2,
+     "page": "202",
+     "text": "Islam always links knowledge with action and understanding with purification, the goal is not an abundance of information, nor expansive argumentation, but knowledge that produces awe, leads to obedience, purifies the heart of its diseases, and refines the soul of its inclinations."
+    },
+    {
+     "id": "p4-ch1.p03",
+     "number": 3,
+     "page": "202",
+     "text": "At the same time, this chapter warns against the deviation of deifying individuals, however elevated their scholarly or da’wah standing, for infallibility belongs to none but the prophets, upon them be Allah’s prayers and peace, and human beings err and are correct in turn. The scholar, the sheikh, and the educator are to be revered and respected, and knowledge is taken from them, but they are not to be made the standard of truth, rather, their words are to be measured against the Book and the Sunnah. This chapter shows that the correct approach rests upon three foundations:"
+    },
+    {
+     "id": "p4-ch1.p04",
+     "number": 4,
+     "page": "202",
+     "text": "1. **Revering knowledge, not individuals**, for true standing belongs to the truth that is conveyed, not to the one who conveys it.",
+     "kind": "item"
+    },
+    {
+     "id": "p4-ch1.p05",
+     "number": 5,
+     "page": "203",
+     "text": "2. **Benefiting from scholars while preserving the balance**, we take from them, thank them, and pray for them, while recognizing that they are human beings who err and are correct in turn.",
+     "kind": "item"
+    },
+    {
+     "id": "p4-ch1.p06",
+     "number": 6,
+     "page": "203",
+     "text": "3. **Making purification a constant purpose**, such that the effect of knowledge is manifest in character, humility, and good treatment of others, not in arrogance and superiority.",
+     "kind": "item"
+    },
+    {
+     "id": "p4-ch1.p07",
+     "number": 7,
+     "page": "203",
+     "text": "This chapter concludes that the conscious Muslim combines receiving knowledge from people of learning with freeing their heart from attachment to individuals, so that their loyalty is to the truth, their reference point is the Book and the Sunnah, and their constant effort is directed toward purifying themselves. Through this, they attain beneficial knowledge, sound formation, and uprightness free of excess or deviation."
+    }
+   ]
+  },
+  {
+   "id": "p4-ch2",
+   "order": 26,
+   "headingEn": "Chapter 2: The Standing of the Sheikh and the Scholar in Islam",
+   "partEn": "Part 4: The Muslim as a Seeker of Knowledge and One Who Is Raised by an Educator, the Sheikh as a Model",
+   "page": "203",
+   "units": [
+    {
+     "id": "p4-ch2.p01",
+     "number": 1,
+     "page": "203",
+     "text": "This chapter shows that God-fearing scholars hold an exalted standing in Islam, for they are the bearers of revelation, the heirs of the prophets, and guides upon the path to Allah, through them religion is preserved from distortion, the Shari’ah is safeguarded from ignorance and desire, and people are guided in their worship and their dealings."
+    },
+    {
+     "id": "p4-ch2.p02",
+     "number": 2,
+     "page": "204",
+     "text": "The scholar, in the Islamic method, is not merely a religiously educated person, but one who bears a mission, combining knowledge with action, and carrying out the functions of explanation and teaching, da’wah and guidance, and purification and formation. The nearer a scholar draws to Allah, and the more sincere they are in their work, the greater their effect upon souls, and the more enduring their impact upon the nation."
+    },
+    {
+     "id": "p4-ch2.p03",
+     "number": 3,
+     "page": "204",
+     "text": "This chapter affirms that revering and respecting scholars is an act of worship through which one draws near to Allah, involving as it does the veneration of Allah’s symbols, the preservation of the dignity of knowledge, and encouragement to seek it, yet this reverence does not mean infallibility, does not excuse error, and does not permit following them without insight."
+    },
+    {
+     "id": "p4-ch2.p04",
+     "number": 4,
+     "page": "204",
+     "text": "The chapter also shows that the mentoring sheikh represents a special category of scholar, for in addition to teaching, they attend to purifying souls and correcting conduct, taking their students by the hand along the path of uprightness, and helping them to struggle against their own selves, order their priorities, and achieve balance between knowledge and action."
+    },
+    {
+     "id": "p4-ch2.p05",
+     "number": 5,
+     "page": "204",
+     "text": "This chapter shows that the nation owes scholars: love, prayer on their behalf, the propagation of their knowledge, defence of them, and benefiting from them; and that scholars, in turn, owe the nation: sincerity, honesty, humility, gentleness with learners, and connecting people to Allah rather than to themselves."
+    },
+    {
+     "id": "p4-ch2.p06",
+     "number": 6,
+     "page": "205",
+     "text": "The chapter concludes that the standing of the sheikh and the scholars in Islam is one of reverence and appreciation, not veneration, deification, or worship, and that the rightly-guided Muslim is one who combines respect for the people of knowledge with holding fast to the standards of Shari’ah, making their loyalty to the truth, their guide the Book and the Sunnah, and their relationship with scholars one of benefit and guidance, not blind zealotry and following. It contains two sections:"
+    },
+    {
+     "id": "p4-ch2.p07",
+     "number": 7,
+     "page": "205",
+     "heading": "Section One: Scholars Are the Heirs of the Prophets",
+     "text": "This section affirms that the greatest honour scholars have attained in Islam is that Allah has made them heirs of the prophets, not in wealth or status, but in the greatest of inheritances: the inheritance of knowledge and guidance. The prophets, upon them be prayers and peace, came to bring people out of darkness into light. Allah says to His Prophet: *“[This is] a Book which We have revealed to you, [O Muhammad], that you might bring mankind out of darknesses into the light, by permission of their Lord, to the path of the Exalted in Might, the Praiseworthy”* (Ibrahim 14:1). Scholars, after them, carry out the same task: preserving revelation, explaining its meanings, teaching people their religion, and guiding them to Allah’s path."
+    },
+    {
+     "id": "p4-ch2.p08",
+     "number": 8,
+     "page": "206",
+     "text": "The scholars’ inheritance from the prophets means that they carry the mission of explanation and conveyance, carry out the function of reform and guidance, and strive to spread the truth, confront falsehood, and correct deviation, each according to their knowledge, capacity, and sphere."
+    },
+    {
+     "id": "p4-ch2.p09",
+     "number": 9,
+     "page": "206",
+     "text": "This section shows that this inheritance is a responsibility before it is an honour, placing upon scholars’ shoulders a tremendous duty embodied in sincerity, honesty, scholarly integrity, distance from personal desire, connecting people to Allah rather than to themselves, and acting upon what they know before calling others to it."
+    },
+    {
+     "id": "p4-ch2.p10",
+     "number": 10,
+     "page": "206",
+     "text": "It also shows that a scholar’s rank is not measured by the number of their followers, their fame, or their position, but by the extent of their adherence to the Book and the Sunnah, their awe of Allah, their benefit to people, and the effect of their knowledge in purifying souls and reforming reality."
+    },
+    {
+     "id": "p4-ch2.p11",
+     "number": 11,
+     "page": "206",
+     "text": "This section concludes that Muslims’ awareness of the meaning of scholars’ inheritance from the prophets instils in them love and reverence for scholars and eagerness to learn from them, while also instilling in scholars a constant sense of responsibility and self-watchfulness, so that they may discharge this great trust in the manner that pleases Allah, the Exalted."
+    },
+    {
+     "id": "p4-ch2.p12",
+     "number": 12,
+     "page": "207",
+     "heading": "Section Two: The Function of Teaching and Purification",
+     "text": "This section shows that the mission of scholars and the mentoring sheikh in Islam is not confined to transmitting information or explaining rulings alone, but rests upon two inseparable, complementary functions: teaching and purification, for through teaching, truth is known, and through purification, truth is lived."
+    },
+    {
+     "id": "p4-ch2.p13",
+     "number": 13,
+     "page": "207",
+     "text": "The function of teaching consists in explaining sound creed, elucidating the rulings of the Shari’ah, clarifying what is lawful and unlawful, interpreting the texts of the Book and the Sunnah, and training students of knowledge in methodical understanding and sound reasoning, so that their knowledge is founded upon evidence, not blind imitation or personal desire."
+    },
+    {
+     "id": "p4-ch2.p14",
+     "number": 14,
+     "page": "207",
+     "text": "The function of purification, meanwhile, is concerned with the hearts and souls of learners, raising them upon sincerity, awe of Allah, God-consciousness, good intention, struggle against the self, adornment with virtuous character, and freedom from arrogance, ostentation, self-admiration, and other diseases of the heart. Knowledge unaccompanied by purification may turn into an argument against its possessor, or a means for disputation and self-exaltation on earth."
+    },
+    {
+     "id": "p4-ch2.p15",
+     "number": 15,
+     "page": "207",
+     "text": "This section shows that combining teaching and purification is the Prophetic method for building the human being, and that neglecting either dimension produces a defect in character: knowledge without purification breeds harshness, arrogance, and aridity; purification without knowledge may open the door to deviation, innovation, and misguidance."
+    },
+    {
+     "id": "p4-ch2.p16",
+     "number": 16,
+     "page": "208",
+     "text": "It also shows that the successful mentoring sheikh is one who balances these two dimensions, teaching their students beneficial knowledge, raising them to act upon it, and being an example to them in their conduct before their speech."
+    },
+    {
+     "id": "p4-ch2.p17",
+     "number": 17,
+     "page": "208",
+     "text": "This section concludes that the function of teaching and purification is at the heart of the educational process in Islam, and through it a God-fearing seeker of knowledge is formed, combining sound understanding, a sound heart, and upright conduct, thereby being of benefit to themselves and their nation."
+    }
+   ]
+  },
+  {
+   "id": "p4-ch3",
+   "order": 27,
+   "headingEn": "Chapter 3: Governing Principles for the Relationship with the Religious Sheikh",
+   "partEn": "Part 4: The Muslim as a Seeker of Knowledge and One Who Is Raised by an Educator, the Sheikh as a Model",
+   "page": "208",
+   "units": [
+    {
+     "id": "p4-ch3.p01",
+     "number": 1,
+     "page": "208",
+     "text": "This chapter addresses the foundations and governing principles that should underlie the relationship between the seeker of knowledge and the religious sheikh, so that it remains a relationship of formation, benefit, and guidance, not one of blind following, nor one of conflict and estrangement. The soundness of this relationship is among the greatest sources of blessing in knowledge and soundness in one’s educational path:"
+    },
+    {
+     "id": "p4-ch3.p02",
+     "number": 2,
+     "page": "209",
+     "text": "**The first of these principles** is sincerity and good intention, the student should intend, in seeking knowledge, Allah’s face, the reform of their own self, and acting upon what they learn, not fame, argument, or self-vindication."
+    },
+    {
+     "id": "p4-ch3.p03",
+     "number": 3,
+     "page": "209",
+     "text": "**The second** is respect and reverence, the student reveres their sheikh, preserves their standing, and maintains good manners with them in word and deed, for this is part of revering knowledge, not the veneration of individuals for their own sake."
+    },
+    {
+     "id": "p4-ch3.p04",
+     "number": 4,
+     "page": "209",
+     "text": "**The third** is verifying the method, that the sheikh be known for holding fast to the Book and the Sunnah, for sound creed, and for good conduct, since formation is not sound except upon a sound method."
+    },
+    {
+     "id": "p4-ch3.p05",
+     "number": 5,
+     "page": "209",
+     "text": "**The fourth** is the Shari’ah standard, the student should know that their sheikh’s words are to be taken or rejected [according to the Shari’ah], and that infallibility belongs to none but the prophets, so they weigh what they hear against the Book and the Sunnah, while preserving courtesy and respect."
+    },
+    {
+     "id": "p4-ch3.p06",
+     "number": 6,
+     "page": "209",
+     "text": "**The fifth** is sincerity in counsel, if the student sees a clear error, they offer counsel with courtesy and wisdom, without exposure or offence, seeking Allah’s pleasure and preserving the sanctity of knowledge."
+    },
+    {
+     "id": "p4-ch3.p07",
+     "number": 7,
+     "page": "209",
+     "text": "**The sixth** is balanced independence, the student should not dissolve into the sheikh’s personality to the point of losing their own capacity for thought and discernment, nor should they dispense with the sheikh out of arrogance but should walk a balanced course between the two."
+    },
+    {
+     "id": "p4-ch3.p08",
+     "number": 8,
+     "page": "210",
+     "text": "This chapter concludes that the correct relationship between student and sheikh is one of learning and purification, respect and awareness, benefit without deification, and through this the blessing of knowledge is realized, and the student’s course upon the path of Allah remains upright. It contains four sections, followed by the summary."
+    },
+    {
+     "id": "p4-ch3.p09",
+     "number": 9,
+     "page": "210",
+     "heading": "Section One: Obedience in What Is Right, Not in Sin",
+     "text": "This section establishes a great principle governing the relationship between the seeker of knowledge and the sheikh, indeed, between any Muslim and anyone from whom they receive guidance, namely, that obedience is due only in what is right, and never in sin or in violation of the Shari’ah. The unchanging fundamental is that absolute obedience belongs to Allah, the Exalted, and to His Messenger ﷺ; obedience to anyone else is conditioned upon truth."
+    },
+    {
+     "id": "p4-ch3.p10",
+     "number": 10,
+     "page": "210",
+     "text": "If the sheikh or educator commands something that conforms to the Book and the Sunnah, and realizes a legitimate benefit, the student must obey them in that, think well of them, and benefit from their guidance and experience. But if they command something sinful, or call to an innovation, or contradict an explicit text or an established principle of the Shari’ah, it is not permissible for the student to obey them, rather, it is their duty to refrain with courtesy, and to explain the truth with wisdom. The Prophet ﷺ said: *“Obedience is only in what is right (ma’ruf).”* (Reported by Al-Bukhari.)"
+    },
+    {
+     "id": "p4-ch3.p11",
+     "number": 11,
+     "page": "211",
+     "text": "This section shows that understanding this principle protects the student from blind following, just as it protects the sheikh from being placed in a position befitting none but Allah and His Messenger, and at the same time, it preserves scholars’ standing, for obedience in what is right is itself a form of reverence and benefit."
+    },
+    {
+     "id": "p4-ch3.p12",
+     "number": 12,
+     "page": "211",
+     "text": "It also shows that refraining from obedience in sin does not constitute disrespect, nor does it diminish the sheikh’s standing; rather, it is commitment to Allah’s law, while respect, appreciation, and good manner of address remain."
+    },
+    {
+     "id": "p4-ch3.p13",
+     "number": 13,
+     "page": "211",
+     "text": "This section concludes that the rightly-guided student is one who combines hearing and obeying in what is right, with refraining from wrong with courtesy and wisdom, thereby preserving their religion, safeguarding their heart, and keeping their relationship with the sheikh one of guidance and benefit, not one of deification or conflict."
+    },
+    {
+     "id": "p4-ch3.p14",
+     "number": 14,
+     "page": "211",
+     "heading": "Section Two: The Danger of Inflating the Sheikh’s Standing",
+     "text": "This section addresses one of the dangerous deviations that may afflict the course of formation and the pursuit of knowledge: inflating the standing of the sheikh, raising him above his legitimate rank, until he becomes, in the eyes of some students, not an educator, counsellor, and guide upon the path, but an infallible figure or an absolute reference, beyond review or discussion."
+    },
+    {
+     "id": "p4-ch3.p15",
+     "number": 15,
+     "page": "212",
+     "text": "This section affirms that Islam has exalted the standing of God-fearing scholars, and commanded their reverence and respect, while at the same time denying infallibility to anyone but the prophets, upon them be Allah’s prayers and peace. Every scholar’s word may be taken or rejected; they err and are correct in turn; and their speech is judged against the Book and the Sunnah, not the reverse. This section shows that inflating the sheikh’s standing leads to many corruptions, the gravest of which are: disabling human reason and disciplined critical thinking; justifying errors under the pretext of thinking well [of the sheikh] or his elevated station; transforming the educational relationship into one of psychological and spiritual dependency; and opening the door to religious exploitation in the name of formation and purification."
+    },
+    {
+     "id": "p4-ch3.p16",
+     "number": 16,
+     "page": "212",
+     "text": "Imam Malik (may Allah have mercy on him) said: *“Everyone’s words may be taken or rejected, except the occupant of this grave”*, meaning the Prophet ﷺ. (Reported by Ibn Abd Al-Barr in his book *Jami’ Bayan Al-’Ilm wa Fadlih*, and Ibn Al-Qayyim in his book *I’lam Al-Muwaqqi’in ’a Rabb Al-’Alamin*.) Imam Al-Shafi’i (may Allah have mercy on him) said in his book *Al-Risalah*: *“The Muslims are agreed that whoever is shown clearly the Sunnah of the Messenger of Allah ﷺ may not abandon it for anyone’s opinion.”* (Reported by Ibn Al-Qayyim in his book *I’lam Al-Muwaqqi’in ’an Rabb Al-’Alamin*.)"
+    },
+    {
+     "id": "p4-ch3.p17",
+     "number": 17,
+     "page": "213",
+     "text": "This section also shows that this inflation harms not only the student, but the sheikh as well, for it may push him, without his even realizing it, toward self-admiration or domineering, and distance him from the spirit of humility that is the hallmark of sincere scholars."
+    },
+    {
+     "id": "p4-ch3.p18",
+     "number": 18,
+     "page": "213",
+     "text": "This section establishes that the correct approach rests upon balance: revering the sheikh and benefiting from his knowledge and experience, while recognizing his human nature and its limits, and binding one’s heart to Allah, the Exalted, first, and to the truth second, not to individuals."
+    },
+    {
+     "id": "p4-ch3.p19",
+     "number": 19,
+     "page": "213",
+     "text": "This section closes by affirming that sound formation is that which produces students who are free through the truth, connected to Allah, following the evidence, loving their scholars, without deifying them or making them the standard of truth and falsehood."
+    },
+    {
+     "id": "p4-ch3.p20",
+     "number": 20,
+     "page": "213",
+     "heading": "Section Three: Giving Precedence to the Sheikh Over the Text",
+     "text": "Giving precedence to the sheikh, scholar, or educator over the texts of revelation is among the gravest manifestations of deviation in understanding the relationship between student and sheikh, for it transforms the standard from revelation being the judge over individuals, into individuals being the judge over revelation, a complete inversion of the method Islam brought."
+    },
+    {
+     "id": "p4-ch3.p21",
+     "number": 21,
+     "page": "214",
+     "text": "This section establishes that the true fundamental in Allah’s religion is that the Book and the Sunnah are the supreme reference point, and that the words of anyone after the Messenger of Allah ﷺ are to be measured against the evidence, accepted if they conform to it, and rejected if they contradict it, however elevated that person’s standing may be. It shows that manifestations of giving precedence to the sheikh over the text include: interpreting texts or disabling them to conform with the sheikh’s or scholar’s opinion; justifying error by claiming the sheikh’s special status or esoteric knowledge; excusing the sheikh’s or educator’s errors as though they were genuinely correct; rejecting evidence when it contradicts what the student has grown accustomed to from their sheikh; and considering disagreement with the sheikh a departure from the method or a betrayal of the path."
+    },
+    {
+     "id": "p4-ch3.p22",
+     "number": 22,
+     "page": "214",
+     "text": "This section also shows that this approach leads to the deification of individuals, opens the door to innovations and deviations, and strips the texts of their authority in directing hearts and conduct. It affirms that the correct method combines love and reverence for the sheikh; sincere recourse to the text; reliance upon the understanding of trustworthy scholars; and readiness to return to the truth whenever it becomes clear."
+    },
+    {
+     "id": "p4-ch3.p23",
+     "number": 23,
+     "page": "215",
+     "text": "This section closes by affirming that the greatest honour for the sheikh himself is to be a follower of the text, not one followed instead of it, to guide his students to Allah and His Messenger, not to himself, for through this, formation is sound, the method is upright, and the nation remains bound to revelation, not to individuals."
+    },
+    {
+     "id": "p4-ch3.p24",
+     "number": 24,
+     "page": "215",
+     "heading": "Section Four: Disabling the Mind in the Name of Formation",
+     "text": "This section addresses a dangerous phenomenon that sometimes occurs in certain educational environments: disabling the mind and suspending thought in the name of formation and purification, on the pretext that excessive questioning or the exercise of reason contradicts good manners, weakens submission, or corrupts the heart."
+    },
+    {
+     "id": "p4-ch3.p25",
+     "number": 25,
+     "page": "215",
+     "text": "This section affirms that Islam did not come to abolish the intellect, but to liberate it, refine it, and guide it, making it a tool for understanding revelation, contemplating Allah’s signs, and distinguishing truth from falsehood. For this reason, the Qur’an is filled with commands to reflect, reason, and observe. Allah says: *“Then let mankind look at his food”* (Abasa 80:24), and: *“Then let man look at what he was created from”* (At-Tariq 86:5), and: *“Do they not look at the camels, how they are created? And at the sky, how it is raised? And at the mountains, how they are erected? And at the earth, how it is spread out?”* (Al-Ghashiyah 88:17–20), and: *“[This is] a blessed Book which We have revealed to you, [O Muhammad], that they might reflect upon its verses and that those of understanding would be reminded”* (Sad 38:29), and: *“Then do they not reflect upon the Qur’an, or are there locks upon [their] hearts?”* (Muhammad 47:24)."
+    },
+    {
+     "id": "p4-ch3.p26",
+     "number": 26,
+     "page": "216",
+     "text": "This section shows that sound formation is not built by killing questions, nor by subjecting minds to the sheikh’s will, but by building an aware intellect and a living heart, in which understanding is joined with awe, and knowledge with action. Among the manifestations of disabling the mind in the name of formation are: preventing the student from asking or discussing under the pretext of good manners with the sheikh; treating any independent thought or criticism as objection to the sheikh or ill intent; being content with rote instruction without explaining the Shari’ah evidence and wisdom behind it; and tying guidance to the extent of one’s surrender to the sheikh rather than to the extent of one’s following of the truth."
+    },
+    {
+     "id": "p4-ch3.p27",
+     "number": 27,
+     "page": "216",
+     "text": "This section warns that this course produces followers rather than students of knowledge, and creates personalities weak before doubts, quick to submit, and lacking in insight."
+    },
+    {
+     "id": "p4-ch3.p28",
+     "number": 28,
+     "page": "216",
+     "text": "This section establishes that the balanced method is one that raises the student upon: respecting scholars, asking well-formed questions, exercising reason considering revelation, and submitting to the text after understanding it to the best of one’s ability."
+    },
+    {
+     "id": "p4-ch3.p29",
+     "number": 29,
+     "page": "216",
+     "text": "It closes by affirming that the greatest purpose of formation is to produce a human being free through truth, aware of their religion, firm upon their method, neither an unthinking follower, nor an uninformed objector."
+    }
+   ]
+  },
+  {
+   "id": "p4-summary",
+   "order": 28,
+   "headingEn": "Summary of Part 4",
+   "partEn": "Part 4: The Muslim as a Seeker of Knowledge and One Who Is Raised by an Educator, the Sheikh as a Model",
+   "page": "217",
+   "units": [
+    {
+     "id": "p4-summary.p01",
+     "number": 1,
+     "page": "217",
+     "text": "The sheikh is a means to guidance, not an end in himself, and whoever exceeds this boundary with him corrupts their own religion without realizing it. This Part has shown that Islam made knowledge and purification a path for building the God-fearing human being and connected this path to God-fearing scholars as guides upon the way, not deities to be worshipped, nor infallible figures to be followed unconditionally. The sheikh, in the Islamic method, is a means to guidance, pointing to Allah and His Messenger and assisting in understanding and applying religion, not an end to which hearts become attached."
+    },
+    {
+     "id": "p4-summary.p02",
+     "number": 2,
+     "page": "217",
+     "text": "This Part has affirmed that scholars and sheikhs hold an exalted standing, for they are the heirs of the prophets, and their function is teaching and purification, yet this standing is governed by Shari’ah principles that prevent excess and deification, and that preserve the balance between reverence and disciplined criticism, and between obedience in what is right and refraining from what is sinful."
+    },
+    {
+     "id": "p4-summary.p03",
+     "number": 3,
+     "page": "217",
+     "text": "This Part has also highlighted the danger of deviation in the relationship with the sheikh, whether through inflating his standing, giving him precedence over the text, or disabling the mind in the name of formation, for this leads to corrupting the method, and transforms formation from the building of a human being free through truth into the manufacture of unthinking followers. The Part concludes that sound formation is that which: binds hearts to Allah, Glorified and Exalted, first; makes revelation the supreme standard; reveres God-fearing scholars without deifying them; and builds an aware intellect and a reverent heart."
+    },
+    {
+     "id": "p4-summary.p04",
+     "number": 4,
+     "page": "218",
+     "text": "Whoever makes the sheikh an end in himself goes astray, and whoever makes him a guide to Allah is rightly guided, and through this, the course of the seeker of knowledge becomes upright, and their formation bears fruit in firm faith, beneficial knowledge, and righteous deed."
+    }
+   ]
+  },
+  {
+   "id": "complete-summary-of-the-book",
+   "order": 29,
+   "headingEn": "Complete Summary of the Book",
+   "partEn": "",
+   "page": "219",
+   "units": [
+    {
+     "id": "complete-summary-of-the-book.p01",
+     "number": 1,
+     "page": "219",
+     "text": "This book proceeds from a central truth: that the balanced life of the Muslim is not built upon a single dimension, nor made upright through one station to the exclusion of another, but rests upon four great, interconnected stations, each reinforcing the others, together forming the personality of the God-fearing Muslim who unites purity of creed, soundness of method, correct emulation, and sound formation. The balanced life of the Muslim rests upon four interconnected stations:"
+    },
+    {
+     "id": "complete-summary-of-the-book.p02",
+     "number": 2,
+     "page": "219",
+     "text": "1. **A servant of Allah, the Exalted, an unrivalled foundation.** Servitude is the root from which all other stations spring; it is the reality of human existence and the purpose of one’s creation. The Muslim is a servant of Allah alone, their heart bound to Him, their submission to Him, their hope in Him, their fear of Him, and any station that loses its connection to servitude turns from worship into mere habit, and from nearness into an empty form devoid of spirit. When servitude settles in the heart, the human being is liberated from attachment to creation, and their outlook toward this world and the Hereafter is set right.",
+     "kind": "item"
+    },
+    {
+     "id": "complete-summary-of-the-book.p03",
+     "number": 3,
+     "page": "219",
+     "text": "2. **One who belongs to Islam, an identity and a method.** Belonging to Islam is not a slogan to be raised, nor a name inherited, but an awareness of identity, a commitment to method, and a practical translation of creed into conduct, a belonging that combines fixity upon the fundamentals of the religion with awareness of the variables of the age, preserving the Muslim’s authenticity without insularity, and granting them the capacity for engagement without dissolution. Through this, Islam becomes, for them, a way of life, not merely a cultural framework [that is, not merely a part of culture or social custom, but something deeper and more essential, a framework being something that surrounds and organizes a thing].",
+     "kind": "item"
+    },
+    {
+     "id": "complete-summary-of-the-book.p04",
+     "number": 4,
+     "page": "220",
+     "text": "3. **One who emulates the Messenger, upon him be prayers and peace, a practical model.** Emulating the Messenger ﷺ is the practical bridge that carries the Muslim from the realm of theory to the realm of application. The Sunnah is not frozen ritual, nor mere formal appearance, but a comprehensive method in worship, character, transactions, and the building of family and society. True emulation begins from within before the without, from character before appearances, so that the Muslim becomes an image of Prophetic guidance in their reality.",
+     "kind": "item"
+    },
+    {
+     "id": "complete-summary-of-the-book.p05",
+     "number": 5,
+     "page": "220",
+     "text": "4. **A seeker of knowledge at the hands of a sheikh, a means of formation.** Islam made the pursuit of knowledge a path to guidance, the Prophet ﷺ said: *“Whomever Allah wishes well for, He grants him understanding of the religion”* (Agreed upon), and connected this path to God-fearing scholars, but on a foundation of balance: reverence without deification, obedience in what is right, and constant recourse to the Book and the Sunnah. The sheikh is a means to guidance, not an end in himself; his role is to point to Allah and His Messenger, and to assist in purifying the self and building sound understanding, not to be made the standard of truth and falsehood. Any imbalance between these stations, undisciplined precedence given to one over another, produces disorder in understanding and conduct.",
+     "kind": "item"
+    }
+   ]
+  },
+  {
+   "id": "comprehensive-summary",
+   "order": 30,
+   "headingEn": "Comprehensive Summary",
+   "partEn": "",
+   "page": "221",
+   "units": [
+    {
+     "id": "comprehensive-summary.p01",
+     "number": 1,
+     "page": "221",
+     "text": "When these four stations are realized in a Muslim’s life in their correct form, a balanced character is formed: a heart bound to Allah, an identity rooted in Islam, a model found in the Messenger, and a path found in knowledge and purification. Through this, the Muslim lives their Islam as servitude, as belonging, as emulation, and as learning, becoming upright as an individual, reforming their family, contributing to building their nation, and realizing the purpose for which they were created: the worship of Allah, the Exalted, and the cultivation of the earth according to His method."
+    }
+   ]
+  },
+  {
+   "id": "conclusion-of-the-book",
+   "order": 31,
+   "headingEn": "Conclusion of the Book",
+   "partEn": "",
+   "page": "222",
+   "units": [
+    {
+     "id": "conclusion-of-the-book.p01",
+     "number": 1,
+     "page": "222",
+     "text": "This ordering is not a mere mental theorization, but a way of life, and reforming the condition of the [Muslim] nation begins with reforming the balance of the individual, when they come to know whom, they worship, to which religion they belong, whom they emulate, and from whom they learn. We close with a supplication that Allah grant the reader balanced understanding, sincere action, and firmness upon the path, and we ask Allah to send prayers and peace upon His servant and Messenger, Muhammad ibn Abdullah, and upon his family and companions, and upon all who follow them in righteousness until the Day of Judgement. Our final call is that all praise is due to Allah, Lord of all the worlds."
+    }
+   ]
+  },
+  {
+   "id": "references-and-sources",
+   "order": 32,
+   "headingEn": "References and Sources",
+   "partEn": "",
+   "page": "223",
+   "units": [
+    {
+     "id": "references-and-sources.p01",
+     "number": 1,
+     "page": "223",
+     "kind": "table",
+     "rows": [
+      [
+       "No.",
+       "Title",
+       "Author"
+      ],
+      [
+       "1.",
+       "Adab Al-Nufus",
+       "Imam Al-Ajurri"
+      ],
+      [
+       "2.",
+       "Al-’Ubudiyyah",
+       "Shaykh Al-Islam Ibn Taymiyyah"
+      ],
+      [
+       "3.",
+       "Al-Durr Al-Manthur",
+       "Al-Suyuti"
+      ],
+      [
+       "4.",
+       "Al-Faqih wa’l-Mutafaqqih",
+       "Al-Khatib Al-Baghdadi"
+      ],
+      [
+       "5.",
+       "Al-Fawa’id",
+       "Imam Ibn Al-Qayyim"
+      ],
+      [
+       "6.",
+       "Al-I’tisam",
+       "Imam Al-Shatibi"
+      ],
+      [
+       "7.",
+       "Al-Istiqamah",
+       "Shaykh Al-Islam Ibn Taymiyyah"
+      ],
+      [
+       "8.",
+       "Al-Jami’",
+       "Ibn Wahb"
+      ],
+      [
+       "9.",
+       "Al-Jawab Al-Kafi",
+       "Imam Ibn Al-Qayyim"
+      ],
+      [
+       "10.",
+       "Al-Kamil fi Al-Du’afa’",
+       "Al-Hafiz Al-Jurjani"
+      ],
+      [
+       "11.",
+       "Al-Khushu’ fi Al-Salah",
+       "Imam Ibn Rajab Al-Hanbali"
+      ],
+      [
+       "12.",
+       "Al-Ma’rifah wa’l-Tarikh",
+       "Al-Fasawi (Al-’Umari)"
+      ],
+      [
+       "13.",
+       "Al-Majmu’ Sharh Al-Muhadhdhab",
+       "Imam Al-Nawawi"
+      ],
+      [
+       "14.",
+       "Al-Mu’jam Al-Awsat",
+       "Al-Tabarani"
+      ],
+      [
+       "15.",
+       "Al-Mu’jam Al-Kabir",
+       "Al-Tabarani"
+      ],
+      [
+       "16.",
+       "Al-Muntakhab min Musnad Abd ibn Humayd",
+       "Abd ibn Humayd"
+      ],
+      [
+       "17.",
+       "Al-Muqaddimah",
+       "Ibn Khaldun"
+      ],
+      [
+       "18.",
+       "Al-Musannaf",
+       "Ibn Abi Shaybah"
+      ],
+      [
+       "19.",
+       "Al-Mustadrak ’ala Al-Sahihayn",
+       "Al-Hakim Al-Naysaburi"
+      ],
+      [
+       "20.",
+       "Al-Muwafaqat fi Usul Al-Shari’ah",
+       "Imam Al-Shatibi"
+      ],
+      [
+       "21.",
+       "Al-Muwatta’",
+       "Imam Malik"
+      ],
+      [
+       "22.",
+       "Al-Risalah",
+       "Imam Al-Shafi’i"
+      ],
+      [
+       "23.",
+       "Al-Siyasah Al-Shar’iyyah",
+       "Shaykh Al-Islam Ibn Taymiyyah"
+      ],
+      [
+       "24.",
+       "Al-Sunan Al-Ma’thurah",
+       "Imam Al-Shafi’i"
+      ],
+      [
+       "25.",
+       "Al-Tahrir wa’l-Tanwir",
+       "Ibn ’Ashur"
+      ],
+      [
+       "26.",
+       "Al-Wabil Al-Sayyib",
+       "Imam Ibn Al-Qayyim"
+      ],
+      [
+       "27.",
+       "Al-Zuhd wa’l-Raqa’iq (Ibn Al-Mubarak)",
+       "’Abdullah ibn Al-Mubarak"
+      ],
+      [
+       "28.",
+       "Az-Zuhd wa’r-Raqa’iq",
+       "Abu Nu’aym Al-Asbahani"
+      ],
+      [
+       "29.",
+       "Hilyat Al-Awliya’",
+       "Abu Nu’aym Al-Asbahani"
+      ],
+      [
+       "30.",
+       "I’lam Al-Muwaqqi’in ’an Rabb Al-’Alamin",
+       "Imam Ibn Al-Qayyim"
+      ],
+      [
+       "31.",
+       "Ihya’ ’Ulum Al-Din",
+       "Imam Al-Ghazali"
+      ],
+      [
+       "32.",
+       "Jami’ Al-’Ulum wa’l-Hikam",
+       "Ibn Rajab Al-Hanbali"
+      ],
+      [
+       "33.",
+       "Jami’ Bayan Al-’Ilm wa Fadlih",
+       "Ibn Abd Al-Barr"
+      ],
+      [
+       "34.",
+       "Kimiya’ Al-Sa’adah",
+       "Imam Al-Ghazali"
+      ],
+      [
+       "35.",
+       "Kitab Al-’Ilal",
+       "Ibn Abi Hatim"
+      ],
+      [
+       "36.",
+       "Kitab Al-Qadar",
+       "Ibn Wahb"
+      ],
+      [
+       "37.",
+       "Kitab Al-Salah",
+       "Imam Ahmad"
+      ],
+      [
+       "38.",
+       "Kitab Al-Zuhd",
+       "Imam Ahmad"
+      ],
+      [
+       "39.",
+       "Lata’if Al-Ma’arif",
+       "Imam Ibn Rajab Al-Hanbali"
+      ],
+      [
+       "40.",
+       "Madarij Al-Salikin",
+       "Imam Ibn Al-Qayyim"
+      ],
+      [
+       "41.",
+       "Majmu’ Al-Fatawa",
+       "Shaykh Al-Islam Ibn Taymiyyah"
+      ],
+      [
+       "42.",
+       "Maqasid Al-Shari’ah",
+       "Imam Al-Shatibi"
+      ],
+      [
+       "43.",
+       "Maqasid Al-Shari’ah Al-Islamiyyah",
+       "Imam Ibn ’Ashur"
+      ],
+      [
+       "44.",
+       "Mukhtasar Minhaj Al-Qasidin",
+       "Imam Al-Ghazali"
+      ],
+      [
+       "45.",
+       "Musannaf ’Abd Al-Razzaq",
+       "’Abd Al-Razzaq"
+      ],
+      [
+       "46.",
+       "Musnad ’Abdullah ibn Al-Mubarak",
+       "’Abdullah ibn Al-Mubarak"
+      ],
+      [
+       "47.",
+       "Musnad Abu Dawud Al-Tayalisi",
+       "Abu Dawud Al-Tayalisi"
+      ],
+      [
+       "48.",
+       "Musnad Ahmad",
+       "Imam Ahmad"
+      ],
+      [
+       "49.",
+       "Musnad Al-Darimi",
+       "Imam Al-Darimi"
+      ],
+      [
+       "50.",
+       "Musnad Al-Humaydi",
+       "Imam Al-Humaydi"
+      ],
+      [
+       "51.",
+       "Musnad Imam Abu Hanifah",
+       "Imam Abu Hanifah"
+      ],
+      [
+       "52.",
+       "Rawdat Al-Muhibbin",
+       "Ibn Al-Qayyim"
+      ],
+      [
+       "53.",
+       "Sahih Al-Bukhari",
+       "Imam Al-Bukhari"
+      ],
+      [
+       "54.",
+       "Sahih Muslim",
+       "Imam Muslim"
+      ],
+      [
+       "55.",
+       "Sharh Mushkil Al-Athar",
+       "Imam Al-Tahawi"
+      ],
+      [
+       "56.",
+       "Sharh Sahih Muslim",
+       "Imam Al-Nawawi"
+      ],
+      [
+       "57.",
+       "Sifat Salat Al-Nabi",
+       "Shaykh Al-Albani"
+      ],
+      [
+       "58.",
+       "Siyar A’lam Al-Nubala’",
+       "Al-Dhahabi"
+      ],
+      [
+       "59.",
+       "Sunan Abu Dawud",
+       "Imam Abu Dawud"
+      ],
+      [
+       "60.",
+       "Sunan Al-Darimi",
+       "Imam Al-Darimi"
+      ],
+      [
+       "61.",
+       "Sunan Al-Tirmidhi",
+       "Imam Al-Tirmidhi"
+      ],
+      [
+       "62.",
+       "Sunan Ibn Majah",
+       "Imam Ibn Majah"
+      ],
+      [
+       "63.",
+       "Sunan Sa’id ibn Mansur",
+       "Sa’id ibn Mansur"
+      ],
+      [
+       "64.",
+       "Tafsir Al-Qur’an Al-’Azim",
+       "Imam Ibn Kathir"
+      ],
+      [
+       "65.",
+       "Tafsir Al-Qurtubi",
+       "Imam Al-Qurtubi"
+      ],
+      [
+       "66.",
+       "Tafsir Al-Tabari",
+       "Imam Ibn Jarir Al-Tabari"
+      ],
+      [
+       "67.",
+       "Tafsir Ibn Abi Hatim",
+       "Ibn Abi Hatim"
+      ],
+      [
+       "68.",
+       "Tahdhib Madarij Al-Salikin",
+       "Imam Ibn Al-Qayyim"
+      ],
+      [
+       "69.",
+       "The Noble Qur’an",
+       "The Word of Allah"
+      ],
+      [
+       "70.",
+       "Usul Al-Nizam Al-Ijtima’i fi Al-Islam",
+       "Ibn ’Ashur"
+      ],
+      [
+       "71.",
+       "Zad Al-Ma’ad",
+       "Imam Ibn Al-Qayyim"
+      ]
+     ],
+     "text": "No. — Title — Author\n1. — Adab Al-Nufus — Imam Al-Ajurri\n2. — Al-’Ubudiyyah — Shaykh Al-Islam Ibn Taymiyyah\n3. — Al-Durr Al-Manthur — Al-Suyuti\n4. — Al-Faqih wa’l-Mutafaqqih — Al-Khatib Al-Baghdadi\n5. — Al-Fawa’id — Imam Ibn Al-Qayyim\n6. — Al-I’tisam — Imam Al-Shatibi\n7. — Al-Istiqamah — Shaykh Al-Islam Ibn Taymiyyah\n8. — Al-Jami’ — Ibn Wahb\n9. — Al-Jawab Al-Kafi — Imam Ibn Al-Qayyim\n10. — Al-Kamil fi Al-Du’afa’ — Al-Hafiz Al-Jurjani\n11. — Al-Khushu’ fi Al-Salah — Imam Ibn Rajab Al-Hanbali\n12. — Al-Ma’rifah wa’l-Tarikh — Al-Fasawi (Al-’Umari)\n13. — Al-Majmu’ Sharh Al-Muhadhdhab — Imam Al-Nawawi\n14. — Al-Mu’jam Al-Awsat — Al-Tabarani\n15. — Al-Mu’jam Al-Kabir — Al-Tabarani\n16. — Al-Muntakhab min Musnad Abd ibn Humayd — Abd ibn Humayd\n17. — Al-Muqaddimah — Ibn Khaldun\n18. — Al-Musannaf — Ibn Abi Shaybah\n19. — Al-Mustadrak ’ala Al-Sahihayn — Al-Hakim Al-Naysaburi\n20. — Al-Muwafaqat fi Usul Al-Shari’ah — Imam Al-Shatibi\n21. — Al-Muwatta’ — Imam Malik\n22. — Al-Risalah — Imam Al-Shafi’i\n23. — Al-Siyasah Al-Shar’iyyah — Shaykh Al-Islam Ibn Taymiyyah\n24. — Al-Sunan Al-Ma’thurah — Imam Al-Shafi’i\n25. — Al-Tahrir wa’l-Tanwir — Ibn ’Ashur\n26. — Al-Wabil Al-Sayyib — Imam Ibn Al-Qayyim\n27. — Al-Zuhd wa’l-Raqa’iq (Ibn Al-Mubarak) — ’Abdullah ibn Al-Mubarak\n28. — Az-Zuhd wa’r-Raqa’iq — Abu Nu’aym Al-Asbahani\n29. — Hilyat Al-Awliya’ — Abu Nu’aym Al-Asbahani\n30. — I’lam Al-Muwaqqi’in ’an Rabb Al-’Alamin — Imam Ibn Al-Qayyim\n31. — Ihya’ ’Ulum Al-Din — Imam Al-Ghazali\n32. — Jami’ Al-’Ulum wa’l-Hikam — Ibn Rajab Al-Hanbali\n33. — Jami’ Bayan Al-’Ilm wa Fadlih — Ibn Abd Al-Barr\n34. — Kimiya’ Al-Sa’adah — Imam Al-Ghazali\n35. — Kitab Al-’Ilal — Ibn Abi Hatim\n36. — Kitab Al-Qadar — Ibn Wahb\n37. — Kitab Al-Salah — Imam Ahmad\n38. — Kitab Al-Zuhd — Imam Ahmad\n39. — Lata’if Al-Ma’arif — Imam Ibn Rajab Al-Hanbali\n40. — Madarij Al-Salikin — Imam Ibn Al-Qayyim\n41. — Majmu’ Al-Fatawa — Shaykh Al-Islam Ibn Taymiyyah\n42. — Maqasid Al-Shari’ah — Imam Al-Shatibi\n43. — Maqasid Al-Shari’ah Al-Islamiyyah — Imam Ibn ’Ashur\n44. — Mukhtasar Minhaj Al-Qasidin — Imam Al-Ghazali\n45. — Musannaf ’Abd Al-Razzaq — ’Abd Al-Razzaq\n46. — Musnad ’Abdullah ibn Al-Mubarak — ’Abdullah ibn Al-Mubarak\n47. — Musnad Abu Dawud Al-Tayalisi — Abu Dawud Al-Tayalisi\n48. — Musnad Ahmad — Imam Ahmad\n49. — Musnad Al-Darimi — Imam Al-Darimi\n50. — Musnad Al-Humaydi — Imam Al-Humaydi\n51. — Musnad Imam Abu Hanifah — Imam Abu Hanifah\n52. — Rawdat Al-Muhibbin — Ibn Al-Qayyim\n53. — Sahih Al-Bukhari — Imam Al-Bukhari\n54. — Sahih Muslim — Imam Muslim\n55. — Sharh Mushkil Al-Athar — Imam Al-Tahawi\n56. — Sharh Sahih Muslim — Imam Al-Nawawi\n57. — Sifat Salat Al-Nabi — Shaykh Al-Albani\n58. — Siyar A’lam Al-Nubala’ — Al-Dhahabi\n59. — Sunan Abu Dawud — Imam Abu Dawud\n60. — Sunan Al-Darimi — Imam Al-Darimi\n61. — Sunan Al-Tirmidhi — Imam Al-Tirmidhi\n62. — Sunan Ibn Majah — Imam Ibn Majah\n63. — Sunan Sa’id ibn Mansur — Sa’id ibn Mansur\n64. — Tafsir Al-Qur’an Al-’Azim — Imam Ibn Kathir\n65. — Tafsir Al-Qurtubi — Imam Al-Qurtubi\n66. — Tafsir Al-Tabari — Imam Ibn Jarir Al-Tabari\n67. — Tafsir Ibn Abi Hatim — Ibn Abi Hatim\n68. — Tahdhib Madarij Al-Salikin — Imam Ibn Al-Qayyim\n69. — The Noble Qur’an — The Word of Allah\n70. — Usul Al-Nizam Al-Ijtima’i fi Al-Islam — Ibn ’Ashur\n71. — Zad Al-Ma’ad — Imam Ibn Al-Qayyim"
+    }
+   ]
+  }
+ ]
+}

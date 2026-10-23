@@ -11,6 +11,7 @@ export default function HomePage() {
   const entries = catalogueEntries();
   const featured = entries.find((entry) => entry.id === FEATURED_ID && entry.readable) ?? entries.find((e) => e.readable);
   const hasTranslation = entries.some((entry) => entry.readable && entry.languages.length > 1);
+  const hasEnglishBooks = entries.some((entry) => entry.readable && entry.book.edition);
   // Readable titles first; forthcoming ones keep their catalogue order after them.
   const shelf = [...entries.filter((e) => e.readable), ...entries.filter((e) => !e.readable)];
 
@@ -24,7 +25,7 @@ export default function HomePage() {
         <GeometricBackdrop className="absolute inset-0 h-full w-full text-gold opacity-[0.06]" />
         <Rosette className="pointer-events-none absolute -right-8 -top-8 h-28 w-28 text-gold opacity-[0.12] sm:h-44 sm:w-44" />
         <div className="relative">
-          <p className="eyebrow">{hasTranslation ? "Arabic & English" : "Fully vowelled Arabic"}</p>
+          <p className="eyebrow">{hasTranslation || hasEnglishBooks ? "Arabic & English" : "Fully vowelled Arabic"}</p>
           <h1
             id="hero-heading"
             className="mt-1.5 font-display text-[1.75rem] leading-tight tracking-tight text-ink [font-variant-caps:small-caps] sm:mt-2 sm:text-5xl"
@@ -32,7 +33,8 @@ export default function HomePage() {
             Read. Study. Reflect.
           </h1>
           <p className="mt-2 max-w-md text-[0.95rem] leading-relaxed text-ink-2 sm:mt-3 sm:text-lg">
-            Classical Islamic texts in fully vowelled Arabic{hasTranslation ? ", with English translations where available" : ""}.
+            Classical Islamic texts in fully vowelled Arabic{hasTranslation ? ", with English translations where available" : ""}
+            {hasEnglishBooks ? ", and books in English" : ""}.
           </p>
           {featured ? (
             <Link
@@ -60,7 +62,7 @@ export default function HomePage() {
           </Link>
         </div>
         <p className="mt-1 max-w-xl text-sm leading-relaxed text-muted sm:mt-2 sm:text-base">
-          The manuals in the library. Open one to read it, or see what is planned next.
+          The books in the library. Open one to read it, or see what is planned next.
         </p>
         <ul className="mt-4 grid gap-4 sm:mt-6 lg:grid-cols-2 xl:grid-cols-3">
           {shelf.map((entry) => (

@@ -132,7 +132,7 @@ export default async function run({ browser, base, check, screenshot }) {
   // 404s
   const r = await page.goto(base + "/books/risala/read");
   check("forthcoming book read → 404", r.status() === 404);
-  const r2 = await page.goto(base + "/books/risala");
+  await page.goto(base + "/books/risala");
   check("forthcoming book page has no Read link", (await page.getByRole("link", { name: /Start reading|Continue reading/ }).count()) === 0);
   // home filters
   await page.goto(base + "/library", { waitUntil: "networkidle" });

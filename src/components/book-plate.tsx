@@ -9,10 +9,13 @@ import { Rosette } from "./geometric";
 export function BookCover({
   book,
   authorAr,
+  authorName,
   className,
 }: {
   book: Book;
-  authorAr: string;
+  authorAr?: string;
+  /** Shown on the cover of an English book, in place of the Arabic title and name. */
+  authorName?: string;
   className?: string;
 }) {
   const forthcoming = book.status !== "readable";
@@ -33,15 +36,24 @@ export function BookCover({
       <div className="absolute inset-[6%] rounded-[2px] border border-[#c9a96a]/45" />
       <div className="relative flex h-full flex-col items-center justify-between px-[13%] py-[14%] text-center">
         <Rosette className="h-[13cqw] w-[13cqw] text-[#c9a96a]/80" />
-        <div dir="rtl" lang="ar">
-          <p className="font-amiri text-[15cqw] leading-[1.35]">
-            {book.titleAr}
-          </p>
-          <p className="mt-[4cqw] font-amiri text-[7.5cqw] text-[#e6d6b0]/85">
-            {authorAr}
-          </p>
-        </div>
-        <p className={cn("text-[4.2cqw] uppercase tracking-[0.22em] text-[#e6d6b0]/75", forthcoming && "invisible")}>{book.madhhab}</p>
+        {book.edition ? (
+          <div lang="en">
+            <p className="font-display text-[9.5cqw] leading-[1.18] [overflow-wrap:anywhere]">{book.title}</p>
+            <p className="mt-[5cqw] font-display text-[6cqw] italic text-[#e6d6b0]/85">{authorName}</p>
+          </div>
+        ) : (
+          <div dir="rtl" lang="ar">
+            <p className="font-amiri text-[15cqw] leading-[1.35]">
+              {book.titleAr}
+            </p>
+            <p className="mt-[4cqw] font-amiri text-[7.5cqw] text-[#e6d6b0]/85">
+              {authorAr}
+            </p>
+          </div>
+        )}
+        <p className={cn("text-[4.2cqw] uppercase tracking-[0.22em] text-[#e6d6b0]/75", forthcoming && "invisible")}>
+          {book.edition ? book.edition.languageLabel : book.madhhab}
+        </p>
       </div>
       {forthcoming ? (
         <p className="absolute inset-x-0 bottom-0 bg-black/45 py-[2.5cqw] text-center text-[4.5cqw] font-medium uppercase tracking-[0.2em] text-[#f4ecd8]">
