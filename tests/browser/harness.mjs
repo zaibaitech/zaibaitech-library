@@ -62,3 +62,35 @@ export async function scrollDown(page, pixels) {
     await page.evaluate((dy) => window.scrollBy(0, dy), pixels);
   }
 }
+
+/**
+ * Collects console errors, page errors and failed requests on a page, leaving out the trace of a Next.js prefetch
+ * (?_rsc=) that the browser cancelled because the test itself navigated away. That is the test's doing, not the app's;
+ * a prefetch the server actually fails still shows up as a 4xx/5xx response.
+ * A cancelled prefetch leaves two kinds of console line: Next's "Failed to fetch RSC payload for <url>. Falling back"
+ * notice (matched by page, since Chromium builds word it differently), and in WebKit the browser's own
+ * "Fetch API cannot load <url> due to access control checks." (matched by the exact URL that was cancelled).
+ * Read `problems()` after the page has settled: a line and its cancelled request can arrive in either order.
+ */
+export function watchErrors(page, { requests = true } = {}) {
+  const errors = [];
+  const failed = [];
+  const cancelledUrls = new Set();
+  const cancelledPages = new Set();
+  page.on("pageerror", (e) => errors.push(e.message));
+  page.on("console", (m) => m.type() === "error" && errors.push(m.text()));
+  page.on("requestfailed", (r) => {
+    if (r.url().includes("_rsc=") && wasCancelled(r)) {
+      cancelledUrls.add(r.url());
+      cancelledPages.add(new URL(r.url()).pathname);
+    } else if (requests) failed.push(`${r.failure()?.errorText} ${r.url()}`);
+  });
+  if (requests) page.on("response", (r) => r.status() >= 400 && failed.push(`${r.status()} ${r.url()}`));
+  const cancelledTrace = (text) => {
+    const notice = /^Failed to fetch RSC payload for (\S+?)\.? Falling back/.exec(text);
+    if (notice) return cancelledPages.has(new URL(notice[1]).pathname);
+    const webkit = /^Fetch API cannot load (\S+) due to access control checks\.?$/.exec(text);
+    return Boolean(webkit) && cancelledUrls.has(webkit[1]);
+  };
+  return { problems: () => [...failed, ...errors.filter((text) => !cancelledTrace(text))] };
+}

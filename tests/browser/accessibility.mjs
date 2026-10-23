@@ -1,5 +1,5 @@
 // Phase 2 interaction and accessibility checks against the production build.
-import { wasCancelled } from "./harness.mjs";
+import { watchErrors } from "./harness.mjs";
 
 export default async function run({ browser, base, check }) {
   const b = browser;
@@ -9,20 +9,8 @@ export default async function run({ browser, base, check }) {
   for (const theme of ["light", "dark"]) for (const w of [360, 390, 412, 1280]) {
     const ctx = await b.newContext({ viewport: { width: w, height: 860 } });
     await ctx.addInitScript((t) => localStorage.setItem("zaibaitech.library.settings", JSON.stringify({ theme: t, mode: "both:en-zaibaitech-2026" })), theme);
-    const p = await ctx.newPage(); const errs = [], failed = [];
-    // A Next.js prefetch (?_rsc=) still in flight when the test itself navigates away is cancelled by the browser
-    // (net::ERR_ABORTED in Chromium, a "cancelled" error in WebKit) and Next logs a fallback notice. That is the test's doing, not the app's; a prefetch the
-    // server actually fails still shows up as a 4xx/5xx response below.
-    // Matched by page, not by message wording (Chromium builds word the fetch error differently), and only
-    // after all events are in, since the notice and the cancelled request can arrive in either order.
-    const cancelledPages = new Set();
-    p.on("pageerror", (e) => errs.push(e.message));
-    p.on("console", (m) => m.type() === "error" && errs.push(m.text()));
-    p.on("requestfailed", (r) => {
-      if (r.url().includes("_rsc=") && wasCancelled(r)) cancelledPages.add(new URL(r.url()).pathname);
-      else failed.push(`${r.failure()?.errorText} ${r.url()}`);
-    });
-    p.on("response", (r) => r.status() >= 400 && failed.push(`${r.status()} ${r.url()}`));
+    const p = await ctx.newPage();
+    const watch = watchErrors(p);
     let over = [];
     for (const path of pages) {
       await p.goto(base + path, { waitUntil: "networkidle" });
@@ -30,12 +18,8 @@ export default async function run({ browser, base, check }) {
       if (o > 0) over.push(`${path}:${o}`);
     }
     check(`${theme} ${w}px: no horizontal overflow on ${pages.length} pages`, over.length === 0, over.join(" "));
-    const cancelledNotice = (text) => {
-      const match = /^Failed to fetch RSC payload for (\S+?)\.? Falling back/.exec(text);
-      return Boolean(match) && cancelledPages.has(new URL(match[1]).pathname);
-    };
-    const realErrors = errs.filter((text) => !cancelledNotice(text));
-    check(`${theme} ${w}px: no console errors or failed requests`, realErrors.length === 0 && failed.length === 0, [...realErrors, ...failed].join(" | ").slice(0, 300));
+    const problems = watch.problems();
+    check(`${theme} ${w}px: no console errors or failed requests`, problems.length === 0, problems.join(" | ").slice(0, 300));
     await ctx.close();
   }
 
