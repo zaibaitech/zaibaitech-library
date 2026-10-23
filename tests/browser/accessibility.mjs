@@ -1,4 +1,6 @@
 // Phase 2 interaction and accessibility checks against the production build.
+import { wasCancelled } from "./harness.mjs";
+
 export default async function run({ browser, base, check }) {
   const b = browser;
   const pages = ["/", "/books/akhdari", "/books/risala", "/books/khalil", "/books/akhdari/read", "/about", "/glossary"];
@@ -9,7 +11,7 @@ export default async function run({ browser, base, check }) {
     await ctx.addInitScript((t) => localStorage.setItem("zaibaitech.library.settings", JSON.stringify({ theme: t, mode: "both:en-zaibaitech-2026" })), theme);
     const p = await ctx.newPage(); const errs = [], failed = [];
     // A Next.js prefetch (?_rsc=) still in flight when the test itself navigates away is cancelled by the browser
-    // (net::ERR_ABORTED) and Next logs a fallback notice. That is the test's doing, not the app's; a prefetch the
+    // (net::ERR_ABORTED in Chromium, a "cancelled" error in WebKit) and Next logs a fallback notice. That is the test's doing, not the app's; a prefetch the
     // server actually fails still shows up as a 4xx/5xx response below.
     // Matched by page, not by message wording (Chromium builds word the fetch error differently), and only
     // after all events are in, since the notice and the cancelled request can arrive in either order.
@@ -17,7 +19,7 @@ export default async function run({ browser, base, check }) {
     p.on("pageerror", (e) => errs.push(e.message));
     p.on("console", (m) => m.type() === "error" && errs.push(m.text()));
     p.on("requestfailed", (r) => {
-      if (r.url().includes("_rsc=") && r.failure()?.errorText === "net::ERR_ABORTED") cancelledPages.add(new URL(r.url()).pathname);
+      if (r.url().includes("_rsc=") && wasCancelled(r)) cancelledPages.add(new URL(r.url()).pathname);
       else failed.push(`${r.failure()?.errorText} ${r.url()}`);
     });
     p.on("response", (r) => r.status() >= 400 && failed.push(`${r.status()} ${r.url()}`));

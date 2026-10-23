@@ -1,6 +1,7 @@
 /**
  * Shared pieces for the browser suites. Each suite exports
- *   default async function ({ browser, base, check, screenshot })
+ *   default async function ({ browser, base, check, screenshot, engine })
+ * where engine is "chromium" or "webkit" (Safari's engine).
  * and records results through `check(name, ok, detail)`.
  */
 import fs from "node:fs";
@@ -48,3 +49,6 @@ export async function setTheme(page, label) {
   await page.getByRole("radiogroup", { name: "Theme" }).getByRole("radio", { name: label, exact: true }).click();
   await closeDisplay(page);
 }
+
+/** A request the browser itself cancelled. Chromium says net::ERR_ABORTED; WebKit says it was cancelled. */
+export const wasCancelled = (request) => /ERR_ABORTED|cancel/i.test(request.failure()?.errorText ?? "");

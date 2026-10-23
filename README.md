@@ -48,9 +48,9 @@ npm start
 - **qa-regressions:** the preview QA findings.
 - **arabic-collisions:** no vowel mark touches the line below, at six widths and sizes.
 
-Name suites to run only some (`npm run test:browser -- reader`). Set `SCREENSHOT_DIR` to save screenshots, `CHROMIUM_PATH` to use a particular browser, and `BASE_URL` to test a server that is already running.
+Name suites to run only some (`npm run test:browser -- reader`). Set `BROWSER=webkit` to run them in Safari's engine (after `npx playwright install webkit`), `SCREENSHOT_DIR` to save screenshots, `CHROMIUM_PATH` to use a particular Chromium, and `BASE_URL` to test a server that is already running.
 
-GitHub Actions (`.github/workflows/ci.yml`) runs every check above on each pull request and on `main`.
+GitHub Actions (`.github/workflows/ci.yml`) runs every check above on each pull request and on `main`, with the browser suites in both Chromium and WebKit.
 
 Next.js 16 App Router, TypeScript, Tailwind, lucide-react. All book routes are statically generated. Reading position, bookmarks, text size, tashkīl, reading mode and theme live in `localStorage` on the device. No account, no payment, no database.
 
