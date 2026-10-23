@@ -19,7 +19,7 @@ export default async function run({ browser, base, check }) {
     }
     check(`${theme} ${w}px: no horizontal overflow on ${pages.length} pages`, over.length === 0, over.join(" "));
     const problems = watch.problems();
-    check(`${theme} ${w}px: no console errors or failed requests`, problems.length === 0, problems.join(" | ").slice(0, 300));
+    check(`${theme} ${w}px: no console errors or failed requests`, problems.length === 0, problems.join(" | ").slice(0, 600));
     await ctx.close();
   }
 

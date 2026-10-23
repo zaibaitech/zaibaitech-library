@@ -66,31 +66,51 @@ export async function scrollDown(page, pixels) {
 /**
  * Collects console errors, page errors and failed requests on a page, leaving out the trace of a Next.js prefetch
  * (?_rsc=) that the browser cancelled because the test itself navigated away. That is the test's doing, not the app's;
- * a prefetch the server actually fails still shows up as a 4xx/5xx response.
+ * a prefetch the server actually fails still shows up as a 4xx/5xx response, and one that fails for any other reason
+ * as a failed request.
+ * A prefetch counts as cancelled when the browser reports it cancelled, or when it started and never got a response
+ * or a failure before the page went away (WebKit does not always report those).
  * A cancelled prefetch leaves two kinds of console line: Next's "Failed to fetch RSC payload for <url>. Falling back"
  * notice (matched by page, since Chromium builds word it differently), and in WebKit the browser's own
- * "Fetch API cannot load <url> due to access control checks." (matched by the exact URL that was cancelled).
+ * "Fetch API cannot load <url> due to access control checks." (matched by that request's path and query).
  * Read `problems()` after the page has settled: a line and its cancelled request can arrive in either order.
  */
 export function watchErrors(page, { requests = true } = {}) {
   const errors = [];
   const failed = [];
-  const cancelledUrls = new Set();
-  const cancelledPages = new Set();
+  const key = (url) => { const u = new URL(url); return u.pathname + u.search; };
+  const started = new Set();
+  const answered = new Set();
+  const cancelled = new Set();
   page.on("pageerror", (e) => errors.push(e.message));
   page.on("console", (m) => m.type() === "error" && errors.push(m.text()));
+  page.on("request", (r) => r.url().includes("_rsc=") && started.add(key(r.url())));
+  page.on("requestfinished", (r) => r.url().includes("_rsc=") && answered.add(key(r.url())));
   page.on("requestfailed", (r) => {
-    if (r.url().includes("_rsc=") && wasCancelled(r)) {
-      cancelledUrls.add(r.url());
-      cancelledPages.add(new URL(r.url()).pathname);
-    } else if (requests) failed.push(`${r.failure()?.errorText} ${r.url()}`);
+    if (r.url().includes("_rsc=") && wasCancelled(r)) cancelled.add(key(r.url()));
+    else {
+      if (r.url().includes("_rsc=")) answered.add(key(r.url()));
+      if (requests) failed.push(`${r.failure()?.errorText} ${r.url()}`);
+    }
   });
   if (requests) page.on("response", (r) => r.status() >= 400 && failed.push(`${r.status()} ${r.url()}`));
+  const wasDropped = (k) => cancelled.has(k) || (started.has(k) && !answered.has(k));
   const cancelledTrace = (text) => {
     const notice = /^Failed to fetch RSC payload for (\S+?)\.? Falling back/.exec(text);
-    if (notice) return cancelledPages.has(new URL(notice[1]).pathname);
-    const webkit = /^Fetch API cannot load (\S+) due to access control checks\.?$/.exec(text);
-    return Boolean(webkit) && cancelledUrls.has(webkit[1]);
+    if (notice) {
+      const path = new URL(notice[1]).pathname;
+      return [...started, ...cancelled].some((k) => k.split("?")[0] === path && wasDropped(k));
+    }
+    // The URL is matched by its ending, so it does not matter how the line writes the scheme and host.
+    const webkit = /(\S*_rsc=\S*?) due to access control checks/.exec(text);
+    return Boolean(webkit) && [...started, ...cancelled].some((k) => webkit[1].endsWith(k) && wasDropped(k));
   };
-  return { problems: () => [...failed, ...errors.filter((text) => !cancelledTrace(text))] };
+  return {
+    problems: () => {
+      const found = [...failed, ...errors.filter((text) => !cancelledTrace(text))];
+      if (!found.length) return found;
+      const unanswered = [...started].filter((k) => !answered.has(k) && !cancelled.has(k)).length;
+      return [`(prefetches: ${started.size} started, ${cancelled.size} reported cancelled, ${unanswered} unanswered)`, ...found];
+    },
+  };
 }
