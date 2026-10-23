@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Bookmark, Search, X } from "lucide-react";
 import type { BookContent } from "@/content/types";
 import { flattenUnits, searchContent } from "@/lib/reading";
+import { translationText } from "@/lib/translations";
 import { cn } from "@/lib/cn";
 
 export type SheetTab = "contents" | "search" | "bookmarks";
@@ -32,6 +33,24 @@ function snippet(text: string, max = 90) {
   return text.length > max ? `${text.slice(0, max).trimEnd()}…` : text;
 }
 
+/** The English around the first match, with the match marked. */
+function TranslationSnippet({ text, query }: { text: string; query: string }) {
+  const at = text.toLowerCase().indexOf(query.trim().toLowerCase());
+  if (at < 0) return <>{snippet(text, 120)}</>;
+  const end = at + query.trim().length;
+  const start = Math.max(0, text.lastIndexOf(" ", Math.max(0, at - 50)) + 1);
+  const stop = Math.min(text.length, end + 70);
+  return (
+    <>
+      {start > 0 ? "…" : ""}
+      {text.slice(start, at)}
+      <mark className="rounded-sm bg-gold-soft px-0.5 text-ink">{text.slice(at, end)}</mark>
+      {text.slice(end, stop).trimEnd()}
+      {stop < text.length ? "…" : ""}
+    </>
+  );
+}
+
 export function ReaderSheet(props: Props) {
   const { tab, onTab, onClose, content, activeChapterId, bookmarks, onToggleBookmark, onJump, translationId } = props;
   const panelRef = useRef<HTMLDivElement>(null);
@@ -49,7 +68,7 @@ export function ReaderSheet(props: Props) {
       }
       if (event.key !== "Tab" || !panelRef.current) return;
       const focusable = panelRef.current.querySelectorAll<HTMLElement>(
-        'button:not([disabled]), a[href], input, [tabindex]:not([tabindex="-1"])',
+        'button:not([disabled]):not([tabindex="-1"]), a[href], input, [tabindex]:not([tabindex="-1"])',
       );
       if (focusable.length === 0) return;
       const first = focusable[0];
@@ -71,9 +90,24 @@ export function ReaderSheet(props: Props) {
     };
   }, [onClose]);
 
+  // Focus the search box only when the sheet opens on Search; switching tabs keeps focus on the tab.
+  const openedOn = useRef(tab);
   useEffect(() => {
-    if (tab === "search") inputRef.current?.focus();
-  }, [tab]);
+    if (openedOn.current === "search") inputRef.current?.focus();
+  }, []);
+
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const onTabKey = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    const index = TABS.findIndex((item) => item.id === tab);
+    const step = { ArrowRight: 1, ArrowLeft: -1 }[event.key as string];
+    let next: number | null = step === undefined ? null : (index + step + TABS.length) % TABS.length;
+    if (event.key === "Home") next = 0;
+    if (event.key === "End") next = TABS.length - 1;
+    if (next === null) return;
+    event.preventDefault();
+    onTab(TABS[next].id);
+    tabRefs.current[next]?.focus();
+  };
 
   const flat = useMemo(() => flattenUnits(content), [content]);
   const hits = useMemo(() => searchContent(content, query, translationId), [content, query, translationId]);
@@ -84,29 +118,36 @@ export function ReaderSheet(props: Props) {
 
   return (
     <div className="no-print fixed inset-0 z-50 flex items-end justify-center sm:items-stretch sm:justify-end">
-      <button type="button" aria-label="Close panel" className="absolute inset-0 bg-ink/40" onClick={onClose} tabIndex={-1} />
+      <button type="button" aria-label="Close panel" className="absolute inset-0 bg-ink/30" onClick={onClose} tabIndex={-1} />
       <div
         ref={panelRef}
         role="dialog"
         aria-modal="true"
         aria-label="Book navigation"
         tabIndex={-1}
-        className="relative flex max-h-[88dvh] w-full flex-col rounded-t-3xl border border-line bg-paper-2 outline-none sm:max-h-none sm:max-w-md sm:rounded-none sm:rounded-l-3xl"
+        className="relative flex max-h-[88dvh] w-full flex-col rounded-t-xl border border-line bg-paper-2 shadow-lift outline-none sm:max-h-none sm:max-w-md sm:rounded-none sm:border-y-0 sm:border-r-0"
       >
         <div className="flex items-center gap-2 border-b border-line px-3 py-2">
-          <div role="tablist" aria-label="Book navigation" className="flex flex-1 gap-1">
-            {TABS.map((item) => (
+          {/* Tabs follow the WAI-ARIA pattern: arrow keys move between tabs; only the active tab is in the Tab order. */}
+          <div role="tablist" aria-label="Book navigation" onKeyDown={onTabKey} className="flex flex-1 gap-1">
+            {TABS.map((item, i) => (
               <button
                 key={item.id}
+                ref={(node) => {
+                  tabRefs.current[i] = node;
+                }}
                 type="button"
                 role="tab"
                 id={`sheet-tab-${item.id}`}
                 aria-selected={tab === item.id}
                 aria-controls="sheet-panel"
+                tabIndex={tab === item.id ? 0 : -1}
                 onClick={() => onTab(item.id)}
                 className={cn(
-                  "min-h-11 rounded-full px-3 text-sm",
-                  tab === item.id ? "bg-emerald font-medium text-paper" : "text-ink hover:bg-gold-soft/60",
+                  "min-h-11 rounded-md px-3 text-sm transition-colors motion-reduce:transition-none",
+                  tab === item.id
+                    ? "font-medium text-ink underline decoration-emerald decoration-2 underline-offset-[10px]"
+                    : "text-muted hover:text-ink",
                 )}
               >
                 {item.label}
@@ -130,8 +171,8 @@ export function ReaderSheet(props: Props) {
                       onClick={() => onJump(chapter.id)}
                       aria-current={chapter.id === activeChapterId ? "location" : undefined}
                       className={cn(
-                        "flex min-h-12 w-full items-baseline gap-3 rounded-xl px-3 py-2 text-left hover:bg-gold-soft/50",
-                        chapter.id === activeChapterId && "bg-gold-soft/60",
+                        "flex min-h-12 w-full items-baseline gap-3 rounded-xl px-3 py-2 text-left hover:bg-paper-3",
+                        chapter.id === activeChapterId && "bg-paper-3 font-medium",
                       )}
                     >
                       <span className="w-6 shrink-0 text-sm text-muted">{index + 1}</span>
@@ -166,10 +207,15 @@ export function ReaderSheet(props: Props) {
                   value={query}
                   onChange={(event) => setQuery(event.target.value)}
                   placeholder="Search the text"
-                  className="min-h-12 w-full rounded-full border border-line bg-paper py-2 pl-10 pr-4 text-base text-ink"
+                  className="field min-h-12 py-2 pl-10 pr-4"
                 />
               </div>
-              <p className="mt-2 text-xs text-muted">Vowel marks and alif forms are ignored. Type at least two letters.</p>
+              <p className="mt-2 text-xs text-muted">
+                {translationId
+                  ? "Searches the Arabic and the English. In Arabic, vowel marks and alif forms are ignored."
+                  : "Searches the Arabic. Vowel marks and alif forms are ignored."}{" "}
+                Type at least two letters.
+              </p>
               <p role="status" aria-live="polite" className="mt-3 text-sm text-muted">
                 {query.trim().length >= 2 ? `${hits.length} ${hits.length === 1 ? "passage" : "passages"} found` : ""}
               </p>
@@ -179,14 +225,20 @@ export function ReaderSheet(props: Props) {
                     <button
                       type="button"
                       onClick={() => onJump(hit.unit.id)}
-                      className="block min-h-12 w-full px-2 py-3 text-left hover:bg-gold-soft/50"
+                      className="block min-h-12 w-full px-2 py-3 text-left hover:bg-paper-3"
                     >
                       <span className="block text-xs text-muted">
                         {hit.chapter.headingEn} · passage {hit.unit.number}
                       </span>
-                      <span className="mt-1 block font-amiri text-xl leading-loose text-ink" dir="rtl" lang="ar">
-                        {snippet(hit.unit.arabic)}
-                      </span>
+                      {hit.field === "translation" && translationId ? (
+                        <span className="mt-1 block text-sm leading-relaxed text-ink-2">
+                          <TranslationSnippet text={translationText(hit.unit, translationId) ?? ""} query={query} />
+                        </span>
+                      ) : (
+                        <span className="mt-1 block font-amiri text-xl leading-loose text-ink" dir="rtl" lang="ar">
+                          {snippet(hit.unit.arabic)}
+                        </span>
+                      )}
                     </button>
                   </li>
                 ))}
@@ -213,7 +265,7 @@ export function ReaderSheet(props: Props) {
                     <button
                       type="button"
                       onClick={() => onJump(item.unit.id)}
-                      className="min-h-12 min-w-0 flex-1 px-2 py-3 text-left hover:bg-gold-soft/50"
+                      className="min-h-12 min-w-0 flex-1 px-2 py-3 text-left hover:bg-paper-3"
                     >
                       <span className="block text-xs text-muted">
                         {item.chapter.headingEn} · passage {item.unit.number}

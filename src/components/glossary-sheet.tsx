@@ -39,7 +39,7 @@ export function GlossarySheet({
         aria-modal="true"
         aria-labelledby="glossary-title"
         tabIndex={-1}
-        className="relative m-0 w-full max-w-lg rounded-t-3xl border border-line bg-paper-2 p-6 shadow-lift outline-none sm:rounded-3xl"
+        className="relative m-0 w-full max-w-lg rounded-t-xl border border-line bg-paper-2 p-6 shadow-lift outline-none sm:rounded-lg"
       >
         <div className="flex items-start justify-between gap-4">
           <div>
