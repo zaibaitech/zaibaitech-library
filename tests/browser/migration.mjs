@@ -1,5 +1,5 @@
 // Migration from the earlier 110-line ids, against the real build.
-export default async function run({ browser, base, check, screenshot }) {
+export default async function run({ browser, base, check }) {
   const b = browser;
   const ctx = await b.newContext({ viewport: { width: 390, height: 800 }, isMobile: true, hasTouch: true });
   const p = await ctx.newPage();

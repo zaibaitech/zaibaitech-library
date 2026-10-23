@@ -52,7 +52,7 @@ Name suites to run only some (`npm run test:browser -- reader`). Set `SCREENSHOT
 
 GitHub Actions (`.github/workflows/ci.yml`) runs every check above on each pull request and on `main`.
 
-Next.js 14 App Router, TypeScript, Tailwind, lucide-react. All book routes are statically generated. Reading position, bookmarks, text size, tashkīl, reading mode and theme live in `localStorage` on the device. No account, no payment, no database.
+Next.js 16 App Router, TypeScript, Tailwind, lucide-react. All book routes are statically generated. Reading position, bookmarks, text size, tashkīl, reading mode and theme live in `localStorage` on the device. No account, no payment, no database.
 
 ## What is in the library
 
@@ -108,4 +108,4 @@ Accounts, payments, author publishing and a database. The model (authors, books,
 
 ## Stack
 
-Next.js 14, React 18, TypeScript, Tailwind CSS, lucide-react; `tsx` for tests. Deploy on Vercel with the default build. Nothing here deploys itself.
+Next.js 16, React 19, TypeScript, Tailwind CSS, lucide-react; `tsx` for tests. Deploy on Vercel with the default build. Nothing here deploys itself.

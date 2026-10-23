@@ -18,7 +18,7 @@ export function DisplayPanel({
 }: {
   id: string;
   onClose: () => void;
-  anchorRef: React.RefObject<HTMLButtonElement>;
+  anchorRef: React.RefObject<HTMLButtonElement | null>;
   children: ReactNode;
 }) {
   const panelRef = useRef<HTMLDivElement>(null);
