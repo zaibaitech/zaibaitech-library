@@ -12,7 +12,8 @@
     "content:risala": "node scripts/build-risala.mjs",
     "test": "tsx --test tests/*.test.ts",
     "translations:check": "tsx scripts/validate-translations.ts",
-    "translations:worksheet": "node scripts/translation-worksheet.mjs"
+    "translations:worksheet": "node scripts/translation-worksheet.mjs",
+    "test:browser": "node tests/browser/run.mjs"
   },
   "dependencies": {
     "lucide-react": "^1.57.0",
@@ -26,6 +27,7 @@
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "^14.2.35",
+    "playwright": "1.56.1",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "tsx": "^4.23.15",
