@@ -92,12 +92,18 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
   const commitRef = useRef<(() => void) | null>(null);
   const lastSaved = useRef<string | null>(null);
   const restored = useRef(false);
+  /** True while the contents/search/bookmarks sheet or the display panel is open. */
+  const panelOpen = useRef(false);
   /** The passage at the top of the screen and its distance from the top, kept up to date while scrolling. */
   const anchor = useRef<{ id: string; top: number } | null>(null);
 
   const current = flat.find((item) => item.unit.id === currentId) ?? null;
   const activeChapter = chapters.find((c) => c.id === headingId) ?? current?.chapter ?? chapters[0];
   const percent = Math.round(positionFraction(content, currentId) * 100);
+
+  useEffect(() => {
+    panelOpen.current = sheet !== null || displayOpen;
+  }, [sheet, displayOpen]);
 
   /* Bookmarks live on this device. */
   useEffect(() => {
@@ -140,6 +146,7 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
   const jump = useCallback(
     (id: string) => {
       setSheet(null);
+      panelOpen.current = false;
       window.history.pushState(null, "", `#${id}`);
       // wait for the panel to unlock page scrolling
       window.requestAnimationFrame(() => scrollToId(id));
@@ -281,6 +288,9 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
     let timer = 0;
     let top: string | null = null;
     const commit = () => {
+      // While a panel is open the reader is not reading: locking the page's scroll can shift which passage looks
+      // current (Safari), and that must not overwrite the saved place or the history entry Back returns to.
+      if (panelOpen.current) return;
       if (!top || lastSaved.current === top) return;
       lastSaved.current = top;
       const progress = loadProgress(book.id);
@@ -321,16 +331,42 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
   /*
    * Back and Forward between passages. Next's router owns popstate and the
    * browser does not scroll to the fragment for these entries, so do it here.
+   * The browser's own scroll restoration is switched off while the reader is open: Safari applied it after this
+   * handler, putting back a stale position (the right chapter, the wrong passage).
    */
   useEffect(() => {
+    const previous = window.history.scrollRestoration;
+    window.history.scrollRestoration = "manual";
+    let settle = 0;
+    let userMoved = false;
+    const mark = () => {
+      userMoved = true;
+    };
     const onPop = () => {
       const hash = currentHash();
       if (!hash) return;
       const id = chapters.some((c) => c.id === hash) ? hash : (resolveTarget(content, hash)?.unit.id ?? hash);
+      userMoved = false;
       window.requestAnimationFrame(() => scrollToId(id));
+      // Safari can move the page again after popstate while the router finishes the history step: place the
+      // passage once more when that has settled, unless the reader has started scrolling themselves.
+      window.clearTimeout(settle);
+      settle = window.setTimeout(() => {
+        if (!userMoved) scrollToId(id);
+      }, 250);
     };
     window.addEventListener("popstate", onPop);
-    return () => window.removeEventListener("popstate", onPop);
+    window.addEventListener("wheel", mark, { passive: true });
+    window.addEventListener("touchmove", mark, { passive: true });
+    window.addEventListener("keydown", mark);
+    return () => {
+      window.removeEventListener("popstate", onPop);
+      window.removeEventListener("wheel", mark);
+      window.removeEventListener("touchmove", mark);
+      window.removeEventListener("keydown", mark);
+      window.clearTimeout(settle);
+      window.history.scrollRestoration = previous;
+    };
   }, [content, chapters, scrollToId]);
 
   /*
