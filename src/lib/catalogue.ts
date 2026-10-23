@@ -1,4 +1,5 @@
-import type { Book, BookContent, SubjectId } from "../content/types";
+import type { Book, ReadableContent, SubjectId } from "../content/types";
+import { isProse } from "../content/types";
 import { foldArabic } from "./arabic";
 import { availableTranslations } from "./translations";
 
@@ -17,22 +18,24 @@ export function bookMatches(book: Book, authorName: string, filter: CatalogueFil
   const needle = fold((filter.query ?? "").trim());
   if (!needle) return true;
   const haystack = fold(
-    [book.title, book.titleAr, book.subtitle, authorName, book.summary, book.madhhab, book.level, topics].join(" "),
+    [book.title, book.titleAr ?? "", book.subtitle, authorName, book.summary, book.madhhab ?? "", book.level, topics].join(" "),
   );
   return needle.split(/\s+/).every((word) => haystack.includes(word));
 }
 
 /** Languages a reader can actually read this book in today. */
-export function readableLanguages(book: Book, content: BookContent | null): string[] {
+export function readableLanguages(book: Book, content: ReadableContent | null): string[] {
+  if (book.edition) return [book.edition.languageLabel];
   const languages = [book.originalLanguage];
-  if (content) {
+  if (content && !isProse(content)) {
     for (const info of availableTranslations(book, content)) languages.push(info.languageLabel);
   }
   return languages;
 }
 
 /** Chapter headings (Arabic and English) and summaries of a readable book, for catalogue search. */
-export function bookTopics(content: BookContent | null): string {
+export function bookTopics(content: ReadableContent | null): string {
   if (!content) return "";
+  if (isProse(content)) return content.chapters.map((c) => c.headingEn).join(" ");
   return content.chapters.map((c) => [c.headingEn, c.headingAr, c.summaryEn].join(" ")).join(" ");
 }

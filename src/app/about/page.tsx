@@ -57,6 +57,7 @@ export default function AboutPage() {
     .filter((entry): entry is { book: (typeof books)[number]; content: BookContent } => entry.content !== null);
   const translated = readable.flatMap(({ book, content }) => availableTranslations(book, content).map((info) => ({ book, info })));
   const akhdari = getBookContent("akhdari");
+  const englishBooks = books.filter((book) => book.status === "readable" && book.edition);
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-10">
@@ -123,6 +124,31 @@ export default function AboutPage() {
           <p className="mt-3 text-sm text-muted">No translation has been published yet.</p>
         )}
       </section>
+
+      {englishBooks.length > 0 ? (
+        <section className="mt-10" aria-labelledby="english-heading">
+          <h2 id="english-heading" className="font-display text-2xl text-ink">
+            Books in English
+          </h2>
+          <p className="mt-3 text-sm leading-relaxed text-muted">
+            These books are held as their published English edition, not as an Arabic text with a translation. Their
+            text is copied from the printed edition without rewording; the few places where the print itself is
+            defective are corrected and listed in the edition&apos;s source record. They are not openly licensed: all
+            rights are reserved by the copyright holder, who has permitted the library to display them in full.
+          </p>
+          <ul className="mt-3 space-y-3">
+            {englishBooks.map((book) => (
+              <li key={book.id} className="card p-4 text-sm leading-relaxed text-muted">
+                <Link href={`/books/${book.id}`} className="link">
+                  {book.title}
+                </Link>
+                : by {book.edition!.author}. Translated by {book.edition!.translator}, edited by {book.edition!.editor}.{" "}
+                {book.edition!.copyright}, ISBN {book.edition!.isbn}, {book.edition!.edition}.
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
 
       <section className="mt-10" aria-labelledby="corrections">
         <h2 id="corrections" className="font-display text-2xl text-ink">

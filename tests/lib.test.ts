@@ -113,12 +113,15 @@ test("catalogue filter", () => {
   const author = (b: Book) => authors.find((a) => a.id === b.authorId)!.name;
   const pick = (filter: Parameters<typeof bookMatches>[2]) =>
     books.filter((b) => bookMatches(b, author(b), filter)).map((b) => b.id);
-  assert.deepEqual(pick({}), ["akhdari", "risala", "khalil"]);
+  assert.deepEqual(pick({}), ["akhdari", "reviving-religion", "knowing-the-self", "balance-of-stations", "risala", "khalil"]);
   assert.deepEqual(pick({ query: "akhdari" }), ["akhdari"]);
   assert.deepEqual(pick({ query: "الأخضري" }), ["akhdari"]);
   assert.deepEqual(pick({ query: "اخضري" }), ["akhdari"]);
   assert.deepEqual(pick({ subject: "prayer" }), ["akhdari"]);
   assert.deepEqual(pick({ subject: "creed" }), ["risala"]);
+  assert.deepEqual(pick({ subject: "self" }), ["reviving-religion", "knowing-the-self", "balance-of-stations"]);
+  assert.deepEqual(pick({ query: "ceesay" }), ["reviving-religion", "knowing-the-self", "balance-of-stations"]);
+  assert.deepEqual(pick({ query: "uprightness" }), ["knowing-the-self"]);
   assert.deepEqual(pick({ subject: "manners", query: "khalil" }), []);
 });
 

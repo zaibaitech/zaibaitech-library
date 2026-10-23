@@ -2,6 +2,8 @@
 
 A reading room for classical Islamic manuals, built for Muslims in the diaspora who are still growing into Quranic Arabic. The first book on the shelf is **Mukhtasar al-Akhdari** (عبد الرحمن الأخضري), the short Maliki manual of worship.
 
+The shelf also holds three books in English by Omar Ceesay, translated by Sidy Ahmad Gassama: *Reviving Religion in the Self and Life*, *Knowing the Self: The Path to Uprightness* and *The Balance of Spiritual Stations in the Muslim’s Life*.
+
 English in the interface names chapters, glossary words, and practice steps. It is not a translation of the book, and it is not a fatwa. The Arabic line is the source.
 
 ## Licensing
@@ -18,6 +20,8 @@ The sources used to build the reader live in `content/sources/`:
 - `akhdari.diacritized.txt` — the same text with vowels
 
 - `akhdari.segments.json` — where each of the 156 passages begins (see [CORRECTIONS.md](CORRECTIONS.md))
+
+The three English books are © Omar Ceesay (ISBN 978-9983-94-606-2, First Edition 1447H / 2026), all rights reserved. They are shown in full with the rights holder's permission and carry no open licence. Their source record, build and open review points are in [content/sources/three-books/README.md](content/sources/three-books/README.md).
 
 An English translation from the library's bilingual edition (original translation, CC BY-NC-SA 4.0) is published in the reader, with the translator's notes and chapter headings. It was approved by the library's reviewer on 22 October 2026.
 
@@ -47,6 +51,7 @@ npm start
 - **publication:** what the published translation shows.
 - **qa-regressions:** the preview QA findings.
 - **arabic-collisions:** no vowel mark touches the line below, at six widths and sizes.
+- **english-books:** the three English books: discovery, book-page details, the reader at three widths, contents, history, deep links, progress, bookmarks, search and tables.
 
 Name suites to run only some (`npm run test:browser -- reader`). Set `SCREENSHOT_DIR` to save screenshots, `CHROMIUM_PATH` to use a particular browser, and `BASE_URL` to test a server that is already running.
 
@@ -98,7 +103,11 @@ Full workflow, tooling (`translations:worksheet`, `scripts/translation-import.mj
 1. Add an author to `src/content/authors.ts` if needed (add `bio` only with a citable source).
 2. Add a `Book` to `src/content/books.ts` (`authorId`, `subjects`, `summary`, `description`, `level`, `translations: []`). Use `status: "coming-soon"` until the text exists.
 3. For a readable book, add `src/content/books/<id>.json` (`BookContent`: `source` with licence, then `chapters[].units[]`) and register it in `src/content/library.ts`. Ids must be `<chapterId>.pNN` (two digits, from 01); `npm test` enforces this.
-4. Rebuild Akhdari from the OpenITI files if you change those sources: `npm run content`.
+4. Rebuild Akhdari from the OpenITI files if you change those sources: `npm run content`. The English books are rebuilt with `npm run content:three-books`.
+   - **For a book in English** (its published English edition, not an Arabic text):
+     - give the `Book` an `edition` record (translator, editor, copyright, ISBN, edition, rights and permission), copied from its title and copyright pages
+     - register a `ProseBookContent` in `getReadableContent`
+     - the reader then shows it without Arabic controls
 5. Optional: glossary entries (`src/content/glossary.ts`), practice (`src/content/practice/`).
 6. Run `npm test`. It checks id integrity, that forthcoming books have no content, that vowelled and unvowelled text agree, and that glossary and practice point at real passages.
 

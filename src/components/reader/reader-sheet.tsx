@@ -2,8 +2,9 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Bookmark, Search, X } from "lucide-react";
-import type { BookContent } from "@/content/types";
-import { flattenUnits, searchContent } from "@/lib/reading";
+import type { ReadableContent } from "@/content/types";
+import { isProse } from "@/content/types";
+import { flattenUnits, proseText, searchContent, searchProse } from "@/lib/reading";
 import { translationText } from "@/lib/translations";
 import { cn } from "@/lib/cn";
 
@@ -13,7 +14,7 @@ type Props = {
   tab: SheetTab;
   onTab: (tab: SheetTab) => void;
   onClose: () => void;
-  content: BookContent;
+  content: ReadableContent;
   activeChapterId: string | undefined;
   bookmarks: string[];
   onToggleBookmark: (unitId: string) => void;
@@ -33,11 +34,18 @@ function snippet(text: string, max = 90) {
   return text.length > max ? `${text.slice(0, max).trimEnd()}…` : text;
 }
 
-/** The English around the first match, with the match marked. */
-function TranslationSnippet({ text, query }: { text: string; query: string }) {
-  const at = text.toLowerCase().indexOf(query.trim().toLowerCase());
+/**
+ * The English around the first match, with the match marked. Matching ignores case and, for English books,
+ * the ’ marks of transliteration; the folded text keeps one character per character, so offsets line up.
+ */
+function TranslationSnippet({ text, query, folded = false }: { text: string; query: string; folded?: boolean }) {
+  const fold = (value: string) => (folded ? foldPreservingLength(value) : value.toLowerCase());
+  const needle = fold(query.trim()).replace(/\u0000/g, "");
+  const haystack = fold(text);
+  const found = folded ? findIgnoringMarks(haystack, needle) : { at: haystack.indexOf(needle), length: needle.length };
+  const at = found.at;
   if (at < 0) return <>{snippet(text, 120)}</>;
-  const end = at + query.trim().length;
+  const end = at + found.length;
   const start = Math.max(0, text.lastIndexOf(" ", Math.max(0, at - 50)) + 1);
   const stop = Math.min(text.length, end + 70);
   return (
@@ -49,6 +57,28 @@ function TranslationSnippet({ text, query }: { text: string; query: string }) {
       {stop < text.length ? "…" : ""}
     </>
   );
+}
+
+/** Lower-cases and blanks out transliteration marks (as \u0000) without changing the string's length. */
+function foldPreservingLength(value: string) {
+  return value.toLowerCase().replace(/[’‘'ʿʾ`]/g, "\u0000");
+}
+
+/** Find `needle` in `haystack`, skipping the blanked marks in the haystack. */
+function findIgnoringMarks(haystack: string, needle: string) {
+  for (let start = 0; start < haystack.length; start++) {
+    let i = start;
+    let j = 0;
+    while (i < haystack.length && j < needle.length) {
+      if (haystack[i] === "\u0000" && i !== start) i++;
+      else if (haystack[i] === needle[j]) {
+        i++;
+        j++;
+      } else break;
+    }
+    if (j === needle.length && needle.length > 0) return { at: start, length: i - start };
+  }
+  return { at: -1, length: 0 };
 }
 
 export function ReaderSheet(props: Props) {
@@ -109,8 +139,15 @@ export function ReaderSheet(props: Props) {
     tabRefs.current[next]?.focus();
   };
 
+  const prose = isProse(content);
   const flat = useMemo(() => flattenUnits(content), [content]);
-  const hits = useMemo(() => searchContent(content, query, translationId), [content, query, translationId]);
+  const hits = useMemo(
+    () =>
+      isProse(content)
+        ? searchProse(content, query).map((hit) => ({ ...hit, preview: proseText(hit.unit) }))
+        : searchContent(content, query, translationId).map((hit) => ({ ...hit, preview: hit.unit.arabic })),
+    [content, query, translationId],
+  );
   const marked = useMemo(
     () => flat.filter((item) => bookmarks.includes(item.unit.id)),
     [flat, bookmarks],
@@ -163,6 +200,31 @@ export function ReaderSheet(props: Props) {
         <div id="sheet-panel" role="tabpanel" aria-labelledby={`sheet-tab-${tab}`} className="min-h-0 flex-1 overflow-y-auto p-3">
           {tab === "contents" ? (
             <>
+              {prose ? (
+                <ol>
+                  {content.chapters.map((chapter) => {
+                    const opensPart = chapter.partEn !== "" && chapter.partEn === chapter.headingEn;
+                    const inPart = chapter.partEn !== "" && !opensPart;
+                    return (
+                      <li key={chapter.id}>
+                        <button
+                          type="button"
+                          onClick={() => onJump(chapter.id)}
+                          aria-current={chapter.id === activeChapterId ? "location" : undefined}
+                          className={cn(
+                            "flex min-h-11 w-full items-baseline rounded-xl px-3 py-2 text-left hover:bg-paper-3",
+                            inPart && "pl-7 text-[0.95rem]",
+                            opensPart && "mt-2 font-medium",
+                            chapter.id === activeChapterId && "bg-paper-3 font-medium",
+                          )}
+                        >
+                          <span className="min-w-0 flex-1 text-ink">{chapter.headingEn}</span>
+                        </button>
+                      </li>
+                    );
+                  })}
+                </ol>
+              ) : (
               <ol>
                 {content.chapters.map((chapter, index) => (
                   <li key={chapter.id}>
@@ -184,6 +246,7 @@ export function ReaderSheet(props: Props) {
                   </li>
                 ))}
               </ol>
+              )}
               {props.practiceHref ? (
                 <a href={props.practiceHref} className="btn btn-quiet mt-3 w-full">
                   Guided practice
@@ -211,7 +274,9 @@ export function ReaderSheet(props: Props) {
                 />
               </div>
               <p className="mt-2 text-xs text-muted">
-                {translationId
+                {prose
+                  ? "Searches the whole book, headings included. Capitals and the ’ marks in transliterated names are ignored."
+                  : translationId
                   ? "Searches the Arabic and the English. In Arabic, vowel marks and alif forms are ignored."
                   : "Searches the Arabic. Vowel marks and alif forms are ignored."}{" "}
                 Type at least two letters.
@@ -230,13 +295,17 @@ export function ReaderSheet(props: Props) {
                       <span className="block text-xs text-muted">
                         {hit.chapter.headingEn} · passage {hit.unit.number}
                       </span>
-                      {hit.field === "translation" && translationId ? (
+                      {hit.field === "text" ? (
+                        <span className="mt-1 block text-sm leading-relaxed text-ink-2" lang="en">
+                          <TranslationSnippet text={hit.preview} query={query} folded />
+                        </span>
+                      ) : hit.field === "translation" && translationId ? (
                         <span className="mt-1 block text-sm leading-relaxed text-ink-2">
                           <TranslationSnippet text={translationText(hit.unit, translationId) ?? ""} query={query} />
                         </span>
                       ) : (
                         <span className="mt-1 block font-amiri text-xl leading-loose text-ink" dir="rtl" lang="ar">
-                          {snippet(hit.unit.arabic)}
+                          {snippet(hit.preview)}
                         </span>
                       )}
                     </button>
@@ -270,9 +339,15 @@ export function ReaderSheet(props: Props) {
                       <span className="block text-xs text-muted">
                         {item.chapter.headingEn} · passage {item.unit.number}
                       </span>
-                      <span className="mt-1 block truncate font-amiri text-xl leading-loose text-ink" dir="rtl" lang="ar">
-                        {snippet(item.unit.arabic, 60)}
-                      </span>
+                      {"arabic" in item.unit ? (
+                        <span className="mt-1 block truncate font-amiri text-xl leading-loose text-ink" dir="rtl" lang="ar">
+                          {snippet(item.unit.arabic, 60)}
+                        </span>
+                      ) : (
+                        <span className="mt-1 block truncate text-sm text-ink-2" lang="en">
+                          {snippet(proseText(item.unit), 90)}
+                        </span>
+                      )}
                     </button>
                     <button
                       type="button"
