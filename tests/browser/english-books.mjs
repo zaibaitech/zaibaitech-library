@@ -120,6 +120,10 @@ export default async function run({ browser, base, check, screenshot }) {
   check("history: Forward returns to the chapter", (await topPassage(p)) === "p3-ch5.p01", await topPassage(p));
 
   // Continuous reading: one document, sections in book order, no Previous/Next panels between them.
+  // A fresh page, like every scenario after the history checks (see `fresh`).
+  await fresh();
+  await p.goto(`${reader}#p3-ch5`, { waitUntil: "networkidle" });
+  await p.waitForTimeout(800);
   const layout = await p.evaluate(() => {
     const sections = [...document.querySelectorAll("article > section[id]")];
     const after = document.getElementById("p3-ch5").nextElementSibling;
