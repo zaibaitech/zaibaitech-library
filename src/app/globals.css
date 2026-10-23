@@ -119,6 +119,7 @@ body {
   .btn-quiet {
     @apply border border-line-strong text-ink hover:border-control hover:bg-paper-3;
   }
+  /* Inside a sentence, add py-[13px] (44px with 18px text): padding on an inline link widens its tap area without moving the line. */
   .link {
     @apply font-medium text-ink underline decoration-line-strong underline-offset-4 transition-colors hover:decoration-ink motion-reduce:transition-none;
   }

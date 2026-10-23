@@ -221,7 +221,7 @@ export default function BookDetailPage({ params }: { params: Params }) {
               <ul className="mt-3 space-y-2 text-sm text-muted">
                 {glossaryEnabled ? (
                   <li>
-                    <Link href="/glossary" className="link">
+                    <Link href="/glossary" className="link py-[13px]">
                       Glossary
                     </Link>{" "}
                     — tap an underlined Arabic word in the reader for a short note.

@@ -12,7 +12,7 @@ export function SiteFooter() {
             Zaibaitech Library
           </p>
           <p className="mt-3 leading-relaxed text-muted">
-            <a className="link font-normal" href={TEXT_CREDIT.href}>
+            <a className="link py-[13px] font-normal" href={TEXT_CREDIT.href}>
               {TEXT_CREDIT.label}
             </a>
             . Translations are credited on each book&apos;s page. Your place, bookmarks and display choices stay on this device;

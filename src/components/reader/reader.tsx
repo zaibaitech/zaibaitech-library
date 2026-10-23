@@ -78,6 +78,8 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
   const [headerHidden, setHeaderHidden] = useState(false);
   const [displayOpen, setDisplayOpen] = useState(false);
   const [justify, setJustify] = useState(true);
+  /** The chapter whose heading is above the reading line; a section title counts even though it holds no passages. */
+  const [headingId, setHeadingId] = useState<string | null>(null);
   const displayButtonRef = useRef<HTMLButtonElement>(null);
 
   const tracking = useRef(false);
@@ -88,7 +90,7 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
   const anchor = useRef<{ id: string; top: number } | null>(null);
 
   const current = flat.find((item) => item.unit.id === currentId) ?? null;
-  const activeChapter = current?.chapter ?? content.chapters[0];
+  const activeChapter = content.chapters.find((c) => c.id === headingId) ?? current?.chapter ?? content.chapters[0];
   const percent = Math.round(positionFraction(content, currentId) * 100);
 
   /* Bookmarks live on this device. */
@@ -202,15 +204,25 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
     return () => window.removeEventListener("resize", measure);
   }, [fontSize, mode.kind]);
 
-  /* Remember which passage is at the top of the screen. */
+  /*
+   * Remember which passage is at the top of the screen, and which chapter heading is above it. A change of
+   * width (turning a phone, resizing a window) reflows every passage: put the remembered one back in place.
+   */
   useEffect(() => {
+    // The reading line sits just below where jumps land (84px), inside the tracking band.
+    const LINE = 100;
     let frame = 0;
     const capture = () => {
       frame = 0;
+      let heading: string | null = null;
+      for (const section of document.querySelectorAll<HTMLElement>("article > section[id]")) {
+        if (section.getBoundingClientRect().top > LINE) break;
+        heading = section.id;
+      }
+      setHeadingId(heading);
       for (const el of document.querySelectorAll<HTMLElement>("[data-unit]")) {
         const rect = el.getBoundingClientRect();
-        // The reading line sits just below where jumps land (84px), inside the tracking band.
-        if (rect.bottom > 100) {
+        if (rect.bottom > LINE) {
           anchor.current = { id: el.id, top: rect.top };
           return;
         }
@@ -219,10 +231,25 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
     const onScroll = () => {
       if (!frame) frame = window.requestAnimationFrame(capture);
     };
+    let width = window.innerWidth;
+    const onResize = () => {
+      // A height change alone (a phone's toolbar showing or hiding) reflows nothing.
+      if (window.innerWidth === width) return;
+      width = window.innerWidth;
+      const saved = anchor.current;
+      const el = saved ? document.getElementById(saved.id) : null;
+      if (saved && el) {
+        const shift = el.getBoundingClientRect().top - saved.top;
+        if (Math.abs(shift) > 1) window.scrollBy({ top: shift, behavior: "instant" });
+      }
+      capture();
+    };
     capture();
     window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onResize);
     return () => {
       window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onResize);
       window.cancelAnimationFrame(frame);
     };
   }, []);
