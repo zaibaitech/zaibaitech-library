@@ -134,8 +134,9 @@ export default async function run({ browser, base, check }) {
     check("tab bar marks Home as the current page", (await p.locator("nav[aria-label='Main'] a[aria-current='page']").filter({ visible: true }).innerText()).trim() === "Home");
     await p.getByRole("link", { name: "Search the library" }).click();
     await p.waitForURL(/\/library#search$/);
-    await p.waitForTimeout(300);
-    check("header search opens the library with the field focused", await p.evaluate(() => document.activeElement?.id === "library-search"));
+    // Wait for the focus rather than a fixed delay: WebKit mounts the page a little later than Chromium.
+    const focused = await p.waitForFunction(() => document.activeElement?.id === "library-search", null, { timeout: 3000 }).then(() => true, () => false);
+    check("header search opens the library with the field focused", focused);
     const small2 = await p.evaluate(() => [...document.querySelectorAll("[aria-label='Filter by subject'] button")].filter((e) => e.getBoundingClientRect().height < 44).length);
     check("library filters ≥ 44px tall", small2 === 0, String(small2));
     await p.getByRole("searchbox", { name: "Search the library" }).fill("risala");

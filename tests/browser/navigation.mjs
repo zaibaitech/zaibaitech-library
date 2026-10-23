@@ -3,8 +3,16 @@ import { setTheme } from "./harness.mjs";
 export default async function run({ browser, base, check }) {
   const b = browser;
   const ctx = await b.newContext({ viewport: { width: 390, height: 800 }, isMobile: true, hasTouch: true });
-  const p = await ctx.newPage();
-  const errs = []; p.on("pageerror", (e) => errs.push(e.message));
+  const errs = [];
+  // Each scenario starts on a fresh page in the same context (saved progress carries over in localStorage),
+  // so none depends on the history stack an earlier scenario left behind.
+  let p = null;
+  const fresh = async () => {
+    if (p) await p.close();
+    p = await ctx.newPage();
+    p.on("pageerror", (e) => errs.push(e.message));
+  };
+  await fresh();
   const topUnit = () => p.evaluate(() => [...document.querySelectorAll("[data-unit]")].find((e) => e.getBoundingClientRect().bottom > 130)?.id);
   const saved = () => p.evaluate(() => JSON.parse(localStorage.getItem("zaibaitech.library.progress.akhdari") || "{}").lastUnitId);
 
@@ -27,8 +35,17 @@ export default async function run({ browser, base, check }) {
   await p.goForward();
   await p.waitForTimeout(1200);
   check("history: Forward returns to the jump target", (await topUnit()) === afterJump, `${await topUnit()}`);
+  // Leave the way a reader does, by the toolbar's back link. A crash here would be a real Safari problem.
+  try {
+    await p.locator("header.sticky").getByRole("link", { name: /^Back to / }).click();
+    await p.waitForURL(/\/books\/akhdari$/, { timeout: 10000 });
+    check("history: leaving the reader after Back and Forward works", true);
+  } catch (error) {
+    check("history: leaving the reader after Back and Forward works", false, String(error?.message ?? error).split("\n")[0]);
+  }
 
   // invalid hash keeps saved position
+  await fresh();
   await p.goto(base + "/books/akhdari/read#tayammum.p03", { waitUntil: "networkidle" }); await p.waitForTimeout(1000);
   await p.goto(base + "/books/akhdari");
   await p.goto(base + "/books/akhdari/read#no_such_passage.9", { waitUntil: "networkidle" });
@@ -37,12 +54,14 @@ export default async function run({ browser, base, check }) {
   check("invalid hash: saved position not overwritten", (await saved()) === "tayammum.p03", await saved());
 
   // malformed hash
+  await fresh();
   await p.goto(base + "/books/akhdari");
   await p.goto(base + "/books/akhdari/read#%E0%A4%A", { waitUntil: "networkidle" });
   await p.waitForTimeout(1200);
   check("malformed hash: no crash, restores saved", (await topUnit()) === "tayammum.p03" && errs.length === 0, `${await topUnit()} ${errs.join("|")}`);
 
   // empty chapter
+  await fresh();
   await p.goto(base + "/books/akhdari");
   await p.goto(base + "/books/akhdari/read#salah_title", { waitUntil: "networkidle" });
   await p.waitForTimeout(1200);

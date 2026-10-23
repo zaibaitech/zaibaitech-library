@@ -104,7 +104,8 @@ export default async function BookDetailPage({ params }: { params: Promise<Param
       <div className="mt-16 grid gap-14 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-16">
         {content ? (
           <section aria-labelledby="contents-heading" className="min-w-0">
-            <div className="flex items-baseline justify-between gap-4 border-b border-line pb-3">
+            {/* Wraps at large text sizes rather than pushing past a phone screen (seen in Safari at 200% text). */}
+            <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-line pb-3">
               <h2 id="contents-heading" className="font-display text-2xl text-ink">
                 Contents
               </h2>
