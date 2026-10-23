@@ -22,6 +22,13 @@ export const authors: Author[] = [
     name: "Khalil ibn Ishaq al-Jundi",
     nameAr: "خليل بن إسحاق الجندي",
   },
+  {
+    id: "omar-ceesay",
+    // As printed on the title pages of his books.
+    name: "Abu Abdur-Rahman Omar Ibn Alhagie Abdullah Ceesay Ibn Alhagie Jibel Fana Sow Ceesay",
+    // The copyright line's form: "© Omar Ceesay".
+    shortName: "Omar Ceesay",
+  },
 ];
 
 export function getAuthor(id: string) {

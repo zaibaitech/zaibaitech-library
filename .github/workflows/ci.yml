@@ -42,7 +42,7 @@ jobs:
       - name: Generated content is up to date
         run: |
           # Books with a deterministic build script must have their generated JSON committed and current.
-          for script in scripts/build-risala.mjs; do
+          for script in scripts/build-risala.mjs scripts/build-three-books.mjs; do
             if [ -f "$script" ]; then node "$script" --check; fi
           done
 

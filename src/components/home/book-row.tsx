@@ -11,7 +11,7 @@ export function BookRow({ entry }: { entry: CatalogueEntry }) {
       className="grid grid-cols-[88px_minmax(0,1fr)] gap-4 rounded-2xl border border-line-strong bg-paper-2 p-3.5 sm:grid-cols-[112px_minmax(0,1fr)] sm:gap-5 sm:p-4"
     >
       <Link href={`/books/${entry.id}`} tabIndex={-1} aria-hidden className="block self-start">
-        <BookCover book={entry.book} authorAr={entry.authorAr} />
+        <BookCover book={entry.book} authorAr={entry.authorAr} authorName={entry.authorShort} />
       </Link>
       <div className="flex min-w-0 flex-col">
         <div className="flex items-start justify-between gap-3">

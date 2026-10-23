@@ -1,0 +1,14 @@
+{
+  "note": "Corrections to the printed text. Each names the PDF pages, the exact text as extracted and as published, a reason, and a status. Only 'applied' entries change the text; the build fails if one matches nothing.",
+  "corrections": [
+    {
+      "id": "c1",
+      "pdfPages": [50, 151, 222],
+      "pages": ["40", "141", "212"],
+      "was": "(cid:0)",
+      "now": "ﷺ",
+      "reason": "In three italic quotations the print shows an empty missing-glyph box after \"the Messenger of Allah\" / \"the Messenger\": the honorific failed to render in the italic font (the PDF has no character for it). Everywhere else the book prints ﷺ in this position. Restored as ﷺ; flagged for the publisher to confirm.",
+      "status": "applied"
+    }
+  ]
+}

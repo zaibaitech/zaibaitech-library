@@ -1,13 +1,13 @@
 /**
  * Library content model.
- * Book text lives in Arabic text units. A licensed translation can be attached
- * later without changing the reader: add an entry to `translations` and look it
- * up by `translationId`. None are shipped with this MVP.
+ * Arabic books: text lives in Arabic text units, and a licensed translation can be attached without changing the
+ * reader (add an entry to `translations` and look it up by `translationId`).
+ * English books: text lives in prose units (`ProseBookContent`), with no Arabic layer and no translations.
  */
 
 export type BookStatus = "readable" | "coming-soon";
 
-export type SubjectId = "foundations" | "purification" | "prayer" | "creed" | "manners" | "fiqh";
+export type SubjectId = "foundations" | "purification" | "prayer" | "creed" | "manners" | "fiqh" | "self";
 
 export type Subject = {
   id: SubjectId;
@@ -20,7 +20,10 @@ export type Subject = {
 export type Author = {
   id: string;
   name: string;
-  nameAr: string;
+  /** The author's name in Arabic, where the library has it from a source. */
+  nameAr?: string;
+  /** A short form of a long name, for covers and cards, as the books themselves give it. */
+  shortName?: string;
   /** Death year, as the source record gives it (AH). */
   diedAH?: number;
   /** Where `diedAH` comes from. */
@@ -81,10 +84,34 @@ export type TranslationFile = {
   headings?: Record<string, string>;
 };
 
+/**
+ * Bibliographic record of a book the library holds in English (an English edition, not an Arabic text).
+ * Every field is copied from the edition's own title and copyright pages.
+ */
+export type BookEdition = {
+  /** BCP 47 language tag of the text in the library. */
+  language: "en";
+  languageLabel: string;
+  /** The book's full title as printed, including any subtitle. */
+  fullTitle: string;
+  author: string;
+  translator: string;
+  editor: string;
+  copyright: string;
+  isbn: string;
+  edition: string;
+  printer: string;
+  /** The rights notice as printed. */
+  rightsNotice: string;
+  /** What the rights holder allows the library to do, who confirmed it, and when (YYYY-MM-DD). */
+  permission: { scope: string; confirmedBy: string; confirmedOn: string };
+};
+
 export type Book = {
   id: string;
   title: string;
-  titleAr: string;
+  /** The title in Arabic, for Arabic books. */
+  titleAr?: string;
   subtitle: string;
   authorId: string;
   /** One or two sentences for cards and the shelf. */
@@ -93,8 +120,9 @@ export type Book = {
   description: string;
   status: BookStatus;
   coverGradient: string;
-  madhhab: string;
-  /** Language of the original text. */
+  /** The school of law the book follows, where it follows one. */
+  madhhab?: string;
+  /** Language of the text the library holds: the original, for Arabic books. */
   originalLanguage: string;
   level: string;
   subjects: SubjectId[];
@@ -102,6 +130,8 @@ export type Book = {
   translations: TranslationInfo[];
   /** A short Arabic line for the shelf. Not a translation. */
   excerptAr?: string;
+  /** Present for a book the library holds as an English edition. Its text is a `ProseBookContent`. */
+  edition?: BookEdition;
 };
 
 /** Translation text attached to a unit at load time from a TranslationFile. */
@@ -155,6 +185,65 @@ export type BookContent = {
   /** Earlier passage ids mapped to the passage that now holds their words. */
   legacyIds?: Record<string, string>;
 };
+
+/**
+ * One passage of an English book: a paragraph, a numbered item, a table, or a signature, as the print sets it.
+ * `text` keeps the print's emphasis as inline marks: **bold**, *italic*, ***both***.
+ */
+export type ProseUnit = {
+  id: string;
+  number: number;
+  text: string;
+  /** A sub-heading the print sets above this passage. */
+  heading?: string;
+  kind?: "item" | "table" | "signature";
+  /** Table cells, row by row; the first row is the header. */
+  rows?: string[][];
+  /** The printed page the passage starts on. */
+  page: string;
+};
+
+/** A section of an English book: a part's opening, a chapter, an introduction, a summary or a conclusion. */
+export type ProseChapter = {
+  id: string;
+  order: number;
+  headingEn: string;
+  /** The part this section belongs to, as printed. Empty outside the parts. */
+  partEn: string;
+  /** The printed page the section starts on. */
+  page: string;
+  units: ProseUnit[];
+};
+
+export type ProseSource = {
+  work: string;
+  title: string;
+  author: string;
+  translator: string;
+  editor: string;
+  copyright: string;
+  isbn: string;
+  edition: string;
+  printer: string;
+  rights: string;
+  /** The pages of the source PDF this book occupies. */
+  pdfPages: string;
+};
+
+export type ProseBookContent = {
+  id: string;
+  language: "en";
+  source: ProseSource;
+  chapters: ProseChapter[];
+  legacyIds?: Record<string, string>;
+};
+
+/** Content of any readable book. */
+export type ReadableContent = BookContent | ProseBookContent;
+
+export function isProse(content: ReadableContent): content is ProseBookContent {
+  return "language" in content && content.language === "en";
+}
 
 export function translationFor(unit: TextUnit, translationId: string) {
   return unit.translations?.find((item) => item.translationId === translationId) ?? null;
