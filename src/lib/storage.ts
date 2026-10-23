@@ -1,5 +1,5 @@
 export type ReaderSettings = {
-  theme: "light" | "dark" | "system";
+  theme: "light" | "sepia" | "dark" | "system";
   /** Index into ARABIC_SCALES. */
   fontScale: number;
   /** Index into TRANSLATION_SCALES. */
@@ -41,7 +41,8 @@ export const defaultSettings: ReaderSettings = {
 /** rem sizes for Arabic text. The default (index 2) is deliberately large. */
 export const FONT_SCALES = [1.4, 1.65, 1.9, 2.2, 2.55, 2.95];
 /** rem sizes for translation text. */
-export const TRANSLATION_SCALES = [0.95, 1.05, 1.2, 1.35, 1.55];
+// The default (index 1) is 18px, inside the 17–19px range comfortable for long reading on a phone.
+export const TRANSLATION_SCALES = [1, 1.125, 1.25, 1.4, 1.55];
 
 function clampIndex(value: unknown, length: number, fallback: number) {
   const n = typeof value === "number" && Number.isFinite(value) ? Math.round(value) : fallback;
@@ -70,7 +71,7 @@ function writeJson(key: string, value: unknown) {
 export function loadSettings(): ReaderSettings {
   const stored = readJson(SETTINGS_KEY, defaultSettings);
   return {
-    theme: stored.theme === "light" || stored.theme === "dark" ? stored.theme : "system",
+    theme: stored.theme === "light" || stored.theme === "sepia" || stored.theme === "dark" ? stored.theme : "system",
     fontScale: clampIndex(stored.fontScale, FONT_SCALES.length, defaultSettings.fontScale),
     translationScale: clampIndex(
       stored.translationScale,

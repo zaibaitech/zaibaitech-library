@@ -33,16 +33,16 @@
 }
 
 html.dark {
-  --paper: 17 20 18;
-  --paper-2: 23 27 25;
-  --paper-3: 31 36 33;
-  --ink: 236 231 220;
-  --ink-2: 214 209 198;
-  --muted: 172 167 155;
-  --faint: 146 141 130;
-  --line: 43 50 46;
-  --line-strong: 68 77 72;
-  --control: 104 114 108;
+  --paper: 31 31 30;
+  --paper-2: 38 38 37;
+  --paper-3: 46 46 44;
+  --ink: 240 233 220;
+  --ink-2: 226 218 204;
+  --muted: 184 176 162;
+  --faint: 162 155 142;
+  --line: 58 58 55;
+  --line-strong: 84 83 79;
+  --control: 120 118 112;
   --emerald: 138 198 168;
   --emerald-ink: 16 24 20;
   --gold: 204 172 112;
@@ -53,18 +53,35 @@ html.dark {
   color-scheme: dark;
 }
 
+/* Sepia: a warm paper for long reading. A light scheme, so everything that checks for dark stays as it is. */
+html.sepia {
+  --paper: 244 236 220;
+  --paper-2: 249 243 231;
+  --paper-3: 236 226 206;
+  --ink: 48 37 26;
+  --ink-2: 70 57 43;
+  --muted: 94 80 63;
+  --faint: 100 86 68;
+  --line: 226 214 191;
+  --line-strong: 200 184 156;
+  --control: 138 121 96;
+  --gold: 116 85 34;
+  --gold-soft: 236 222 192;
+  color-scheme: light;
+}
+
 @media (prefers-color-scheme: dark) {
   html:not(.light) {
-    --paper: 17 20 18;
-    --paper-2: 23 27 25;
-    --paper-3: 31 36 33;
-    --ink: 236 231 220;
-    --ink-2: 214 209 198;
-    --muted: 172 167 155;
-    --faint: 146 141 130;
-    --line: 43 50 46;
-    --line-strong: 68 77 72;
-    --control: 104 114 108;
+    --paper: 31 31 30;
+    --paper-2: 38 38 37;
+    --paper-3: 46 46 44;
+    --ink: 240 233 220;
+    --ink-2: 226 218 204;
+    --muted: 184 176 162;
+    --faint: 162 155 142;
+    --line: 58 58 55;
+    --line-strong: 84 83 79;
+    --control: 120 118 112;
     --emerald: 138 198 168;
     --emerald-ink: 16 24 20;
     --gold: 204 172 112;
@@ -211,12 +228,27 @@ body {
 }
 
 .translation-text {
-  font-family: var(--font-display), var(--font-amiri), Georgia, serif;
-  font-variation-settings: "opsz" 14;
-  line-height: 1.65;
+  /* Upright text serif; italic appears only where the text marks emphasis (<em>). ﷺ falls back to Amiri. */
+  font-family: var(--font-reading), var(--font-amiri), Georgia, serif;
+  font-style: normal;
+  font-optical-sizing: auto;
+  line-height: 1.7;
   overflow-wrap: break-word;
   /* No automatic hyphenation: it split names and terms mid-word on narrow screens. */
   hyphens: manual;
+}
+
+/*
+ * English book paragraphs are justified like a printed ebook. On a phone a justified line holds few words, so long
+ * words (10+ letters) may break at a syllable to keep the word gaps even; the last line keeps its natural length.
+ */
+.reading-justify {
+  text-align: justify;
+  text-align-last: start;
+  text-justify: inter-word;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphenate-limit-chars: 10 4 4;
 }
 
 .term {
@@ -243,10 +275,10 @@ body {
   scroll-margin-top: 7.25rem;
 }
 
-/* Clears the reader's single-row toolbar with a little air. Must stay above the
+/* Clears the reader's single-row toolbar (64px on a phone, 56px from sm) with a little air. Must stay above the
    tracking band's top edge in reader.tsx (92px). */
 .ebook-anchor {
-  scroll-margin-top: 5.25rem;
+  scroll-margin-top: 5.5rem;
 }
 
 .guide-fit {

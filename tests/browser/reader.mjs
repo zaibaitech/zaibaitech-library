@@ -87,7 +87,10 @@ export default async function run({ browser, base, check, screenshot }) {
   // bookmarks
   await page.goto(base + "/books/akhdari/read#wudu_faraid_sunan.p02", { waitUntil: "networkidle" });
   await page.waitForTimeout(600);
-  await page.getByRole("button", { name: "Bookmark Wudu, passage 2" }).nth(0).scrollIntoViewIfNeeded();
+  // On a phone a passage's bookmark button appears when the passage is tapped.
+  const passage = page.locator("#wudu_faraid_sunan\\.p02");
+  await passage.scrollIntoViewIfNeeded();
+  await passage.locator("p.arabic-text").click({ position: { x: 40, y: 12 } });
   const btn = page.locator('#wudu_faraid_sunan\\.p02 button[aria-label="Bookmark Wudu, passage 2"]');
   await btn.click();
   check("bookmark: aria-pressed true", (await btn.getAttribute("aria-pressed")) === "true");
