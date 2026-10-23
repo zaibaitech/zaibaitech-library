@@ -1,24 +1,24 @@
 import { Fragment, type ReactNode } from "react";
 import type { ProseUnit } from "@/content/types";
 import { cn } from "@/lib/cn";
+import { emphasisRuns, isInvocation } from "@/lib/emphasis";
 import { Rosette } from "../geometric";
 
 /**
- * Text of an English book with the print's emphasis: **bold**, *italic*, ***both***. A line break is kept
- * where the print breaks the line (a signature). The marks never nest, since each run has one style.
+ * Text of an English book with the print's emphasis (see `emphasisRuns`): plain text stays upright; only marked runs
+ * are bold or italic. A line break is kept where the print breaks the line (a signature).
  */
 export function Inline({ text }: { text: string }) {
-  const lines = text.split("\n");
   return (
     <>
-      {lines.map((line, l) => (
+      {text.split("\n").map((line, l) => (
         <Fragment key={l}>
           {l > 0 ? <br /> : null}
-          {line.split(/(\*\*\*[^*]+\*\*\*|\*\*[^*]+\*\*|\*[^*]+\*)/).map((part, i) => {
-            if (part.startsWith("***")) return <strong key={i}><em>{part.slice(3, -3)}</em></strong>;
-            if (part.startsWith("**")) return <strong key={i} className="font-semibold text-ink">{part.slice(2, -2)}</strong>;
-            if (part.startsWith("*")) return <em key={i}>{part.slice(1, -1)}</em>;
-            return part;
+          {emphasisRuns(line).map((run, i) => {
+            if (run.bold && run.italic) return <strong key={i} className="font-semibold text-ink"><em>{run.text}</em></strong>;
+            if (run.bold) return <strong key={i} className="font-semibold text-ink">{run.text}</strong>;
+            if (run.italic) return <em key={i}>{run.text}</em>;
+            return run.text;
           })}
         </Fragment>
       ))}
@@ -87,8 +87,12 @@ export function ProsePassage({ unit, fontSize, after }: { unit: ProseUnit; fontS
       <p
         className={cn(
           "max-w-[34em]",
+          // Paragraphs and numbered items are justified; the invocation is centred and a signature stays ragged.
+          unit.kind !== "signature" && !isInvocation(unit.text) && "reading-justify",
           unit.kind === "item" && "ps-[1.6em] -indent-[1.6em]",
           unit.kind === "signature" && "mt-2",
+          // The invocation stands on its own, centred, before the text begins.
+          isInvocation(unit.text) && "invocation mx-auto py-2 text-center text-[1.05em] text-ink",
         )}
       >
         <Inline text={unit.text} />

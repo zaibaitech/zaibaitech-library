@@ -41,17 +41,19 @@ try {
   var raw = localStorage.getItem(${JSON.stringify(SETTINGS_KEY)});
   var stored = raw ? JSON.parse(raw) : {};
   var theme = stored.theme || "system";
-  var dark = theme === "dark" || (theme !== "light" && window.matchMedia("(prefers-color-scheme: dark)").matches);
+  var dark = theme === "dark" || (theme === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches);
   var root = document.documentElement;
   root.classList.toggle("dark", dark);
   root.classList.toggle("light", !dark);
+  root.classList.toggle("sepia", theme === "sepia");
   root.style.colorScheme = dark ? "dark" : "light";
 } catch (e) {}
 `;
 
+/** Sepia is a light scheme with its own paper and ink (html.sepia). */
 function resolveTheme(theme: ReaderSettings["theme"]): Resolved {
   if (theme === "dark") return "dark";
-  if (theme === "light") return "light";
+  if (theme === "light" || theme === "sepia") return "light";
   return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
 
@@ -60,6 +62,7 @@ function applyTheme(theme: ReaderSettings["theme"]) {
   const root = document.documentElement;
   root.classList.toggle("dark", resolved === "dark");
   root.classList.toggle("light", resolved === "light");
+  root.classList.toggle("sepia", theme === "sepia");
   root.style.colorScheme = resolved;
   return resolved;
 }
@@ -98,7 +101,7 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
       translationFontSize: `${TRANSLATION_SCALES[settings.translationScale]}rem`,
       setTheme: (theme) => update({ ...settings, theme }),
       cycleTheme: () => {
-        const order: ReaderSettings["theme"][] = ["system", "light", "dark"];
+        const order: ReaderSettings["theme"][] = ["system", "light", "sepia", "dark"];
         const next = order[(order.indexOf(settings.theme) + 1) % order.length];
         update({ ...settings, theme: next });
       },

@@ -83,6 +83,8 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
   const [termId, setTermId] = useState<string | null>(null);
   const [headerHidden, setHeaderHidden] = useState(false);
   const [displayOpen, setDisplayOpen] = useState(false);
+  /** The passage whose actions are showing: tapped or clicked by the reader. */
+  const [activeId, setActiveId] = useState<string | null>(null);
   const [justify, setJustify] = useState(true);
   /** The chapter whose heading is above the reading line; a section title counts even though it holds no passages. */
   const [headingId, setHeadingId] = useState<string | null>(null);
@@ -222,7 +224,7 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
    * width (turning a phone, resizing a window) reflows every passage: put the remembered one back in place.
    */
   useEffect(() => {
-    // The reading line sits just below where jumps land (84px), inside the tracking band.
+    // The reading line sits just below where jumps land (88px), inside the tracking band.
     const LINE = 100;
     let frame = 0;
     const capture = () => {
@@ -316,7 +318,7 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
         window.clearTimeout(timer);
         timer = window.setTimeout(commit, 400);
       },
-      // The band starts just below where a jumped-to passage lands (scroll-margin 5.25rem = 84px), so the
+      // The band starts just below where a jumped-to passage lands (scroll-margin 5.5rem = 88px), so the
       // previous passage's bottom padding never counts as "on screen", and covers the top 40% of the screen.
       { rootMargin: "-92px 0px -60% 0px", threshold: 0 },
     );
@@ -392,6 +394,7 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
   const modeChoices = options.map((option) => ({ key: option.key, label: option.label.replace(/ only$/, "") }));
   const themeChoices = [
     { key: "light", label: "Light" },
+    { key: "sepia", label: "Sepia" },
     { key: "dark", label: "Dark" },
     { key: "system", label: "Auto" },
   ];
@@ -401,11 +404,11 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
     <div className="[overflow-anchor:none]">
       <header
         className={cn(
-          "sticky top-0 z-30 border-b border-line bg-paper/95 backdrop-blur-md transition-transform duration-200 motion-reduce:transition-none supports-[backdrop-filter]:bg-paper/85",
+          "sticky top-0 z-30 border-b border-line bg-paper transition-transform duration-200 motion-reduce:transition-none",
           headerHidden && !displayOpen && "-translate-y-full focus-within:translate-y-0",
         )}
       >
-        <div className="mx-auto flex h-14 max-w-5xl items-center gap-0.5 px-2 sm:gap-1 sm:px-4">
+        <div className="mx-auto flex h-16 max-w-5xl items-center gap-0.5 px-2 sm:h-14 sm:gap-1 sm:px-4">
           <Link href={`/books/${book.id}`} aria-label={`Back to ${book.title}`} className="tool-btn shrink-0 !px-0">
             <ChevronLeft className="h-5 w-5" aria-hidden />
           </Link>
@@ -418,9 +421,13 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
           >
             <List className="h-4 w-4 shrink-0 text-muted" aria-hidden />
             <span className="min-w-0 leading-tight">
-              <span className="block truncate text-sm font-medium text-ink">{activeChapter?.headingEn}</span>
-              <span className="block truncate text-[0.7rem] text-muted">
-                {current ? `${book.title} · ${percent}%` : book.title}
+              {/* Two lines for the chapter on a phone, so a long title is not cut off after a few words. */}
+              <span className="line-clamp-2 text-[0.8rem] font-medium leading-[1.2] text-ink sm:line-clamp-1 sm:text-sm">
+                {activeChapter?.headingEn}
+              </span>
+              <span className="mt-0.5 flex min-w-0 text-[0.68rem] leading-none text-muted">
+                <span className="truncate">{book.title}</span>
+                {current ? <span className="shrink-0 tabular-nums">&nbsp;· {percent}%</span> : null}
               </span>
             </span>
           </button>
@@ -523,7 +530,7 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
                 label="Theme"
                 value={settings.theme}
                 choices={themeChoices}
-                onChange={(key) => setTheme(key as "light" | "dark" | "system")}
+                onChange={(key) => setTheme(key as "light" | "sepia" | "dark" | "system")}
               />
             </PanelRow>
           </DisplayPanel>
@@ -532,17 +539,34 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
 
       <article className={cn("mx-auto px-4 pb-24 pt-6 sm:px-8 sm:pt-10", wide ? "max-w-2xl lg:max-w-5xl" : "max-w-2xl")}>
         {prose ? (
-          <header className="mb-8 text-center sm:mb-10" lang="en">
-            <h1 className="mx-auto max-w-xl text-balance font-display text-[1.75rem] leading-tight text-ink sm:text-[2.2rem]">{book.title}</h1>
-            <div className="mx-auto mt-3 max-w-md space-y-0.5 text-xs leading-relaxed text-muted">
-              <p>{content.source.author}</p>
-              <p>
-                Translated by {content.source.translator} · Edited by {content.source.editor}
+          // The book's title page: title and author first, then the edition's credits as a list, not as body text.
+          <header className="mb-10 border-b border-line pb-8 text-center sm:mb-12" lang="en">
+            <p className="eyebrow">English translation</p>
+            <h1 className="mx-auto mt-2 max-w-xl text-balance font-display text-[1.9rem] leading-[1.12] text-ink sm:text-[2.5rem]">
+              {book.title}
+            </h1>
+            {book.edition && book.edition.fullTitle !== book.title ? (
+              <p className="mx-auto mt-3 max-w-md text-balance font-display text-base italic leading-snug text-ink-2">
+                {book.edition.fullTitle.slice(book.title.length).replace(/^[.\s]+/, "")}
               </p>
-              <p>
-                {content.source.copyright} · {content.source.edition}. Published here with the rights holder&apos;s permission.
-              </p>
-            </div>
+            ) : null}
+            <p className="mx-auto mt-4 max-w-md text-sm leading-snug text-ink-2">{content.source.author}</p>
+            <dl className="mx-auto mt-6 grid max-w-sm grid-cols-[auto_minmax(0,1fr)] gap-x-4 gap-y-1.5 text-left text-[0.8rem] leading-snug">
+              <dt className="text-muted">Translated by</dt>
+              <dd className="text-ink">{content.source.translator}</dd>
+              <dt className="text-muted">Edited by</dt>
+              <dd className="text-ink">{content.source.editor}</dd>
+              <dt className="text-muted">Edition</dt>
+              <dd className="text-ink">{content.source.edition}</dd>
+              <dt className="text-muted">Copyright</dt>
+              <dd className="text-ink">{content.source.copyright}</dd>
+              <dt className="text-muted">ISBN</dt>
+              <dd className="tabular-nums text-ink">{content.source.isbn}</dd>
+            </dl>
+            <p className="mx-auto mt-5 max-w-sm text-xs leading-relaxed text-muted">
+              All rights reserved. Published in this library with the rights holder&apos;s permission.
+            </p>
+            <Rosette className="mx-auto mt-6 h-5 w-5 text-gold/70" />
           </header>
         ) : (
         <header className="mb-8 text-center sm:mb-10">
@@ -581,7 +605,14 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
                   {chapter.units.map((unit) => {
                     const marked = bookmarks.includes(unit.id);
                     return (
-                      <div key={unit.id} id={unit.id} data-unit={unit.id} className="ebook-anchor relative pb-5 sm:pb-6">
+                      <div
+                        key={unit.id}
+                        id={unit.id}
+                        data-unit={unit.id}
+                        data-active={activeId === unit.id}
+                        onClick={passageTap(unit.id, setActiveId)}
+                        className="group/passage ebook-anchor relative pb-5 sm:pb-6"
+                      >
                         <span className="sr-only">Passage {unit.number}</span>
                         <ProsePassage
                           unit={unit}
@@ -592,7 +623,7 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
                               className={cn(
                                 "tool-btn !px-0 md:absolute md:-left-16 md:top-1 md:m-0",
                                 unit.kind === "table" ? "mt-1" : "-my-3 ms-0.5 align-middle",
-                                marked ? "!text-gold" : "!text-faint hover:!text-ink",
+                                passageAction(marked, activeId === unit.id),
                               )}
                               style={{ textIndent: 0 }}
                               aria-pressed={marked}
@@ -640,7 +671,7 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
                     className={cn(
                       "tool-btn !px-0 md:absolute md:-left-16 md:top-1 md:m-0",
                       floatClass,
-                      marked ? "!text-gold" : "!text-faint hover:!text-ink",
+                      passageAction(marked, activeId === unit.id),
                     )}
                     aria-pressed={marked}
                     aria-label={`Bookmark ${chapter.headingEn}, passage ${unit.number}`}
@@ -654,7 +685,9 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
                     key={unit.id}
                     id={unit.id}
                     data-unit={unit.id}
-                    className={cn("ebook-anchor relative pb-7 sm:pb-9", wide && "lg:grid lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-x-14")}
+                    data-active={activeId === unit.id}
+                    onClick={passageTap(unit.id, setActiveId)}
+                    className={cn("group/passage ebook-anchor relative pb-7 sm:pb-9", wide && "lg:grid lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-x-14")}
                   >
                     <span className="sr-only">Passage {unit.number}</span>
                     {arabicShown ? (
@@ -762,6 +795,33 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
       {glossaryEnabled ? <GlossarySheet termId={termId} bookId={book.id} onClose={() => setTermId(null)} /> : null}
     </div>
   );
+}
+
+/**
+ * A passage's bookmark button is always in place (keyboard and screen readers reach it as before) but is drawn only
+ * when it helps: on a bookmarked passage, on the passage the reader tapped, and on hover or keyboard focus.
+ */
+const passageAction = (marked: boolean, active: boolean) =>
+  marked
+    ? "!text-gold"
+    : cn(
+        "!text-faint hover:!text-ink",
+        // On a phone an idle button takes no room at all (an invisible 44px button at a paragraph's end can push
+        // onto a line of its own); keyboard focus still reaches it and draws it.
+        // Pinned to the passage's corner while hidden: left where it falls after a full last line, it would widen the page.
+        !active && "max-md:sr-only max-md:start-0 max-md:top-0 max-md:focus-visible:not-sr-only",
+        // In the desktop margin it costs no room: just keep it out of sight until wanted.
+        !active &&
+          "md:opacity-0 md:transition-opacity md:motion-reduce:transition-none md:group-hover/passage:opacity-100 md:group-focus-within/passage:opacity-100 md:focus-visible:opacity-100",
+      );
+
+/** Tapping a passage shows its actions; a tap on a control inside it, or selecting text, does not. */
+function passageTap(id: string, setActive: (update: (current: string | null) => string | null) => void) {
+  return (event: React.MouseEvent<HTMLElement>) => {
+    if ((event.target as HTMLElement).closest("button, a, input")) return;
+    if (window.getSelection()?.toString()) return;
+    setActive((current) => (current === id ? null : id));
+  };
 }
 
 /** Links to the sections before and after, at the foot of each section. */

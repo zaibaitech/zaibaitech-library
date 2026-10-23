@@ -145,6 +145,11 @@ export default async function run({ browser, base, check, screenshot }) {
   await p.goto(`${reader}#p6-ch2.p02`, { waitUntil: "networkidle" });
   await p.waitForTimeout(1000);
   const mark = p.getByRole("button", { name: /^Bookmark Chapter 2: Zakat as an Instrument of Social Justice, passage 2$/ });
+  // Paragraph actions stay out of the text until wanted: no button is drawn after an untouched passage.
+  const drawn = () => mark.evaluate((el) => getComputedStyle(el).clip !== "rect(0px, 0px, 0px, 0px)" && el.getBoundingClientRect().width >= 44);
+  check("bookmark: no button drawn after an untouched passage", !(await drawn()));
+  await p.locator("#p6-ch2\\.p02 p").first().click({ position: { x: 30, y: 10 } });
+  check("bookmark: tapping the passage shows its bookmark button", await drawn());
   await mark.click();
   check("bookmark: pressed", (await mark.getAttribute("aria-pressed")) === "true");
   await p.reload({ waitUntil: "networkidle" });

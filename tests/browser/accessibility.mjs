@@ -24,7 +24,7 @@ export default async function run({ browser, base, check }) {
   }
 
   // 2. contrast of rendered text, both themes
-  for (const theme of ["light", "dark"]) {
+  for (const theme of ["light", "sepia", "dark"]) {
     const ctx = await b.newContext({ viewport: { width: 1280, height: 900 } });
     await ctx.addInitScript((t) => localStorage.setItem("zaibaitech.library.settings", JSON.stringify({ theme: t, mode: "both:en-zaibaitech-2026" })), theme);
     const p = await ctx.newPage();
@@ -94,8 +94,20 @@ export default async function run({ browser, base, check }) {
     check("tabs: inactive tabs are out of the Tab order", (await p.locator('[role=tab][tabindex="-1"]').count()) === (await tabs.count()) - 1);
     await p.keyboard.press("Escape");
     // touch targets
-    const small = await p.evaluate(() => [...document.querySelectorAll("header.sticky button, header.sticky a, [data-unit] button[aria-label^='Bookmark']")].filter((e) => { const r = e.getBoundingClientRect(); return r.width > 0 && (r.width < 44 || r.height < 44); }).map((e) => e.getAttribute("aria-label") || e.textContent.trim()));
+    // Every control as drawn. A passage's bookmark button is not drawn on a phone until the passage is tapped
+    // (or the button has keyboard focus), so it is measured in that state below.
+    const notDrawn = (e) => getComputedStyle(e).clip === "rect(0px, 0px, 0px, 0px)";
+    const small = await p.evaluate((src) => {
+      const notDrawn = new Function(`return ${src}`)();
+      return [...document.querySelectorAll("header.sticky button, header.sticky a, [data-unit] button[aria-label^='Bookmark']")]
+        .filter((e) => { const r = e.getBoundingClientRect(); return r.width > 0 && !notDrawn(e) && (r.width < 44 || r.height < 44); })
+        .map((e) => e.getAttribute("aria-label") || e.textContent.trim());
+    }, notDrawn.toString());
     check("reader controls are at least 44×44px", small.length === 0, small.slice(0, 5).join(", "));
+    const passage = p.locator("[data-unit]").nth(1);
+    await passage.locator("p").first().click({ position: { x: 30, y: 10 } });
+    const shown = await passage.locator("button[aria-label^='Bookmark']").evaluate((e) => { const r = e.getBoundingClientRect(); return [Math.round(r.width), Math.round(r.height)]; });
+    check("a tapped passage's bookmark button is at least 44×44px", shown[0] >= 44 && shown[1] >= 44, shown.join("×"));
     const unnamed = await p.evaluate(() => [...document.querySelectorAll("button, a, input, [role=radio], [role=switch], [role=tab]")].filter((e) => !(e.getAttribute("aria-label") || e.textContent.trim() || e.labels?.length)).length);
     check("every reader control has a name", unnamed === 0, String(unnamed));
     // focus ring visible on a header control

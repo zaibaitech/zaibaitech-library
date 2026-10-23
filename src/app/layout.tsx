@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Amiri, Fraunces, Outfit, Scheherazade_New } from "next/font/google";
+import { Amiri, Fraunces, Literata, Outfit, Scheherazade_New } from "next/font/google";
 import Script from "next/script";
 import { AppFrame } from "@/components/app-frame";
 import { SettingsProvider, themeBootScript } from "@/components/settings-provider";
@@ -16,6 +16,15 @@ const fraunces = Fraunces({
   // Optical sizing lets the same face serve headings and the English reading text.
   axes: ["opsz"],
   variable: "--font-display",
+  display: "swap",
+});
+
+// Long-form English (books and translations): a text serif made for reading on screens, upright by default.
+const literata = Literata({
+  subsets: ["latin", "latin-ext"],
+  style: ["normal", "italic"],
+  axes: ["opsz"],
+  variable: "--font-reading",
   display: "swap",
 });
 
@@ -45,7 +54,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#f8f5ee" },
-    { media: "(prefers-color-scheme: dark)", color: "#111412" },
+    { media: "(prefers-color-scheme: dark)", color: "#1f1f1e" },
   ],
   width: "device-width",
   initialScale: 1,
@@ -56,7 +65,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${outfit.variable} ${fraunces.variable} ${amiri.variable} ${scheherazade.variable}`}
+      className={`${outfit.variable} ${fraunces.variable} ${literata.variable} ${amiri.variable} ${scheherazade.variable}`}
     >
       <body className="font-sans antialiased">
         <Script id="theme-boot" strategy="beforeInteractive">
