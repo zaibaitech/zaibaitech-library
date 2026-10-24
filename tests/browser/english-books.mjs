@@ -121,6 +121,43 @@ export default async function run({ browser, base, check, screenshot, engine }) 
     await ctx.close();
   }
 
+  // Ready to be found and shared: link previews, the sitemap and robots.txt.
+  {
+    const ctx = await browser.newContext();
+    const p = await ctx.newPage();
+    for (const book of BOOKS) {
+      await p.goto(`${base}/books/${book.id}`, { waitUntil: "domcontentloaded" });
+      const meta = await p.evaluate(() => {
+        const get = (sel) => document.head.querySelector(sel)?.getAttribute("content") ?? "";
+        return {
+          title: get("meta[property='og:title']"),
+          type: get("meta[property='og:type']"),
+          description: get("meta[property='og:description']"),
+          url: get("meta[property='og:url']"),
+          canonical: document.head.querySelector("link[rel=canonical]")?.getAttribute("href") ?? "",
+          summary: get("meta[name=description]"),
+        };
+      });
+      check(
+        `${book.id}: link preview names the book and its author`,
+        meta.title === book.title && meta.type === "book" && meta.description.includes("Omar") && meta.summary.length > 20,
+        JSON.stringify(meta),
+      );
+      check(`${book.id}: canonical address is the book page`, /^https:\/\/.+\/books\/[\w-]+$/.test(meta.canonical) && meta.canonical.endsWith(`/books/${book.id}`) && meta.url === meta.canonical, meta.canonical);
+    }
+    const sitemap = await (await p.request.get(`${base}/sitemap.xml`)).text();
+    const listed = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => new URL(m[1]).pathname);
+    check(
+      "sitemap: each book page and its reader",
+      BOOKS.every((b) => listed.includes(`/books/${b.id}`) && listed.includes(`/books/${b.id}/read`)) && listed.includes("/library"),
+      listed.join(" "),
+    );
+    check("sitemap: no reader for a book that is not yet readable", !listed.includes("/books/risala/read"), listed.join(" "));
+    const robots = await (await p.request.get(`${base}/robots.txt`)).text();
+    check("robots.txt: allows the site and names the sitemap", /Allow: \//.test(robots) && /Sitemap: https:\/\/.+\/sitemap\.xml/.test(robots), robots);
+    await ctx.close();
+  }
+
   // ﷺ is drawn with a real glyph everywhere it appears, in italic quotations too (the print lost it in italic).
   {
     const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
