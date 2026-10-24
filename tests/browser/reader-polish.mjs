@@ -112,7 +112,7 @@ export default async function run({ browser, base, check, screenshot }) {
           inBody: [...document.querySelectorAll("[data-unit]")].some((u) => u.textContent.includes("978-9983-94-606-2")),
         };
       });
-      check("title page: credits listed", titlePage.terms.join("|") === "Translated by|Edited by|Edition|Copyright|ISBN", titlePage.terms.join("|"));
+      check("title page: credits listed", titlePage.terms.join("|") === "Translated by|Edited by|Edition|Copyright|ISBN of the complete edition", titlePage.terms.join("|"));
       check(
         "title page: translator, editor, edition, copyright and ISBN as printed",
         titlePage.values.join("|") === "Sidy Ahmad Gassama|Bai Lamin Dondeh|First Edition 1447H / 2026|© Omar Ceesay|978-9983-94-606-2",

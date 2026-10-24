@@ -7,7 +7,20 @@
       "pages": ["40", "141", "212"],
       "was": "(cid:0)",
       "now": "ﷺ",
-      "reason": "In three italic quotations the print shows an empty missing-glyph box after \"the Messenger of Allah\" / \"the Messenger\": the honorific failed to render in the italic font (the PDF has no character for it). Everywhere else the book prints ﷺ in this position. Restored as ﷺ; flagged for the publisher to confirm.",
+      "reason": "In three italic quotations the print shows an empty missing-glyph box after \"the Messenger of Allah\" / \"the Messenger\". The box is the italic font's own missing-glyph shape: the PDF has glyph 0 of its embedded italic Times New Roman there, with no character code, so the PDF itself does not record what was typed. Everywhere else the book prints ﷺ in this position, always in the upright or bold face and never in italic, which fits the honorific failing to render in the italic font. The library shows ﷺ; the publisher should confirm.",
+      "evidence": {
+        "pdfCharacter": "(cid:0): glyph 0 (.notdef) of the embedded subset AAAABF+TimesNewRomanPS-ItalicMT, 12 pt, 9.34 pt wide; no Unicode mapping. These are the only three such characters in the PDF.",
+        "elsewhere": "ﷺ occurs 155 times in the PDF: 150 in TimesNewRomanPSMT (two subsets) and 5 in TimesNewRomanPS-BoldMT; none in the italic face.",
+        "context": [
+          "PDF page 50 (printed 40), italic quotation: “The Messenger of Allah [box] …”",
+          "PDF page 151 (printed 141), italic quotation: “… the sheikh the foundation and the Messenger [box] …”",
+          "PDF page 222 (printed 212), italic quotation: “… the Sunnah of the Messenger of Allah [box] …”"
+        ]
+      },
+      "confirmation": {
+        "status": "awaiting publisher",
+        "question": "At printed pages 40, 141 and 212, the print shows an empty box after “the Messenger of Allah” / “the Messenger”. Is it ﷺ, as the library shows, or something else?"
+      },
       "status": "applied"
     }
   ]

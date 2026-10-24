@@ -30,7 +30,17 @@ type Config = {
 const dir = "content/sources/three-books";
 const snapshot: Snapshot = JSON.parse(fs.readFileSync(`${dir}/pages.json`, "utf8"));
 const config: Config = JSON.parse(fs.readFileSync(`${dir}/books.json`, "utf8"));
-const corrections: { id: string; was: string; now: string; status: string; reason: string; pdfPages: number[] }[] =
+const corrections: {
+  id: string;
+  was: string;
+  now: string;
+  status: string;
+  reason: string;
+  pdfPages: number[];
+  pages?: string[];
+  evidence?: { pdfCharacter: string; elsewhere: string; context: string[] };
+  confirmation?: { status: string; question: string };
+}[] =
   JSON.parse(fs.readFileSync(`${dir}/corrections.json`, "utf8")).corrections;
 
 const EXPECTED = [
@@ -73,6 +83,9 @@ test("the three books are in the catalogue, readable, with the edition's own det
     assert.equal(edition.editor, expected.editor);
     assert.equal(edition.copyright, "© Omar Ceesay");
     assert.equal(edition.isbn, "978-9983-94-606-2");
+    // The one printed ISBN belongs to the complete three-book edition and is labelled so, never as this book's own.
+    assert.equal(edition.isbnLabel, "ISBN of the complete edition");
+    assert.match(edition.isbnNote ?? "", /complete three-book edition; no separate ISBN is printed for this book/);
     assert.equal(edition.edition, "First Edition 1447H / 2026");
     assert.match(edition.rightsNotice, /^All rights reserved\./);
     assert.match(edition.permission.confirmedOn, /^\d{4}-\d{2}-\d{2}$/);
@@ -97,6 +110,23 @@ test("each editor and title is as printed on that book's title page", () => {
     const titleWords = book.title.replace(/[:’]/g, " ").split(/\s+/).filter(Boolean);
     for (const word of titleWords) assert.ok(text.includes(word), `${book.id}: title word "${word}"`);
   }
+});
+
+test("the edition prints one ISBN, once, on the volume's copyright page", () => {
+  const pageText = (page: Snapshot["pages"][number]) => page.lines.map((line) => line.runs.map((r) => r[0]).join("")).join(" ");
+  const withIsbn = snapshot.pages.filter((page) => /ISBN/.test(pageText(page)));
+  assert.deepEqual(withIsbn.map((page) => page.pdfPage), [3]);
+  assert.deepEqual(pageText(withIsbn[0]).match(/97[89][-\d]{10,}/g), ["978-9983-94-606-2"]);
+});
+
+test("each editor is named only on their own book's title page", () => {
+  const titlePages = config.books.map((book) => snapshot.pages[book.firstPdfPage - 1]);
+  const text = (page: Snapshot["pages"][number]) => page.lines.map((line) => line.runs.map((r) => r[0]).join("")).join(" ");
+  config.books.forEach((book, i) => {
+    titlePages.forEach((page, j) => {
+      assert.equal(text(page).includes(`Edited By: ${book.editor}`), i === j, `${book.editor} on PDF page ${page.pdfPage}`);
+    });
+  });
 });
 
 test("every word of every page survives, in order, in the right book", () => {
@@ -218,6 +248,34 @@ test("every correction is recorded with its reason and is used", () => {
   assert.ok(!all.includes("(cid:0)"));
   const restored = (all.match(/the Messenger of Allah ﷺ|the Messenger ﷺ/g) ?? []).length;
   assert.ok(restored > 3);
+});
+
+test("c1: ﷺ where the print shows an empty box is recorded with its evidence and awaits the publisher", () => {
+  const c1 = corrections.find((c) => c.id === "c1")!;
+  assert.equal(c1.was, "(cid:0)");
+  assert.equal(c1.now, "ﷺ");
+  assert.deepEqual(c1.pdfPages, [50, 151, 222]);
+  assert.deepEqual(c1.pages, ["40", "141", "212"]);
+  assert.equal(c1.evidence?.context.length, 3);
+  assert.match(c1.evidence!.pdfCharacter, /glyph 0 .*Italic/);
+  assert.equal(c1.confirmation?.status, "awaiting publisher");
+  // The PDF has exactly these three missing glyphs, all in the italic face, and ﷺ is never set in italic there.
+  const cids = snapshot.pages.flatMap((page) =>
+    page.lines.flatMap((line) => line.runs.filter((r) => r[0].includes("(cid:")).map((r) => ({ page: page.pdfPage, font: r[1] }))),
+  );
+  assert.deepEqual(cids.map((c) => c.page), [50, 151, 222]);
+  // In the library each one is ﷺ inside its italic quotation, and nothing else in that passage changed.
+  const restored = [
+    { pdfPage: 50, book: "reviving-religion", id: "p6-ch2.p03" },
+    { pdfPage: 151, book: "balance-of-stations", id: "introduction-to-the-book.p14" },
+    { pdfPage: 222, book: "balance-of-stations", id: "p4-ch3.p16" },
+  ];
+  for (const { pdfPage, book, id } of restored) {
+    const unit = content(book).chapters.flatMap((ch) => ch.units).find((u) => u.id === id);
+    assert.ok(unit, id);
+    assert.ok(/\*[^*]*ﷺ[^*]*\*/.test(unit.text), `${id} (PDF page ${pdfPage}): ﷺ inside the italic quotation`);
+    assert.ok(!unit.text.includes("(cid:"), id);
+  }
 });
 
 test("English search finds words regardless of case and transliteration marks", () => {

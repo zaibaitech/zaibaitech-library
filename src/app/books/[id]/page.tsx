@@ -205,7 +205,10 @@ export default async function BookDetailPage({ params }: { params: Promise<Param
                 <Row label="Translator">{book.edition.translator}</Row>
                 <Row label="Editor">{book.edition.editor}</Row>
                 <Row label="Edition">{book.edition.edition}</Row>
-                <Row label="ISBN">{book.edition.isbn}</Row>
+                <Row label={book.edition.isbnLabel}>
+                  <span className="tabular-nums">{book.edition.isbn}</span>
+                  {book.edition.isbnNote ? <span className="block text-faint">{book.edition.isbnNote}</span> : null}
+                </Row>
                 <Row label="Copyright">{book.edition.copyright}</Row>
                 <Row label="Printed by">{book.edition.printer}</Row>
               </>

@@ -14,7 +14,11 @@ const CEESAY_EDITION: Omit<BookEdition, "fullTitle" | "editor"> = {
   author: "Abu Abdur-Rahman Omar Ibn Alhagie Abdullah Ceesay Ibn Alhagie Jibel Fana Sow Ceesay",
   translator: "Sidy Ahmad Gassama",
   copyright: "© Omar Ceesay",
+  // The edition prints this one ISBN, on the copyright page of the three-book volume (PDF page 3). It identifies
+  // the complete edition; no separate ISBN is printed for any of the three books.
   isbn: "978-9983-94-606-2",
+  isbnLabel: "ISBN of the complete edition",
+  isbnNote: "Issued for the complete three-book edition; no separate ISBN is printed for this book.",
   edition: "First Edition 1447H / 2026",
   printer: "DBC Printing Corporation, Banjul, The Gambia",
   rightsNotice:

@@ -11,7 +11,52 @@ const overflow = (page) => page.evaluate(() => document.documentElement.scrollWi
 const topPassage = (page) =>
   page.evaluate(() => [...document.querySelectorAll("[data-unit]")].find((e) => e.getBoundingClientRect().bottom > 130)?.id);
 
-export default async function run({ browser, base, check, screenshot }) {
+/** The three passages where the print shows an empty box and the library shows ﷺ (correction c1, to be confirmed). */
+const RESTORED = [
+  { book: "reviving-religion", passage: "p6-ch2.p03" },
+  { book: "balance-of-stations", passage: "introduction-to-the-book.p14" },
+  { book: "balance-of-stations", passage: "p4-ch3.p16" },
+];
+
+/**
+ * Every ﷺ on the page, each wrapped in its own span so it can be measured on its own, with whether the canvas draws
+ * it at the width of Amiri's glyph in the element's own font (the canvas falls back through the font list as the
+ * text does). A tofu box or another font gives another width.
+ */
+const pbuhGlyphs = (page) =>
+  page.evaluate(() => {
+    const texts = [];
+    const walker = document.createTreeWalker(document.querySelector("article"), NodeFilter.SHOW_TEXT);
+    while (walker.nextNode()) if (walker.currentNode.nodeValue.includes("\uFDFA")) texts.push(walker.currentNode);
+    for (const text of texts) {
+      const parts = text.nodeValue.split("\uFDFA");
+      const frag = document.createDocumentFragment();
+      parts.forEach((part, i) => {
+        if (i) {
+          const span = document.createElement("span");
+          span.className = "pbuh-probe";
+          span.textContent = "\uFDFA";
+          frag.append(span);
+        }
+        frag.append(part);
+      });
+      text.replaceWith(frag);
+    }
+    const ctx = document.createElement("canvas").getContext("2d");
+    const width = (font) => ((ctx.font = font), ctx.measureText("\uFDFA").width);
+    return [...document.querySelectorAll(".pbuh-probe")].map((span) => {
+      const s = getComputedStyle(span);
+      const shape = `${s.fontStyle} ${s.fontWeight} ${s.fontSize}`;
+      return {
+        passage: span.closest("[data-unit]")?.id ?? span.closest("[id]")?.id ?? "",
+        italic: s.fontStyle !== "normal",
+        listsAmiri: /\bAmiri\b/.test(s.fontFamily),
+        amiriWidth: Math.abs(width(`${shape} ${s.fontFamily}`) - width(`${shape} Amiri`)) < 0.01,
+      };
+    });
+  });
+
+export default async function run({ browser, base, check, screenshot, engine }) {
   // Discovery: home and library list all three as readable.
   {
     const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
@@ -45,6 +90,18 @@ export default async function run({ browser, base, check, screenshot }) {
       const needed = ["Sidy Ahmad Gassama", book.editor, "978-9983-94-606-2", "© Omar Ceesay", "First Edition 1447H / 2026", "All rights reserved"];
       const missing = needed.filter((text) => !details.includes(text));
       check(`${width}px ${book.id}: book page shows translator, editor, ISBN, copyright and edition`, missing.length === 0, missing.join(", "));
+      // One ISBN is printed, for the complete three-book edition; it is never shown as this book's own.
+      const terms = await p.locator("dl dt").allInnerTexts();
+      check(
+        `${width}px ${book.id}: the ISBN is labelled as the complete edition's`,
+        terms.filter((t) => /ISBN/.test(t)).join("|") === "ISBN of the complete edition" &&
+          details.includes("no separate ISBN is printed for this book"),
+        terms.join("|"),
+      );
+      // Each book shows the editor its own title page names, and no other.
+      const editorRow = await p.locator("dl > div", { has: p.locator("dt", { hasText: /^Editor$/ }) }).locator("dd").innerText();
+      const others = BOOKS.filter((b) => b.editor !== book.editor && details.includes(b.editor)).map((b) => b.editor);
+      check(`${width}px ${book.id}: only its own editor`, editorRow.trim() === book.editor && others.length === 0, `${editorRow} ${others}`);
       check(`${width}px ${book.id}: book page makes no Arabic claim`, (await p.locator("main [lang=ar]").count()) === 0);
 
       await p.goto(`${base}/books/${book.id}/read`, { waitUntil: "networkidle" });
@@ -61,6 +118,47 @@ export default async function run({ browser, base, check, screenshot }) {
       if (book.id === "reviving-religion") await screenshot(p, `english-${width}-reader`);
     }
     check(`${width}px: no console or page errors`, errors().length === 0, errors().join(" | "));
+    await ctx.close();
+  }
+
+  // ﷺ is drawn with a real glyph everywhere it appears, in italic quotations too (the print lost it in italic).
+  {
+    const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
+    const p = await ctx.newPage();
+    for (const book of BOOKS) {
+      await p.goto(`${base}/books/${book.id}/read`, { waitUntil: "networkidle" });
+      await p.evaluate(() => document.fonts.ready);
+      const glyphs = await pbuhGlyphs(p);
+      const bad = glyphs.filter((g) => !g.listsAmiri || !g.amiriWidth);
+      check(`ﷺ ${book.id}: every one is drawn with Amiri's glyph (${glyphs.length})`, glyphs.length > 20 && bad.length === 0, JSON.stringify(bad.slice(0, 3)));
+      const restored = RESTORED.filter((r) => r.book === book.id);
+      if (restored.length) {
+        const here = restored.map((r) => glyphs.filter((g) => g.passage === r.passage && g.italic).length);
+        check(`ﷺ ${book.id}: the restored ones are in their italic quotations`, here.every((n) => n >= 1), here.join(","));
+      }
+      if (engine === "chromium") {
+        // Chromium can say which font actually drew each one.
+        const cdp = await ctx.newCDPSession(p);
+        await cdp.send("DOM.enable");
+        await cdp.send("CSS.enable");
+        const { root } = await cdp.send("DOM.getDocument", { depth: -1 });
+        const { nodeIds } = await cdp.send("DOM.querySelectorAll", { nodeId: root.nodeId, selector: ".pbuh-probe" });
+        const drawnBy = new Set();
+        for (const nodeId of nodeIds) {
+          const { fonts } = await cdp.send("CSS.getPlatformFontsForNode", { nodeId });
+          drawnBy.add(fonts.map((f) => `${f.familyName}${f.isCustomFont ? "" : " (system)"}`).join("+"));
+        }
+        check(`ﷺ ${book.id}: Chromium draws every one with the Amiri web font`, [...drawnBy].join("|") === "Amiri", [...drawnBy].join("|"));
+        await cdp.detach();
+      }
+      // The closing notice names the ISBN for what it is.
+      const notice = await p.locator("footer p[lang=en]").first().innerText();
+      check(
+        `${book.id}: closing notice gives the ISBN of the complete edition`,
+        notice.includes("ISBN of the complete edition 978-9983-94-606-2") && !/ISBN 978/.test(notice),
+        notice.slice(0, 120),
+      );
+    }
     await ctx.close();
   }
 
