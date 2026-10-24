@@ -17,7 +17,13 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
   const { id } = await params;
   const book = getBook(id);
-  return { title: book ? `Read ${book.title}` : "Reader" };
+  if (!book) return { title: "Reader" };
+  return {
+    title: `Read ${book.title}`,
+    description: book.summary,
+    alternates: { canonical: `/books/${book.id}/read` },
+    openGraph: { type: "book", url: `/books/${book.id}/read`, title: book.title, description: book.summary },
+  };
 }
 
 export default async function ReadPage({ params }: { params: Promise<Params> }) {

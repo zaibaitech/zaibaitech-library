@@ -3,6 +3,7 @@ import { Amiri, Fraunces, Literata, Outfit, Scheherazade_New } from "next/font/g
 import Script from "next/script";
 import { AppFrame } from "@/components/app-frame";
 import { SettingsProvider, themeBootScript } from "@/components/settings-provider";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -43,12 +44,13 @@ const scheherazade = Scheherazade_New({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Zaibaitech Library",
-    template: "%s · Zaibaitech Library",
+    default: SITE_NAME,
+    template: `%s · ${SITE_NAME}`,
   },
-  description:
-    "A reading room for classical Islamic manuals. Mukhtasar al-Akhdari, in Arabic.",
+  description: SITE_DESCRIPTION,
+  openGraph: { siteName: SITE_NAME, type: "website", title: SITE_NAME, description: SITE_DESCRIPTION },
 };
 
 export const viewport: Viewport = {

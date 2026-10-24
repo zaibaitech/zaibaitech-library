@@ -28,9 +28,20 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
   const { id } = await params;
   const book = getBook(id);
+  if (!book) return { title: "Book" };
+  const author = authorOf(book);
+  // A link shared in a message shows the book's title, its author and what it is about.
   return {
-    title: book?.title ?? "Book",
-    description: book?.summary,
+    title: book.title,
+    description: book.summary,
+    alternates: { canonical: `/books/${book.id}` },
+    openGraph: {
+      type: "book",
+      url: `/books/${book.id}`,
+      title: book.title,
+      description: `${book.summary} By ${author.name}.`,
+      authors: [author.name],
+    },
   };
 }
 
@@ -205,7 +216,10 @@ export default async function BookDetailPage({ params }: { params: Promise<Param
                 <Row label="Translator">{book.edition.translator}</Row>
                 <Row label="Editor">{book.edition.editor}</Row>
                 <Row label="Edition">{book.edition.edition}</Row>
-                <Row label="ISBN">{book.edition.isbn}</Row>
+                <Row label={book.edition.isbnLabel}>
+                  <span className="tabular-nums">{book.edition.isbn}</span>
+                  {book.edition.isbnNote ? <span className="block text-faint">{book.edition.isbnNote}</span> : null}
+                </Row>
                 <Row label="Copyright">{book.edition.copyright}</Row>
                 <Row label="Printed by">{book.edition.printer}</Row>
               </>

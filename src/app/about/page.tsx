@@ -143,7 +143,7 @@ export default function AboutPage() {
                   {book.title}
                 </Link>
                 : by {book.edition!.author}. Translated by {book.edition!.translator}, edited by {book.edition!.editor}.{" "}
-                {book.edition!.copyright}, ISBN {book.edition!.isbn}, {book.edition!.edition}.
+                {book.edition!.copyright}, {book.edition!.isbnLabel} {book.edition!.isbn}, {book.edition!.edition}.
               </li>
             ))}
           </ul>

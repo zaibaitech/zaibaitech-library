@@ -560,7 +560,7 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
               <dd className="text-ink">{content.source.edition}</dd>
               <dt className="text-muted">Copyright</dt>
               <dd className="text-ink">{content.source.copyright}</dd>
-              <dt className="text-muted">ISBN</dt>
+              <dt className="text-muted">{book.edition?.isbnLabel ?? "ISBN"}</dt>
               <dd className="tabular-nums text-ink">{content.source.isbn}</dd>
             </dl>
             <p className="mx-auto mt-5 max-w-sm text-xs leading-relaxed text-muted">
@@ -765,7 +765,7 @@ export function Reader({ book, content, translations, practiceHref }: Props) {
           </div>
           {prose ? (
             <p lang="en">
-              {content.source.copyright}. ISBN {content.source.isbn}. {content.source.edition}. All rights reserved; published in
+              {content.source.copyright}. {book.edition?.isbnLabel ?? "ISBN"} {content.source.isbn}. {content.source.edition}. All rights reserved; published in
               this library with the rights holder&apos;s permission. Not for copying or redistribution.
             </p>
           ) : (

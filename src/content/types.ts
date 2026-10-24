@@ -98,7 +98,15 @@ export type BookEdition = {
   translator: string;
   editor: string;
   copyright: string;
+  /** The only ISBN the edition prints. */
   isbn: string;
+  /**
+   * What that ISBN identifies, shown as its label. When one ISBN covers a volume of several books it is the
+   * volume's ISBN, not an ISBN of this book on its own, and the label must say so.
+   */
+  isbnLabel: string;
+  /** A line under the ISBN on the book page, when it needs explaining. */
+  isbnNote?: string;
   edition: string;
   printer: string;
   /** The rights notice as printed. */
@@ -222,6 +230,7 @@ export type ProseSource = {
   translator: string;
   editor: string;
   copyright: string;
+  /** The edition's ISBN as printed; for the three books, the ISBN of the complete three-book edition. */
   isbn: string;
   edition: string;
   printer: string;
